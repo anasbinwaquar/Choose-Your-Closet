@@ -6,7 +6,7 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
   </head>
   <body>
-    <form action="loging_in" method="post">
+    <form action="LoggedIn" method="post">
       @csrf
   <section class="text-gray-700 body-font relative">
     <div class="container px-5 py-24 mx-auto">
@@ -17,10 +17,10 @@
       <div class="lg:w-1/2 md:w-2/3 mx-auto">
         <div class="flex flex-wrap -m-2">
           <div class="p-2 w-1/2">
-            <input class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-blue-500 text-base px-4 py-2" name="username" placeholder="Username" type="text">
+            <input class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-blue-500 text-base px-4 py-2" name="Username" placeholder="Username" type="text">
           </div>
           <div class="p-2 w-1/2">
-            <input class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-blue-500 text-base px-4 py-2" name="password" placeholder="password" type="password">
+            <input class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-blue-500 text-base px-4 py-2" name="Password" placeholder="password" type="password">
           </div>
           <div class="p-2 w-full">
             <button class="flex mx-auto text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg">Button</button>
@@ -30,7 +30,7 @@
             <p class="leading-normal my-5">49 Smith St.
               <br>Saint Cloud, MN 56301
             </p>
-            <span class="inline-flex">
+            <span class="inline-flex">   
               <a class="text-gray-500">
                 <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
                   <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>

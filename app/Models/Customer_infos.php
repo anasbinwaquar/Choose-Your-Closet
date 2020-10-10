@@ -4,22 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
-
-class user_model extends Model
+class Customer_infos extends Model
 {
     use HasFactory;
-    protected $table = 'seller_info';
+    protected $table = 'customer_infos';
 
       protected $fillable = [
-        'First_Name', 'Last_Name','Email','Phone_Number','Website_Name','Brand_Name','Username','Password',
+        'First_Name', 'Last_Name','Email','Phone_Number','Username'  ,'Password',
     ];
 
     protected $hidden = [
-        'password',
+        'Password',
     ];
     //  public function setPasswordAttribute($password)
     // {

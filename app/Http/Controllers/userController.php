@@ -1,7 +1,5 @@
- <?php
-
+<?php
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\user_model;
 use Illuminate\Support\Facades\DB; 
@@ -41,34 +39,6 @@ class userController extends Controller
        return view('SellerSignUp');
     }
 
-
-    public function sign_up()
-    {
-    	 return view('signup');
-    }
-
-
-    public function login()
-    {
-         return view('login');
-    }
-
-
-    public function profile()
-    {
-        if(!session()->has('data'))
-        {
-         return redirect('login');
-        }
-        return view('profile');
-    }
-
-
-    public function logout()
-    {
-        session()->forget('data');
-        return view('login');
-    }
 
 
     public function default()
