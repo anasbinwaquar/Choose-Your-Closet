@@ -12,10 +12,10 @@ use Illuminate\Notifications\Notifiable;
 class user_model extends Model
 {
     use HasFactory;
-    protected $table = 'posts';
+    protected $table = 'seller_info';
 
       protected $fillable = [
-        'username', 'password','email',
+        'FirstName', 'LastName','Email','PhoneNumber','WebsiteName','BrandName','Username','Password',
     ];
 
     protected $hidden = [

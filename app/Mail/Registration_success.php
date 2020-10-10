@@ -10,15 +10,18 @@ use Illuminate\Queue\SerializesModels;
 class Registration_success extends Mailable
 {
     use Queueable, SerializesModels;
+    public $username;
+    public $password;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($u,$p)
     {
-        //
+        $username=$u;
+        $password=$p;  
     }
 
     /**
@@ -28,6 +31,6 @@ class Registration_success extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('Mail.sended_mail');
     }
 }
