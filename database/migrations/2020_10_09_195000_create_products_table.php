@@ -23,6 +23,8 @@ class CreateProductsTable extends Migration
             $table->string('product_image');
             $table->string('sizes');
             $table->string('wear_type');
+            $table->string('gender_type');
+            $table->string('category');
             $table->timestamps();
         });
     }
