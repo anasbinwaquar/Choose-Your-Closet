@@ -48,4 +48,5 @@ Route::get('/UserProfile',[App\Http\Controllers\CustomerInfoController::class,'P
 
 Route::get('/UserLogout',[App\Http\Controllers\CustomerInfoController::class,'UserLogout']);
 
-Route::get('/ListProduct',)
+Route::get('/ListProduct',[App\Http\Controllers\ProductController::class,'index']);
+Route::get('/CreateProduct',[App\Http\Controllers\ProductController::class,'create']);
