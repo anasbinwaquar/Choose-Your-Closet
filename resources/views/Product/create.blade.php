@@ -21,7 +21,7 @@
     </div>
 
     <div>
-    	<label for="username">Product Price Per Unit:</label>
+    	<label for="username">Product gPrice Per Unit:</label>
     	<input type="text" name="price_per_unit" id="price_per_unit" value="" required>
     </div>
     <div>
