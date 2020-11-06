@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use App\Models\Customer_infos;
 use Illuminate\Support\Facades\DB; 
 use \App\Mail\Registration_success;
+use App\Notifications\test;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Notifications\Notifiable;
 class CustomerInfoController extends Controller
 {
 
@@ -26,6 +29,11 @@ class CustomerInfoController extends Controller
         print_r($req->input());
         //$user_model =new user_model;
         Customer_infos::create($req->all());
+//       $customer=Customer_infos::all();
+        $customer=new Customer_infos;
+       // $customer->notify(new test('test ha'));
+        Notification::route('mail',$req->Email)->notify(new test('sdsdsd'));
+            
         // $user_model = new user_model;
         //  $user_model->username=$req->user;
         // $user_model->password=$req->password;

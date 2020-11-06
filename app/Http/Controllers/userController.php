@@ -34,7 +34,7 @@ class userController extends Controller
     {
         if(!session()->has('data'))
         {
-             return view('AdminLogin');
+             return redirect('admin_login');
         }
        return view('SellerSignUp');
     }
