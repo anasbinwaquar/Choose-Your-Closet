@@ -33,7 +33,8 @@
       <th>{{$authentication->Brand_Name}}</th>
       <th>{{$authentication->Username}}</th>
       <th>{{$authentication->CNIC}}</th>
-      <th><button class="btn btn-danger" type="submit" formaction="setapproval">Approve</button></th>
+      <th><a href="setapproval/{{$authentication->id}}/1"><button class="btn btn-success">Approve</button></a></th>
+      <th><a href="setapproval/{{$authentication->id}}/2"><button class="btn btn-danger">Decline</button></a></th>
     </tr>
     @endforeach
   </tbody>

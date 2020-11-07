@@ -45,10 +45,18 @@ class userController extends Controller
         return view('Authentication_Portal')->with('authentication',$authentication);
       }
 
-      public function setapproval(Request $req)
+      public function setapproval($id,$approval_decision)
       { 
-
-        print_r($req->id);
+        if($approval_decision=1)
+        {
+        DB::update("update seller_info SET Approval=1 WHERE id=$id");
+        return redirect('Seller_Authentication');
+        }
+        if($approval_decision=2)
+        {
+        DB::delete("delete from seller_info WHERE id=$id");
+        return redirect('Seller_Authentication');
+        }
 
       }
 
@@ -72,7 +80,7 @@ class userController extends Controller
 
             if($req->session()->has('data'))
             {
-                return redirect('profile');
+                return redirect('SellerProfile');
             }
         }
         else
@@ -91,32 +99,36 @@ class userController extends Controller
      public function SellerSignUp(Request $req)
     {
         user_model::create($req->all());
+        return redirect("SellerLogin");
        // \Mail::to($req->input('email'))->send(new Registration_success($req->username,$req->password));
     }
 
-
-    
-     public function loging(Request $req)
+    public function SellerProfileView()
     {
-        //$this->validate($req);
-        $username=$req->input('username');  
-        $password=$req->input('password');
-        $check=NULL;
-        $check=DB::select("select * from posts where username=? and password=?",[$username,$password]);
-        if($check!=NULL)
-        {
-            $req->session()->put('data',$req->input());
-
-            if($req->session()->has('data'))
-            {
-                return redirect('profile');
-            }
-        }
-
-        // $user_model = new user_model;
-        //  $user_model->username=$req->user;
-        // $user_model->password=$req->password;
-        // $user_model->save();
+        return view('Seller_Portal');
     }
+    
+    //  public function loging(Request $req)
+    // {
+    //     //$this->validate($req);
+    //     $username=$req->input('username');  
+    //     $password=$req->input('password');
+    //     $check=NULL;
+    //     $check=DB::select("select * from posts where username=? and password=?",[$username,$password]);
+    //     if($check!=NULL)
+    //     {
+    //         $req->session()->put('data',$req->input());
+
+    //         if($req->session()->has('data'))
+    //         {
+    //             return redirect('profile');
+    //         }
+    //     }
+
+    //     // $user_model = new user_model;
+    //     //  $user_model->username=$req->user;
+    //     // $user_model->password=$req->password;
+    //     // $user_model->save();
+    // }
 
 }

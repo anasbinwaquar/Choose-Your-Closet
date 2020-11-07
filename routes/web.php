@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 use Illuminate\Support\Facades\Route;
 
@@ -38,7 +38,7 @@ Route::get('/CustomerSignUp', [App\Http\Controllers\CustomerInfoController::clas
 Route::post('/Seller_registered', [App\Http\Controllers\userController::class, 'SellerSignUp']);
 
 
-Route::post('/setapproval', [App\Http\Controllers\userController::class, 'setapproval']);
+Route::get('/setapproval/{id}/{approval_decision}', [App\Http\Controllers\userController::class, 'setapproval']);
 
 
 Route::post('/SellerLoggedIn', [App\Http\Controllers\userController::class, 'SellerLogin']);
@@ -57,6 +57,7 @@ Route::post('/LoggedIn',[App\Http\Controllers\CustomerInfoController::class,'Cus
 
 Route::get('/UserProfile',[App\Http\Controllers\CustomerInfoController::class,'ProfileView']);
 
+Route::get('/SellerProfile',[App\Http\Controllers\userController::class,'SellerProfileView']);
 
 Route::get('/UserLogout',[App\Http\Controllers\CustomerInfoController::class,'UserLogout']);
 
