@@ -32,13 +32,54 @@ class userController extends Controller
 
       public function SellerSignUpView()
     {
-        if(!session()->has('data'))
-        {
-             return redirect('admin_login');
-        }
+        // if(!session()->has('data'))
+        // {
+        //      return redirect('admin_login');
+        // }
        return view('SellerSignUp');
     }
 
+      public function Seller_Authentication()
+      {
+        $authentication = DB::select("select * from seller_info where Approval=0");
+        return view('Authentication_Portal')->with('authentication',$authentication);
+      }
+
+      public function setapproval(Request $req)
+      { 
+
+        print_r($req->id);
+
+      }
+
+    public function SellerLoginView()
+     {
+        return view('Seller_Login');
+
+     }
+
+
+    public function SellerLogin(Request $req)
+     {
+        
+        $username=$req->input('Username');  
+        $password=$req->input('Password');
+        $check=NULL;
+        $check=DB::select("select * from seller_info where Username=? and Password=? and Approval=1",[$username,$password]);
+        if($check!=NULL)
+        {
+            $req->session()->put('data',$req->input());
+
+            if($req->session()->has('data'))
+            {
+                return redirect('profile');
+            }
+        }
+        else
+        {
+            print_r("NOT APPROVED BY ADMIN YET");
+        }
+     }
 
 
     public function default()

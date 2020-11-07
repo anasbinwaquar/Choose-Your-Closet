@@ -23,6 +23,8 @@ class CreateSellerInfoTable extends Migration
             $table->string("Brand_Name");
             $table->string("Username")->unique();
             $table->string("Password");
+            $table->boolean("Approval")->default(0);
+            $table->string("CNIC");
             $table->timestamps();
         });
     }

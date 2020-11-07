@@ -40,7 +40,10 @@
         <label for="password" class="form_head">Password</label>
       <input type="password" class="form-control" id="Password" name="Password" placeholder="Password">
         </div>
-         
+         <div class="col-md-4 mb-3">
+        <label for="CNIC" class="form_head">CNIC</label>
+      <input type="text" class="form-control" id="CNIC" name="CNIC" placeholder="42201-XXXXX-XX-X">
+        </div>
         <br>
       <button class="btn btn-primary" type="submit">Login</button>
 

@@ -6,6 +6,6 @@
 </head>
 <body>
 	 @csrf
-<a href="SellerSignUp"><button type="button" class="btn btn-primary btn-lg btn-block">ADD SELLER</button></a>
+<a href="Seller_Authentication"><button type="button" class="btn btn-primary btn-lg btn-block">Seller Authentication</button></a>
 </body>
 </html>

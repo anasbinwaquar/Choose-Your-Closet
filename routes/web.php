@@ -26,10 +26,22 @@ Route::post('/LoginAdminCheck', [App\Http\Controllers\userController::class, 'Lo
 Route::get('/SellerSignUp', [App\Http\Controllers\userController::class, 'SellerSignUpView']);
 
 
+Route::get('/Seller_Authentication', [App\Http\Controllers\userController::class, 'Seller_Authentication']);
+
+
+Route::get('/SellerLogin', [App\Http\Controllers\userController::class, 'SellerLoginView']);
+
+
 Route::get('/CustomerSignUp', [App\Http\Controllers\CustomerInfoController::class, 'CustomerSignUpView']);
 
 
 Route::post('/Seller_registered', [App\Http\Controllers\userController::class, 'SellerSignUp']);
+
+
+Route::post('/setapproval', [App\Http\Controllers\userController::class, 'setapproval']);
+
+
+Route::post('/SellerLoggedIn', [App\Http\Controllers\userController::class, 'SellerLogin']);
 
 
 Route::post('/Customer_registered', [App\Http\Controllers\CustomerInfoController::class, 'CustomerSignUp']);

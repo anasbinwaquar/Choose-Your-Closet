@@ -15,7 +15,7 @@ class user_model extends Model
     protected $table = 'seller_info';
 
       protected $fillable = [
-        'First_Name', 'Last_Name','Email','Phone_Number','Website_Name','Brand_Name','Username','Password',
+        'First_Name', 'Last_Name','Email','Phone_Number','Website_Name','Brand_Name','Username','Password','Approval','CNIC',
     ];
 
     protected $hidden = [
