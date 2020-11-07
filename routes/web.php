@@ -38,7 +38,10 @@ Route::get('/CustomerSignUp', [App\Http\Controllers\CustomerInfoController::clas
 Route::post('/Seller_registered', [App\Http\Controllers\userController::class, 'SellerSignUp']);
 
 
-Route::get('/setapproval/{id}/{approval_decision}', [App\Http\Controllers\userController::class, 'setapproval']);
+Route::get('/setapproval/{id}', [App\Http\Controllers\userController::class, 'setapproval']);
+
+
+Route::get('/declineapproval/{id}', [App\Http\Controllers\userController::class, 'declineapproval']);
 
 
 Route::post('/SellerLoggedIn', [App\Http\Controllers\userController::class, 'SellerLogin']);

@@ -45,21 +45,17 @@ class userController extends Controller
         return view('Authentication_Portal')->with('authentication',$authentication);
       }
 
-      public function setapproval($id,$approval_decision)
+      public function setapproval($id)
       { 
-        if($approval_decision=1)
-        {
         DB::update("update seller_info SET Approval=1 WHERE id=$id");
         return redirect('Seller_Authentication');
-        }
-        if($approval_decision=2)
-        {
-        DB::delete("delete from seller_info WHERE id=$id");
-        return redirect('Seller_Authentication');
-        }
-
       }
 
+       public function declineapproval($id)
+      {
+        DB::delete("delete from seller_info WHERE id=$id");
+        return redirect('Seller_Authentication');
+      }
     public function SellerLoginView()
      {
         return view('Seller_Login');
