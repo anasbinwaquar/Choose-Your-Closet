@@ -25,6 +25,8 @@ class CreateProductsTable extends Migration
             $table->string('wear_type');
             $table->string('gender_type');
             $table->string('category');
+            $table->boolean('approved');
+            $table->boolean('rental');
             $table->timestamps();
         });
     }
