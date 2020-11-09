@@ -109,9 +109,9 @@ class ProductController extends Controller
         $Prod->gender_type = $request->input('gender_type');
         $Prod->category = $request->input('category');
         $Prod->seller_id=$seller_id;
-        $Prod->rental =0;
+        $Prod->rental =$request->input('rental');
         $Prod->save();
-        
+
 
         return view('Product.success');
         }
