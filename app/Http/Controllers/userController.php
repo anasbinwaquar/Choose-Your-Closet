@@ -70,10 +70,10 @@ class userController extends Controller
         $password=$req->input('Password');
         $check=NULL;
         $check=DB::select("select * from seller_info where Username=? and Password=? and Approval=1",[$username,$password]);
-        $get_id=DB::select("select id from seller_info where Username=? and Password=? and Approval=1",[$username,$password]);
-        $seller_id=$get_id[0]->id;
         if($check!=NULL)
-        {
+        {            
+            $get_id=DB::select("select id from seller_info where Username=? and Password=? and Approval=1",[$username,$password]);
+            $seller_id=$get_id[0]->id;
             $req->session()->put('data',$req->input());
             $req->session()->put('logged_in',1);
             $req->session()->put('seller_id',$seller_id);

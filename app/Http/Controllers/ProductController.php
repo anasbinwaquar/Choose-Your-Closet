@@ -103,8 +103,6 @@ class ProductController extends Controller
         $Prod->quantity_medium = $request->input('quantity_medium');
         $Prod->quantity_large = $request->input('quantity_large');
         $Prod->quantity_extra_large = $request->input('quantity_extra_large');
-        $arrayToString=implode(',',$request->input('sizes'));
-        $Prod->sizes = $arrayToString;
         $Prod->clothing_type = $request->input('clothing_type');
         $Prod->gender_type = $request->input('gender_type');
         $Prod->category = $request->input('category');
