@@ -29,7 +29,7 @@ Route::get('/SellerSignUp', [App\Http\Controllers\userController::class, 'Seller
 Route::get('/Seller_Authentication', [App\Http\Controllers\userController::class, 'Seller_Authentication']);
 
 
-Route::get('/SellerLogin', [App\Http\Controllers\userController::class, 'SellerLoginView']);
+Route::get('/SellerLogin', [App\Http\Controllers\userController::class, 'SellerLoginView'])->name('SellerLogin');
 
 
 Route::get('/CustomerSignUp', [App\Http\Controllers\CustomerInfoController::class, 'CustomerSignUpView']);
@@ -54,15 +54,23 @@ Route::post('/Customer_registered', [App\Http\Controllers\CustomerInfoController
 Route::get('/CustomerLogin',[App\Http\Controllers\CustomerInfoController::class,'CustomerLoginView']);
 
 
-
 Route::post('/LoggedIn',[App\Http\Controllers\CustomerInfoController::class,'CustomerLogin']);
 
 
 Route::get('/UserProfile',[App\Http\Controllers\CustomerInfoController::class,'ProfileView']);
 
-Route::get('/SellerProfile',[App\Http\Controllers\userController::class,'SellerProfileView']);
+Route::get('/SellerProfile',[App\Http\Controllers\userController::class,'SellerProfileView'])->name('SellerProfile');
 
 Route::get('/UserLogout',[App\Http\Controllers\CustomerInfoController::class,'UserLogout']);
 
+Route::get('/SellerLogout',[App\Http\Controllers\userController::class,'SellerLogout']);
+
+// Product
+
 Route::get('/ListProduct',[App\Http\Controllers\ProductController::class,'index']);
-Route::get('/CreateProduct',[App\Http\Controllers\ProductController::class,'create']);
+
+Route::post('/CreateProduct',[App\Http\Controllers\ProductController::class,'store'])->name('CreateProduct');
+
+Route::get('/Product_approval',[App\Http\Controllers\ProductController::class,'index']);
+
+Route::get('/product_list',[App\Http\Controllers\ProductController::class,'show']);

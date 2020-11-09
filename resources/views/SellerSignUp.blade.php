@@ -18,7 +18,7 @@
         </div>
           <div class="col-md-4 mb-3">
           <label for="email" class="form_head">Email</label>
-          <input type="email" class="form-control" id="Email" name="Email" placeholder="example@email.com">
+          <input type="email" class="form-control" id="Email" name="Email" placeholder="example@email.com" required>
         </div>
           <div class="col-md-4 mb-3">
           <label for="PhoneNumber" class="form_head myclass">Phone Number</label>
@@ -26,7 +26,7 @@
         </div>
         <div class="col-md-4 mb-3">
           <label for="WebsiteName" class="form_head myclass">Website Name</label>
-          <input type="text" class="form-control" id="WebsiteName" name="Website_Name" placeholder="Website Name" value="" required>
+          <input type="text" class="form-control" id="WebsiteName" name="Website_Name" placeholder="Website Name" value="" >
         </div>
          <div class="col-md-4 mb-3">
           <label for="BrandName" class="form_head myclass">Brand Name</label>
@@ -38,11 +38,11 @@
         </div>
         <div class="col-md-4 mb-3">
         <label for="password" class="form_head">Password</label>
-      <input type="password" class="form-control" id="Password" name="Password" placeholder="Password">
+      <input type="password" class="form-control" id="Password" name="Password" placeholder="Password" required>
         </div>
          <div class="col-md-4 mb-3">
         <label for="CNIC" class="form_head">CNIC</label>
-      <input type="text" class="form-control" id="CNIC" name="CNIC" placeholder="42201-XXXXX-XX-X">
+      <input type="text" class="form-control" id="CNIC" name="CNIC" placeholder="42201-XXXXX-XX-X" required>
         </div>
         <br>
       <button class="btn btn-primary" type="submit">Login</button>

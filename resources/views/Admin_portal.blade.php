@@ -7,5 +7,7 @@
 <body>
 	 @csrf
 <a href="Seller_Authentication"><button type="button" class="btn btn-primary btn-lg btn-block">Seller Authentication</button></a>
+
+<a href="Product_approval"><button type="button" class="btn btn-primary btn-lg btn-block">Product Approval</button></a>
 </body>
 </html>

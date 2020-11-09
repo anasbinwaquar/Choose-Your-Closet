@@ -10,6 +10,10 @@ background: linear-gradient(to right, #ef8e38, #108dc7); /* W3C, IE 10+/ Edge, F
 ">
 @csrf
 <h1 style="color:#ffffff;">WELCOME {{session('data')['Username']}}</h1>
-<a href="#"><button type="button" class="btn btn-primary btn-lg btn-block">ADD PRODUCT</button></a>
+<a href="ListProduct"><button type="button" class="btn btn-primary btn-lg btn-block">ADD PRODUCT</button></a>
+
+
+<a href="SellerLogout"><button type="button" class="btn btn-primary btn-lg btn-block">LOGOUT</button></a>
+
 </body>
 </html>

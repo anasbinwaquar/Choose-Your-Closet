@@ -14,7 +14,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('Product.create');
+        $data = session()->get('logged_in');
+        if($data==1)
+         return view('Product.create');
+        else
+            abort(404); 
     }
 
     /**
@@ -35,8 +39,46 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $seller_id=session('seller_id');
+       
+        $Prod = new Product();
+        // Not working idk why
+        // $request->validate([
+        //     'product_name' => 'required',
+        // 'price_per_unit' => 'required',
+        // 'quantitiy' => 'required',
+        // 'description' => 'required',
+        // // 'product_image' =>'required|image|mimes:jpeg,png,jpg,gif,svg',
+        // 'sizes' => 'required',
+        // 'clothing_type' => 'required',
+        // 'gender_type' => 'required',
+        // 'category' => 'required',
+        // 'rental' => 'required',
+        // ]);
+        $file=$request->file('product_image');
+        $extension=$file->getClientOriginalExtension();
+        $filename=time().'.'.$extension;
+        $file->move('uploads/sell/',$filename);
+        $Prod->product_image = $filename;
+        $Prod->product_name = $request->input('product_name');
+        $Prod->price_per_unit = $request->input('price_per_unit');
+        $Prod->description = $request->input('description');
+        $Prod->quantity_small = $request->input('quantity_small');
+        $Prod->quantity_medium = $request->input('quantity_medium');
+        $Prod->quantity_large = $request->input('quantity_large');
+        $Prod->quantity_extra_large = $request->input('quantity_extra_large');
+        $arrayToString=implode(',',$request->input('sizes'));
+        $Prod->sizes = $arrayToString;
+        $Prod->clothing_type = $request->input('clothing_type');
+        $Prod->gender_type = $request->input('gender_type');
+        $Prod->category = $request->input('category');
+        $Prod->seller_id=$seller_id;
+        $Prod->rental =0;
+        $Prod->save();
+
+        return view('Product.success');
+        }
+    
 
     /**
      * Display the specified resource.
@@ -44,9 +86,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show()
     {
-        //
+        $data = Product::all();
+        return view('Product.list')->with('data',$data);
     }
 
     /**

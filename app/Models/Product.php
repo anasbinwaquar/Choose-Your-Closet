@@ -8,9 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-    protected $guarded = [];
 
-    public function create(){
-    	return 'hi';
-    }
+    protected $table = 'products';
+    protected $fillable = [
+    	'product_name',
+    	'price_per_unit',
+    	'seller_id',
+    	'quantitiy',
+    	'description',
+    	'product_image',
+    	'sizes',
+    	'clothing_type',
+    	'gender_type',
+    	'category',
+    	'approved',
+    	'rental',
+    ];
+
 }

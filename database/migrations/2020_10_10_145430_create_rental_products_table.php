@@ -14,18 +14,15 @@ class CreateRentalProductsTable extends Migration
     public function up()
     {
         Schema::create('rental_products', function (Blueprint $table) {
-            $table->unsignedBigInteger('seller_id');
-            $table->unsignedBigInteger('current_owner_id');
             $table->unsignedBigInteger('product_id');
-            $table->timestamp('Start_date');
-            $table->date('End_date');
-            $table->string('Brand_Name');
             $table->integer('charges');
+            $table->integer('quantitiy_small');
+            $table->integer('quantitiy_medium');
+            $table->integer('quantitiy_large');
+            $table->integer('quantitiy_extra_large');
 
             //foreign key constraints
-            $table->foreign('seller_id')->references('id')->on('seller_info');
-            $table->foreign('product_id')->references('id')->on('products');
-            $table->foreign('current_owner_id')->references('id')->on('customer_infos');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -37,6 +34,6 @@ class CreateRentalProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rental_products');
+        // Schema::dropIfExists('rental_products');
     }
 }

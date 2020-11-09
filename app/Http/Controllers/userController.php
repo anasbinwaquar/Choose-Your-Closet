@@ -65,15 +65,18 @@ class userController extends Controller
 
     public function SellerLogin(Request $req)
      {
-        
+        session()->flush();
         $username=$req->input('Username');  
         $password=$req->input('Password');
         $check=NULL;
         $check=DB::select("select * from seller_info where Username=? and Password=? and Approval=1",[$username,$password]);
+        $get_id=DB::select("select id from seller_info where Username=? and Password=? and Approval=1",[$username,$password]);
+        $seller_id=$get_id[0]->id;
         if($check!=NULL)
         {
             $req->session()->put('data',$req->input());
-
+            $req->session()->put('logged_in',1);
+            $req->session()->put('seller_id',$seller_id);
             if($req->session()->has('data'))
             {
                 return redirect('SellerProfile');
@@ -97,6 +100,11 @@ class userController extends Controller
         user_model::create($req->all());
         return redirect("SellerLogin");
        // \Mail::to($req->input('email'))->send(new Registration_success($req->username,$req->password));
+    }
+    public function SellerLogout()
+    {
+        session()->flush();
+        return redirect()->route('SellerLogin');
     }
 
     public function SellerProfileView()

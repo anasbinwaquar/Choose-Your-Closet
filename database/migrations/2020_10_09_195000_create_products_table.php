@@ -18,16 +18,22 @@ class CreateProductsTable extends Migration
             $table->string('product_name');
             $table->integer('price_per_unit');
             $table->integer('seller_id');
-            $table->integer('quantitiy');
-            $table->string('description');
-            $table->string('product_image');
+            $table->integer('quantity_small');
+            $table->integer('quantity_medium');
+            $table->integer('quantity_large');
+            $table->integer('quantity_extra_large');
+            $table->text('description');
+            $table->text('product_image');
             $table->string('sizes');
-            $table->string('wear_type');
+            $table->string('clothing_type');
             $table->string('gender_type');
             $table->string('category');
-            $table->boolean('approved');
+            $table->boolean('approved')->default(0);
             $table->boolean('rental');
             $table->timestamps();
+
+            
+            // $table->foreign('seller_id')->references('id')->on('seller_info');
         });
     }
 
@@ -38,6 +44,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        // Schema::dropIfExists('products');
     }
 }
