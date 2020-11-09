@@ -16,8 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data = session()->get('logged_in');
-        if($data==1)
+        if(session()->has('data'))
          return view('Product.create');
         else
             abort(404); 
