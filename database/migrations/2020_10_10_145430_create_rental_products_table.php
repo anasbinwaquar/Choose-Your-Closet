@@ -34,6 +34,6 @@ class CreateRentalProductsTable extends Migration
      */
     public function down()
     {
-        // Schema::dropIfExists('rental_products');
+        Schema::dropIfExists('rental_products');
     }
 }

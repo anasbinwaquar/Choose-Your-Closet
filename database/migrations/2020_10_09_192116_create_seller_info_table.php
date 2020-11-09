@@ -36,6 +36,6 @@ class CreateSellerInfoTable extends Migration
      */
     public function down()
     {
-        // Schema::dropIfExists('seller_info');
+        Schema::dropIfExists('seller_info');
     }
 }

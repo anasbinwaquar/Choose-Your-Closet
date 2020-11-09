@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB; 
+use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
 {
@@ -26,10 +28,21 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function approval()
     {
-        //
+        $product = DB::select("select * from products where Approved=0");
+        return view('Product.approval')->with('product',$product);
     }
+    public function setapproval($product_id)
+      { 
+        DB::update("update products SET Approved=1 WHERE id=$product_id");
+        return redirect('Product_approval');
+      }
+      public function declineapproval($product_id)
+      {
+        DB::delete("delete from products WHERE id=$product_id");
+        return redirect('Product_approval');
+      }
 
     /**
      * Store a newly created resource in storage.
@@ -55,11 +68,29 @@ class ProductController extends Controller
         // 'category' => 'required',
         // 'rental' => 'required',
         // ]);
-        $file=$request->file('product_image');
-        $extension=$file->getClientOriginalExtension();
-        $filename=time().'.'.$extension;
-        $file->move('uploads/sell/',$filename);
-        $Prod->product_image = $filename;
+
+        // $file=$request->file('product_image');
+        // $extension=$file->getClientOriginalExtension();
+        // $filename=time().'.'.$extension;
+        // $file->move('uploads/sell/',$filename);
+        // $Prod->product_image = $filename;
+
+        //Image resizing
+        $image = $request->file('product_image');
+        $input['imagename'] = time().'.'.$image->extension();
+     
+        $destinationPath = public_path('/uploads/sell');
+        $img = Image::make($image->path());
+        $img->resize(300, 300, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save($destinationPath.'/'.$input['imagename']);
+   
+        $destinationPath = public_path('/images');
+        $image->move($destinationPath, $input['imagename']);
+        $Prod->product_image=$input['imagename'];
+
+        
+
         $Prod->product_name = $request->input('product_name');
         $Prod->price_per_unit = $request->input('price_per_unit');
         $Prod->description = $request->input('description');
@@ -67,13 +98,11 @@ class ProductController extends Controller
         $Prod->quantity_medium = $request->input('quantity_medium');
         $Prod->quantity_large = $request->input('quantity_large');
         $Prod->quantity_extra_large = $request->input('quantity_extra_large');
-        $arrayToString=implode(',',$request->input('sizes'));
-        $Prod->sizes = $arrayToString;
         $Prod->clothing_type = $request->input('clothing_type');
         $Prod->gender_type = $request->input('gender_type');
         $Prod->category = $request->input('category');
         $Prod->seller_id=$seller_id;
-        $Prod->rental =0;
+        $Prod->rental =$request->input('rental');
         $Prod->save();
 
         return view('Product.success');

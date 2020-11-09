@@ -38,6 +38,6 @@ class CreateRentalHistoriesTable extends Migration
      */
     public function down()
     {
-        // Schema::dropIfExists('rental_histories');
+        Schema::dropIfExists('rental_histories');
     }
 }
