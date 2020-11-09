@@ -76,21 +76,26 @@ class ProductController extends Controller
         // $Prod->product_image = $filename;
 
         //Image resizing
-        $image = $request->file('product_image');
-        $input['imagename'] = time().'.'.$image->extension();
+        // $image = $request->file('product_image');
+        // $input['imagename'] = time().'.'.$image->extension();
      
-        $destinationPath = public_path('/uploads/sell');
-        $img = Image::make($image->path());
-        $img->resize(300, 300, function ($constraint) {
-            $constraint->aspectRatio();
-        })->save($destinationPath.'/'.$input['imagename']);
+        // $destinationPath = public_path('/uploads/sell');
+        // $img = Image::make($image->path());
+        // $img->resize(300, 300, function ($constraint) {
+        //     $constraint->aspectRatio();
+        // })->save($destinationPath.'/'.$input['imagename']);
    
-        $destinationPath = public_path('/images');
-        $image->move($destinationPath, $input['imagename']);
-        $Prod->product_image=$input['imagename'];
+        // $destinationPath = public_path('/images');
+        // $image->move($destinationPath, $input['imagename']);
+        // $Prod->product_image=$input['imagename'];
 
         
 
+        $file=$request->file('product_image');
+        $extension=$file->getClientOriginalExtension();
+        $filename=time().'.'.$extension;
+        $file->move('uploads/sell/',$filename);
+        $Prod->product_image = $filename;
         $Prod->product_name = $request->input('product_name');
         $Prod->price_per_unit = $request->input('price_per_unit');
         $Prod->description = $request->input('description');
@@ -98,12 +103,15 @@ class ProductController extends Controller
         $Prod->quantity_medium = $request->input('quantity_medium');
         $Prod->quantity_large = $request->input('quantity_large');
         $Prod->quantity_extra_large = $request->input('quantity_extra_large');
+        $arrayToString=implode(',',$request->input('sizes'));
+        $Prod->sizes = $arrayToString;
         $Prod->clothing_type = $request->input('clothing_type');
         $Prod->gender_type = $request->input('gender_type');
         $Prod->category = $request->input('category');
         $Prod->seller_id=$seller_id;
-        $Prod->rental =$request->input('rental');
+        $Prod->rental =0;
         $Prod->save();
+        
 
         return view('Product.success');
         }
