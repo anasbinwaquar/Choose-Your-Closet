@@ -13,13 +13,13 @@ class CustomerInfoController extends Controller
 
       public function CustomerSignUpView()
     {
-         return view('CustomerSignUp');
+         return view('Customer.CustomerSignUp');
     }
 
 
     public function CustomerLoginView()
     {
-         return view('Login_Customer_Portal');
+         return view('Customer.Login_Customer_Portal');
     }
 
 
@@ -68,16 +68,16 @@ class CustomerInfoController extends Controller
     {
         if(!session()->has('data'))
         {
-         return redirect('CustomerLogin');
+         return redirect('Customer.CustomerLogin');
         }
-        return view('UserProfile');
+        return view('Customer.UserProfile');
     }
 
 
     public function UserLogout()
     {
         session()->forget('data');
-        return view('Login_Customer_Portal');
+        return view('Customer.Login_Customer_Portal');
     }
 
 

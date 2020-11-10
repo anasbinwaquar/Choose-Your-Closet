@@ -14,27 +14,38 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route::get('/',[App\Http\Controllers\userController::class,'default']);
-Route::get('/', [App\Http\Controllers\CustomerInfoController::class, 'CustomerSignUpView']);
 
-Route::get('/admin_login', [App\Http\Controllers\userController::class, 'LoginAdminView']);	
+//Admin
 
-Route::post('/LoginAdminCheck', [App\Http\Controllers\userController::class, 'LoginAdmin']);
+Route::get('/admin_login', [App\Http\Controllers\AdminController::class, 'LoginAdminView']);	
 
-Route::get('/SellerSignUp', [App\Http\Controllers\userController::class, 'SellerSignUpView']);
+Route::post('/LoginAdminCheck', [App\Http\Controllers\AdminController::class, 'LoginAdmin']);
 
-Route::get('/Seller_Authentication', [App\Http\Controllers\userController::class, 'Seller_Authentication']);
+//Seller
 
-Route::get('/SellerLogin', [App\Http\Controllers\userController::class, 'SellerLoginView'])->name('SellerLogin');
+Route::get('/SellerSignUp', [App\Http\Controllers\SellerController::class, 'SellerSignUpView']);
+
+Route::get('/Seller_Authentication', [App\Http\Controllers\SellerController::class, 'Seller_Authentication']);
+
+Route::get('/SellerLogin', [App\Http\Controllers\SellerController::class, 'SellerLoginView'])->name('SellerLogin');
+
+Route::post('/Seller_registered', [App\Http\Controllers\SellerController::class, 'SellerSignUp']);
+
+Route::get('/setapproval/{id}', [App\Http\Controllers\SellerController::class, 'setapproval']);
+
+Route::get('/declineapproval/{id}', [App\Http\Controllers\SellerController::class, 'declineapproval']);
+
+Route::post('/SellerLoggedIn', [App\Http\Controllers\SellerController::class, 'SellerLogin']);
+
+Route::get('/SellerProfile',[App\Http\Controllers\SellerController::class,'SellerProfileView'])->name('SellerProfile');
+
+Route::get('/SellerLogout',[App\Http\Controllers\SellerController::class,'SellerLogout']);
+
+//Customer
 
 Route::get('/CustomerSignUp', [App\Http\Controllers\CustomerInfoController::class, 'CustomerSignUpView']);
 
-Route::post('/Seller_registered', [App\Http\Controllers\userController::class, 'SellerSignUp']);
-
-Route::get('/setapproval/{id}', [App\Http\Controllers\userController::class, 'setapproval']);
-
-Route::get('/declineapproval/{id}', [App\Http\Controllers\userController::class, 'declineapproval']);
-
-Route::post('/SellerLoggedIn', [App\Http\Controllers\userController::class, 'SellerLogin']);
+Route::get('/', [App\Http\Controllers\CustomerInfoController::class, 'CustomerSignUpView']);
 
 Route::post('/Customer_registered', [App\Http\Controllers\CustomerInfoController::class, 'CustomerSignUp']);
 
@@ -44,11 +55,7 @@ Route::post('/LoggedIn',[App\Http\Controllers\CustomerInfoController::class,'Cus
 
 Route::get('/UserProfile',[App\Http\Controllers\CustomerInfoController::class,'ProfileView']);
 
-Route::get('/SellerProfile',[App\Http\Controllers\userController::class,'SellerProfileView'])->name('SellerProfile');
-
 Route::get('/UserLogout',[App\Http\Controllers\CustomerInfoController::class,'UserLogout']);
-
-Route::get('/SellerLogout',[App\Http\Controllers\userController::class,'SellerLogout']);
 
 // Product
 

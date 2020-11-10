@@ -16,10 +16,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
+
         //$data = session()->get('logged_in');
-=======
->>>>>>> 3cb2fff9f5d9ae8f91fef27cdc77958a50b711b8
         if(session()->has('data'))
          return view('Product.create');
         else

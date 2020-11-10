@@ -1,48 +1,26 @@
 <?php
+
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\user_model;
 use Illuminate\Support\Facades\DB; 
 use \App\Mail\Registration_success;
-class userController extends Controller
+
+class SellerController extends Controller
 {
-
-     public function LoginAdminView()
-    {
-        return view('AdminLogin');
-    }
-
-
-    public function LoginAdmin(Request $req)
-    {
-        $usernameCheck=$req->input('Username');
-        $passwordCheck=$req->input('Password');
-        if($usernameCheck=='admin' && $passwordCheck=='admin')
-        {
-            $req->session()->put('data',$req->input());
-             if($req->session()->has('data'))
-            {
-                return view('Admin_portal');
-            }
-            
-        }
-
-    }
-
-
-      public function SellerSignUpView()
+    public function SellerSignUpView()
     {
         // if(!session()->has('data'))
         // {
         //      return redirect('admin_login');
         // }
-       return view('SellerSignUp');
+       return view('Seller.SellerSignUp');
     }
 
       public function Seller_Authentication()
       {
         $authentication = DB::select("select * from seller_info where Approval=0");
-        return view('Authentication_Portal')->with('authentication',$authentication);
+        return view('Admin.Authentication_Portal')->with('authentication',$authentication);
       }
 
       public function setapproval($id)
@@ -56,9 +34,10 @@ class userController extends Controller
         DB::delete("delete from seller_info WHERE id=$id");
         return redirect('Seller_Authentication');
       }
+
     public function SellerLoginView()
      {
-        return view('Seller_Login');
+        return view('Seller.Seller_Login');
 
      }
 
@@ -71,11 +50,7 @@ class userController extends Controller
         $check=NULL;
         $check=DB::select("select * from seller_info where Username=? and Password=? and Approval=1",[$username,$password]);
         if($check!=NULL)
-<<<<<<< HEAD
         {
-=======
-        {      
->>>>>>> 3cb2fff9f5d9ae8f91fef27cdc77958a50b711b8
             $get_id=DB::select("select id from seller_info where Username=? and Password=? and Approval=1",[$username,$password]);
             $seller_id=$get_id[0]->id;
             $req->session()->put('data',$req->input());
@@ -93,10 +68,10 @@ class userController extends Controller
      }
 
 
-    public function default()
-    {
-    	 return view('welcome');
-    }
+    // public function default()
+    // {
+    // 	 return view('welcome');
+    // }
 
 
      public function SellerSignUp(Request $req)
@@ -113,7 +88,7 @@ class userController extends Controller
 
     public function SellerProfileView()
     {
-        return view('Seller_Portal');
+        return view('Seller.Seller_Portal');
     }
     
     //  public function loging(Request $req)
@@ -138,5 +113,4 @@ class userController extends Controller
     //     // $user_model->password=$req->password;
     //     // $user_model->save();
     // }
-
 }
