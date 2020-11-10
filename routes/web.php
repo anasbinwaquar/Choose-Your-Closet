@@ -45,7 +45,7 @@ Route::get('/SellerLogout',[App\Http\Controllers\SellerController::class,'Seller
 
 Route::get('/CustomerSignUp', [App\Http\Controllers\CustomerInfoController::class, 'CustomerSignUpView']);
 
-Route::get('/', [App\Http\Controllers\CustomerInfoController::class, 'CustomerSignUpView']);
+// Route::get('/', [App\Http\Controllers\CustomerInfoController::class, 'CustomerSignUpView']);
 
 Route::post('/Customer_registered', [App\Http\Controllers\CustomerInfoController::class, 'CustomerSignUp']);
 
@@ -70,3 +70,10 @@ Route::get('/product_list',[App\Http\Controllers\ProductController::class,'show'
 Route::get('/set_product_approval/{product_id}', [App\Http\Controllers\ProductController::class, 'setapproval'])->name("set_product_approval");
 
 Route::get('/decline_product_approval/{product_id}', [App\Http\Controllers\ProductController::class, 'declineapproval'])->name("decline_product_approval");
+
+// Homepage
+
+Route::get('/', [App\Http\Controllers\HomepageController::class, 'index']);
+
+Route::get('/product/{product_id}', [App\Http\Controllers\HomepageController::class, 'ShowProduct']);
+

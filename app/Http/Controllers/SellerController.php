@@ -44,13 +44,13 @@ class SellerController extends Controller
 
     public function SellerLogin(Request $req)
      {
-        //session()->flush();
         $username=$req->input('Username');  
         $password=$req->input('Password');
         $check=NULL;
         $check=DB::select("select * from seller_info where Username=? and Password=? and Approval=1",[$username,$password]);
         if($check!=NULL)
         {
+            session()->flush();
             $get_id=DB::select("select id from seller_info where Username=? and Password=? and Approval=1",[$username,$password]);
             $seller_id=$get_id[0]->id;
             $req->session()->put('data',$req->input());

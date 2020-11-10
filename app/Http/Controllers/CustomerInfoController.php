@@ -76,6 +76,7 @@ class CustomerInfoController extends Controller
 
     public function UserLogout()
     {
+        // session()->flush(); //Clear all session data
         session()->forget('data');
         return view('Customer.Login_Customer_Portal');
     }
