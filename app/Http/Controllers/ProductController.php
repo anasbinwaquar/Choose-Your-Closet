@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\RentalProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; 
 use Intervention\Image\Facades\Image;
@@ -110,6 +111,16 @@ class ProductController extends Controller
         $Prod->seller_id=$seller_id;
         $Prod->rental =$request->input('rental');
         $Prod->save();
+        if($request->input('rental')==1){
+            $RentalProd= new RentalProduct();
+            $RentalProd->product_id= $Prod->id;
+            $RentalProd->charges = $request->input('charges');
+            $RentalProd->quantity_small = $request->input('rquantity_small');
+            $RentalProd->quantity_medium = $request->input('rquantity_medium');
+            $RentalProd->quantity_large = $request->input('rquantity_large');
+            $RentalProd->quantity_extra_large = $request->input('rquantity_extra_large');
+            $RentalProd->save();
+        }
 
 
         return view('Product.success');

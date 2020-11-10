@@ -9,7 +9,7 @@ class CreateProductsTable extends Migration
     /**
      * Run the migrations.
      *
-     * @return void
+     * @return voidd
      */
     public function up()
     {
@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('product_name');
             $table->integer('price_per_unit');
-            $table->integer('seller_id');
+            $table->unsignedBigInteger('seller_id');
             $table->integer('quantity_small');
             $table->integer('quantity_medium');
             $table->integer('quantity_large');

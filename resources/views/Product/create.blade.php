@@ -104,9 +104,37 @@
           </select>
     </div>
     <div>
-    	<label for="files">Product Images:</label>
-		<input type="file" id="product_image" name="product_image" multiple required><br><br>
-		<input type="submit" required>
+        <h3>Quantities for Rental</h3>
+        <label >Quantitiy for Small:</label>
+        <input type="text" class="q1" name="rquantity_small" id="rquantity_small" value="" >
+    </div>
+    <div>
+        <label >Quantitiy for Medium:</label>
+        <input type="text" class="q2" name="rquantity_medium" id="rquantity_medium" value="" >
+    </div>
+    <div>
+        <label >Quantitiy for Large:</label>
+        <input type="text" class="q3" name="rquantity_large" id="rquantity_large" value="" >
+    </div>
+    <div>
+        <label >Quantitiy for Extra Large:</label>
+        <input type="text" class="q4" name="rquantity_extra_large" id="rquantity_extra_large" value="" >
+    </div>
+    <div class="checkbox-group" id="checkbox-group">
+        <label  >Sizes:</label>
+          <input type="checkbox" class="s1" id="sizes[]" name="sizes[]" value="Small"/> <label for="Small">Small</label>
+          <input type="checkbox" class="s2" id="sizes[]" name="sizes[]" value="Medium" /> <label for="Medium">Medium</label>
+          <input type="checkbox" class="s3" id="sizes[]" name="sizes[]" value="Large" /> <label for="Large">Large</label>
+          <input type="checkbox" class="s4" id="sizes[]" name="sizes[]" value="Extra Large" /> <label for="Extra Large">Extra Large</label>
+    </div>
+    <div>
+        <label >Daily Charges:</label>
+        <input type="text" name="charges" id="charges" value="" >
+    </div>
+    <div>
+        <label for="files">Product Images:</label>
+        <input type="file" id="product_image" name="product_image" multiple required><br><br>
+        <input type="submit" required>
     </div>
 </form>
 </div>

@@ -16,13 +16,13 @@ class CreateRentalProductsTable extends Migration
         Schema::create('rental_products', function (Blueprint $table) {
             $table->unsignedBigInteger('product_id');
             $table->integer('charges');
-            $table->integer('quantitiy_small');
-            $table->integer('quantitiy_medium');
-            $table->integer('quantitiy_large');
-            $table->integer('quantitiy_extra_large');
+            $table->integer('quantity_small');
+            $table->integer('quantity_medium');
+            $table->integer('quantity_large');
+            $table->integer('quantity_extra_large');
 
             //foreign key constraints
-            //$table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
         });
     }
