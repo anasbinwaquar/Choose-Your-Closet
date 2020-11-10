@@ -22,7 +22,7 @@
       <th>{{$product->product_name}}</th>
       <th>{{$product->price_per_unit}}</th>
       <th>{{$product->description}}</th>
-      <td><img src="{{asset('uploads/sell/'. $product->product_image)}} "></td>  
+      <td><img src="{{asset('uploads/sell/'. $product->product_image)}}" style="width: 20rem;height: 10rem"></td>  
       <th>{{$product->clothing_type}}</th>
 
       <th><a href="set_product_approval/{{$product->id}}"><button class="btn btn-success">Approve</button></a></th>

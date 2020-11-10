@@ -22,7 +22,7 @@ class CreateRentalProductsTable extends Migration
             $table->integer('quantitiy_extra_large');
 
             //foreign key constraints
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            //$table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -32,7 +32,7 @@ class CreateProductsTable extends Migration
             $table->timestamps();
 
 
-            $table->foreign('seller_id')->references('id')->on('seller_info');
+            //$table->foreign('seller_id')->references('id')->on('seller_info');
         });
     }
 

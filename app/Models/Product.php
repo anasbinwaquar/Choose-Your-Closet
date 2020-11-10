@@ -17,7 +17,6 @@ class Product extends Model
     	'quantitiy',
     	'description',
     	'product_image',
-    	'sizes',
     	'clothing_type',
     	'gender_type',
     	'category',

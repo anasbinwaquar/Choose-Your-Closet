@@ -5,6 +5,6 @@
       <td>{{$data->quantity_medium}}</td>
       <td>{{$data->price_per_unit}}</td>
       <td>{{$data->description}}</td>
-      <td><img src="{{asset('uploads/sell/'. $data->product_image)}}"></td>
+      <td><img src="{{asset('uploads/sell/'. $data->product_image)}}" style="width: 30rem;height: 20rem"></td>
     </tr>
     @endforeach

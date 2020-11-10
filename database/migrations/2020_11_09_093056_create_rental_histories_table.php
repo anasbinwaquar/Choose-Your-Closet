@@ -25,9 +25,9 @@ class CreateRentalHistoriesTable extends Migration
             $table->timestamps();
 
             
-            $table->foreign('seller_id')->references('id')->on('seller_info');
-            $table->foreign('product_id')->references('id')->on('products');
-            $table->foreign('current_owner_id')->references('id')->on('customer_infos');
+           // $table->foreign('seller_id')->references('id')->on('seller_info');
+            //$table->foreign('product_id')->references('id')->on('products');
+            //$table->foreign('current_owner_id')->references('id')->on('customer_infos');
         });
     }
 
