@@ -17,7 +17,7 @@ class HomepageController extends Controller
      */
     public function index()
     {
-        $data = DB::select("select * from products where approved=1");
+        $data = Product::where('approved', 1)->get();
         return view('Homepage.homepage')->with('data',$data);
     }
 
@@ -29,9 +29,7 @@ class HomepageController extends Controller
 
     public function ShowProduct($product_id)
     {
-        // $product = DB::select("select * from products where id=$product_id");
-        $product = DB::table('products')->where('id', $product_id)->get();
-        // print_r($product);
+        $product = Product::where('id', $product_id)->get();
         return view('Homepage.product_display')->with('product',$product);
     }
 
