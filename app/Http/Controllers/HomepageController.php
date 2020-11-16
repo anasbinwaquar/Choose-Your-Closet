@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\RentalProduct;
+use App\Models\user_model;
 use Illuminate\Support\Facades\DB; 
 use Intervention\Image\Facades\Image;
 
@@ -29,8 +30,10 @@ class HomepageController extends Controller
 
     public function ShowProduct($product_id)
     {
-        $product = Product::where('id', $product_id)->get();
-        return view('Homepage.product_display')->with('product',$product);
+        $product = Product::where('id', $product_id)->first();
+        $RentalProduct= RentalProduct::where('product_id', $product_id)->first();
+        $SellerData= user_model::where('id',$product->seller_id)->first();
+        return view('Homepage.product_display')->with('product',$product)->with('RentalProduct',$RentalProduct)->with('SellerData',$SellerData);
     }
 
     public function create()
