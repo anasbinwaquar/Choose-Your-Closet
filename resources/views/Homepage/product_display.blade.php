@@ -41,6 +41,7 @@
 			<img src="images/product-details/new.jpg" class="newarrival" alt="">
 			<h2>{{$product->product_name}}</h2>
 			<img src="images/product-details/rating.png" alt="">
+			
 			<span>
 				<span>Rs: {{$product->price_per_unit}}</span>
 				<br>
@@ -65,6 +66,33 @@
 			 	?>
 				</div>	
 				<button type="button" class="btn btn-fefault cart">
+					<i class="fa fa-shopping-cart"></i>
+					Add to cart
+				</button>
+			</span>
+			<br>
+			<span>
+				<h2>Rental Details</h2>
+				<span>Daily Charges Rs: {{$RentalProduct->charges}}</span>
+				<div>
+				<?php 
+					if ($RentalProduct->quantity_small>0 ||$RentalProduct->quantity_medium>0 ||$RentalProduct->quantity_large>0 ||$RentalProduct->quantity_extra_large>0 )
+						echo "Availability: In Stock";
+					else
+						echo "Not in stock";
+					echo "<br>";
+					if($RentalProduct->quantity_small>0)
+						echo '<input value="Small" type="radio" name="sizes">Small';
+					if($RentalProduct->quantity_medium>0)
+						echo '<input value="Medium" type="radio" name="sizes">Medium';
+					if($RentalProduct->quantity_large>0)
+						echo '<input value="Large" type="radio" name="sizes">Large';
+					if($RentalProduct->quantity_extra_large>0)
+						echo '<input value="Extra_large" type="radio" name="sizes">Extra Large';
+					
+			 	?>
+				</div>	
+				<button id='Rental' type="button" class="btn btn-fefault cart">
 					<i class="fa fa-shopping-cart"></i>
 					Add to cart
 				</button>
