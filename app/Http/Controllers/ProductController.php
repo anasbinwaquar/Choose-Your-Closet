@@ -32,17 +32,19 @@ class ProductController extends Controller
      */
     public function approval()
     {
-        $product = DB::select("select * from products where Approved=0");
+        $product = Product::where('approved', 0)->get();
         return view('Product.approval')->with('product',$product);
     }
     public function setapproval($product_id)
       { 
-        DB::update("update products SET Approved=1 WHERE id=$product_id");
+        $product = Product::where('id', $product_id)->first();
+        $product->approved=1;
+        $product->save();
         return redirect('Product_approval');
       }
       public function declineapproval($product_id)
       {
-        DB::delete("delete from products WHERE id=$product_id");
+        $product=Product::where('id',$product_id)->delete();
         return redirect('Product_approval');
       }
 
