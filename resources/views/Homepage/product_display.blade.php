@@ -71,6 +71,8 @@
 				</button>
 			</span>
 			<br>
+			{{-- IF CONDITION FOR PRODUCTS THAT ARE NOT UP FOR RENT SO PAGE NO THROW ERROR K? --}}
+			@if($RentalProduct!=null)
 			<span>
 				<h2>Rental Details</h2>
 				<span>Daily Charges Rs: {{$RentalProduct->charges}}</span>
@@ -91,12 +93,13 @@
 						echo '<input value="Extra_large" type="radio" name="sizes">Extra Large';
 					
 			 	?>
-				</div>	
-				<button id='Rental' type="button" class="btn btn-fefault cart">
-					<i class="fa fa-shopping-cart"></i>
-					Add to cart
-				</button>
+				</div>
+				<th><a href="/add-to-cart-rent/{{$RentalProduct->product_id}}"><button class="btn btn-fefault cart">
+				<i class="fa fa-shopping-cart"></i>
+				Add to cart</button></a></th>
+
 			</span>
+			@endif
 			
 			<p><b>Brand:</b> {{$SellerData->Brand_Name}}</p>
 		</div><!--/product-information-->

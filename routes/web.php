@@ -77,3 +77,6 @@ Route::get('/', [App\Http\Controllers\HomepageController::class, 'index']);
 
 Route::get('/product/{product_id}', [App\Http\Controllers\HomepageController::class, 'ShowProduct']);
 
+// Cart
+
+Route::get('/add-to-cart-rent/{product_id}', [App\Http\Controllers\ProductController::class, 'addtocartrent'])->name('addtocartrent');

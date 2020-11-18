@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\RentalProduct;
+use App\Providers\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; 
 use Intervention\Image\Facades\Image;
+use Session;
 
 class ProductController extends Controller
 {
@@ -15,6 +17,22 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function addtocartrent(Request $request,$id)
+    {
+        // session()->flush();
+        $product= RentalProduct::where('product_id',$id)->first();
+        $ProductData= Product::where('id',$id)->first();
+        if(session::has('cart')){
+            $oldCart=session::get('cart');
+        }
+        else
+            $oldCart=null;
+        $cart = new Cart($oldCart);
+        $cart->add($product, $product->id,$ProductData);
+        $request->session()->put('cart',$cart);
+        // dd($request->session()->all());
+        return back();
+    }
     public function index()
     {
 
@@ -22,7 +40,7 @@ class ProductController extends Controller
         if(session()->has('data'))
          return view('Product.create');
         else
-            abort(404); 
+        return redirect()->route('SellerLogin'); 
     }
 
     /**
@@ -151,7 +169,7 @@ class ProductController extends Controller
     {
         //
     }
-
+    
     /**
      * Update the specified resource in storage.
      *
