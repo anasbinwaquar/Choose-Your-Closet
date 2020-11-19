@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>Login-Admin Portal</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <!-- <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" type="text/css" href="css/AdminStyle.css">
 </head>
 <body>
+
+  <div class="body"></div>
+
   <form action="LoginAdminCheck" method="post">
         @csrf
-        <div class="col-md-4 mb-3">
-          <label for="Name" class="form_head myclass">Username</label>
-          <input type="text" class="form-control" id="Username" name="Username" placeholder="Username" value="" required>
-        </div>
-        <div class="col-md-4 mb-3">
-        <label for="password" class="form_head">Password</label>
-      <input type="password" class="form-control" id="Password" name="Password" placeholder="Password">
-        </div>
+        <div class="header">
+      <div>Site<span>Project</span></div>
+    </div>
+    <br>
+    <div class="login">
+        <input type="text" placeholder="Username" name="Username"><br>
+        <input type="password" placeholder="Password" name="Password"><br>
         <br>
-      <button class="btn btn-primary" type="submit">Login</button>
+        <!-- <input type="submit" value="Login"> -->
+        <button type="button" class="btn btn-outline-primary">Primary</button>
+        <!-- <button class="btn btn-primary" type="submit">Login</button> -->
+    </div>
 </form>
 </body>
 </html>
+
+
+ 
+    

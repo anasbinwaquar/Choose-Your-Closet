@@ -27,7 +27,7 @@
   <link rel="stylesheet" type="text/css" href="css/CustomerLoginStyle.css">
 <!--===============================================================================================-->
 </head>
-<body style="background-image: url('https://source.unsplash.com/1600x900/?clothes,indianbridal');">
+<body>
   
   <div class="limiter">
     <div class="container-login100">

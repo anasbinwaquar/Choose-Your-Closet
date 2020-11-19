@@ -4,14 +4,14 @@
     
     <title>Seller Sign Up</title>
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/CustomerSignupStyle.css">
+    <link rel="stylesheet" href="css/SellerSignupStyle.css">
 </head>
 <body>
 
     <div class="main">
 
         <section class="signup">
-            <!-- <img src="images/signup-bg.jpg" alt=""> -->
+            <img src="images/signup-bg.png" alt="" id="SellerBenefits">
             <div class="container">
                 <div class="signup-content">
                     <form action="Seller_registered" method="post">
