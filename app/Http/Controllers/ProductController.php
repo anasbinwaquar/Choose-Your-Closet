@@ -3,12 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+<<<<<<< Updated upstream
 use App\Models\RentalProduct;
 use App\Providers\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; 
 use Intervention\Image\Facades\Image;
 use Session;
+=======
+use config\session;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB; 
+use Intervention\Image\Facades\Image;
+use App\Notifications\SellerNotification;
+use App\Notifications\AdminNotification;
+use App\Notifications\AuthenticationNotification;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Notifications\Notifiable; 
+>>>>>>> Stashed changes
 
 class ProductController extends Controller
 {
@@ -55,14 +67,38 @@ class ProductController extends Controller
     }
     public function setapproval($product_id)
       { 
+<<<<<<< Updated upstream
         $product = Product::where('id', $product_id)->first();
         $product->approved=1;
         $product->save();
+=======
+        DB::update("update products SET Approved=1 WHERE id=$product_id");
+        $id = DB::select("select seller_id from products where id=$product_id");
+        $id=$id[0]->seller_id;
+        $data = DB::select("select * from seller_info where id=$id");
+        $SellerName=$data[0]->First_Name.' '.$data[0]->Last_Name;
+        $Email=$data[0]->Email;
+        $Identifier1=1;
+        $Identifier2=0;
+        Notification::route('mail',$Email)->notify(new AuthenticationNotification($SellerName,$Identifier1, $Identifier2));
+>>>>>>> Stashed changes
         return redirect('Product_approval');
       }
       public function declineapproval($product_id)
       {
+<<<<<<< Updated upstream
         $product=Product::where('id',$product_id)->delete();
+=======
+        $id = DB::select("select seller_id from products where id=$product_id");
+        $id=$id[0]->seller_id;
+        $data = DB::select("select * from seller_info where id=$id");
+        $SellerName=$data[0]->First_Name.' '.$data[0]->Last_Name;
+        $Email=$data[0]->Email;
+        $Identifier1=1;
+        $Identifier2=1;
+        Notification::route('mail',$Email)->notify(new AuthenticationNotification($SellerName,$Identifier1, $Identifier2));
+        DB::delete("delete from products WHERE id=$product_id");
+>>>>>>> Stashed changes
         return redirect('Product_approval');
       }
 
@@ -131,6 +167,7 @@ class ProductController extends Controller
         $Prod->seller_id=$seller_id;
         $Prod->rental =$request->input('rental');
         $Prod->save();
+<<<<<<< Updated upstream
         if($request->input('rental')==1){
             $RentalProd= new RentalProduct();
             $RentalProd->product_id= $Prod->id;
@@ -143,6 +180,15 @@ class ProductController extends Controller
         }
 
 
+=======
+        $data = DB::select("select * from seller_info where id=$seller_id");
+        $Name=$data[0]->Username;
+        $SellerName=$data[0]->First_Name.' '.$data[0]->Last_Name;
+        $Email=$data[0]->Email;
+        $Identifier=1;
+        Notification::route('mail',"abdurrafay360@gmail.com")->notify(new AdminNotification($Name,$Identifier));
+        Notification::route('mail',$Email)->notify(new SellerNotification($SellerName,$Identifier));
+>>>>>>> Stashed changes
         return view('Product.success');
         }
     

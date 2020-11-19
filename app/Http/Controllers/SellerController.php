@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\user_model;
-use Illuminate\Support\Facades\DB; 
-use \App\Mail\Registration_success;
+use Illuminate\Support\Facades\DB;
+use App\Notifications\SellerNotification;
+use App\Notifications\AdminNotification;
+use App\Notifications\AuthenticationNotification;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Notifications\Notifiable; 
 
 class SellerController extends Controller
 {
@@ -26,12 +30,24 @@ class SellerController extends Controller
       public function setapproval($id)
       { 
         DB::update("update seller_info SET Approval=1 WHERE id=$id");
+        $data = DB::select("select * from seller_info where id=$id");
+        $SellerName=$data[0]->First_Name.' '.$data[0]->Last_Name;
+        $Email=$data[0]->Email;
+        $Identifier1=0;
+        $Identifier2=0;
+        Notification::route('mail',$Email)->notify(new AuthenticationNotification($SellerName,$Identifier1, $Identifier2));
         return redirect('Seller_Authentication');
       }
 
        public function declineapproval($id)
       {
         DB::delete("delete from seller_info WHERE id=$id");
+        $data = DB::select("select * from seller_info where id=$id");
+        $SellerName=$data[0]->First_Name.' '.$data[0]->Last_Name;
+        $Email=$data[0]->Email;
+        $Identifier1=0;
+        $Identifier2=1;
+        Notification::route('mail',$Email)->notify(new AuthenticationNotification($SellerName,$Identifier1, $Identifier2));
         return redirect('Seller_Authentication');
       }
 
@@ -77,6 +93,11 @@ class SellerController extends Controller
      public function SellerSignUp(Request $req)
     {
         user_model::create($req->all());
+        $Name=$req->Username;
+        $SellerName=$req->First_Name.' '.$req->Last_Name;
+        $Identifier=0;
+        Notification::route('mail','abdurrafay360@gmail.com')->notify(new AdminNotification($Name,$Identifier));
+        Notification::route('mail',$req->Email)->notify(new SellerNotification($SellerName,$Identifier));
         return redirect("SellerLogin");
        // \Mail::to($req->input('email'))->send(new Registration_success($req->username,$req->password));
     }

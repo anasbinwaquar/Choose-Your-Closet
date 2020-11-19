@@ -3,8 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Customer_infos;
 use Illuminate\Support\Facades\DB; 
-use \App\Mail\Registration_success;
-use App\Notifications\test;
+use App\Notifications\CustomerNotification;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Notifications\Notifiable;
 class CustomerInfoController extends Controller
@@ -31,9 +30,9 @@ class CustomerInfoController extends Controller
         Customer_infos::create($req->all());
 //       $customer=Customer_infos::all();
         $customer=new Customer_infos;
+        $Name=$req->First_Name.' '.$req->Last_Name;
        // $customer->notify(new test('test ha'));
-        Notification::route('mail',$req->Email)->notify(new test('sdsdsd'));
-            
+        Notification::route('mail',$req->Email)->notify(new CustomerNotification($Name));
         // $user_model = new user_model;
         //  $user_model->username=$req->user;
         // $user_model->password=$req->password;
