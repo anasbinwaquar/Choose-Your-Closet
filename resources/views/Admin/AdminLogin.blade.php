@@ -21,7 +21,7 @@
         <input type="password" placeholder="Password" name="Password"><br>
         <br>
         <!-- <input type="submit" value="Login"> -->
-        <button type="button" class="btn btn-outline-primary">Primary</button>
+        <button class="btn btn-outline-primary">Primary</button>
         <!-- <button class="btn btn-primary" type="submit">Login</button> -->
     </div>
 </form>

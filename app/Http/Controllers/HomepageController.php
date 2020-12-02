@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\RentalProduct;
@@ -33,6 +31,7 @@ class HomepageController extends Controller
         $product = Product::where('id', $product_id)->first();
         $RentalProduct= RentalProduct::where('product_id', $product_id)->first();
         $SellerData= user_model::where('id',$product->seller_id)->first();
+        print_r($SellerData);
         return view('Homepage.product_display')->with('product',$product)->with('RentalProduct',$RentalProduct)->with('SellerData',$SellerData);
     }
 
