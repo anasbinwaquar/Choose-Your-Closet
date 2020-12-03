@@ -14,7 +14,7 @@
             <img src="images/signup-bg.png" alt="" id="SellerBenefits">
             <div class="container">
                 <div class="signup-content">
-                    <form action="Seller_registered" method="post">
+                    <form action="Seller_registered" method="post" autocomplete="off">
                         @csrf
                         <h2 class="form-title">Create account</h2>
                          <div class="form-group">

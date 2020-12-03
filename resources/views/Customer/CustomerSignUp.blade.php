@@ -14,7 +14,7 @@
             <!-- <img src="images/signup-bg.jpg" alt=""> -->
             <div class="container">
                 <div class="signup-content">
-                    <form action="Customer_registered" method="post">
+                    <form action="Customer_registered" method="post" autocomplete="off">
                          @csrf
                         <h2 class="form-title">Create account</h2>
                          <div class="form-group">

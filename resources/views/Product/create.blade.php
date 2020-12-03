@@ -63,7 +63,7 @@ h1{
 <body style="overflow-x: hidden;">
   <!------ Include the above in your HEAD tag ---------->
 
-<form class="form-horizontal justify-content-center" name="ProductForm" id="ProductForm" action="{{ route('CreateProduct')}}" method="post" enctype="multipart/form-data">
+<form class="form-horizontal justify-content-center" name="ProductForm" id="ProductForm" action="{{ route('CreateProduct')}}" method="post" enctype="multipart/form-data" autocomplete="off">
   @csrf
 <fieldset>
 
