@@ -51,6 +51,11 @@
         background-position: 0% 50%;
     }
 } 
+
+h1{
+    text-align: center;
+    font-family: Arial, sans-serif, Helvetica;
+}
 </style>
 
 </head>
@@ -63,7 +68,7 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend>LIST PRODUCTS</legend>
+<legend><h1>LIST PRODUCTS</h1></legend>
 
 <!-- Text input-->
 <div class="form-group">
