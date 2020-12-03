@@ -80,3 +80,7 @@ Route::get('/product/{product_id}', [App\Http\Controllers\HomepageController::cl
 // Cart
 
 Route::get('/add-to-cart-rent/{product_id}', [App\Http\Controllers\ProductController::class, 'addtocartrent'])->name('addtocartrent');
+
+// Customizer
+
+Route::get('/customize', [App\Http\Controllers\CustomizerController::class, 'index']);

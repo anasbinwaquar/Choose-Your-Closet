@@ -12,7 +12,7 @@
     <title>Homepage</title>
   </head>
   <body>
-
+    
   	@foreach($data as $data)
 	<div class="card-column">
 		<div class="card item col-xs-4 col-lg-4" style="width: 18rem;">
