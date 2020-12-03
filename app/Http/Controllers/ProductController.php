@@ -20,18 +20,18 @@ class ProductController extends Controller
     public function addtocartrent(Request $request,$id)
     {
         // session()->flush();
-        $product= RentalProduct::where('product_id',$id)->first();
-        $ProductData= Product::where('id',$id)->first();
-        if(session::has('cart')){
-            $oldCart=session::get('cart');
-        }
-        else
-            $oldCart=null;
-        $cart = new Cart($oldCart);
-        $cart->add($product, $product->id,$ProductData);
-        $request->session()->put('cart',$cart);
-        // dd($request->session()->all());
-        return back();
+        // $product= RentalProduct::where('product_id',$id)->first();
+        // $ProductData= Product::where('id',$id)->first();
+        // if(session::has('cart')){
+        //     $oldCart=session::get('cart');
+        // }
+        // else
+        //     $oldCart=null;
+        // $cart = new Cart($oldCart);
+        // $cart->add($product, $product->id,$ProductData);
+        // $request->session()->put('cart',$cart);
+        dd($request->session()->all());
+        // return back();
     }
     public function index()
     {
