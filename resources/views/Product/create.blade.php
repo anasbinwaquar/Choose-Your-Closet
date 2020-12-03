@@ -35,7 +35,7 @@
 
 <style type="text/css">
     body {
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background: linear-gradient(-45deg, #c0c0aa, #1cefff, #70e1f5, #43cea2);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
 }
@@ -249,7 +249,7 @@ h1{
 </div>
 
 <div class="form-group">
-  <label class="col-md-4 control-label" for="Submit">Submit Button</label>
+  <label class="col-md-4 control-label" for="Submit"></label>
   <div class="col-md-4">
     <button id="Submit" name="Submit" type="submit" class="btn btn-primary" required>SUBMIT</button>
   </div>
