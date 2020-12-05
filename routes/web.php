@@ -84,9 +84,5 @@ Route::get('/add-to-cart-rent/{product_id}', [App\Http\Controllers\ProductContro
 // Customizer
 
 Route::get('/customize', [App\Http\Controllers\CustomizerController::class, 'index']);
-// Route::post('/customize', function(){
-// 	if(Request::ajax()){
-// 		return "gg";
-// 	}
-// });
+Route::post('/customizer', [App\Http\Controllers\CustomizerController::class, 'index'])->name('customizersave');
 Route::get('/addprints',[App\Http\Controllers\CustomizerController::class, 'addprint']);

@@ -1,12 +1,10 @@
 <!DOCTYPE html>
     <html lang="en">
     <head>
-        <meta name="csrf-token" content="{{ csrf_token() }}" />
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
         <title>Static Tee Designer</title>
         <style>
             .drawing-area{
@@ -41,12 +39,18 @@
                 user-select: none; 
                 cursor: default;
             }
+            #CustomizedShirt {
+              margin: auto;
+              width: 60%;
+              /*border: 5px solid #FFFF00;*/
+              padding: 10px;
+            }
         </style>
     </head>
     <body>
 
-        <form class="px-4 py-3 ">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <form class="px-4 py-3 btn-submit" id="CustomizedShirt" action="" method="POST">
+             <input type="hidden" name="_token" id="csrf" value="{{Session::token()}}">
             <h2>Front</h2>
             <!-- Create the container of the tool -->
         <div id="tshirt-div" class="row justify-content-center form-group ">
@@ -73,8 +77,12 @@
         <select id="tshirt">
             <option value="">Select one of the clothing ...</option>
             @foreach ($shirts as $shirt)
+            @php
+            $temp=$shirt->getFilename();
+                $temp=str_replace('_front.png', '', $temp);
+            @endphp
             @if(strpos($shirt->getFilename(),'front'))
-            <option value="{{ asset('t-shirts/' . $shirt->getFilename()) }}">  {{$shirt->getFilename()}}  </option>
+            <option value="{{ asset('t-shirts/' . $shirt->getFilename()) }}">  {{$temp}}  </option>
             @endif
             @endforeach
         </select>
@@ -86,11 +94,19 @@
         <select id="tshirt-design">
             <option value="">Select one of our designs ...</option>
             @foreach ($images as $image)
-            <option value="{{ asset('templates/' . $image->getFilename()) }}">  {{$image->getFilename()}}  </option>
+            @php
+            $temp1="Design ";
+            $temp2=$image->getFilename();
+                $temp=str_replace('.jpg', '', $temp2);
+            $temp3="";
+            $temp3.=$temp1 ."" .$temp
+            @endphp
+            <option value="{{ asset('templates/' . $image->getFilename()) }}">{{$temp3}}  </option>
+            
             @endforeach
         </select>
         <br>
-        <button type="button" class="btn btn-primary" id="BtnSave" type="Submit">Take screenshot</button>
+        <button type="button" class="btn btn-primary" id="BtnSave" >Take screenshot</button>
 
         <button type="button" class="btn btn-primary" id="Delete" >Remove Print</button>
         </form>
@@ -98,10 +114,10 @@
 		    
         
 	<!-- Include Fabric.js in the page <--></-->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{ asset('js/fabric.js-4.2.0/dist/fabric.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js" integrity="sha512-s/XK4vYVXTGeUSv4bRPOuxSDmDlTedEpMEcAQk0t/FMd9V6ft8iXdwSBxV0eD60c6w/tjotSlKu9J2AAW1ckTA==" crossorigin="anonymous"></script>
 	<!-- Include DomToImage in the page -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="{{asset('js/domtoimage.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/customizer.js')}}"></script>
 

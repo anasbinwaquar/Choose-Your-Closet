@@ -62,55 +62,11 @@ canvas.on('mouse:down', function(e) {
                     }
                 }
             }
-
-            // document.addEventListener("keydown", function(e) {
-            //     var keyCode = e.keyCode;
-
-            //     if(keyCode == 46){
-            //         console.log("Removing selected element on Fabric.js on DELETE key !");
-            //         canvas.remove(canvas.getActiveObject());
-            //     }
-
-            //     design_count=design_count-1;
-            //     total_price-=750;
-            //     console.log("Design Count: "+ design_count + " Price: " + total_price);
-            // }, false);
-
-            // When the user clicks on upload a custom picture
-            // document.getElementById('tshirt-custompicture').addEventListener("change", function(e){
-            //     var reader = new FileReader();
-                
-            //     reader.onload = function (event){
-            //         var imgObj = new Image();
-            //         imgObj.src = event.target.result;
-
-            //         // When the picture loads, create the image in Fabric.js
-            //         imgObj.onload = function () {
-            //             var img = new fabric.Image(imgObj);
-
-            //             img.scaleToHeight(300);
-            //             img.scaleToWidth(300); 
-            //             canvas.centerObject(img);
-            //             canvas.add(img);
-            //             canvas.renderAll();
-            //         };
-            //     };
-
-            //     // If the user selected a picture, load it
-            //     if(e.target.files[0]){
-            //         reader.readAsDataURL(e.target.files[0]);
-            //     }
-            // }, false);
-
-            // When the user selects a picture that has been added and press the DEL key
-            // The object will be removed !
            
            // Define as node the T-Shirt Div
 
            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('#tshirt-div')
-                }
+                
             });
 
             $(document).ready(function(){
@@ -122,36 +78,42 @@ canvas.on('mouse:down', function(e) {
     
     var element = $('#tshirt-div');
     
-    $('#BtnSave').submit( function(){
+    $("#BtnSave").on('click',function(){
+            console.log('g');
         html2canvas(element, {
             background: '#ffffff',
             onrendered: function(canvas){
+
                 var imgData = canvas.toDataURL('image/jpeg');
-                // $.post('customize',{image:imgData},function(data){
-                //     console.log(data)
-                // });
                 
+                let _token=$("input[name=_token]").val();
                 $.ajax({
-                    url: '/customize',
-                    type: 'POST',
-                    dataType: 'text',
+                    url: "/customizer",
+                    type: "POST",
                     data: {
-                        image: imgData
-                    }
-                });
-                // alert('Success!');
-                console.log(imgData);
+                        image: imgData,
+                        _token: _token
+                    },
+                    success:function(response){
+                      if(response.success){
+                          alert(response.message) //Message come from controller
+                      }
+           },
+           error:function(error){
+              console.log(error)
+           }
+                })
+                
             }
         });
     });
-    
 });
+
 
 $(function() {
   $('#tshirt').change(function() {
-    console.log('g');
     var e = $("#tshirt :selected").val();;
-    console.log(e);
+    // console.log(e);
     document.getElementById("tshirt-backgroundpicture").setAttribute("src", e);
     document.getElementById("tshirt-backgroundpicture").setAttribute("class", 'border border-primary rounded');
     if (e==''){

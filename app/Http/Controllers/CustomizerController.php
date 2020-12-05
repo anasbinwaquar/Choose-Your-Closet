@@ -12,14 +12,13 @@ class CustomizerController extends Controller
     {
     	$images = File::allFiles(public_path('templates'));
         $shirts = File::allFiles(public_path('t-shirts'));
-
     	// return "<img src='".$designs."'/>";
     	return view('Customizer.view')->with('images',$images)->with('shirts',$shirts);
     }
-    public function store(Request $req)
+    public function stores(Request $request)
     {
-    	$data = $req->all();
-        print_r($data);
+    	$data=$request->all();
+        dd($data);
 
     }
     public function addprint(){
