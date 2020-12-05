@@ -136,6 +136,7 @@
                         </div>
                     </div>
                 </div>
+                <br><br>
                 <label for="tshirt-design">Back T-Shirt Design:</label>
                 <select id="tshirt-design-back">
                     <option value="">Select designs for back ...</option>
@@ -151,7 +152,11 @@
                     
                     @endforeach
                 </select>
-
+                <div>
+                    
+                <h3>Price: <span id="price"></span></h3>
+                <h3>Total Designs used: <span id="design_count"></span></h3>
+                </div>
         </div>
 
 

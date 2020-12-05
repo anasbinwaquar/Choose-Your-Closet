@@ -1,6 +1,7 @@
 
 var design_count=0;
-var total_price=0;
+var total_price=1000;
+var print_price=500;
 let canvas = new fabric.Canvas('tshirt-canvas');
 let canvas2 = new fabric.Canvas('tshirt-canvas-back');
 canvas.on('mouse:down', function(e) {
@@ -55,9 +56,11 @@ canvas.on('mouse:down', function(e) {
                 // of the image provided by the select
                 updateTshirtImage(this.value);
                 design_count=design_count+1;
-                total_price+=750;
+                total_price+=print_price;
                 console.log("Design Count: "+ design_count + " Price: " + total_price);
 
+                document.getElementById('price').innerHTML = total_price;
+                document.getElementById('design_count').innerHTML = design_count;
             }, false);
             document.getElementById("tshirt-design-back").addEventListener("change", function(){
 
@@ -65,8 +68,10 @@ canvas.on('mouse:down', function(e) {
                 // of the image provided by the select
                 updateTshirtImage2(this.value);
                 design_count=design_count+1;
-                total_price+=750;
+                total_price+=print_price;
                 console.log("Design Count: "+ design_count + " Price: " + total_price);
+                document.getElementById('price').innerHTML = total_price;
+                document.getElementById('design_count').innerHTML = design_count;
 
             }, false);
                 //Delete selected prints
