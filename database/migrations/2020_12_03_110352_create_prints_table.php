@@ -17,6 +17,7 @@ class CreatePrintsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('image');
+            $table->integer('price');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -12,10 +12,12 @@ class prints extends Model
     public $table = 'prints';
     public $fillable = [
         'name',
-        'image'
+        'image',
+        'price'
     ];
     protected $casts = [
         'name' => 'string',
-        'image' => 'string'
+        'image' => 'string',
+        'price' => 'integer'
     ];
 }
