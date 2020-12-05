@@ -3,8 +3,10 @@
     <head>
         <meta name="csrf-token" content="{{ csrf_token() }}" />
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
         <title>Static Tee Designer</title>
         <style>
             .drawing-area{
@@ -42,15 +44,17 @@
         </style>
     </head>
     <body>
-        <form >
+
+        <form class="px-4 py-3 ">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <h2>Front</h2>
             <!-- Create the container of the tool -->
-        <div id="tshirt-div">
+        <div id="tshirt-div" class="row justify-content-center form-group ">
             <!-- 
                 Initially, the image will have the background tshirt that has transparency
                 So we can simply update the color with CSS or JavaScript dinamically
             -->
-            <img id="tshirt-backgroundpicture" src="{{ asset('t-shirts/mens_longsleeve_front.png') }}"/>
+            <img id="tshirt-backgroundpicture"  />
 
             <div id="drawingArea" class="drawing-area">                 
                 <div class="canvas-container">
@@ -63,9 +67,21 @@
         <br>
 
         <!-- The Select that allows the user to change the color of the T-Shirt -->
-        <br><br><br><br><br><br>
+        <br>
+        <label for="tshirt-type">Select Clothing Type:</label>
+
+        <select id="tshirt">
+            <option value="">Select one of the clothing ...</option>
+            @foreach ($shirts as $shirt)
+            @if(strpos($shirt->getFilename(),'front'))
+            <option value="{{ asset('t-shirts/' . $shirt->getFilename()) }}">  {{$shirt->getFilename()}}  </option>
+            @endif
+            @endforeach
+        </select>
+        <br>
         <label for="tshirt-color">T-Shirt Color: ( Select Color and press enter )</label>
         <input type="color" id="tshirt-color" value="#e66465">
+        <br>
         <label for="tshirt-design">T-Shirt Design:</label>
         <select id="tshirt-design">
             <option value="">Select one of our designs ...</option>
@@ -73,8 +89,10 @@
             <option value="{{ asset('templates/' . $image->getFilename()) }}">  {{$image->getFilename()}}  </option>
             @endforeach
         </select>
+        <br>
+        <button type="button" class="btn btn-primary" id="BtnSave" type="Submit">Take screenshot</button>
 
-        <button id="BtnSave" type="Submit" >Take screenshot</button>
+        <button type="button" class="btn btn-primary" id="Delete" >Remove Print</button>
         </form>
         
 		    

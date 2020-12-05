@@ -1,10 +1,25 @@
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-});
-let canvas = new fabric.Canvas('tshirt-canvas');
 
+var design_count=0;
+var total_price=0;
+let canvas = new fabric.Canvas('tshirt-canvas');
+canvas.on('mouse:down', function(e) {
+ 
+      if(e.objCanvas)
+      {
+      
+        if(e.objCanvas.type === 'image')
+        {
+            e.objCanvas.trigger('mousedown', {
+                   clientX: e.objCanvasX,
+                   clientY: e.objCanvasY 
+            });
+        }
+      }
+      
+      else {
+                console.log('image was clicked');
+
+      }},false);
             function updateTshirtImage(imageURL){
                 fabric.Image.fromURL(imageURL, function(img) {                   
                     img.scaleToHeight(150);
@@ -15,6 +30,7 @@ let canvas = new fabric.Canvas('tshirt-canvas');
                 });
             }
             
+
             // Update the TShirt color according to the selected color by the user
             document.getElementById("tshirt-color").addEventListener("change", function(){
                 document.getElementById("tshirt-div").style.backgroundColor = this.value;
@@ -26,15 +42,39 @@ let canvas = new fabric.Canvas('tshirt-canvas');
                 // Call the updateTshirtImage method providing as first argument the URL
                 // of the image provided by the select
                 updateTshirtImage(this.value);
-            }, false);
-            document.addEventListener("keydown", function(e) {
-                var keyCode = e.keyCode;
+                design_count=design_count+1;
+                total_price+=750;
+                console.log("Design Count: "+ design_count + " Price: " + total_price);
 
-                if(keyCode == 46){
-                    console.log("Removing selected element on Fabric.js on DELETE key !");
-                    canvas.remove(canvas.getActiveObject());
-                }
             }, false);
+                //Delete selected prints
+            $("#Delete").click(function(){
+                deleteObjects();
+            });
+            function deleteObjects(){
+                var activeObject = canvas.getActiveObject();
+                if (activeObject) {
+                    if (confirm('Are you sure?')) {
+                        canvas.remove(activeObject);
+                        design_count=design_count-1;
+                        total_price-=750;
+                        console.log("Design Count: "+ design_count + " Price: " + total_price);
+                    }
+                }
+            }
+
+            // document.addEventListener("keydown", function(e) {
+            //     var keyCode = e.keyCode;
+
+            //     if(keyCode == 46){
+            //         console.log("Removing selected element on Fabric.js on DELETE key !");
+            //         canvas.remove(canvas.getActiveObject());
+            //     }
+
+            //     design_count=design_count-1;
+            //     total_price-=750;
+            //     console.log("Design Count: "+ design_count + " Price: " + total_price);
+            // }, false);
 
             // When the user clicks on upload a custom picture
             // document.getElementById('tshirt-custompicture').addEventListener("change", function(e){
@@ -66,6 +106,7 @@ let canvas = new fabric.Canvas('tshirt-canvas');
             // The object will be removed !
            
            // Define as node the T-Shirt Div
+
            $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('#tshirt-div')
@@ -105,3 +146,15 @@ let canvas = new fabric.Canvas('tshirt-canvas');
     });
     
 });
+
+$(function() {
+  $('#tshirt').change(function() {
+    console.log('g');
+    var e = $("#tshirt :selected").val();;
+    console.log(e);
+    document.getElementById("tshirt-backgroundpicture").setAttribute("src", e);
+    document.getElementById("tshirt-backgroundpicture").setAttribute("class", 'border border-primary rounded');
+    if (e==''){
+        document.getElementById("tshirt-backgroundpicture").removeAttribute("class");
+    }
+})});
