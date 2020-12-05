@@ -29,7 +29,12 @@
                 position: relative;
                 background-color: #fff;
             }
-
+            #tshirt-div-back{
+                width: 530px;
+                height: 630px;
+                position: relative;
+                background-color: #fff;
+            }
             #canvas{
                 position: absolute;
                 width: 200px;
@@ -43,7 +48,13 @@
               margin: auto;
               width: 60%;
               /*border: 5px solid #FFFF00;*/
-              padding: 10px;
+              /*padding: 10px;*/
+            }
+            #Left-Pane{
+                float: left;
+            }
+            #Right-Pane{
+                float: right;
             }
         </style>
     </head>
@@ -51,15 +62,15 @@
 
         <form class="px-4 py-3 btn-submit" id="CustomizedShirt" action="" method="POST">
              <input type="hidden" name="_token" id="csrf" value="{{Session::token()}}">
-            <h2>Front</h2>
+        <div id="Left-Pane">
+                <h2>Front</h2>
             <!-- Create the container of the tool -->
         <div id="tshirt-div" class="row justify-content-center form-group ">
             <!-- 
                 Initially, the image will have the background tshirt that has transparency
                 So we can simply update the color with CSS or JavaScript dinamically
             -->
-            <img id="tshirt-backgroundpicture"  />
-
+            <img id="tshirt-foregroundpicture"  />
             <div id="drawingArea" class="drawing-area">                 
                 <div class="canvas-container">
                     <canvas id="tshirt-canvas" width="200" height="400"></canvas>
@@ -75,11 +86,13 @@
         <label for="tshirt-type">Select Clothing Type:</label>
 
         <select id="tshirt">
-            <option value="">Select one of the clothing ...</option>
+            <option value="0">Select one of the clothing ...</option>
             @foreach ($shirts as $shirt)
             @php
+            $back=$shirt->getFilename();
             $temp=$shirt->getFilename();
-                $temp=str_replace('_front.png', '', $temp);
+            $temp=str_replace('_front.png', '', $temp);
+            $back=str_replace('_front.png', '_back.png', $back)
             @endphp
             @if(strpos($shirt->getFilename(),'front'))
             <option value="{{ asset('t-shirts/' . $shirt->getFilename()) }}">  {{$temp}}  </option>
@@ -90,9 +103,9 @@
         <label for="tshirt-color">T-Shirt Color: ( Select Color and press enter )</label>
         <input type="color" id="tshirt-color" value="#e66465">
         <br>
-        <label for="tshirt-design">T-Shirt Design:</label>
+        <label for="tshirt-design">Front T-Shirt Design:</label>
         <select id="tshirt-design">
-            <option value="">Select one of our designs ...</option>
+            <option value="0">Select designs for front ...</option>
             @foreach ($images as $image)
             @php
             $temp1="Design ";
@@ -109,6 +122,40 @@
         <button type="button" class="btn btn-primary" id="BtnSave" >Take screenshot</button>
 
         <button type="button" class="btn btn-primary" id="Delete" >Remove Print</button>
+            </div>
+
+
+        <div id="Right-Pane">
+            <h2>Back</h2>
+
+                <div id="tshirt-div-back" class="row justify-content-center form-group ">
+                    <img id="tshirt-backgroundpicture" />
+                    <div id="drawingArea" class="drawing-area">                 
+                        <div class="canvas-container">
+                            <canvas id="tshirt-canvas-back" width="200" height="400"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <label for="tshirt-design">Back T-Shirt Design:</label>
+                <select id="tshirt-design-back">
+                    <option value="">Select designs for back ...</option>
+                    @foreach ($images as $image)
+                    @php
+                    $temp1="Design ";
+                    $temp2=$image->getFilename();
+                        $temp=str_replace('.jpg', '', $temp2);
+                    $temp3="";
+                    $temp3.=$temp1 ."" .$temp
+                    @endphp
+                    <option value="{{ asset('templates/' . $image->getFilename()) }}">{{$temp3}}  </option>
+                    
+                    @endforeach
+                </select>
+
+        </div>
+
+
+
         </form>
         
 		    
