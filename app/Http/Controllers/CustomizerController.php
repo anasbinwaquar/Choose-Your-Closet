@@ -15,10 +15,11 @@ class CustomizerController extends Controller
     	// return "<img src='".$designs."'/>";
     	return view('Customizer.view')->with('images',$images)->with('shirts',$shirts);
     }
-    public function stores(Request $request)
+    public function store(Request $request)
     {
-    	$data=$request->all();
-        dd($data);
+        // dd($request->imagefront);
+
+        return $request->imageback;
 
     }
     public function addprint(){

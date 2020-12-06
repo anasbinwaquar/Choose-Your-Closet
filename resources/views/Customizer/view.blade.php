@@ -5,11 +5,12 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Static Tee Designer</title>
         <style>
             .drawing-area{
                 position: absolute;
-                top: 100px;
+                top: 120px;
                 left: 160px;
                 z-index: 10;
                 width: 200px;
@@ -21,6 +22,8 @@
                 height: 400px; 
                 position: relative; 
                 user-select: none;
+                border: 1px solid #000000;
+                /*padding: 10px;*/
             }
 
             #tshirt-div{
@@ -60,8 +63,8 @@
     </head>
     <body>
 
-        <form class="px-4 py-3 btn-submit" id="CustomizedShirt" action="" method="POST">
-             <input type="hidden" name="_token" id="csrf" value="{{Session::token()}}">
+        <form class="px-4 py-3 btn-submit" id="CustomizedShirt">
+             {{csrf_field()}}
         <div id="Left-Pane">
                 <h2>Front</h2>
             <!-- Create the container of the tool -->
@@ -119,7 +122,7 @@
             @endforeach
         </select>
         <br>
-        <button type="button" class="btn btn-primary" id="BtnSave" >Take screenshot</button>
+        <input type="submit" class="form-control" id="BtnSave" >
 
         <button type="button" class="btn btn-primary" id="Delete" >Remove Print</button>
             </div>
@@ -158,8 +161,6 @@
                 <h3>Total Designs used: <span id="design_count"></span></h3>
                 </div>
         </div>
-
-
 
         </form>
         
