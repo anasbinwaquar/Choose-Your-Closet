@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+        {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
         <title>Static Tee Designer</title>
         <style>
             .drawing-area{
@@ -63,7 +63,7 @@
     </head>
     <body>
 
-        <form class="px-4 py-3 btn-submit" id="CustomizedShirt">
+        <form class="px-4 py-3 btn-submit" id="CustomizedShirt" method="post" action="/customizer">
              {{csrf_field()}}
         <div id="Left-Pane">
                 <h2>Front</h2>
@@ -76,6 +76,7 @@
             <img id="tshirt-foregroundpicture"  />
             <div id="drawingArea" class="drawing-area">                 
                 <div class="canvas-container">
+                    <input type="hidden" id="tshirt-front" name="tshirt_front">
                     <canvas id="tshirt-canvas" width="200" height="400"></canvas>
                 </div>
             </div>
@@ -88,8 +89,8 @@
         <br>
         <label for="tshirt-type">Select Clothing Type:</label>
 
-        <select id="tshirt">
-            <option value="0">Select one of the clothing ...</option>
+        <select id="tshirt" name="clothing_type">
+            <option value=" ">Select one of the clothing ...</option>
             @foreach ($shirts as $shirt)
             @php
             $back=$shirt->getFilename();
@@ -98,13 +99,13 @@
             $back=str_replace('_front.png', '_back.png', $back)
             @endphp
             @if(strpos($shirt->getFilename(),'front'))
-            <option value="{{ asset('t-shirts/' . $shirt->getFilename()) }}">  {{$temp}}  </option>
+            <option value="{{ asset('t-shirts/' . $shirt->getFilename()) }}" >  {{$temp}}  </option>
             @endif
             @endforeach
         </select>
         <br>
         <label for="tshirt-color">T-Shirt Color: ( Select Color and press enter )</label>
-        <input type="color" id="tshirt-color" value="#e66465">
+        <input type="color" name="tshirt_color" id="tshirt-color" value="#e66465">
         <br>
         <label for="tshirt-design">Front T-Shirt Design:</label>
         <select id="tshirt-design">
@@ -122,8 +123,8 @@
             @endforeach
         </select>
         <br>
-        <input type="submit" class="form-control" id="BtnSave" >
-
+        <input type="submit" class="form-control" id="Submit" >
+{{-- <button id="Submit" name="Submit" type="submit" class="btn btn-primary" required>SUBMIT</button> --}}
         <button type="button" class="btn btn-primary" id="Delete" >Remove Print</button>
             </div>
 
@@ -135,6 +136,7 @@
                     <img id="tshirt-backgroundpicture" />
                     <div id="drawingArea" class="drawing-area">                 
                         <div class="canvas-container">
+                            <input type="hidden" id="tshirt-back" name="tshirt_back">
                             <canvas id="tshirt-canvas-back" width="200" height="400"></canvas>
                         </div>
                     </div>
@@ -162,6 +164,7 @@
                 </div>
         </div>
 
+        <input type="hidden" id="total_price" name="total_price">
         </form>
         
 		    

@@ -2,6 +2,9 @@
 var design_count=0;
 var total_price=1000;
 var print_price=500;
+var element = $('#tshirt-div');
+var element2 = $('#tshirt-div-back');
+let imagefront,imageback;
 let canvas = new fabric.Canvas('tshirt-canvas');
 let canvas2 = new fabric.Canvas('tshirt-canvas-back');
 canvas.on('mouse:down', function(e) {
@@ -46,6 +49,10 @@ canvas.on('mouse:down', function(e) {
             document.getElementById("tshirt-color").addEventListener("change", function(){
                 document.getElementById("tshirt-div").style.backgroundColor = this.value;
                 document.getElementById("tshirt-div-back").style.backgroundColor = this.value;
+                htmltocanvas();
+                document.getElementById("tshirt-back").value = imageback;
+                document.getElementById("tshirt-front").value = imagefront;
+                console.log(imageback);
             }, false);
 
 
@@ -61,6 +68,7 @@ canvas.on('mouse:down', function(e) {
 
                 document.getElementById('price').innerHTML = total_price;
                 document.getElementById('design_count').innerHTML = design_count;
+                htmltocanvas();
             }, false);
             document.getElementById("tshirt-design-back").addEventListener("change", function(){
 
@@ -96,29 +104,14 @@ canvas.on('mouse:down', function(e) {
                 }
                 document.getElementById('price').innerHTML = total_price;
                 document.getElementById('design_count').innerHTML = design_count;
-            }
+            };
            
            // Define as node the T-Shirt Div
-
-
-$(document).ready(function(){
-                    
-    var element = $('#tshirt-div');
-    var element2 = $('#tshirt-div-back');
-    let imagefront,imageback;
-
-    $("#BtnSave").on('click',async function(e){
-        e.preventDefault();
-            // console.log('g');
-            
-            console.log($('meta[name="csrf-token"]').attr('content'));
-            
-
-        html2canvas(element, {
+function htmltocanvas(){
+    html2canvas(element, {
             background: '#ffffff',
             onrendered: function(canvas){
                 var imgData = canvas.toDataURL('image/jpeg');
-                // console.log(imgData);
                 imagefront=imgData;
             }
         });
@@ -126,29 +119,42 @@ $(document).ready(function(){
             background: '#ffffff',
             onrendered: function(canvas){
                 var imgData = canvas.toDataURL('image/jpeg');
-                // console.log(imgData);
                 imageback=imgData;
             }
         });
 
+        document.getElementById('total_price').value = total_price; 
+    };
+$(document).ready(function(){
+                    
+    $("#Submit").on('click',async function(){
+        // e.preventDefault();
+            // console.log('g');
+            
+            // console.log($('meta[name="csrf-token"]').attr('content'));
+            
+
+        htmltocanvas();
+        document.getElementById("tshirt-back").value = imageback;
+        document.getElementById("tshirt-front").value = imagefront;
         // console.log(imagefront);
         // console.log(imageback);
-        $.ajaxSetup({
-              headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-        $.ajax({
-            url: "/customizer",
-            type: "POST",
-            data: {
-                imagefront: imagefront,
-                imageback: imageback
-            },
-            success:function(result){
-                console.log(result);
-            }
-        })
+        // $.ajaxSetup({
+        //       headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         }
+        //     });
+        // $.ajax({
+        //     url: "/customizer",
+        //     type: "POST",
+        //     data: {
+        //         imagefront: imagefront,
+        //         imageback: imageback
+        //     },
+        //     success:function(result){
+        //         console.log(result);
+        //     }
+        // })
     });
 });
 

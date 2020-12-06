@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
+        
     ];
     /**
      * Determine if the session and input CSRF tokens match.
