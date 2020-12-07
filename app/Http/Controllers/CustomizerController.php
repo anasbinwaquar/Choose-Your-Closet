@@ -19,9 +19,9 @@ class CustomizerController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $name = time().'.' . explode('/', explode(':', substr($request->tshirt_front, 0, strpos($request->tshirt_front, ';')))[1])[1];
+        // $name = time().'.' . explode('/', explode(':', substr($request->tshirt_front, 0, strpos($request->tshirt_front, ';')))[1])[1];
 
-        \Image::make($request->tshirt_front)->save(public_path('image').$name);
+        // \Image::make($request->tshirt_front)->save(public_path('image').$name);
         // $request->merge(['photo' => $name]);
 
         // $userPhoto = public_path('img/profile/').$currentPhoto;
