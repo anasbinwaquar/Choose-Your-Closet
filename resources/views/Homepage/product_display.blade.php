@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -11,8 +11,9 @@
     <script type="text/javascript" src="{{asset('js/productdisplay.js')}}"></script>  
     <title>Homepage</title>
   </head>
-
-{{-- @foreach($product as $product)
+<body>
+<div class="product-details"><!--product-details-->
+@foreach($product as $product)
 		<div class="card item col-xs-4 col-lg-4" style="width: 18rem;">
 		  <img class="card-img-top" src="{{asset('uploads/sell/'. $product->product_image)}}" alt="Card image cap" >
 		  <div class="card-body">
@@ -25,10 +26,7 @@
 		  </div>
 
 		</div>
-                                        
-@endforeach --}}
-
-<div class="product-details"><!--product-details-->
+                                   
 	<div class="col-sm-5">
 		<div class="view-product">
 			<img src="{{asset('uploads/sell/'. $product->product_image)}}" style="width: 50%; height: auto;" alt="">
@@ -70,29 +68,13 @@
 					Add to cart
 				</button>
 			</span>
-			<br>
-			{{-- IF CONDITION FOR PRODUCTS THAT ARE NOT UP FOR RENT SO PAGE NO THROW ERROR K? --}}
+			@endforeach
+			<!-- <br>
 			@if($RentalProduct!=null)
 			<span>
 				<h2>Rental Details</h2>
 				<span>Daily Charges Rs: {{$RentalProduct->charges}}</span>
 				<div>
-				<?php 
-					if ($RentalProduct->quantity_small>0 ||$RentalProduct->quantity_medium>0 ||$RentalProduct->quantity_large>0 ||$RentalProduct->quantity_extra_large>0 )
-						echo "Availability: In Stock";
-					else
-						echo "Not in stock";
-					echo "<br>";
-					if($RentalProduct->quantity_small>0)
-						echo '<input value="Small" type="radio" name="sizes">Small';
-					if($RentalProduct->quantity_medium>0)
-						echo '<input value="Medium" type="radio" name="sizes">Medium';
-					if($RentalProduct->quantity_large>0)
-						echo '<input value="Large" type="radio" name="sizes">Large';
-					if($RentalProduct->quantity_extra_large>0)
-						echo '<input value="Extra_large" type="radio" name="sizes">Extra Large';
-					
-			 	?>
 				</div>
 				<th><a href="/add-to-cart-rent/{{$RentalProduct->product_id}}"><button class="btn btn-fefault cart">
 				<i class="fa fa-shopping-cart"></i>
@@ -101,7 +83,9 @@
 			</span>
 			@endif
 			
-			<p><b>Brand:</b> {{$SellerData->Brand_Name}}</p>
-		</div><!--/product-information-->
+			<p><b>Brand:</b> {{$SellerData->Brand_Name}}</p> -->
+		</div>
 	</div>
 </div>                
+</body>
+</html>

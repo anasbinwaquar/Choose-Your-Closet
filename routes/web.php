@@ -21,6 +21,8 @@ Route::get('/admin_login', [App\Http\Controllers\AdminController::class, 'LoginA
 
 Route::post('/LoginAdminCheck', [App\Http\Controllers\AdminController::class, 'LoginAdmin']);
 
+Route::get('/LoginAdminCheck', [App\Http\Controllers\AdminController::class, 'Portal']);
+
 //Seller
 
 Route::get('/SellerSignUp', [App\Http\Controllers\SellerController::class, 'SellerSignUpView']);
