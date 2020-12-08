@@ -15,7 +15,7 @@
 <div class="product-details"><!--product-details-->
 @foreach($product as $product)
 		<div class="card item col-xs-4 col-lg-4" style="width: 18rem;">
-		  <img class="card-img-top" src="{{asset('uploads/sell/'. $product->product_image)}}" alt="Card image cap" >
+		  <img class="card-img-top" src="{{asset('uploads/sell/'. $product->	)}}" alt="Card image cap" >
 		  <div class="card-body">
 		    <h5 class="product-name">{{$product->product_name}}</h5>
 		    <p class="product-description">{{$product->description}}</p>
