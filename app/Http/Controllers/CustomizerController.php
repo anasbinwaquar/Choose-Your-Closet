@@ -32,6 +32,6 @@ class CustomizerController extends Controller
 
     }
     public function addprint(){
-        return view('Customizer.addprint');
+        return view("Customizer.add_prints");
     }
 }

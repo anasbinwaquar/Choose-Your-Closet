@@ -7,6 +7,7 @@ var element2 = $('#tshirt-div-back');
 let imagefront,imageback;
 let canvas = new fabric.Canvas('tshirt-canvas');
 let canvas2 = new fabric.Canvas('tshirt-canvas-back');
+
 canvas.on('mouse:down', function(e) {
  
       if(e.objCanvas)
