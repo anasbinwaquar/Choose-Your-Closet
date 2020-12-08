@@ -25,7 +25,9 @@
                 border: 1px solid #000000;
                 /*padding: 10px;*/
             }
-
+            #design_front_price{
+                visibility: hidden;
+            }
             #tshirt-div{
                 width: 530px;
                 height: 630px;
@@ -109,10 +111,9 @@
         <br>
         <label for="tshirt-design">Front T-Shirt Design:</label>
         <select id="tshirt-design">
-            <option value="0">Select designs for front ...</option>
+            <option value="">Select designs for front ...</option>
             @foreach ($images as $image)
-            <option value="{{ asset('templates/' . $image->image) }}">{{$image->name}} | Rs:{{$image->price}}</option>
-            <input type="hidden" value="{{$image->price}}">
+            <option value="{{ asset('templates/' . $image->image) }}" data-price='{{$image->price}}' >{{$image->name}} | Rs:{{$image->price}}</option>
             @endforeach
         </select>
         <br>
@@ -139,9 +140,8 @@
                 <select id="tshirt-design-back">
                     <option value="">Select designs for back ...</option>
                         @foreach ($images as $image)
-                        <option value="{{ asset('templates/' . $image->image) }}">{{$image->name}}  | Rs:{{$image->price}} </option>
+            <option value="{{ asset('templates/' . $image->image) }}" data-price='{{$image->price}}' >{{$image->name}} | Rs:{{$image->price}}</option>
                         @endforeach
-                        <input type="hidden" id="design_back_price" value="{{$image->price}}">
                 </select>
                 <div>
                     
