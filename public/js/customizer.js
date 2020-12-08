@@ -1,12 +1,13 @@
 
 var design_count=0;
 var total_price=1000;
-var print_price=500;
+// var print_price=500;
 var element = $('#tshirt-div');
 var element2 = $('#tshirt-div-back');
 let imagefront,imageback;
 let canvas = new fabric.Canvas('tshirt-canvas');
 let canvas2 = new fabric.Canvas('tshirt-canvas-back');
+
 canvas.on('mouse:down', function(e) {
  
       if(e.objCanvas)
@@ -54,8 +55,15 @@ canvas.on('mouse:down', function(e) {
                 document.getElementById("tshirt-front").value = imagefront;
                 console.log(imageback);
             }, false);
+            $("#tshirt-design").change(function () {
+                 design_price=Number($(this).find(':selected').data('price'));
+                 console.log(design_price);
+            });
 
-
+            $("#tshirt-design-back").change(function () {
+                 design_price=Number($(this).find(':selected').data('price'));
+                 console.log(design_price);
+            });
             // Update the TShirt color according to the selected color by the user
             document.getElementById("tshirt-design").addEventListener("change", function(){
 
@@ -63,8 +71,8 @@ canvas.on('mouse:down', function(e) {
                 // of the image provided by the select
                 updateTshirtImage(this.value);
                 design_count=design_count+1;
-                total_price+=print_price;
-                console.log("Design Count: "+ design_count + " Price: " + total_price);
+                total_price+=design_price;
+                // console.log("Design Count: "+ design_count + " Price: " + total_price+ "Design Price: "+ Number(document.getElementById('design_front_price').value));
 
                 document.getElementById('price').innerHTML = total_price;
                 document.getElementById('design_count').innerHTML = design_count;
@@ -76,8 +84,8 @@ canvas.on('mouse:down', function(e) {
                 // of the image provided by the select
                 updateTshirtImage2(this.value);
                 design_count=design_count+1;
-                total_price+=print_price;
-                console.log("Design Count: "+ design_count + " Price: " + total_price);
+                total_price+=design_price;
+                // console.log("Design Count: "+ design_count + " Price: " + total_price+ "Design Price: "+ Number(document.getElementById('design_front_price').value));
                 document.getElementById('price').innerHTML = total_price;
                 document.getElementById('design_count').innerHTML = design_count;
 
@@ -91,12 +99,24 @@ canvas.on('mouse:down', function(e) {
                 var activeObject = canvas.getActiveObject();
                 var activeObject2 = canvas2.getActiveObject();
                 if (activeObject) {
+                        currentObject = canvas.getActiveObject();
+                        var imagesrc =currentObject._originalElement.currentSrc;
+                        var check = imagesrc.split("/");
+                        alert(check[check.length-1]);
+
+                        console.log(imagesrc);
                         canvas.remove(activeObject);
                         design_count=design_count-1;
                         total_price-=print_price;
                         console.log("Design Count: "+ design_count + " Price: " + total_price);
                 }
                 else if (activeObject2) {
+                        currentObject = canvas.getActiveObject();
+                        var imagesrc =currentObject._originalElement.currentSrc;
+                        var check = imagesrc.split("/");
+                        alert(check[check.length-1]);
+
+                        console.log(imagesrc);
                         canvas2.remove(activeObject2);
                         design_count=design_count-1;
                         total_price-=print_price;

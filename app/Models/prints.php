@@ -15,9 +15,4 @@ class prints extends Model
         'image',
         'price'
     ];
-    protected $casts = [
-        'name' => 'string',
-        'image' => 'string',
-        'price' => 'integer'
-    ];
 }
