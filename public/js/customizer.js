@@ -1,7 +1,7 @@
 
 var design_count=0;
 var total_price=1000;
-var print_price=500;
+// var print_price=500;
 var element = $('#tshirt-div');
 var element2 = $('#tshirt-div-back');
 let imagefront,imageback;
@@ -64,8 +64,8 @@ canvas.on('mouse:down', function(e) {
                 // of the image provided by the select
                 updateTshirtImage(this.value);
                 design_count=design_count+1;
-                total_price+=print_price;
-                console.log("Design Count: "+ design_count + " Price: " + total_price);
+                total_price+=Number(document.getElementById('design_front_price').value);
+                console.log("Design Count: "+ design_count + " Price: " + total_price+ "Design Price: "+ Number(document.getElementById('design_front_price').value));
 
                 document.getElementById('price').innerHTML = total_price;
                 document.getElementById('design_count').innerHTML = design_count;
@@ -77,8 +77,8 @@ canvas.on('mouse:down', function(e) {
                 // of the image provided by the select
                 updateTshirtImage2(this.value);
                 design_count=design_count+1;
-                total_price+=print_price;
-                console.log("Design Count: "+ design_count + " Price: " + total_price);
+                total_price+=Number(document.getElementById('design_back_price').value);
+                console.log("Design Count: "+ design_count + " Price: " + total_price+ "Design Price: "+ Number(document.getElementById('design_front_price').value));
                 document.getElementById('price').innerHTML = total_price;
                 document.getElementById('design_count').innerHTML = design_count;
 

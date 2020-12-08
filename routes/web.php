@@ -88,3 +88,4 @@ Route::get('/add-to-cart-rent/{product_id}', [App\Http\Controllers\ProductContro
 Route::get('/customize', [App\Http\Controllers\CustomizerController::class, 'index']);
 Route::post('/customizer', [App\Http\Controllers\CustomizerController::class, 'store'])->name('customizersave');
 Route::get('/addprints',[App\Http\Controllers\CustomizerController::class, 'addprint']);
+Route::post('/addprints',[App\Http\Controllers\CustomizerController::class, 'store_print'])->name('store_print');

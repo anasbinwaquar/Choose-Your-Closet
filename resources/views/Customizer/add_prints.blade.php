@@ -54,20 +54,22 @@
             </div>
             </nav>
             <div class="container-fluid">
-            	<form>
+            	<form action="{{ route('store_print')}}" method="post" enctype="multipart/form-data">
+                    @csrf
 				  <div class="form-group">
 				    <label name="print_name">Print Name</label>
-				    <input class="form-control" id="print_name"  >
-				    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+				    <input class="form-control" id="print_name" name="print_name">
 				  </div>
 				  <div class="form-group">
-				    <label for="exampleInputPassword1">Password</label>
-				    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+				    <label >Price</label>
+				    <input type="number" class="form-control" name="price">
 				  </div>
-				  <div class="form-check">
-				    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-				    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-				  </div>
+				  <div class="form-group">
+                      <label class="col-md-4 control-label" for="filebutton">Print Image</label>
+                      <div class="col-md-4">
+                        <input id="print_image" name="print_image" class="input-file" type="file"  multiple required >
+                      </div>
+                    </div>
 				  <button type="submit" class="btn btn-primary">Submit</button>
 				</form>
             </div>
@@ -89,3 +91,4 @@
             </div>
         </footer>
 </html>
+

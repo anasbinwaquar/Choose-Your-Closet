@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use File;
+use App\Models\prints;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageServiceProvider;
@@ -11,7 +12,7 @@ class CustomizerController extends Controller
    
    public function index()
     {
-    	$images = File::allFiles(public_path('templates'));
+    	$images = prints::all();
         $shirts = File::allFiles(public_path('t-shirts'));
     	// return "<img src='".$designs."'/>";
     	return view('Customizer.view')->with('images',$images)->with('shirts',$shirts);
@@ -32,6 +33,19 @@ class CustomizerController extends Controller
 
     }
     public function addprint(){
+        return view("Customizer.add_prints");
+    }
+    public function store_print(Request $request){
+        // dd($request->all());
+        $print = new prints();
+        $file=$request->file('print_image');
+        $extension=$file->getClientOriginalExtension();
+        $filename=time().'.'.$extension;
+        $file->move('templates',$filename);
+        $print->name=$request->print_name;
+        $print->price=$request->price;
+        $print->image=$filename;
+        $print->save();
         return view("Customizer.add_prints");
     }
 }
