@@ -113,7 +113,7 @@
         <select id="tshirt-design">
             <option value="">Select designs for front ...</option>
             @foreach ($images as $image)
-            <option value="{{ asset('templates/' . $image->image) }}" data-price='{{$image->price}}' >{{$image->name}} | Rs:{{$image->price}}</option>
+            <option value="{{ asset('templates/' . $image->image) }}" data-price='{{$image->price}}' data-name='{{$image->image}}' >{{$image->name}} | Rs:{{$image->price}}</option>
             @endforeach
         </select>
         <br>
@@ -153,7 +153,7 @@
         <input type="hidden" id="total_price" name="total_price">
         </form>
         
-		    
+		    <div id="data"></div>
         
 	<!-- Include Fabric.js in the page <--></-->
     <script type="text/javascript" src="{{ asset('js/fabric.js-4.2.0/dist/fabric.min.js')}}"></script>

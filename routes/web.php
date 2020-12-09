@@ -93,6 +93,7 @@ Route::get('/addprints',[App\Http\Controllers\CustomizerController::class, 'addp
 
 Route::post('/addprints',[App\Http\Controllers\CustomizerController::class, 'store_print'])->name('store_print');
 
+
 //cart
 
 Route::get('/cart/{product_id}', [App\Http\Controllers\CartController::class, 'AddToCart'])->name('CartData');
