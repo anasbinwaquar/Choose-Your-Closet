@@ -140,7 +140,7 @@
                 <select id="tshirt-design-back">
                     <option value="">Select designs for back ...</option>
                         @foreach ($images as $image)
-            <option value="{{ asset('templates/' . $image->image) }}" data-price='{{$image->price}}' >{{$image->name}} | Rs:{{$image->price}}</option>
+                        <option value="{{ asset('templates/' . $image->image) }}" data-price='{{$image->price}}' data-name='{{$image->image}}' >{{$image->name}} | Rs:{{$image->price}}</option>
                         @endforeach
                 </select>
                 <div>

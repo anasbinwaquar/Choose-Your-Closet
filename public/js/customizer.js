@@ -111,7 +111,7 @@ canvas.on('mouse:down', function(e) {
                             if (variable==item)
                             {
                                 print_price=array[i][0];
-                                return true;
+                                console.log("yes");
                             }
                         }
                         return false;            
@@ -125,25 +125,23 @@ canvas.on('mouse:down', function(e) {
                         currentObject = canvas.getActiveObject();
                         var imagesrc =currentObject._originalElement.currentSrc;
                         var check = imagesrc.split("/");
-                        
                         ItemExists(design_info_front,check[check.length-1]);
                         console.log(imagesrc);
                         canvas.remove(activeObject);
                         design_count=design_count-1;
                         total_price-=print_price;
-                        console.log("Design Count: "+ design_count + " Price: " + total_price);
+                        console.log("Design Count: "+ design_count + " Price: " + total_price +" Print Price: "+ print_price);
                 }
                 else if (activeObject2) {
-                        currentObject = canvas2.getActiveObject();
+                        currentObject = activeObject2;
                         var imagesrc =currentObject._originalElement.currentSrc;
                         var check = imagesrc.split("/");
-                        
-                        ItemExists(design_info_front,check[check.length-1]);
+                        ItemExists(design_info_back,check[check.length-1]);
                         console.log(imagesrc);
-                        canvas.remove(activeObject);
+                        canvas2.remove(activeObject2);
                         design_count=design_count-1;
                         total_price-=print_price;
-                        console.log("Design Count: "+ design_count + " Price: " + total_price);
+                        console.log("Design Count: "+ design_count + " Price: " + total_price +" Print Price: "+ print_price);
                 }
                 document.getElementById('price').innerHTML = total_price;
                 document.getElementById('design_count').innerHTML = design_count;
