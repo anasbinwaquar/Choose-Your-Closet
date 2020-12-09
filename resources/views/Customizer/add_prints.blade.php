@@ -67,7 +67,7 @@
 				  <div class="form-group">
                       <label class="col-md-4 control-label" for="filebutton">Print Image</label>
                       <div class="col-md-4">
-                        <input id="print_image" name="print_image" class="input-file" type="file"  multiple required >
+                        <input id="print_image" name="print_image" class="input-file" type="file" accept="image/*"  multiple required >
                       </div>
                     </div>
 				  <button type="submit" class="btn btn-primary">Submit</button>
