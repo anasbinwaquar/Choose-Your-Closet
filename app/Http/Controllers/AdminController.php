@@ -15,8 +15,10 @@ class AdminController extends Controller
         return view('Admin.AdminLogin');
     }
 
-    public function view_image(){
-        echo "string";
+    public function image($encodedData){
+        $encodedData = str_replace(' ','+',$encodedData);
+  $decocedData = base64_decode($encodedData);
+        echo $encodedData;
         // return redirect($url);
     }
     public function custom_order(){
