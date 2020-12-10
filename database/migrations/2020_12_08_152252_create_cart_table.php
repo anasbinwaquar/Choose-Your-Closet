@@ -2,10 +2,10 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreatePrintsTable extends Migration
+class CreateCartTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -13,13 +13,12 @@ class CreatePrintsTable extends Migration
      */
     public function up()
     {
-        Schema::create('prints', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('image');
-            $table->integer('price');
+        Schema::create('cart', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('customer_id');
+            $table->Integer('quantity');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -30,6 +29,6 @@ class CreatePrintsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('prints');
+        Schema::dropIfExists('cart');
     }
 }

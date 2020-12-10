@@ -45,12 +45,13 @@ class CustomerInfoController extends Controller
         //$this->validate($req);
         $username=$req->input('Username');  
         $password=$req->input('Password');
-        $check=NULL;
-        $check=DB::select("select * from customer_infos where Username=? and Password=?",[$username,$password]);
-        if($check!=NULL)
+        $get_id=NULL;
+        $get_id=DB::select("select id from customer_infos where Username=? and Password=?",[$username,$password]);
+        if($get_id!=NULL)
         {
+            $customer_id = $get_id[0]->id;
             $req->session()->put('data',$req->input());
-
+            $req->session()->put('customer_id', $customer_id);
             if($req->session()->has('data'))
             {
                 return redirect('UserProfile');

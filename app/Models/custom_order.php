@@ -5,14 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class prints extends Model
+class custom_order extends Model
 {
     use HasFactory;
-
-    public $table = 'prints';
-    public $fillable = [
-        'name',
-        'image',
-        'price'
-    ];
+    protected $table = 'custom_orders';
+    protected $guarded = [];
 }

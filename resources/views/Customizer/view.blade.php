@@ -25,7 +25,9 @@
                 border: 1px solid #000000;
                 /*padding: 10px;*/
             }
-
+            #design_front_price{
+                visibility: hidden;
+            }
             #tshirt-div{
                 width: 530px;
                 height: 630px;
@@ -109,17 +111,9 @@
         <br>
         <label for="tshirt-design">Front T-Shirt Design:</label>
         <select id="tshirt-design">
-            <option value="0">Select designs for front ...</option>
+            <option value="">Select designs for front ...</option>
             @foreach ($images as $image)
-            @php
-            $temp1="Design ";
-            $temp2=$image->getFilename();
-                $temp=str_replace('.jpg', '', $temp2);
-            $temp3="";
-            $temp3.=$temp1 ."" .$temp
-            @endphp
-            <option value="{{ asset('templates/' . $image->getFilename()) }}">{{$temp3}}  </option>
-            
+            <option value="{{ asset('templates/' . $image->image) }}" data-price='{{$image->price}}' data-name='{{$image->image}}' >{{$image->name}} | Rs:{{$image->price}}</option>
             @endforeach
         </select>
         <br>
@@ -142,32 +136,35 @@
                     </div>
                 </div>
                 <br><br>
+
                 <label for="tshirt-design">Back T-Shirt Design:</label>
                 <select id="tshirt-design-back">
                     <option value="">Select designs for back ...</option>
                     @foreach ($images as $image)
-                    @php
-                    $temp1="Design ";
-                    $temp2=$image->getFilename();
-                        $temp=str_replace('.jpg', '', $temp2);
-                    $temp3="";
-                    $temp3.=$temp1 ."" .$temp
-                    @endphp
-                    <option value="{{ asset('templates/' . $image->getFilename()) }}">{{$temp3}}  </option>
-                    
+                    <option value="{{ asset('templates/' . $image->image) }}" data-price='{{$image->price}}' data-name='{{$image->image}}' >{{$image->name}} | Rs:{{$image->price}}</option>
                     @endforeach
                 </select>
+
+                    <br>
+                  <label for="sizes">Select Size: </label>  
+                  <select name="size">
+                      <option  value="Small"> Small</option>
+                      <option  value="Medium" > Medium</option>
+                      <option  value="Large" > Large</option>
+                      <option  value="Extra Large" > Extra Large</option>
+                 </select>
                 <div>
                     
-                <h3>Price: <span id="price"></span></h3>
-                <h3>Total Designs used: <span id="design_count"></span></h3>
+                <h3>Price: <span id="price">1000</span></h3>
+                <h3>Total Designs used: <span id="design_count">0</span></h3>
                 </div>
-        </div>
 
+
+        </div>
         <input type="hidden" id="total_price" name="total_price">
         </form>
         
-		    
+		    <div id="data"></div>
         
 	<!-- Include Fabric.js in the page <--></-->
     <script type="text/javascript" src="{{ asset('js/fabric.js-4.2.0/dist/fabric.min.js')}}"></script>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer_infos;
+use App\Models\custom_order;
 use App\Models\user_model;
 
 
@@ -12,6 +13,17 @@ class AdminController extends Controller
      public function LoginAdminView()
     {
         return view('Admin.AdminLogin');
+    }
+
+    public function view_image(){
+        echo "string";
+        // return redirect($url);
+    }
+    public function custom_order(){
+
+        $orders=custom_order::all();
+        // dd($orders);
+        return view('Admin.Custom_orders')->with('orders',$orders);
     }
 
     public function Portal()
