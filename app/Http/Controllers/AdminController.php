@@ -16,9 +16,7 @@ class AdminController extends Controller
     }
 
     public function image($encodedData){
-        $encodedData = str_replace(' ','+',$encodedData);
-  $decocedData = base64_decode($encodedData);
-        echo $encodedData;
+        echo "string";
         // return redirect($url);
     }
     public function custom_order(){

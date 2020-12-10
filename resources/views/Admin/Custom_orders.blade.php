@@ -20,7 +20,7 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link " href="LoginAdmin"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="LoginAdminCheck"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="Seller_Authentication"><i class="fas fa-table"></i><span>Seller Verifcation</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="Product_approval"><i class="fas fa-table"></i><span>Product Verifcation</span></a></li>
@@ -73,8 +73,8 @@
                                         // echo ($str); 
                                         @endphp
                                         <th>{{$order->customer_id}}</th>
-                                        <th><a href="{{route('show_image', $order->image_front)}}">Front View </a></th>
-                                        <th><a href="{{$order->image_back}}">Back View</a></th>
+                                        <th><img src="{{$order->image_front}}" alt=""> </th>
+                                        <th><img src="{{$order->image_back}}" alt=""></a></th>
                                         <td>{{$order->price}}</td> 
                                         <th>{{$order->size}}</th>
                                         <th>{{$order->color}}</th>
@@ -103,5 +103,6 @@
                 <div class="text-center my-auto copyright"><span>Copyright © Brand 2020</span></div>
             </div>
         </footer>
+</script>
 </html>
 
