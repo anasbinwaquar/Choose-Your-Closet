@@ -16,8 +16,8 @@ class CreateCustomOrdersTable extends Migration
         Schema::create('custom_orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('customer_id');
-            $table->string('image_front');
-            $table->string('image_back');
+            $table->text('image_front');
+            $table->text('image_back');
             $table->integer('price');
             $table->string('size');
             $table->string('color');

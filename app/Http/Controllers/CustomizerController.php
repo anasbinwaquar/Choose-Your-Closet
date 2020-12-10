@@ -13,6 +13,7 @@ class CustomizerController extends Controller
    
    public function index()
     {
+        // echo "string";
     	$images = prints::all();
         $shirts = File::allFiles(public_path('t-shirts'));
     	// return "<img src='".$designs."'/>";
