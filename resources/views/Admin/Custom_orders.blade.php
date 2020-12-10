@@ -73,7 +73,7 @@
                                         // echo ($str); 
                                         @endphp
                                         <th>{{$order->customer_id}}</th>
-                                        <th><a href="image" >Front View</a></th>
+                                        <th><a href="/image" >Front View</a></th>
                                         <th><a href="{{$order->image_back}}">Back View</a></th>
                                         <td>{{$order->price}}</td> 
                                         <th>{{$order->size}}</th>

@@ -22,7 +22,6 @@ class CreateCustomOrdersTable extends Migration
             $table->string('size');
             $table->string('color');
             $table->timestamps();
-
             $table->foreign('customer_id')->references('id')->on('customer_infos');
         });
     }
