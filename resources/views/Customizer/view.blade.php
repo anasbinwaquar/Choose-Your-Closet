@@ -136,20 +136,31 @@
                     </div>
                 </div>
                 <br><br>
+
                 <label for="tshirt-design">Back T-Shirt Design:</label>
                 <select id="tshirt-design-back">
                     <option value="">Select designs for back ...</option>
-                        @foreach ($images as $image)
-                        <option value="{{ asset('templates/' . $image->image) }}" data-price='{{$image->price}}' data-name='{{$image->image}}' >{{$image->name}} | Rs:{{$image->price}}</option>
-                        @endforeach
+                    @foreach ($images as $image)
+                    <option value="{{ asset('templates/' . $image->image) }}" data-price='{{$image->price}}' data-name='{{$image->image}}' >{{$image->name}} | Rs:{{$image->price}}</option>
+                    @endforeach
                 </select>
+
+                    <br>
+                  <label for="sizes">Select Size: </label>  
+                  <select name="size">
+                      <option  value="Small"> Small</option>
+                      <option  value="Medium" > Medium</option>
+                      <option  value="Large" > Large</option>
+                      <option  value="Extra Large" > Extra Large</option>
+                 </select>
                 <div>
                     
-                <h3>Price: <span id="price"></span></h3>
-                <h3>Total Designs used: <span id="design_count"></span></h3>
+                <h3>Price: <span id="price">1000</span></h3>
+                <h3>Total Designs used: <span id="design_count">0</span></h3>
                 </div>
-        </div>
 
+
+        </div>
         <input type="hidden" id="total_price" name="total_price">
         </form>
         

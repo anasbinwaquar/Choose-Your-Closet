@@ -23,6 +23,11 @@ Route::post('/LoginAdminCheck', [App\Http\Controllers\AdminController::class, 'L
 
 Route::get('/LoginAdminCheck', [App\Http\Controllers\AdminController::class, 'Portal']);
 
+Route::get('/custom_order', [App\Http\Controllers\AdminController::class, 'custom_order']);
+
+Route::get('/image', [App\Http\Controllers\AdminController::class, 'view_image']);
+
+
 //Seller
 
 Route::get('/SellerSignUp', [App\Http\Controllers\SellerController::class, 'SellerSignUpView']);
