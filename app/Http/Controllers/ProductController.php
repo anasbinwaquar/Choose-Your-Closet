@@ -110,9 +110,6 @@ class ProductController extends Controller
         // $destinationPath = public_path('/images');
         // $image->move($destinationPath, $input['imagename']);
         // $Prod->product_image=$input['imagename'];
-
-        
-
         $file=$request->file('product_image');
         $extension=$file->getClientOriginalExtension();
         $filename=time().'.'.$extension;
