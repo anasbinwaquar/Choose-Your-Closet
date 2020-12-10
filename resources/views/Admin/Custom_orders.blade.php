@@ -75,6 +75,10 @@
                                         <th>{{$order->customer_id}}</th>
                                         <th><img src="{{$order->image_front}}" alt=""> </th>
                                         <th><img src="{{$order->image_back}}" alt=""></a></th>
+                                        <th><a href="/image" >Front View</a></th>
+
+                                        <th><a href="{{route('show_image', $order->image_front)}}">Front View </a></th>
+                                        <th><a href="{{$order->image_back}}">Back View</a></th>
                                         <td>{{$order->price}}</td> 
                                         <th>{{$order->size}}</th>
                                         <th>{{$order->color}}</th>
