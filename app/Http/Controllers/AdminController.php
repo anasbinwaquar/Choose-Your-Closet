@@ -10,7 +10,7 @@ use App\Models\user_model;
 
 class AdminController extends Controller
 {
-     public function LoginAdminView()
+    public function LoginAdminView()
     {
         return view('Admin.AdminLogin');
     }

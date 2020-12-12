@@ -62,6 +62,9 @@
         </div>
         </div>
       </li>
+      <li class="nav-item">
+        <a class="nav-link navlink" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
+      </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
         <div class="input-group mb-4">

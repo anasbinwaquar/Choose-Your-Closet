@@ -102,3 +102,9 @@ Route::post('/addprints',[App\Http\Controllers\CustomizerController::class, 'sto
 //cart
 
 Route::get('/cart/{product_id}', [App\Http\Controllers\CartController::class, 'AddToCart'])->name('CartData');
+
+//contact
+
+Route::get('/ContactUs', [App\Http\Controllers\ContactController::class, 'ContactPage']);
+
+Route::post('/Contacted', [App\Http\Controllers\ContactController::class, 'Contact']);
