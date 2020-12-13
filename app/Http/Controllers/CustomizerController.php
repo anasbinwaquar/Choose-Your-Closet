@@ -33,10 +33,12 @@ class CustomizerController extends Controller
 
     }
     public function addprint(){
-        return view("Customizer.add_prints");
+        $prints= new prints();
+        $prints=prints::all();
+        return view("Customizer.add_prints")->with('prints',$prints);
     }
     public function store_print(Request $request){
-        dd($request->all());
+        // dd($request->all());
         $print = new prints();
         $file=$request->file('print_image');
         $extension=$file->getClientOriginalExtension();
@@ -46,6 +48,21 @@ class CustomizerController extends Controller
         $print->price=$request->price;
         $print->image=$filename;
         $print->save();
-        return view("Customizer.add_prints");
+        $prints= new prints();
+        $prints=prints::all();
+        return view("Customizer.add_prints")->with('prints',$prints);
+    }
+    public function delete_print_view(){
+
+        // $print =prints::where('id', $id)->first();
+        // if($print!=NULL)
+        //     $print->delete();
+        $prints= new prints();
+        $prints=prints::all();
+        return view("Customizer.delete_print")->with('prints',$prints);
+    }
+    public function delete_print($id){
+        $print=prints::where('id',$id)->delete();
+        return redirect("deleteprint");
     }
 }
