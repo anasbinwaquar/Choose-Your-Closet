@@ -154,7 +154,7 @@
                             </div> -->
                         </div>
                          @if($authentication == NULL)
-                         <p style="text-align: center;">NO ONE TO VERIFY</p>           
+                         <p style="text-align: center;">NO <ON></ON>E TO VERIFY</p>           
                          @elseif ($authentication != NULL)
                         <div class="table-responsive table m-lg-auto mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                             <table class="table my-0" id="dataTable">

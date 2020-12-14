@@ -73,7 +73,8 @@
                                         // echo ($str); 
                                         @endphp
                                         <th>{{$order->customer_id}}</th>
-                                        <th><a href="/image" >Front View</a></th>
+                                        <a href="http://foo.bar/" onclick="window.open('https://www.foo.bar/culrsteam')">Foo</a>
+                                        <th><a href="{{$order->image_front}}" onclick="window.open('{{$order->image_front}}')">Front View</a></th>
 
                                         <th><a href="{{route('show_image', $order->image_front)}}">Front View </a></th>
                                         <th><a href="{{$order->image_back}}">Back View</a></th>
