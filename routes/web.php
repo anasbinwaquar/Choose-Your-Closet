@@ -99,6 +99,9 @@ Route::get('/addprints',[App\Http\Controllers\CustomizerController::class, 'addp
 Route::post('/addprints',[App\Http\Controllers\CustomizerController::class, 'store_print'])->name('store_print');
 
 Route::get('/deleteprint',[App\Http\Controllers\CustomizerController::class, 'delete_print_view']);
+
+Route::get('/delete_print/{id}',[App\Http\Controllers\CustomizerController::class, 'delete_print']);
+
 Route::get('/delete_print/{id}',[App\Http\Controllers\CustomizerController::class, 'delete_print']);
 
 //cart

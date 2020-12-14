@@ -35,7 +35,15 @@
         <form  class="login100-form validate-form" action="LoggedIn" method="post" autocomplete="off">
           @csrf
           <span class="login100-form-title p-b-43">
-            Login
+            @php
+            if($customize!=0){
+              echo "Login";
+            }
+            else
+            {
+              echo "Please Login to place order";
+            }
+            @endphp
           </span>
           
           <div class="wrap-input100 validate-input" data-validate = "Valid Username is required">

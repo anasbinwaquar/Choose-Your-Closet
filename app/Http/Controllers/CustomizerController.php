@@ -7,13 +7,19 @@ use App\Models\custom_order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageServiceProvider;
-
+use Session;
+use Illuminate\Support\Facades\Mail;
 class CustomizerController extends Controller
 {
    
    public function index()
     {
         // echo "string";
+        if(!session()->has('customer_id')){
+            session()->put('customize',0);
+            return redirect('CustomerLogin');
+        }
+        // dd(session()->all());
     	$images = prints::all();
         $shirts = File::allFiles(public_path('t-shirts'));
     	// return "<img src='".$designs."'/>";
@@ -26,11 +32,11 @@ class CustomizerController extends Controller
         $custom_order->image_front=$request->tshirt_front;
         $custom_order->image_back=$request->tshirt_back;
         $custom_order->color=$request->tshirt_color;
-        $custom_order->customer_id=1;
+        $custom_order->customer_id=session()->get('customer_id');
         $custom_order->price=$request->total_price;
         $custom_order->size=$request->size;
         $custom_order->save();
-
+        return view('Customizer.success');
     }
     public function addprint(){
         $prints= new prints();
