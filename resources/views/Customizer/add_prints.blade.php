@@ -20,11 +20,13 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link " href="LoginAdmin"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="LoginAdminCheck"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="Seller_Authentication"><i class="fas fa-table"></i><span>Seller Verifcation</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="Product_approval"><i class="fas fa-table"></i><span>Product Verifcation</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="addprints"><i class="fas fa-user-circle"></i><span>Add Prints</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="Product_approval"><i class="fas fa-table"></i><span>Product Verifcation</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="addprints"><i class="fas fa-user-circle"></i><span>Add Prints</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="deleteprint"><i class="fas fa-user-circle"></i><span>Delete Prints</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="custom_order"><i class="fas fa-user-circle"></i><span>Custom Orders</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
@@ -54,25 +56,26 @@
             </div>
             </nav>
             <div class="container-fluid">
-            	<form action="{{ route('store_print')}}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('store_print')}}" method="post" enctype="multipart/form-data">
                     @csrf
-				  <div class="form-group">
-				    <label name="print_name">Print Name</label>
-				    <input class="form-control" id="print_name" name="print_name">
-				  </div>
-				  <div class="form-group">
-				    <label >Price</label>
-				    <input type="number" class="form-control" name="price">
-				  </div>
-				  <div class="form-group">
+                  <div class="form-group">
+                    <label name="print_name">Print Name</label>
+                    <input class="form-control" id="print_name" name="print_name">
+                  </div>
+                  <div class="form-group">
+                    <label >Price</label>
+                    <input type="number" class="form-control" name="price">
+                  </div>
+                  <div class="form-group">
                       <label class="col-md-4 control-label" for="filebutton">Print Image</label>
                       <div class="col-md-4">
                         <input id="print_image" name="print_image" class="input-file" type="file" accept="image/*"  multiple required >
                       </div>
                     </div>
-				  <button type="submit" class="btn btn-primary">Submit</button>
-				</form>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
             </div>
+            <br><br>
             
         </div>
         </div>

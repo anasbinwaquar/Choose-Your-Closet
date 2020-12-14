@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +38,10 @@
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
                         <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                                <h3 class="text-dark mb-2">Custom Orders</h3>
+                            <!-- <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ..."> -->
+                               <!--  <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div> -->
+                                <h3 class="text-dark mb-2">Delete Prints</h3>
+                          <!--   </div> -->
                         </form>
                         <ul class="nav navbar-nav flex-nowrap ml-auto">
                             <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-search"></i></a>
@@ -52,50 +57,33 @@
                     </ul>
             </div>
             </nav>
-
             <div class="container-fluid">
                 <div class="table-responsive table m-lg-auto mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                             <table class="table my-0" id="dataTable">
                                 <thead>
                                     <tr>
-                                        <th>Customer Id</th>
-                                        <th>Front View</th>
-                                        <th>Back View</th>
+                                        <th>Print Name</th>
                                         <th>Price</th>
-                                        <th>Size</th>
-                                        <th>Color</th>
+                                        <th>Image</th>
                                     </tr>
                                 </thead>
                                   <tbody>
-                                    @foreach ($orders as $order)
+                                    @if($prints->isEmpty())
+                                    <th><p style="text-align: center;">No Prints Added</p></th>
+                                    @elseif($prints!=NULL)  
+                                    @foreach ($prints as $print)
                                       <tr>
-                                        @php
-                                        $str= urlencode($order->image_front);
-                                        // echo ($str); 
-                                        @endphp
-                                        <th>{{$order->customer_id}}</th>
-
-                                        <a href="http://foo.bar/" onclick="window.open('https://www.foo.bar/culrsteam')">Foo</a>
-                                        <th><a href="{{$order->image_front}}" onclick="window.open('{{$order->image_front}}')">Front View</a></th>
-
-                                        <th><img src="{{$order->image_front}}" style="width: 300px; height: 300px" > </th>
-                                        <th><img src="{{$order->image_back}}" style="width: 300px; height: 300px"></a></th>
-                                        {{-- <th><a href="/image" >Front View</a></th>
-
-                                        <th><a href="{{$order->image_back}}">Back View</a></th> --}}
-                                        <td>{{$order->price}}</td> 
-                                        <th>{{$order->size}}</th>
-                                        <th>{{$order->color}}</th>
-                                        {{-- <th><a href="setapproval/{{$authentication->id}}"><button class="btn btn-success">Approve</button></a></th> --}}
-                                        {{-- <th><a href="declineapproval/{{$authentication->id}}"><button class="btn btn-danger">Decline</button></a></th> --}}
+                                        <th>{{$print->name}}</th>
+                                        <th>{{$print->price}}</th>
+                                        <th><img src="{{ asset('templates/' . $print->image) }}" style="width: 100px; height: 100px"></th>
+                                        <th><a href="delete_print/{{$print->id}}"><button class="btn btn-success">Delete</button></a></th>
                                       </tr>
-                                    @endforeach
+                                      @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
             </div>
-            
-        </div>
         </div>
     <!-- </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div> -->
     <script src="assets/js/jquery.min.js"></script>
@@ -111,6 +99,5 @@
                 <div class="text-center my-auto copyright"><span>Copyright © Brand 2020</span></div>
             </div>
         </footer>
-</script>
 </html>
 

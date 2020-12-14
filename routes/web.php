@@ -25,7 +25,10 @@ Route::get('/LoginAdminCheck', [App\Http\Controllers\AdminController::class, 'Po
 
 Route::get('/custom_order', [App\Http\Controllers\AdminController::class, 'custom_order']);
 
+
 Route::get('/image/{{url}}', [App\Http\Controllers\AdminController::class, 'image'])->name('show_image');
+
+Route::get('/image/{url}', [App\Http\Controllers\AdminController::class, 'image']);
 
 
 //Seller
@@ -98,7 +101,15 @@ Route::get('/addprints',[App\Http\Controllers\CustomizerController::class, 'addp
 
 Route::post('/addprints',[App\Http\Controllers\CustomizerController::class, 'store_print'])->name('store_print');
 
+Route::get('/deleteprint',[App\Http\Controllers\CustomizerController::class, 'delete_print_view']);
+Route::get('/delete_print/{id}',[App\Http\Controllers\CustomizerController::class, 'delete_print']);
 
 //cart
 
 Route::get('/cart/{product_id}', [App\Http\Controllers\CartController::class, 'AddToCart'])->name('CartData');
+
+//contact
+
+Route::get('/ContactUs', [App\Http\Controllers\ContactController::class, 'ContactPage']);
+
+Route::post('/Contacted', [App\Http\Controllers\ContactController::class, 'Contact']);
