@@ -225,6 +225,20 @@
                 <h3>Price: <span id="price">1000</span></h3>
                 <h3>Total Designs used: <span id="design_count">0</span></h3>
                 </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="address">Full Delivery Address</label>  
+                  <div class="col-md-4">
+                  <input id="address" name="address" class="form-control input-md" required type="text">
+                    
+                  </div>
+                </div> 
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="contact">Contact Number</label>  
+                  <div class="col-md-4">
+                  <input id="contact" name="contact" class="form-control input-md" required type="number">
+                    
+                  </div>
+                </div> 
 
 
         </div>

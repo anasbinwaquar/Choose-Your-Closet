@@ -35,6 +35,8 @@ class CustomizerController extends Controller
         $custom_order->customer_id=session()->get('customer_id');
         $custom_order->price=$request->total_price;
         $custom_order->size=$request->size;
+        $custom_order->address=$request->address;
+        $custom_order->contact_number=$request->contact;
         $custom_order->save();
         return view('Customizer.success');
     }
