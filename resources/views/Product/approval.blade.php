@@ -175,10 +175,44 @@
                                           <th>{{$product->product_name}}</th>
                                           <th>{{$product->price_per_unit}}</th>
                                           <th>{{$product->description}}</th>
-                                          <td><img src="{{asset('uploads/sell/'. $product->product_image)}}" style="width: 20rem;height: 10rem"></td>  
+                                          <td><img src="{{asset('uploads/sell/'. $product->product_image)}}" style="width: 20rem;height: 20rem"></td>  
                                           <th>{{$product->clothing_type}}</th>
                                           <th><a href="set_product_approval/{{$product->id}}"><button class="btn btn-success">Approve</button></a></th>
                                           <th><a href="decline_product_approval/{{$product->id}}"><button class="btn btn-danger">Decline</button></a></th>
+                                      </tr>
+                                      @endforeach
+                                      @endif
+                                </tbody>
+                            </table>
+                        </div>
+                        <br><br>
+                        @if($rent_product -> isEmpty())
+                         <p style="text-align: center;">NO Rental Product TO VERIFY</p>           
+                         @else
+                         <p style="text-align: center;">Rental Products</p>  
+                        <div class="table-responsive table m-lg-auto mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                            <table class="table my-0" id="dataTable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Product Name</th>
+                                        <th scope="col">Daily Charges</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Product Image</th>
+                                        <th scope="col">Clothing Type</th>
+                                        <th scope="col">Approe</th>
+                                        <th scope="col">Disapprove</th>
+                                    </tr>
+                                </thead>
+                                  <tbody>
+                                       @foreach ($rent_product as $product)
+                                      <tr>
+                                          <th>{{$product->product_name}}</th>
+                                          <th>{{$product->charges}}</th>
+                                          <th>{{$product->description}}</th>
+                                          <td><img src="{{asset('uploads/sell/'. $product->product_image)}}" style="width: 20rem;height: 20rem"></td>  
+                                          <th>{{$product->clothing_type}}</th>
+                                          <th><a href="set_rentproduct_approval/{{$product->id}}"><button class="btn btn-success">Approve</button></a></th>
+                                          <th><a href="decline_rentproduct_approval/{{$product->id}}"><button class="btn btn-danger">Decline</button></a></th>
                                       </tr>
                                       @endforeach
                                       @endif

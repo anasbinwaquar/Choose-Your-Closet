@@ -52,6 +52,101 @@
             </div>
             </nav>
 
+            <form class="form-horizontal justify-content-center" name="ProductForm" id="ProductForm" action="{{ route('CreateRentProduct')}}" method="post" enctype="multipart/form-data" autocomplete="off">
+  @csrf
+<fieldset>
+
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="product_name">PRODUCT NAME</label>  
+  <div class="col-md-4">
+  <input id="product_name" name="product_name" placeholder="PRODUCT NAME" class="form-control input-md" required type="text">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="description">PRODUCT DESCRIPTION</label>  
+  <div class="col-md-4">
+  <input id="description" name="description" placeholder="PRODUCT DESCRIPTION" class="form-control input-md" required type="text">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="sizes">SIZES</label>  
+  <div class="col-md-4">
+      <input type="radio" id="size" name="size" value="Small"/> <label>Small</label> 
+      <input type="radio" id="size" name="size" value="Medium" /> <label >Medium</label>
+      <input type="radio" id="size" name="size" value="Large" /> <label >Large</label>
+      <input type="radio" id="size" name="size" value="Extra Large" /> <label>Extra Large</label>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="clothing_type">CLOTHING TYPE</label>
+  <div class="col-md-4">
+    <select id="clothing_type" name="clothing_type" class="form-control" id="clothing_type" required>
+    <option selected>CHOOSE...</option>
+    <option value="Pant">Pant</option>
+    <option value="T-Shirt">T-Shirt</option>
+    <option value="Kurta">Kurta</option>
+    <option value="Kurti">Kurti</option>
+    <option value="Bridal Wear">Bridal Wear</option>
+    <option value="Kids">Kids wear</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="gender">CLOTHING GENDER</label>
+  <div class="col-md-4">
+    <select id="gender_type" name="gender_type" class="form-control" required>
+    <option selected>CHOOSE...</option>
+     <option value="Male">Male</option>
+     <option value="Female">Female</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="category">PRODUCT CATEGORY</label>
+  <div class="col-md-4">
+    <select id="category" name="category" class="form-control" required>
+    <option selected>CHOOSE...</option>
+    <option value="Formal">Formal</option>
+    <option value="Informal">Informal</option>
+    </select>
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="charges">DAILY CHARGES</label>  
+  <div class="col-md-4">
+  <input id="charges" name="charges" placeholder="DAILY CHARGES" class="form-control input-md" type="text">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="filebutton">PRODUCT IMAGES</label>
+  <div class="col-md-4">
+    <input id="product_image" name="product_image" class="input-file" type="file"  multiple required>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Submit"></label>
+  <div class="col-md-4">
+    <button id="Submit" name="Submit" type="submit" class="btn btn-primary" required>SUBMIT</button>
+  </div>
+  </div>
+
+</fieldset>
+</form>
         </div>
         </div>
     <script src="assets/js/jquery.min.js"></script>
