@@ -25,6 +25,9 @@ Route::get('/LoginAdminCheck', [App\Http\Controllers\AdminController::class, 'Po
 
 Route::get('/custom_order', [App\Http\Controllers\AdminController::class, 'custom_order']);
 
+
+Route::get('/image/{{url}}', [App\Http\Controllers\AdminController::class, 'image'])->name('show_image');
+
 Route::get('/image/{url}', [App\Http\Controllers\AdminController::class, 'image']);
 
 

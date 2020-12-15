@@ -74,6 +74,10 @@
                                         // echo ($str); 
                                         @endphp
                                         <th>{{$order->customer_id}}</th>
+
+                                        <a href="http://foo.bar/" onclick="window.open('https://www.foo.bar/culrsteam')">Foo</a>
+                                        <th><a href="{{$order->image_front}}" onclick="window.open('{{$order->image_front}}')">Front View</a></th>
+
                                         <th><img src="{{$order->image_front}}" style="width: 300px; height: 300px" > </th>
                                         <th><img src="{{$order->image_back}}" style="width: 300px; height: 300px"></a></th>
                                         {{-- <th><a href="/image" >Front View</a></th>

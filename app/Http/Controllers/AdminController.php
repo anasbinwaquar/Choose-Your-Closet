@@ -16,6 +16,12 @@ class AdminController extends Controller
     }
 
     public function image($encodedData){
+
+        print_r($encodedData);
+  //       $encodedData = str_replace(' ','+',$encodedData);
+  // $decocedData = base64_decode($encodedData);
+      //  redirect($encodedData);
+
         echo "string";
         // return redirect($url);
     }

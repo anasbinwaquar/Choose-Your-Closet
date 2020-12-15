@@ -28,11 +28,11 @@ class HomepageController extends Controller
 
     public function ShowProduct($product_id)
     {
-        $product = Product::where('id', $product_id)->first();
-        $RentalProduct= RentalProduct::where('product_id', $product_id)->first();
-        $SellerData= user_model::where('id',$product->seller_id)->first();
-        print_r($SellerData);
-        return view('Homepage.product_display')->with('product',$product)->with('RentalProduct',$RentalProduct)->with('SellerData',$SellerData);
+        $product = Product::where('id', $product_id)->get();
+        // $RentalProduct= RentalProduct::where('product_id', $product_id)->first();
+        // $SellerData= user_model::where('id',$product->seller_id)->first();
+        return view('Homepage.product_display')->with('product',$product);
+        // ->with('RentalProduct',$RentalProduct)->with('SellerData',$SellerData);
     }
 
     public function create()
