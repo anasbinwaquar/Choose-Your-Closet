@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 use File;
 use App\Models\prints;
 use Illuminate\Support\Facades\DB; 
-
+use App\Notifications\CustomOrderAdminNotification;
+use App\Notifications\CustomOrderCustomerNotification;
 use App\Models\custom_order;
 use App\Models\Customer_infos;
 use Illuminate\Http\Request;
@@ -12,6 +13,8 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageServiceProvider;
 use Session;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Notifications\Notifiable; 
 class CustomizerController extends Controller
 {
    
@@ -33,6 +36,7 @@ class CustomizerController extends Controller
         // // dd($request->all());
         // $customer_email=Customer_infos::where('id',session()->get('customer_id'))->select('Email')->first();
         $customer_email=DB::select("select email from customer_infos where id=?",[session()->get('customer_id')]);
+        $AdminEmail="abdurrafay360@gmail.com";
         echo ($customer_email[0]->email);
         $custom_order=new custom_order();
         $custom_order->image_front=$request->tshirt_front;
@@ -43,7 +47,10 @@ class CustomizerController extends Controller
         $custom_order->size=$request->size;
         $custom_order->address=$request->address;
         $custom_order->contact_number=$request->contact;
+        Notification::route('mail',$AdminEmail)->notify(new CustomOrderAdminNotification($customer_email[0]->email,session()->get('customer_id')));
+        Notification::route('mail',$customer_email[0]->email)->notify(new CustomOrderCustomerNotification(session()->get('customer_id')));
         $custom_order->save();
+
         return view('Customizer.success');
     }
     public function addprint(){
