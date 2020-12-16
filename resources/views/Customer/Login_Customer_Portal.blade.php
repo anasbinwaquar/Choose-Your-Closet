@@ -36,7 +36,13 @@
           @csrf
           <span class="login100-form-title p-b-43">
             @php
+            if($customize!=0){
               echo "Login";
+            }
+            else
+            {
+              echo "Please Login to place order";
+            }
             
             @endphp
           </span>
