@@ -9,7 +9,6 @@ use Illuminate\Notifications\Notifiable;
 class CustomerInfoController extends Controller
 {
 
-
       public function CustomerSignUpView()
     {
          return view('Customer.CustomerSignUp');
@@ -86,7 +85,7 @@ class CustomerInfoController extends Controller
     {
         // session()->flush(); //Clear all session data
         session()->forget('data');
-        return view('Customer.Login_Customer_Portal');
+         return view('Customer.Login_Customer_Portal')->with('customize',1);
     }
 
 

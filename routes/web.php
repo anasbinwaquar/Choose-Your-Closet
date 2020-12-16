@@ -72,7 +72,9 @@ Route::get('/UserLogout',[App\Http\Controllers\CustomerInfoController::class,'Us
 Route::get('/ListProduct',[App\Http\Controllers\ProductController::class,'index']);
 
 Route::post('/CreateProduct',[App\Http\Controllers\ProductController::class,'store'])->name('CreateProduct');
+
 Route::post('/CreateRentProduct',[App\Http\Controllers\ProductController::class,'store_rent'])->name('CreateRentProduct');
+
 Route::get('/RentalProduct',[App\Http\Controllers\ProductController::class,'Rent_view']);
 
 Route::get('/Product_approval',[App\Http\Controllers\ProductController::class,'approval']);
@@ -120,3 +122,9 @@ Route::get('/cart/{product_id}', [App\Http\Controllers\CartController::class, 'A
 Route::get('/ContactUs', [App\Http\Controllers\ContactController::class, 'ContactPage']);
 
 Route::post('/Contacted', [App\Http\Controllers\ContactController::class, 'Contact']);
+
+//review
+
+Route::post('/SubmitReview', [App\Http\Controllers\ProductController::class, 'SubmitReview'])->name('SubmitReview');
+
+Route::post('/EditReview', [App\Http\Controllers\ProductController::class, 'EditReview'])->name('EditReview');
