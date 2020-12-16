@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\RentalProduct;
+use App\Models\reviews;
 use App\Providers\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; 
@@ -17,6 +18,23 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function SubmitReview(Request $req){
+        $review = new reviews();
+        $review->description=$req->input('description');
+        $review->rating=$req->input('rating');
+        $review->product_id=$req->input('product_id');
+        $review->customer_id=session()->get('customer_id');
+        $review->review_date=now();
+        $review->save();
+        $prod=$req->input('product_id');
+        return redirect("/product/$prod");
+    }
+    public function EditReview(Request $req){
+        $review =reviews:: where('customer_id',session()->get('customer_id'))->update(['description'=>$req->input('description'),'rating'=>$req->input('rating')]);
+        $prod=$req->input('product_id');
+
+        return redirect("/product/$prod");
+    }
     public function addtocartrent(Request $request,$id)
     {
         // session()->flush();

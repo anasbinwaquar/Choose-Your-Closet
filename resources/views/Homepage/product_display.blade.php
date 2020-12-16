@@ -14,15 +14,15 @@
 </head>
 
 <body>
-    @foreach($product as $product)
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+    {{-- <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
         <div class="container"><a class="navbar-brand logo" href="#">Brand</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto"></ul>
             </div>
         </div>
-    </nav>
+    </nav> --}}
+    @foreach($product as $product)
     <main class="page product-page">
         <section class="clean-block clean-product dark">
             <div class="container">
@@ -125,27 +125,98 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade show" role="tabpanel" id="reviews">
-                                    <div class="reviews">
-                                        <div class="review-item">
-                                            <div class="rating"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star-empty.svg"></div>
-                                            <h4>Incredible /product</h4><span class="text-muted"><a href="#">John Smith</a>, 20 Jan 2018</span>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue nunc, pretium at augue at, convallis pellentesque ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                        @if(session()->has('data') && $check!=1)
+                                        <form method="post" action="{{ route('SubmitReview')}}">
+                                            @csrf
+                                        <div style="max-width: 400px;">
                                         </div>
-                                    </div>
-                                    <div class="reviews">
-                                        <div class="review-item">
-                                            <div class="rating"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star-empty.svg"></div>
-                                            <h4>Incredible /product</h4><span class="text-muted"><a href="#">John Smith</a>, 20 Jan 2018</span>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue nunc, pretium at augue at, convallis pellentesque ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                        <div style="padding-bottom: 18px;font-size : 24px; padding-top: 18px;">Product Review</div>
+                                        <div style="padding-bottom: 18px;">Rate this product<span style="color: red;"> *</span><br/>
+                                        <select id="data_4" name="rating" style="max-width : 150px;" class="form-control"><option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        </select>
                                         </div>
-                                    </div>
-                                    <div class="reviews">
-                                        <div class="review-item">
-                                            <div class="rating"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star-empty.svg"></div>
-                                            <h4>Incredible /product</h4><span class="text-muted"><a href="#">John Smith</a>, 20 Jan 2018</span>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue nunc, pretium at augue at, convallis pellentesque ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                        <div style="padding-bottom: 18px;">Review<span style="color: red;"> *</span><br/>
+                                        <textarea id="data_8" false name="description" style="max-width : 450px;" rows="9" class="form-control"></textarea>
                                         </div>
-                                    </div>
+                                        <div style="padding-bottom: 18px;">
+                                        <button id="Submit" name="Submit" type="submit" class="btn btn-primary" required>SUBMIT</button></div>
+                                        <div class="form-group">
+                                        <div>
+                                        <script  type="text/javascript"></script>
+                                        </div>
+                                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                                        </form>
+
+                                        <script type="text/javascript">
+                                        function validateForm() {
+                                        if (isEmpty(document.getElementById('data_8').value.trim())) {
+                                        alert('Review is required!');
+                                        return false;
+                                        }
+                                        return true;
+                                        }
+                                        function isEmpty(str) { return (str.length === 0 || !str.trim()); }
+                                        function validateEmail(email) {
+                                        var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,15}(?:\.[a-z]{2})?)$/i;
+                                        return isEmpty(email) || re.test(email);
+                                        }
+                                        </script>
+                                        @endif
+                                        @foreach($reviews as $review)
+                                            @if(session()->has('customer_id'))
+                                                @if($check==1 && $review->customer_id==session()->get('customer_id'))
+                                                    <form method="post" action="{{ route('EditReview')}}">
+                                                        @csrf
+                                                    <div class="reviews">
+                                                        <div class="review-item">
+                                                            <div class="rating"> Rating: {{$review->rating}}</div>
+
+                                                            <h5>Your Review:</h4><span class="text-muted"></a>{{$review->First_Name}} {{$review->Last_Name}}, Dated: {{$review->review_date}}</span>
+                                                            <p>{{$review->description}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                       <label >Edit Description: </label> <input type="text" name="description" value="{{$review->description}}">
+
+                                            <div >Update Rating:<span style="color: red;"> *  </span><select id="data_4" name="rating" style="max-width : 150px;">
+                                                        @php
+                                                            for ($i=01; $i <=5 ; $i++) { 
+                                                                if($i==$review->rating)
+                                                                    echo "<option selected='selected'>$i</option>";
+                                                                else
+                                                                    echo "<option>$i</option>";
+                                                            }
+                                                        @endphp
+                                                        </select>
+                                                       
+                                                        </div>
+                                                        <br>
+                                            <button id="Submit" name="Submit" type="submit" class="btn btn-primary" required>Edit</button></div>
+                                                    </div> 
+                                                    <input type="hidden" name="product_id" value="{{$product->id}}">
+
+                                                    </form>
+                                                @endif
+                                            @endif
+                                        <br><br>
+                                        @endforeach
+
+
+                                        @foreach($reviews as $review)
+                                            @if(session()->has('customer_id') && $review->customer_id!=session()->get('customer_id'))
+                                                <div class="reviews">
+                                                    <div class="review-item">
+                                                        <div class="rating"> Rating: {{$review->rating}}</div>
+                                                        <h5>By:</h4><span class="text-muted"></a>{{$review->First_Name}} {{$review->Last_Name}}, Dated: {{$review->review_date}}</span>
+                                                        <p>{{$review->description}}</p>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
                                 </div>
                             </div>
                         </div>

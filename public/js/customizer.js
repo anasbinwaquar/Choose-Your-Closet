@@ -56,6 +56,7 @@ canvas.on('mouse:down', function(e) {
                 document.getElementById("tshirt-back").value = imageback;
                 document.getElementById("tshirt-front").value = imagefront;
                 console.log(imageback);
+                htmltocanvas()
             }, false);
             $("#tshirt-design").change(async function () {
                  let x1,x2;
@@ -65,6 +66,7 @@ canvas.on('mouse:down', function(e) {
                  design_info_front.push([x1,x2]);
                  // alert(design_info_front[1]);
                  // console.log(design_info_front);
+                 htmltocanvas();
             });
 
             $("#tshirt-design-back").change(function () {
@@ -74,6 +76,7 @@ canvas.on('mouse:down', function(e) {
                  x2=($(this).find(':selected').data('name'));
                  design_info_back.push([x1,x2]);
                  // console.log(design_info_back);
+                 htmltocanvas();
             });
             // Update the TShirt color according to the selected color by the user
             document.getElementById("tshirt-design").addEventListener("change", function(){
@@ -99,6 +102,7 @@ canvas.on('mouse:down', function(e) {
                 // console.log("Design Count: "+ design_count + " Price: " + total_price+ "Design Price: "+ Number(document.getElementById('design_front_price').value));
                 document.getElementById('price').innerHTML = total_price;
                 document.getElementById('design_count').innerHTML = design_count;
+                htmltocanvas();
 
             }, false);
             $("#Delete").click(function(e){
@@ -175,7 +179,7 @@ $(document).ready(function(){
             // console.log($('meta[name="csrf-token"]').attr('content'));
             
 
-        htmltocanvas();
+        htmltocanvas();htmltocanvas();
         document.getElementById("tshirt-back").value = imageback;
         document.getElementById("tshirt-front").value = imagefront;
         // console.log(imagefront);
