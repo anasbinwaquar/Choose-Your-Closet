@@ -67,6 +67,7 @@ Route::get('/UserProfile',[App\Http\Controllers\CustomerInfoController::class,'P
 
 Route::get('/UserLogout',[App\Http\Controllers\CustomerInfoController::class,'UserLogout']);
 
+
 // Product
 
 Route::get('/ListProduct',[App\Http\Controllers\ProductController::class,'index']);
@@ -114,6 +115,8 @@ Route::get('/delete_print/{id}',[App\Http\Controllers\CustomizerController::clas
 //cart
 
 Route::get('/cart/{product_id}', [App\Http\Controllers\CartController::class, 'AddToCart'])->name('CartData');
+
+Route::get('/CustomerCart', [App\Http\Controllers\CartController::class, 'ViewCart']);
 
 //contact
 

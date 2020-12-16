@@ -16,8 +16,16 @@ class HomepageController extends Controller
      */
     public function index()
     {
+        if(session()->has('data'))
+        {
+                $check = 1;
+        }
+        else
+        {
+           $check = 0;
+        }   
         $data = Product::where('approved', 1)->get();
-        return view('Homepage.homepage')->with('data',$data);
+        return view('Homepage.homepage')->with('data',$data)->with('check', $check);
     }
 
     /**

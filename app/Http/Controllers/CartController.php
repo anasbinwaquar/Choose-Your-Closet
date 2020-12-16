@@ -28,4 +28,9 @@ class CartController extends Controller
         //     }
         // }
     }
+
+    public function ViewCart()
+    {
+        return view('Pages.cart');
+    }
 }
