@@ -28,7 +28,6 @@ class CreateProductsTable extends Migration
             $table->string('gender_type');
             $table->string('category');
             $table->boolean('approved')->default(0);
-            $table->boolean('rental');
             $table->timestamps();
 
 

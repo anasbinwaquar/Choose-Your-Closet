@@ -35,10 +35,16 @@ class ProductController extends Controller
     }
     public function index()
     {
-
         //$data = session()->get('logged_in');
         if(session()->has('data'))
          return view('Product.create');
+        else
+        return redirect()->route('SellerLogin'); 
+    }
+    public function Rent_view(){
+
+        if(session()->has('data'))
+         return view('Product.Add_Rent_Products');
         else
         return redirect()->route('SellerLogin'); 
     }
@@ -51,11 +57,21 @@ class ProductController extends Controller
     public function approval()
     {
         $product = Product::where('approved', 0)->get();
-        return view('Product.approval')->with('product',$product);
+        $rent_product = RentalProduct::where('approved', 0)->get();
+        return view('Product.approval')->with('product',$product)->with('rent_product',$rent_product);
     }
     public function setapproval($product_id)
       { 
         $product = Product::where('id', $product_id)->first();
+        $product->approved=1;
+        $product->save();
+        return redirect('Product_approval');
+      }
+      
+
+    public function setRentapproval($product_id)
+      { 
+        $product = RentalProduct::where('id', $product_id)->first();
         $product->approved=1;
         $product->save();
         return redirect('Product_approval');
@@ -65,7 +81,11 @@ class ProductController extends Controller
         $product=Product::where('id',$product_id)->delete();
         return redirect('Product_approval');
       }
-
+      public function declineRentapproval($product_id)
+      {
+        $product=RentalProduct::where('id',$product_id)->delete();
+        return redirect('Product_approval');
+      }
     /**
      * Store a newly created resource in storage.
      *
@@ -77,39 +97,6 @@ class ProductController extends Controller
         $seller_id=session('seller_id');
        
         $Prod = new Product();
-        // Not working idk why
-        // $request->validate([
-        //     'product_name' => 'required',
-        // 'price_per_unit' => 'required',
-        // 'quantitiy' => 'required',
-        // 'description' => 'required',
-        // // 'product_image' =>'required|image|mimes:jpeg,png,jpg,gif,svg',
-        // 'sizes' => 'required',
-        // 'clothing_type' => 'required',
-        // 'gender_type' => 'required',
-        // 'category' => 'required',
-        // 'rental' => 'required',
-        // ]);
-
-        // $file=$request->file('product_image');
-        // $extension=$file->getClientOriginalExtension();
-        // $filename=time().'.'.$extension;
-        // $file->move('uploads/sell/',$filename);
-        // $Prod->product_image = $filename;
-
-        //Image resizing
-        // $image = $request->file('product_image');
-        // $input['imagename'] = time().'.'.$image->extension();
-     
-        // $destinationPath = public_path('/uploads/sell');
-        // $img = Image::make($image->path());
-        // $img->resize(300, 300, function ($constraint) {
-        //     $constraint->aspectRatio();
-        // })->save($destinationPath.'/'.$input['imagename']);
-   
-        // $destinationPath = public_path('/images');
-        // $image->move($destinationPath, $input['imagename']);
-        // $Prod->product_image=$input['imagename'];
         $file=$request->file('product_image');
         $extension=$file->getClientOriginalExtension();
         $filename=time().'.'.$extension;
@@ -126,23 +113,32 @@ class ProductController extends Controller
         $Prod->gender_type = $request->input('gender_type');
         $Prod->category = $request->input('category');
         $Prod->seller_id=$seller_id;
-        $Prod->rental =$request->input('rental');
         $Prod->save();
-        if($request->input('rental')==1){
-            $RentalProd= new RentalProduct();
-            $RentalProd->product_id= $Prod->id;
-            $RentalProd->charges = $request->input('charges');
-            $RentalProd->quantity_small = $request->input('rquantity_small');
-            $RentalProd->quantity_medium = $request->input('rquantity_medium');
-            $RentalProd->quantity_large = $request->input('rquantity_large');
-            $RentalProd->quantity_extra_large = $request->input('rquantity_extra_large');
-            $RentalProd->save();
-        }
-
-
         return view('Product.success');
         }
-    
+        
+        public function store_rent(Request $request)
+        {
+            $seller_id=session('seller_id');
+           
+            $Prod = new RentalProduct();
+            $file=$request->file('product_image');
+            $extension=$file->getClientOriginalExtension();
+            $filename=time().'.'.$extension;
+            $file->move('uploads/sell/',$filename);
+            $Prod->product_image = $filename;
+            $Prod->product_name = $request->input('product_name');
+            $Prod->description = $request->input('description');
+            $Prod->clothing_type = $request->input('clothing_type');
+            $Prod->gender_type = $request->input('gender_type');
+            $Prod->category = $request->input('category');
+            $Prod->charges = $request->input('charges');
+            $Prod->seller_id=$seller_id;
+            $Prod->size=$request->input('size');
+            $Prod->available =1;
+            $Prod->save();
+            return view('Product.success');
+            }
 
     /**
      * Display the specified resource.

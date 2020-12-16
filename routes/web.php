@@ -72,14 +72,18 @@ Route::get('/UserLogout',[App\Http\Controllers\CustomerInfoController::class,'Us
 Route::get('/ListProduct',[App\Http\Controllers\ProductController::class,'index']);
 
 Route::post('/CreateProduct',[App\Http\Controllers\ProductController::class,'store'])->name('CreateProduct');
+Route::post('/CreateRentProduct',[App\Http\Controllers\ProductController::class,'store_rent'])->name('CreateRentProduct');
+Route::get('/RentalProduct',[App\Http\Controllers\ProductController::class,'Rent_view']);
 
 Route::get('/Product_approval',[App\Http\Controllers\ProductController::class,'approval']);
 
 Route::get('/product_list',[App\Http\Controllers\ProductController::class,'show']);
 
 Route::get('/set_product_approval/{product_id}', [App\Http\Controllers\ProductController::class, 'setapproval'])->name("set_product_approval");
-
 Route::get('/decline_product_approval/{product_id}', [App\Http\Controllers\ProductController::class, 'declineapproval'])->name("decline_product_approval");
+
+Route::get('set_rentproduct_approval/{product_id}', [App\Http\Controllers\ProductController::class, 'setRentapproval'])->name('set_rentproduct_approval');
+Route::get('/decline_rentproduct_approval/{product_id}', [App\Http\Controllers\ProductController::class, 'declineRentapproval'])->name('decline_rentproduct_approval');
 
 // Homepage
 
@@ -102,6 +106,9 @@ Route::get('/addprints',[App\Http\Controllers\CustomizerController::class, 'addp
 Route::post('/addprints',[App\Http\Controllers\CustomizerController::class, 'store_print'])->name('store_print');
 
 Route::get('/deleteprint',[App\Http\Controllers\CustomizerController::class, 'delete_print_view']);
+
+Route::get('/delete_print/{id}',[App\Http\Controllers\CustomizerController::class, 'delete_print']);
+
 Route::get('/delete_print/{id}',[App\Http\Controllers\CustomizerController::class, 'delete_print']);
 
 //cart

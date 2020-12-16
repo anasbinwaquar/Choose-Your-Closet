@@ -24,7 +24,6 @@ class Product extends Model
     	'gender_type',
     	'category',
     	'approved',
-    	'rental',
     ];
 
 }

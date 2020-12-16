@@ -3,17 +3,26 @@
 namespace App\Http\Controllers;
 use File;
 use App\Models\prints;
+use Illuminate\Support\Facades\DB; 
+
 use App\Models\custom_order;
+use App\Models\Customer_infos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageServiceProvider;
-
+use Session;
+use Illuminate\Support\Facades\Mail;
 class CustomizerController extends Controller
 {
    
    public function index()
     {
         // echo "string";
+        if(!session()->has('customer_id')){
+            session()->put('customize',0);
+            return redirect('CustomerLogin');
+        }
+        // dd(session()->all());
     	$images = prints::all();
         $shirts = File::allFiles(public_path('t-shirts'));
     	// return "<img src='".$designs."'/>";
@@ -21,16 +30,21 @@ class CustomizerController extends Controller
     }
     public function store(Request $request)
     {
-        // dd($request->all());
+        // // dd($request->all());
+        // $customer_email=Customer_infos::where('id',session()->get('customer_id'))->select('Email')->first();
+        $customer_email=DB::select("select email from customer_infos where id=?",[session()->get('customer_id')]);
+        echo ($customer_email[0]->email);
         $custom_order=new custom_order();
         $custom_order->image_front=$request->tshirt_front;
         $custom_order->image_back=$request->tshirt_back;
         $custom_order->color=$request->tshirt_color;
-        $custom_order->customer_id=1;
+        $custom_order->customer_id=session()->get('customer_id');
         $custom_order->price=$request->total_price;
         $custom_order->size=$request->size;
+        $custom_order->address=$request->address;
+        $custom_order->contact_number=$request->contact;
         $custom_order->save();
-
+        return view('Customizer.success');
     }
     public function addprint(){
         $prints= new prints();

@@ -58,12 +58,13 @@
                             <table class="table my-0" id="dataTable">
                                 <thead>
                                     <tr>
-                                        <th>Customer Id</th>
+                                        <th>Order Id</th>
                                         <th>Front View</th>
                                         <th>Back View</th>
                                         <th>Price</th>
                                         <th>Size</th>
-                                        <th>Color</th>
+                                        <th>Address</th>
+                                        <th>Contact Number</th>
                                     </tr>
                                 </thead>
                                   <tbody>
@@ -73,10 +74,7 @@
                                         $str= urlencode($order->image_front);
                                         // echo ($str); 
                                         @endphp
-                                        <th>{{$order->customer_id}}</th>
-
-                                        <a href="http://foo.bar/" onclick="window.open('https://www.foo.bar/culrsteam')">Foo</a>
-                                        <th><a href="{{$order->image_front}}" onclick="window.open('{{$order->image_front}}')">Front View</a></th>
+                                        <th>{{$order->id}}</th>
 
                                         <th><img src="{{$order->image_front}}" style="width: 300px; height: 300px" > </th>
                                         <th><img src="{{$order->image_back}}" style="width: 300px; height: 300px"></a></th>
@@ -85,7 +83,8 @@
                                         <th><a href="{{$order->image_back}}">Back View</a></th> --}}
                                         <td>{{$order->price}}</td> 
                                         <th>{{$order->size}}</th>
-                                        <th>{{$order->color}}</th>
+                                        <th>{{$order->address}}</th>
+                                        <th>{{$order->contact_number}}</th>
                                         {{-- <th><a href="setapproval/{{$authentication->id}}"><button class="btn btn-success">Approve</button></a></th> --}}
                                         {{-- <th><a href="declineapproval/{{$authentication->id}}"><button class="btn btn-danger">Decline</button></a></th> --}}
                                       </tr>

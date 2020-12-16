@@ -21,6 +21,8 @@ class CreateCustomOrdersTable extends Migration
             $table->integer('price');
             $table->string('size');
             $table->string('color');
+            $table->string('address');
+            $table->string('contact_number');
             $table->timestamps();
 
             $table->foreign('customer_id')->references('id')->on('customer_infos');

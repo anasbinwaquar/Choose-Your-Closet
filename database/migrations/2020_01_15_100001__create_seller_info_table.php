@@ -19,8 +19,8 @@ class CreateSellerInfoTable extends Migration
             $table->string("Last_Name");
             $table->string("Email");
             $table->string("Phone_Number");
-            $table->string("Website_Name");
-            $table->string("Brand_Name");
+            $table->string("Website_Name")->nullable();
+            $table->string("Brand_Name")->nullable();
             $table->string("Username")->unique();
             $table->string("Password");
             $table->boolean("Approval")->default(0);
