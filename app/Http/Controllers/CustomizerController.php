@@ -15,10 +15,6 @@ class CustomizerController extends Controller
    public function index()
     {
         // echo "string";
-        if(!session()->has('customer_id')){
-            session()->put('customize',0);
-            return redirect('CustomerLogin');
-        }
         // dd(session()->all());
     	$images = prints::all();
         $shirts = File::allFiles(public_path('t-shirts'));

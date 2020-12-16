@@ -18,10 +18,7 @@ class CustomerInfoController extends Controller
 
     public function CustomerLoginView()
     {
-        if(session()->has('customize'))
-         return view('Customer.Login_Customer_Portal')->with('customize',0);
-        else
-         return view('Customer.Login_Customer_Portal')->with('customize',1);
+         return view('Customer.Login_Customer_Portal');
     }
 
 
@@ -55,10 +52,6 @@ class CustomerInfoController extends Controller
             $customer_id = $get_id[0]->id;
             $req->session()->put('data',$req->input());
             $req->session()->put('customer_id', $customer_id);
-            if(session()->has('customize')){
-                session()->forget('customize');
-                return redirect('customize');
-            }
             if($req->session()->has('data'))
             {
                 return redirect('UserProfile');
