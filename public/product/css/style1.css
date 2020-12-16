@@ -1,3 +1,4 @@
+
 .input-number{
   
     width: 50px !important;
@@ -33,7 +34,7 @@
     right: 0;
     width: 2px;
     height: 10px;
-    background-color:#007bff!important;
+    background-color: #007bff!important;
     z-index:10;
 }
 .btn-number{
@@ -46,4 +47,8 @@
     width: 40px;
     height: 40px;
     
+}
+.sign{
+    font-weight: bold;
+
 }

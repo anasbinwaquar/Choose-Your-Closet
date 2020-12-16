@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/product/fonts/simple-line-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
     <link rel="stylesheet" href="/product/css/smoothproducts.css">
+    <link rel="stylesheet" type="text/css" href="/product/css/style1.css">
 </head>
 
 <body>
@@ -43,7 +44,25 @@
                                     <div class="rating"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star-half-empty.svg"><img src="/product/img/star-empty.svg"></div>
                                     <div class="price">
                                         <h3>{{$product->price_per_unit}}</h3>
-                                    </div><button class="btn btn-primary" type="button"><i class="icon-basket"></i>Add to Cart</button>
+                                    </div>
+                                    <button class="btn btn-primary" type="button"><i class="icon-basket"></i>Add to Cart</button>
+                                    <div style="width:250px;">
+                                    <div class="input-group">
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default btn-number" data-type="minus" data-field="quant[1]" onclick="decreaseValue()">
+                                          <span class="sign">-</span>
+                                        </button>
+                                      </span>
+                                      <span class="input-container">
+                                      <input id="number" type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10">
+                                      </span>
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]"  onclick="increaseValue()">
+                                          <span class="sign">+</span>
+                                        </button>
+                                      </span>
+                                      </div>
+                                    </div>
                                     <div class="summary">
                                         <p>{{$product->description}}</p>
                                     </div>
@@ -215,6 +234,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="/product/js/smoothproducts.min.js"></script>
     <script src="/product/js/theme.js"></script>
+    <script type="text/javascript" src="/product/js/script.js"></script>
     @endforeach
 </body>
 
