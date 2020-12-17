@@ -195,7 +195,6 @@
 
 
                                         @foreach($reviews as $review)
-                                            @if(session()->has('customer_id') && $review->customer_id!=session()->get('customer_id'))
                                                 <div class="reviews">
                                                     <div class="review-item">
                                                         <div class="rating"> Rating: {{$review->rating}}</div>
@@ -203,7 +202,6 @@
                                                         <p>{{$review->description}}</p>
                                                     </div>
                                                 </div>
-                                            @endif
                                         @endforeach
                                 </div>
                             </div>

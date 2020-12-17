@@ -32,18 +32,18 @@ class CartController extends Controller
     }
      public function AddToCartNew($product_id)
     {
-        // session()->flush();
-        $product = Product::find($product_id);
-        $oldCart = null;
-        if(session()->has('cart'))
-        {
-            $oldCart = session()->get('cart');
-            print_r('rafayyy');
-        }
-        $_cart = new cart($oldCart);
-        $_cart->add($product, $product->id);
-        session()->put('cart',$_cart);
-        dd(session()->all());
+        session()->flush();
+        // $product = Product::find($product_id);
+        // $oldCart = null;
+        // if(session()->has('cart'))
+        // {
+        //     $oldCart = session()->get('cart');
+        //     print_r('rafayyy');
+        // }
+        // $_cart = new cart($oldCart);
+        // $_cart->add($product, $product->id);
+        // session()->put('cart',$_cart);
+        // dd(session()->all());
         // return redirect('/');
     }
     public function ViewCart()
