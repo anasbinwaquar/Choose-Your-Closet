@@ -41,13 +41,13 @@ class HomepageController extends Controller
         $check=0;
         $product = Product::where('id', $product_id)->get();
         if(session()->has('customer_id')){
-            $check= reviews::where('customer_id',session()->get('customer_id'))->first();
+            $check= reviews::where('customer_id',session()->get('customer_id'))->where('product_id',$product_id)->first();
             if(is_null($check))
                 $check=0;
             else
                 $check=1;
         }        
-        $reviews= DB::table('reviews')->join('customer_infos', 'reviews.customer_id', '=', 'customer_infos.id')->get();
+        $reviews= DB::table('reviews')->where('product_id',$product_id)->join('customer_infos', 'reviews.customer_id', '=', 'customer_infos.id')->get();
         if($product->isEmpty())
             return view('Homepage.product_display')->with('product',$product)->with('check',$check);
         // $RentalProduct= RentalProduct::where('product_id', $product_id)->first();

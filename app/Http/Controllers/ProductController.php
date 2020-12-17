@@ -19,6 +19,10 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function SubmitReview(Request $req){
+        $req->validate([
+            'description' => 'required|unique:posts|max:255',
+            'rating' => 'required',
+        ]);
         $review = new reviews();
         $review->description=$req->input('description');
         $review->rating=$req->input('rating');
@@ -30,6 +34,10 @@ class ProductController extends Controller
         return redirect("/product/$prod");
     }
     public function EditReview(Request $req){
+        $req->validate([
+            'description' => 'required|unique:posts|max:255',
+            'rating' => 'required',
+        ]);
         $review =reviews:: where('customer_id',session()->get('customer_id'))->update(['description'=>$req->input('description'),'rating'=>$req->input('rating')]);
         $prod=$req->input('product_id');
 
@@ -113,7 +121,19 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $seller_id=session('seller_id');
-       
+       $request->validate([
+          'product_image' => 'required|dimensions:max_width=300,max_height=300',
+          'product_name' => 'required',
+          'price_per_unit' => 'required|integer',
+          'description'=> 'required',
+          'quantity_small'=> 'integer',
+          'quantity_medium' => 'integer',
+          'quantity_large' => 'integer',
+          'quantity_extra_large' => 'integer',
+          'gender_type' => 'required',
+          'clothing_type'=> 'required',
+          'category' => 'required',
+        ]);
         $Prod = new Product();
         $file=$request->file('product_image');
         $extension=$file->getClientOriginalExtension();
@@ -138,7 +158,17 @@ class ProductController extends Controller
         public function store_rent(Request $request)
         {
             $seller_id=session('seller_id');
-           
+           $request->validate([
+          'product_image' => 'required|dimensions:max_width=300,max_height=300',
+          'product_name' => 'required',
+          'charges' => 'required|integer',
+          'description'=> 'required',
+          'size'=> 'required',
+          'gender_type' => 'required',
+          'clothing_type'=> 'required',
+          'category' => 'required',
+        ]);
+
             $Prod = new RentalProduct();
             $file=$request->file('product_image');
             $extension=$file->getClientOriginalExtension();

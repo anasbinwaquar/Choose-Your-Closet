@@ -113,7 +113,17 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade show" role="tabpanel" id="reviews">
-                                        @if(session()->has('data') && $check!=1)
+                                    
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+                                        @if(session()->has('data') AND $check==0)
                                         <form method="post" action="{{ route('SubmitReview')}}">
                                             @csrf
                                         <div style="max-width: 400px;">
@@ -127,7 +137,7 @@
                                         <option>5</option>
                                         </select>
                                         </div>
-                                        <div style="padding-bottom: 18px;">Review<span style="color: red;"> *</span><br/>
+                                        <div style="padding-bottom: 18px;">Description<span style="color: red;"> *</span><br/>
                                         <textarea id="data_8" false name="description" style="max-width : 450px;" rows="9" class="form-control"></textarea>
                                         </div>
                                         <div style="padding-bottom: 18px;">
@@ -154,6 +164,7 @@
                                         }
                                         </script>
                                         @endif
+
                                         @foreach($reviews as $review)
                                             @if(session()->has('customer_id'))
                                                 @if($check==1 && $review->customer_id==session()->get('customer_id'))

@@ -56,6 +56,15 @@
             </div>
             </nav>
             <div class="container-fluid">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form action="{{ route('store_print')}}" method="post" enctype="multipart/form-data">
                     @csrf
                   <div class="form-group">

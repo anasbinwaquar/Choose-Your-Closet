@@ -56,7 +56,15 @@
   @csrf
 <fieldset>
 
-
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="product_name">PRODUCT NAME</label>  
@@ -89,7 +97,6 @@
   <label class="col-md-4 control-label" for="clothing_type">CLOTHING TYPE</label>
   <div class="col-md-4">
     <select id="clothing_type" name="clothing_type" class="form-control" id="clothing_type" required>
-    <option selected>CHOOSE...</option>
     <option value="Pant">Pant</option>
     <option value="T-Shirt">T-Shirt</option>
     <option value="Kurta">Kurta</option>
@@ -115,7 +122,6 @@
   <label class="col-md-4 control-label" for="category">PRODUCT CATEGORY</label>
   <div class="col-md-4">
     <select id="category" name="category" class="form-control" required>
-    <option selected>CHOOSE...</option>
     <option value="Formal">Formal</option>
     <option value="Informal">Informal</option>
     </select>
@@ -126,7 +132,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="charges">DAILY CHARGES</label>  
   <div class="col-md-4">
-  <input id="charges" name="charges" placeholder="DAILY CHARGES" class="form-control input-md" type="text">
+  <input id="charges" name="charges" placeholder="DAILY CHARGES" required class="form-control input-md" type="text">
     
   </div>
 </div>
@@ -134,7 +140,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="filebutton">PRODUCT IMAGES</label>
   <div class="col-md-4">
-    <input id="product_image" name="product_image" class="input-file" type="file"  multiple required>
+    <input id="product_image" name="product_image" class="input-file" type="file" accept="image/*" multiple required>
   </div>
 </div>
 

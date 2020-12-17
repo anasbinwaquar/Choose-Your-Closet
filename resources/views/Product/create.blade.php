@@ -55,7 +55,15 @@
             <form class="form-horizontal justify-content-center" name="ProductForm" id="ProductForm" action="{{ route('CreateProduct')}}" method="post" enctype="multipart/form-data" autocomplete="off">
   @csrf
 <fieldset>
-
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
 <!-- Text input-->
 <div class="form-group">
@@ -166,7 +174,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="filebutton">PRODUCT IMAGES</label>
   <div class="col-md-4">
-    <input id="product_image" name="product_image" class="input-file" type="file"  multiple required>
+    <input id="product_image" name="product_image" class="input-file" type="file" accept="image/*" multiple required>
   </div>
 </div>
 

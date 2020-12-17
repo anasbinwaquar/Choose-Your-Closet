@@ -34,6 +34,12 @@ class CustomizerController extends Controller
     public function store(Request $request)
     {
         // // dd($request->all());
+
+       $request->validate([
+          'contact' => 'required|regex:/(01)[0-9]{10}/',
+          'address' => 'required',
+        ]);
+
         // $customer_email=Customer_infos::where('id',session()->get('customer_id'))->select('Email')->first();
         $customer_email=DB::select("select email from customer_infos where id=?",[session()->get('customer_id')]);
         $AdminEmail="abdurrafay360@gmail.com";
@@ -60,6 +66,12 @@ class CustomizerController extends Controller
     }
     public function store_print(Request $request){
         // dd($request->all());
+        $request->validate([
+          'price' => 'required|integer',
+          'print_name' => 'required',
+          'print_image' => 'required',
+        ]);
+
         $print = new prints();
         $file=$request->file('print_image');
         $extension=$file->getClientOriginalExtension();
@@ -69,9 +81,7 @@ class CustomizerController extends Controller
         $print->price=$request->price;
         $print->image=$filename;
         $print->save();
-        $prints= new prints();
-        $prints=prints::all();
-        return view("Customizer.add_prints")->with('prints',$prints);
+        return view("Customizer.add_prints");
     }
     public function delete_print_view(){
 
