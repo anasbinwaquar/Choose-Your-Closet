@@ -32,6 +32,7 @@ class CartController extends Controller
     }
      public function AddToCartNew($product_id)
     {
+        // session()->flush();
         $product = Product::find($product_id);
         $oldCart = null;
         if(session()->has('cart'))
@@ -43,7 +44,8 @@ class CartController extends Controller
         $_cart->add($product, $product->id);
         session()->put('cart',$_cart);
         dd(session()->all());
-
+        return redirect('/');
+    }
     public function ViewCart()
     {
         return view('Pages.cart');
