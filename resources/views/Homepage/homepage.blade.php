@@ -44,7 +44,13 @@
         <a class="nav-link navlink" href="/customize" style="color: #24C6DC;">Customizer</a>
       </li>
       <li class="nav-item">
+        <div class="dropdown">
         <a class="nav-link navlink" href="#" style="color: #24C6DC;">Products</a>
+         <div class="dropdown-content">
+        <a href="#" class="link">Purchase</a>
+        <a href="#" class="link">Rent</a>
+        </div>
+        </div>
       </li>
       <li class="nav-item">
         <div class="dropdown">
