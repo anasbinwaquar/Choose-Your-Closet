@@ -45,6 +45,9 @@
             }
             
             @endphp
+            @if($errors->any())
+            <h4>{{$errors->first()}}</h4>
+            @endif
           </span>
           
           <div class="wrap-input100 validate-input" data-validate = "Valid Username is required">

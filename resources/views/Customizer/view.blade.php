@@ -133,7 +133,18 @@
     </form>
 </nav>
         <form class="px-4 py-3 btn-submit" id="CustomizedShirt" method="post" action="/customizer">
-             {{csrf_field()}}
+         {{csrf_field()}}
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        @if($error=='The contact format is invalid.')
+                        <li>{{ "Please enter a valid contact number" }}</li>
+                        @endif
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div id="Left-Pane">
                 <h2>Front</h2>
             <!-- Create the container of the tool -->

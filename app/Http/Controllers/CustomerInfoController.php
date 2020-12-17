@@ -14,7 +14,6 @@ class CustomerInfoController extends Controller
          return view('Customer.CustomerSignUp');
     }
 
-
     public function CustomerLoginView()
     {
          if(session()->has('customize'))
@@ -63,12 +62,12 @@ class CustomerInfoController extends Controller
             if($req->session()->has('data'))
             {
                 return redirect('/');
-            }
-            else
-            {
-                return redirect('/');
-            }    
+            } 
         }
+        else
+        {
+            return redirect()->back()->withErrors(['Wrong Login Credentials']);
+        }   
 
         // $user_model = new user_model;
         //  $user_model->username=$req->user;
