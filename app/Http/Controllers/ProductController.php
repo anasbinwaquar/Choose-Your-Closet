@@ -20,7 +20,7 @@ class ProductController extends Controller
      */
     public function SubmitReview(Request $req){
         $req->validate([
-            'description' => 'required|unique:posts|max:255',
+            'description' => 'required|max:255',
             'rating' => 'required',
         ]);
         $review = new reviews();

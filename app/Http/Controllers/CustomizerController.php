@@ -36,7 +36,7 @@ class CustomizerController extends Controller
         // // dd($request->all());
 
        $request->validate([
-          'contact' => 'required|regex:/(01)[0-9]{10}/',
+          'contact' => 'required|regex:/(0)[0-9]{10}/',
           'address' => 'required',
         ]);
 

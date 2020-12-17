@@ -156,7 +156,7 @@
             <img id="tshirt-foregroundpicture"  />
             <div id="drawingArea" class="drawing-area">                 
                 <div class="canvas-container">
-                    <input type="hidden" id="tshirt-front" name="tshirt_front">
+                    <input type="hidden" id="tshirt-front" name="tshirt_front" value="{{old('tshirt_front')}}">
                     <canvas id="tshirt-canvas" width="200" height="400"></canvas>
                 </div>
             </div>
