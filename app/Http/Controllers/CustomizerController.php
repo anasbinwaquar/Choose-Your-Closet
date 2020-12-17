@@ -21,7 +21,7 @@ class CustomizerController extends Controller
    public function index()
     {
         // echo "string";
-        if(!session()->has('customer_id')){
+        if(!session()->has('data')){
             session()->put('customize',0);
             return redirect('CustomerLogin');
         }

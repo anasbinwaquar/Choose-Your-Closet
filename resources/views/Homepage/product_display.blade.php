@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>product - Brand</title>
     <link rel="stylesheet" href="/product/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="/product/fonts/simple-line-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
@@ -45,22 +46,13 @@
                                     <div class="price">
                                         <h3>{{$product->price_per_unit}}</h3>
                                     </div>
-                                    <button class="btn btn-primary" type="button"><i class="icon-basket"></i>Add to Cart</button>
+                                    <a href="{{route('CartData',['product_id'=>$product->id])}}"><button class="btn btn-primary" type="button"><i class="icon-basket"></i>Add to Cart</button></a>
                                     <div style="width:250px;">
                                     <div class="input-group">
-                                      <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default btn-number" data-type="minus" data-field="quant[1]" onclick="decreaseValue()">
-                                          <span class="sign">-</span>
-                                        </button>
-                                      </span>
+                                     <button class="button_quantity"><i class="fas fa-minus" onclick="decreaseValue()"></i></button>
                                       <span class="input-container">
-                                      <input id="number" type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10">
-                                      </span>
-                                      <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]"  onclick="increaseValue()">
-                                          <span class="sign">+</span>
-                                        </button>
-                                      </span>
+                                      <input id="number" type="text" name="quant" class="form-control input-number" value="1" min="1" max="10">
+                                      </span><button class="button_quantity"><i class="fas fa-plus" onclick="increaseValue()"></i></button>
                                       </div>
                                     </div>
                                     <div class="summary">
@@ -105,20 +97,16 @@
                                         <table class="table table-bordered">
                                             <tbody>
                                                 <tr>
-                                                    <td class="stat">Display</td>
-                                                    <td>5.2"</td>
+                                                    <td class="stat">Cloth Type</td>
+                                                    <td>{{$product->clothing_type}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="stat">Camera</td>
-                                                    <td>12MP</td>
+                                                    <td class="stat">Category</td>
+                                                    <td>{{$product->category}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="stat">RAM</td>
-                                                    <td>4GB</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="stat">OS</td>
-                                                    <td>iOS</td>
+                                                    <td class="stat">Gender</td>
+                                                    <td>{{$product->gender_type}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -207,7 +195,6 @@
 
 
                                         @foreach($reviews as $review)
-                                            @if(session()->has('customer_id') && $review->customer_id!=session()->get('customer_id'))
                                                 <div class="reviews">
                                                     <div class="review-item">
                                                         <div class="rating"> Rating: {{$review->rating}}</div>
@@ -215,7 +202,6 @@
                                                         <p>{{$review->description}}</p>
                                                     </div>
                                                 </div>
-                                            @endif
                                         @endforeach
                                 </div>
                             </div>
