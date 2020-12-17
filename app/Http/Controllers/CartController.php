@@ -44,7 +44,7 @@ class CartController extends Controller
         $_cart->add($product, $product->id);
         session()->put('cart',$_cart);
         dd(session()->all());
-        return redirect('/');
+        // return redirect('/');
     }
     public function ViewCart()
     {
