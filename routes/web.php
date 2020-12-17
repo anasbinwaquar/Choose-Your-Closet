@@ -67,12 +67,15 @@ Route::get('/UserProfile',[App\Http\Controllers\CustomerInfoController::class,'P
 
 Route::get('/UserLogout',[App\Http\Controllers\CustomerInfoController::class,'UserLogout']);
 
+
 // Product
 
 Route::get('/ListProduct',[App\Http\Controllers\ProductController::class,'index']);
 
 Route::post('/CreateProduct',[App\Http\Controllers\ProductController::class,'store'])->name('CreateProduct');
+
 Route::post('/CreateRentProduct',[App\Http\Controllers\ProductController::class,'store_rent'])->name('CreateRentProduct');
+
 Route::get('/RentalProduct',[App\Http\Controllers\ProductController::class,'Rent_view']);
 
 Route::get('/Product_approval',[App\Http\Controllers\ProductController::class,'approval']);
@@ -115,8 +118,16 @@ Route::get('/delete_print/{id}',[App\Http\Controllers\CustomizerController::clas
 
 Route::get('/cart/{product_id}', [App\Http\Controllers\CartController::class, 'AddToCartNew'])->name('CartData');
 
+Route::get('/CustomerCart', [App\Http\Controllers\CartController::class, 'ViewCart']);
+
 //contact
 
 Route::get('/ContactUs', [App\Http\Controllers\ContactController::class, 'ContactPage']);
 
 Route::post('/Contacted', [App\Http\Controllers\ContactController::class, 'Contact']);
+
+//review
+
+Route::post('/SubmitReview', [App\Http\Controllers\ProductController::class, 'SubmitReview'])->name('SubmitReview');
+
+Route::post('/EditReview', [App\Http\Controllers\ProductController::class, 'EditReview'])->name('EditReview');

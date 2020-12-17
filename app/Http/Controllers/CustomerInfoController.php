@@ -9,7 +9,6 @@ use Illuminate\Notifications\Notifiable;
 class CustomerInfoController extends Controller
 {
 
-
       public function CustomerSignUpView()
     {
          return view('Customer.CustomerSignUp');
@@ -47,6 +46,7 @@ class CustomerInfoController extends Controller
      public function CustomerLogin(Request $req)
     {
         //$this->validate($req);
+        $check = 0;
         $username=$req->input('Username');  
         $password=$req->input('Password');
         $get_id=NULL;
@@ -62,8 +62,12 @@ class CustomerInfoController extends Controller
             }
             if($req->session()->has('data'))
             {
-                return redirect('UserProfile');
+                return redirect('/');
             }
+            else
+            {
+                return redirect('/');
+            }    
         }
 
         // $user_model = new user_model;
@@ -71,6 +75,7 @@ class CustomerInfoController extends Controller
         // $user_model->password=$req->password;
         // $user_model->save();
     }   
+
 
     public function ProfileView()
     {
@@ -86,7 +91,12 @@ class CustomerInfoController extends Controller
     {
         // session()->flush(); //Clear all session data
         session()->forget('data');
-        return view('Customer.Login_Customer_Portal');
+        
+        return redirect('/');
+        // return view('Customer.Login_Customer_Portal');
+
+         return view('Customer.Login_Customer_Portal')->with('customize',1);
+
     }
 
 

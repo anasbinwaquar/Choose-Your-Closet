@@ -43,5 +43,9 @@ class CartController extends Controller
         $_cart->add($product, $product->id);
         session()->put('cart',$_cart);
         dd(session()->all());
+
+    public function ViewCart()
+    {
+        return view('Pages.cart');
     }
 }

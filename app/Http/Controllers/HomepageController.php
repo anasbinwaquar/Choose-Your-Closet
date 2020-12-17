@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\RentalProduct;
 use App\Models\user_model;
+use App\Models\Customer_infos;
+use App\Models\reviews;
 use Illuminate\Support\Facades\DB; 
 use Intervention\Image\Facades\Image;
 
@@ -16,8 +18,16 @@ class HomepageController extends Controller
      */
     public function index()
     {
+        if(session()->has('data'))
+        {
+                $check = 1;
+        }
+        else
+        {
+           $check = 0;
+        }   
         $data = Product::where('approved', 1)->get();
-        return view('Homepage.homepage')->with('data',$data);
+        return view('Homepage.homepage')->with('data',$data)->with('check', $check);
     }
 
     /**
@@ -28,10 +38,22 @@ class HomepageController extends Controller
 
     public function ShowProduct($product_id)
     {
+        $check=0;
         $product = Product::where('id', $product_id)->get();
+        if(session()->has('customer_id')){
+            $check= reviews::where('customer_id',session()->get('customer_id'))->first();
+            if(is_null($check))
+                $check=0;
+            else
+                $check=1;
+        }        
+        $reviews= DB::table('reviews')->join('customer_infos', 'reviews.customer_id', '=', 'customer_infos.id')->get();
+        if($product->isEmpty())
+            return view('Homepage.product_display')->with('product',$product)->with('check',$check);
         // $RentalProduct= RentalProduct::where('product_id', $product_id)->first();
         // $SellerData= user_model::where('id',$product->seller_id)->first();
-        return view('Homepage.product_display')->with('product',$product);
+        else
+            return view('Homepage.product_display')->with('product',$product)->with('reviews',$reviews)->with('check',$check);
         // ->with('RentalProduct',$RentalProduct)->with('SellerData',$SellerData);
     }
 

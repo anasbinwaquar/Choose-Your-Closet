@@ -24,6 +24,8 @@
    <!--  <link rel="stylesheet" href="css/custom.css"> -->
 </head>
 <body>
+
+  @if($check==0)
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -75,6 +77,53 @@
           </div>
     </form>
 </nav>
+
+@elseif($check==1)
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="/" style="color: #24C6DC; font-weight: bold;"> <img src="{{asset('images/Closet.png')}}" alt="logo" width="100" id="logo">Virtual Clothing Store</a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active navclass">
+        <a class="nav-link navlink active" href="/" style="color: #24C6DC;">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navlink" href="#" style="color: #24C6DC;">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navlink" href="/customize" style="color: #24C6DC;">Customizer</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navlink" href="#" style="color: #24C6DC;">Products</a>
+      </li>
+      <li class="nav-item">
+        <div class="dropdown">
+        <a class="nav-link navlink" href="/CustomerCart" style="color: #24C6DC;">Cart</a>
+        </div>
+      </li>
+       <li class="nav-item">
+        <div class="dropdown">
+        <a class="nav-link navlink" href="/UserLogout" style="color: #24C6DC;">Logout</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navlink" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+        <div class="input-group mb-4">
+            <input type="search" placeholder="Search..." aria-describedby="button-addon6" class="form-control border-info">
+            <div class="input-group-append">
+              <button id="button-addon6" type="submit" class="btn btn-info"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
+    </form>
+</nav>
+@endif
+
     <div class="container">
   <div class="row justify-content-between">
     @foreach($data as $data)
