@@ -52,3 +52,14 @@
     font-weight: bold;
 
 }
+.fas
+{
+    font-size: 40px;
+    color: #007bff;
+}
+.button_quantity{
+    background-color: #ffff;
+    border: none;
+    outline: none;
+    border: 0px;
+}

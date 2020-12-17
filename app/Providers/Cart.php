@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Providers;	
-use App\Models\Product;
-use App\Models\RentalProduct;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
