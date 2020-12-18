@@ -91,39 +91,6 @@
   </div>
 </div>
 
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="quantity_small">QUANTITY FOR SMALL</label>  
-  <div class="col-md-4">
-  <input id="quantity_small" name="quantity_small" placeholder="QUANTITY FOR SMALL" class="form-control input-md" required type="text">
-    
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="quantity_medium">QUANTITY FOR MEDIUM</label>  
-  <div class="col-md-4">
-  <input id="quantity_medium" name="quantity_medium" placeholder="QUANTITY FOR MEDIUM" class="form-control input-md" required type="text">
-    
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="quantity_large">QUANTITY FOR LARGE</label>  
-  <div class="col-md-4">
-  <input id="quantity_large" name="quantity_large" placeholder="QUANTITY FOR LARGE" class="form-control input-md" required type="text">
-    
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="quantity_extra_large">QUANTITY FOR EXTRA LARGE</label>  
-  <div class="col-md-4">
-  <input id="quantity_extra_large" name="quantity_extra_large" placeholder="QUANTITY FOR EXTRA LARGE" class="form-control input-md" required type="text">
-    
-  </div>
-</div>
-
 <div class="form-group">
   <label class="col-md-4 control-label" for="sizes">SIZES</label>  
   <div class="col-md-4">
@@ -135,12 +102,47 @@
 </div>
 
 <div class="form-group">
+  <label class="col-md-4 control-label" for="quantity_small">QUANTITY FOR SMALL</label>  
+  <div class="col-md-4">
+  <input id="quantity_small" name="quantity_small" placeholder="QUANTITY FOR SMALL" class="form-control input-md"  disabled type="text">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="quantity_medium">QUANTITY FOR MEDIUM</label>  
+  <div class="col-md-4">
+  <input id="quantity_medium" name="quantity_medium" placeholder="QUANTITY FOR MEDIUM" class="form-control input-md" t disabled type="text">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="quantity_large">QUANTITY FOR LARGE</label>  
+  <div class="col-md-4">
+  <input id="quantity_large" name="quantity_large" placeholder="QUANTITY FOR LARGE" class="form-control input-md"  disabled type="text">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="quantity_extra_large">QUANTITY FOR EXTRA LARGE</label>  
+  <div class="col-md-4">
+  <input id="quantity_extra_large" name="quantity_extra_large" placeholder="QUANTITY FOR EXTRA LARGE" class="form-control input-md" disabled type="text">
+    
+  </div>
+</div>
+
+
+
+<div class="form-group">
   <label class="col-md-4 control-label" for="clothing_type">CLOTHING TYPE</label>
   <div class="col-md-4">
     <select id="clothing_type" name="clothing_type" class="form-control" id="clothing_type" required>
     <option selected>CHOOSE...</option>
     <option value="Pant">Pant</option>
     <option value="T-Shirt">T-Shirt</option>
+    <option value="Full sleeves shirt">Full sleeves shirt</option>
     <option value="Kurta">Kurta</option>
     <option value="Kurti">Kurti</option>
     <option value="Bridal Wear">Bridal Wear</option>
@@ -202,4 +204,53 @@
                 <div class="text-center my-auto copyright"><span>Copyright © Brand 2020</span></div>
             </div>
         </footer>
+
+  <script type="text/javascript">
+    $(function(){
+    $("#Submit").click(function(e){
+        var valid=0;
+        if($("#quantity_small").val()!="" ||$("#quantity_medium").val()!="" ||$("#quantity_large").val()!="" ||$("#quantity_extra_large").val()!="" ){
+
+        }
+        else{
+          alert("Please fill atleast one quantity field");
+          e.preventDefault();
+        }
+    });
+    $(".s1").click(function(){
+        if($(this).prop("checked")==true){
+           $("#quantity_small").prop("disabled", false);
+           return;
+        }
+          $("#quantity_small").val("");
+          $("#quantity_small").prop("disabled", true);
+    })
+    $(".s2").click(function(){
+        if($(this).prop("checked")==true){
+           $("#quantity_medium").prop("disabled", false);
+           return;
+        }
+          $("#quantity_medium").val("");
+          $("#quantity_medium").prop("disabled", true);
+    })
+    $(".s3").click(function(){
+        if($(this).prop("checked")==true){
+           $("#quantity_large").prop("disabled", false);
+           return;
+        }
+          $("#quantity_large").val("");
+          $("#quantity_large").prop("disabled", true);
+    })
+    $(".s4").click(function(){
+        if($(this).prop("checked")==true){
+           $("#quantity_extra_large").prop("disabled", false);
+           return;
+        }
+          $("#quantity_extra_large").val("");
+          $("#quantity_extra_large").prop("disabled", true);
+    })
+
+});
+
+  </script>
 </html>

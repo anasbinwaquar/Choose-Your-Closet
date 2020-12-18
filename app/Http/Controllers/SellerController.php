@@ -92,6 +92,16 @@ class SellerController extends Controller
 
      public function SellerSignUp(Request $req)
     {
+        $req->validate([
+            'First_Name' => 'required|max:255',
+            'Last_Name' => 'required|max:255',
+            'Email' => 'required',
+            'Phone_Number' => 'required|regex:/(0)[0-9]{10}/',
+            'Website_Name' => 'nullable',
+            'Username' => 'required|unique:seller_info|min:8',
+            'Password' => 'required|min:8',
+            'CNIC' => 'required|regex:/(42201)-[0-9]{5}-[0-9]{2}-[0-9]{1}/',
+        ]);
         user_model::create($req->all());
         $Name=$req->Username;
         $SellerName=$req->First_Name.' '.$req->Last_Name;

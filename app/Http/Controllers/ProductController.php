@@ -35,7 +35,7 @@ class ProductController extends Controller
     }
     public function EditReview(Request $req){
         $req->validate([
-            'description' => 'required|unique:posts|max:255',
+            'description' => 'required|max:255',
             'rating' => 'required',
         ]);
         $review =reviews:: where('customer_id',session()->get('customer_id'))->update(['description'=>$req->input('description'),'rating'=>$req->input('rating')]);
@@ -50,7 +50,7 @@ class ProductController extends Controller
         // $ProductData= Product::where('id',$id)->first();
         // if(session::has('cart')){
         //     $oldCart=session::get('cart');
-        // }
+        // }  
         // else
         //     $oldCart=null;
         // $cart = new Cart($oldCart);
@@ -122,14 +122,14 @@ class ProductController extends Controller
     {
         $seller_id=session('seller_id');
        $request->validate([
-          'product_image' => 'required|dimensions:max_width=300,max_height=300',
+          'product_image' => 'required|dimensions:min_width=300,min_height=300',
           'product_name' => 'required',
           'price_per_unit' => 'required|integer',
           'description'=> 'required',
-          'quantity_small'=> 'integer',
-          'quantity_medium' => 'integer',
-          'quantity_large' => 'integer',
-          'quantity_extra_large' => 'integer',
+          'quantity_small'=> 'integer|nullable',
+          'quantity_medium' => 'integer|nullable',
+          'quantity_large' => 'integer|nullable',
+          'quantity_extra_large' => 'integer|nullable',
           'gender_type' => 'required',
           'clothing_type'=> 'required',
           'category' => 'required',
@@ -159,7 +159,7 @@ class ProductController extends Controller
         {
             $seller_id=session('seller_id');
            $request->validate([
-          'product_image' => 'required|dimensions:max_width=300,max_height=300',
+          'product_image' => 'required|dimensions:min_width=300,min_height=300',
           'product_name' => 'required',
           'charges' => 'required|integer',
           'description'=> 'required',
@@ -229,8 +229,13 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function delete(){
+        $product=Product::all();
+      return view('Product.delete')->with('product',$product);
+    }
+    public function destroy($product_id)
     {
-        //
+        $product=Product::where('id',$product_id)->delete();
+        return redirect('DeleteProduct');
     }
 }
