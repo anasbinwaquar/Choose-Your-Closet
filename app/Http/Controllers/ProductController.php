@@ -35,7 +35,7 @@ class ProductController extends Controller
     }
     public function EditReview(Request $req){
         $req->validate([
-            'description' => 'required|unique:posts|max:255',
+            'description' => 'required|max:255',
             'rating' => 'required',
         ]);
         $review =reviews:: where('customer_id',session()->get('customer_id'))->update(['description'=>$req->input('description'),'rating'=>$req->input('rating')]);
