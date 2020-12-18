@@ -14,8 +14,19 @@
             <!-- <img src="images/signup-bg.jpg" alt=""> -->
             <div class="container">
                 <div class="signup-content">
+
+                    
                     <form action="Customer_registered" method="post" autocomplete="off">
                          @csrf
+@if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                         <h2 class="form-title">Create account</h2>
                          <div class="form-group">
                             <input type="text" class="form-input" name="First_Name" id="name" placeholder="First Name"/>

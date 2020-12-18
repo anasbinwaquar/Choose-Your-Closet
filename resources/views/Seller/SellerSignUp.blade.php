@@ -16,33 +16,48 @@
                 <div class="signup-content">
                     <form action="Seller_registered" method="post" autocomplete="off">
                         @csrf
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                    @if($error=='The c n i c format is invalid.')
+                                    <li>{{ "Please enter a valid CNIC number" }}</li>
+                                    @else
+                                        <li>{{ $error }}</li>
+                                        
+                                    @endif
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                            
                         <h2 class="form-title">Create account</h2>
                          <div class="form-group">
-                            <input type="text" class="form-input" name="First_Name" id="name" placeholder="First Name"/>
+                            <input type="text" class="form-input" name="First_Name" required id="name" placeholder="First Name"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="Last_Name" id="name" placeholder="Last Name"/>
+                            <input type="text" class="form-input" name="Last_Name" required id="name" placeholder="Last Name"/>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-input" name="Email" id="email" placeholder="Your Email"/>
+                            <input type="email" class="form-input" name="Email" required id="email" placeholder="Your Email"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="Phone_Number" id="PhoneNumber" placeholder="Phone Number"/>
+                            <input type="text" class="form-input" name="Phone_Number" required id="PhoneNumber" placeholder="Phone Number"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="Website_Name" id="WebsiteName" placeholder="Website Name(Optional)"/>
+                            <input type="text" class="form-input" name="Website_Name"  id="WebsiteName" placeholder="Website Name(Optional)"/>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-input" name="Brand_Name" id="BrandName" placeholder="Brand Name(Optional)"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="Username" id="Username" placeholder="Username"/>
+                            <input type="text" class="form-input" name="Username"  required id="Username" placeholder="Username"/>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-input" name="Password" id="Password" placeholder="Password"/>
+                            <input type="password" class="form-input" name="Password" required id="Password" placeholder="Password"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="CNIC" id="CNIC" placeholder="CNIC : 42201-XXXXX-XX-X"/>
+                            <input type="text" class="form-input" name="CNIC" id="CNIC" required placeholder="CNIC : 42201-XXXXX-XX-X"/>
                         </div>
                         <!-- <div class="form-group">
                             <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />

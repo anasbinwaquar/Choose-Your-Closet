@@ -50,7 +50,7 @@ class ProductController extends Controller
         // $ProductData= Product::where('id',$id)->first();
         // if(session::has('cart')){
         //     $oldCart=session::get('cart');
-        // }
+        // }  
         // else
         //     $oldCart=null;
         // $cart = new Cart($oldCart);

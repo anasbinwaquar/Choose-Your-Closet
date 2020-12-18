@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers; 
+
 use Illuminate\Http\Request;
 use App\Models\Customer_infos;
 use Illuminate\Support\Facades\DB; 
@@ -26,6 +27,14 @@ class CustomerInfoController extends Controller
 
     public function CustomerSignUp(Request $req)
     {
+        $req->validate([
+            'First_Name' => 'required|max:255',
+            'Last_Name' => 'required|max:255',
+            'Email' => 'required',
+            'Phone_Number' => 'required|regex:/(0)[0-9]{10}/',
+            'Username' => 'required|unique:customer_infos|min:8',
+            'Password' => 'required|min:8',
+        ]);
         //$this->validate($req);
         print_r($req->input());
         //$user_model =new user_model;
