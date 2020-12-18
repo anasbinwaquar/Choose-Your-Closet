@@ -18,32 +18,31 @@ class Cart
 			$this->totalQty=$oldCart->totalQty;
 		}
 	}
-	// public function add($item,$id){
-	// 	$storedItem=['qty'=>0,'price'=>$item->price_per_unit,'item'=>$item];
-	// 	if($this->items){
-	// 		if(array_key_exists($id,$this->items)){
-	// 			$storedItem=$this->items[$id];
-	// 			$this->totalQty++;
-	// 		}
-	// 	}
-	// 		$storedItem['qty']++;
-	// 		$storedItem['price']=$item->price_per_unit * $storedItem['qty'];
-	// 		$this->items[$id]= $storedItem; 
-	// 		$this->totalQty++;
-	// 		$this->totalPrice += $item->price_per_unit;
-	// }
 	public function add($item,$id){
-		$storedItem=['qty'=>0,'price'=>$item->price_per_unit,'item'=>$item];
+		$storedIetm=['qty'=>0,'price'=>$item->price_per_unit,'item'=>$item];
 		if($this->items){
 			if(array_key_exists($id,$this->items)){
 				$storedItem=$this->items[$id];
 			}
 		}
 			$storedItem['qty']++;
-			$storedItem['price']=$item->price_per_unit* $storedItem['qty'];
+			$storedItem['price']=$item->price_per_unit * $storedItem['qty'];
 			$this->items[$id]= $storedItem; 
 			$this->totalQty++;
 			$this->totalPrice += $item->price_per_unit;
 	}
+	// public function add($item,$id){
+	// 	$storedItem=['qty'=>0,'price'=>$item->price_per_unit,'item'=>$item];
+	// 	if($this->items){
+	// 		if(array_key_exists($id,$this->items)){
+	// 			$storedItem=$this->items[$id];
+	// 		}
+	// 	}
+	// 		$storedItem['qty']++;
+	// 		$storedItem['price']=$item->price_per_unit* $storedItem['qty'];
+	// 		$this->items[$id]= $storedItem; 
+	// 		$this->totalQty++;
+	// 		$this->totalPrice += $item->price_per_unit;
+	// }
 
 }

@@ -19,7 +19,6 @@ class CartController extends Controller
         // $check=NULL;
         // $check=DB::select("select customer_infos.id, products.id  from customer_infos, products where customer_id=? and products.id=? ",[customer_id, product_id]);
         DB::insert('insert into cart(product_id, customer_id, quantity) values (?, ?, ?)', [$product_id, $customer_id, $quant]);
-
         // if($check!=NULL)
         // {
         //     $req->session()->put('data',$req->input());
@@ -33,17 +32,17 @@ class CartController extends Controller
      public function AddToCartNew($product_id)
     {
         session()->flush();
-        // $product = Product::find($product_id);
-        // $oldCart = null;
-        // if(session()->has('cart'))
-        // {
-        //     $oldCart = session()->get('cart');
-        //     print_r('rafayyy');
-        // }
-        // $_cart = new cart($oldCart);
-        // $_cart->add($product, $product->id);
-        // session()->put('cart',$_cart);
-        // return redirect('/');
+        $product = Product::find($product_id);
+        $oldCart = null;
+        if(session()->has('cart'))
+        {
+            $oldCart = session()->get('cart');
+            print_r('rafayyy');
+        }
+        $_cart = new cart($oldCart);
+        $_cart->add($product, $product->id);
+        session()->put('cart',$_cart);
+        return redirect('/');
     }
     public function ViewCart()
     {
