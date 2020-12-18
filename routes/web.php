@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 //Admin
 
-Route::get('/admin_login', [App\Http\Controllers\AdminController::class, 'LoginAdminView']);	
+Route::get('/admin_login', [App\Http\Controllers\AdminController::class, 'LoginAdminView']);
+
+Route::get('/AdminLogin365625', [App\Http\Controllers\AdminController::class, 'LoginAdminView']);	
 
 Route::post('/LoginAdminCheck', [App\Http\Controllers\AdminController::class, 'LoginAdmin']);
 
@@ -121,7 +123,7 @@ Route::get('/delete_print/{id}',[App\Http\Controllers\CustomizerController::clas
 
 //cart
 
-Route::get('/cart/{product_id}', [App\Http\Controllers\CartController::class, 'AddToCartNew'])->name('CartData');
+Route::get('/cart/{product_id}', [App\Http\Controllers\CartController::class, 'AddToCart'])->name('CartData');
 
 Route::get('/CustomerCart', [App\Http\Controllers\CartController::class, 'ViewCart']);
 
