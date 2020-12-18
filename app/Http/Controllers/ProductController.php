@@ -126,10 +126,10 @@ class ProductController extends Controller
           'product_name' => 'required',
           'price_per_unit' => 'required|integer',
           'description'=> 'required',
-          'quantity_small'=> 'integer',
-          'quantity_medium' => 'integer',
-          'quantity_large' => 'integer',
-          'quantity_extra_large' => 'integer',
+          'quantity_small'=> 'integer|nullable',
+          'quantity_medium' => 'integer|nullable',
+          'quantity_large' => 'integer|nullable',
+          'quantity_extra_large' => 'integer|nullable',
           'gender_type' => 'required',
           'clothing_type'=> 'required',
           'category' => 'required',
@@ -229,8 +229,13 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function delete(){
+        $product=Product::all();
+      return view('Product.delete')->with('product',$product);
+    }
+    public function destroy($product_id)
     {
-        //
+        $product=Product::where('id',$product_id)->delete();
+        return redirect('DeleteProduct');
     }
 }

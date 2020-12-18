@@ -72,6 +72,11 @@ Route::get('/UserLogout',[App\Http\Controllers\CustomerInfoController::class,'Us
 
 Route::get('/ListProduct',[App\Http\Controllers\ProductController::class,'index']);
 
+Route::get('/DeleteProduct',[App\Http\Controllers\ProductController::class,'delete'])->name('DeleteProduct');
+
+Route::get('/destroy/{id}',[App\Http\Controllers\ProductController::class,'destroy']);
+
+
 Route::post('/CreateProduct',[App\Http\Controllers\ProductController::class,'store'])->name('CreateProduct');
 
 Route::post('/CreateRentProduct',[App\Http\Controllers\ProductController::class,'store_rent'])->name('CreateRentProduct');

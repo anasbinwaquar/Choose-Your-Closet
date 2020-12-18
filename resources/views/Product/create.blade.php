@@ -141,6 +141,7 @@
     <option selected>CHOOSE...</option>
     <option value="Pant">Pant</option>
     <option value="T-Shirt">T-Shirt</option>
+    <option value="Full sleeves shirt">Full sleeves shirt</option>
     <option value="Kurta">Kurta</option>
     <option value="Kurti">Kurti</option>
     <option value="Bridal Wear">Bridal Wear</option>
@@ -205,20 +206,14 @@
 
   <script type="text/javascript">
     $(function(){
-    $("#Submit").submit(function(){
-      alert("gg");
+    $("#Submit").click(function(e){
         var valid=0;
-        $(this).find('input[type=text]').each(function(){
-            if($(this).val() != "") valid+=1;
-        });
+        if($("#quantity_small").val()!="" ||$("#quantity_medium").val()!="" ||$("#quantity_large").val()!="" ||$("#quantity_extra_large").val()!="" ){
 
-        if(valid){
-            alert(valid + " inputs have been filled");
-            return true;
         }
-        else {
-            alert("error: you must fill in at least one field");
-            return false;
+        else{
+          alert("Please fill atleast one quantity field");
+          e.preventDefault();
         }
     });
 });
