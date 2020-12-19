@@ -11,7 +11,7 @@ class Orders_Sell extends Model
     protected $table = 'orders_sell';
 
     protected $fillable = [
-        'CustomerID', 'ProductID','Quantity','Delivery_Address','Total'  ,
+        'OrderID','CustomerID', 'ProductID','Quantity','Delivery_Address','Total'  ,
     ];
 
 }
