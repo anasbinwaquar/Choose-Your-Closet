@@ -49,7 +49,7 @@ class CustomerInfoController extends Controller
         // $user_model->password=$req->password;
         // $user_model->save();
         // \Mail::to($req->input('Email'))->send(new Registration_success($req->Username,$req->Password));
-        return redirect('CustomerLoginView');
+        return redirect('CustomerLogin');
     }
 
      public function CustomerLogin(Request $req)

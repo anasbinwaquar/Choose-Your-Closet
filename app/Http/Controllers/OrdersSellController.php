@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\cart;
+use Illuminate\Support\Facades\DB; 
 use App\Models\Orders_Sell;
 
 use Illuminate\Http\Request;
