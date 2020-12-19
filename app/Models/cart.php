@@ -19,7 +19,7 @@ class Cart
 		}
 	}
 	public function add($item,$id){
-		$storedIetm=['qty'=>0,'price'=>$item->price_per_unit,'item'=>$item];
+		$storedItem=['qty'=>0,'price'=>$item->price_per_unit,'item'=>$item];
 		if($this->items){
 			if(array_key_exists($id,$this->items)){
 				$storedItem=$this->items[$id];

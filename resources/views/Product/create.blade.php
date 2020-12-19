@@ -104,7 +104,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="quantity_small">QUANTITY FOR SMALL</label>  
   <div class="col-md-4">
-  <input id="quantity_small" name="quantity_small" placeholder="QUANTITY FOR SMALL" class="form-control input-md"  disabled type="text">
+  <input id="quantity_small" name="quantity_small" placeholder="QUANTITY FOR SMALL" class="form-control input-md"  disabled type="text" value="0">
     
   </div>
 </div>
@@ -112,7 +112,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="quantity_medium">QUANTITY FOR MEDIUM</label>  
   <div class="col-md-4">
-  <input id="quantity_medium" name="quantity_medium" placeholder="QUANTITY FOR MEDIUM" class="form-control input-md" t disabled type="text">
+  <input id="quantity_medium" name="quantity_medium" placeholder="QUANTITY FOR MEDIUM" class="form-control input-md" t disabled type="text" value="0">
     
   </div>
 </div>
@@ -120,7 +120,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="quantity_large">QUANTITY FOR LARGE</label>  
   <div class="col-md-4">
-  <input id="quantity_large" name="quantity_large" placeholder="QUANTITY FOR LARGE" class="form-control input-md"  disabled type="text">
+  <input id="quantity_large" name="quantity_large" placeholder="QUANTITY FOR LARGE" class="form-control input-md"  disabled type="text" value="0">
     
   </div>
 </div>
@@ -128,7 +128,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="quantity_extra_large">QUANTITY FOR EXTRA LARGE</label>  
   <div class="col-md-4">
-  <input id="quantity_extra_large" name="quantity_extra_large" placeholder="QUANTITY FOR EXTRA LARGE" class="form-control input-md" disabled type="text">
+  <input id="quantity_extra_large" name="quantity_extra_large" placeholder="QUANTITY FOR EXTRA LARGE" class="form-control input-md" disabled type="text" value="0">
     
   </div>
 </div>

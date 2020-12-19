@@ -31,7 +31,7 @@ class CreateProductsTable extends Migration
             $table->timestamps();
 
 
-            $table->foreign('seller_id')->references('id')->on('seller_info')->onDelete('cascade');
+            $table->foreign('seller_id')->references('id')->on('seller_info');
         });
     }
 
@@ -42,7 +42,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign('seller_id');
         Schema::dropIfExists('products');
     }
 }

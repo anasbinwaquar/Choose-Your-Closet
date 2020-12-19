@@ -33,9 +33,7 @@ class CartController extends Controller
 
      public function AddToCart($product_id)
     {
-        session()->flush();
-        $product = Product::find($product_id);
-        // session()->flush();
+      // session()->flush();
         $product = Product::find($product_id);
         $product_cart = Product::where('id', $product_id)->get();
         $oldCart = null;
@@ -48,13 +46,18 @@ class CartController extends Controller
         $_cart = new cart($oldCart);
         $_cart->add($product, $product->id);
         session()->put('cart',$_cart);
+        //return redirect('/');
+        $quantity=$_cart->items[$product_id]['qty'];
+        //dd($_cart);
         return redirect('/');
-        print_r($_cart->items[$product_id]['qty']);
-        // return redirect('/');
-        return view('Pages.cart')->with('product', $product_cart);
+        // return view('Homepage.homepage')->with('product_cart',$_cart->totalQty);
     }
     public function ViewCart()
     {
-        return view('Pages.cart');
+       // session()->flush();
+        $OldCart = session()->get('cart');
+        $CurrentCart = new cart($OldCart);
+        //dd($CurrentCart);
+         return view('Pages.cart')->with(array('product'=> $CurrentCart->items))->with('product_cart',$CurrentCart->totalPrice);
     }
 }

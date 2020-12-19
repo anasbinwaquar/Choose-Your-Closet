@@ -100,6 +100,7 @@ class CustomerInfoController extends Controller
         // session()->flush(); //Clear all session data
         session()->forget('data');
         session()->forget('customer_id');
+        session()->forget('cart');
         
         return redirect('/');
         // return view('Customer.Login_Customer_Portal');
