@@ -36,7 +36,7 @@ class CustomerInfoController extends Controller
             'Password' => 'required|min:8',
         ]);
         //$this->validate($req);
-        print_r($req->input());
+        // print_r($req->input());
         //$user_model =new user_model;
         Customer_infos::create($req->all());
 //       $customer=Customer_infos::all();
@@ -49,6 +49,7 @@ class CustomerInfoController extends Controller
         // $user_model->password=$req->password;
         // $user_model->save();
         // \Mail::to($req->input('Email'))->send(new Registration_success($req->Username,$req->Password));
+        return redirect('CustomerLoginView');
     }
 
      public function CustomerLogin(Request $req)
