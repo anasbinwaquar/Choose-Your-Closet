@@ -107,7 +107,8 @@
       </li>
       <li class="nav-item">
         <div class="dropdown">
-        <a class="nav-link navlink" href="/CustomerCart" style="color: #24C6DC;"><i class="fas fa-shopping-cart"></i><span class="badge badge-light"><?php if(session()->has('cart'))
+        <a class="nav-link navlink" href="/CustomerCart" style="color: #24C6DC;"><i class="fas fa-shopping-cart"></i><span class="badge badge-light">
+          <?php if(session()->has('cart'))
         {
            echo session()->get('cart')->totalQty;
         }

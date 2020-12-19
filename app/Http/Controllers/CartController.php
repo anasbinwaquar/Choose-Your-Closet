@@ -45,7 +45,7 @@ class CartController extends Controller
         $_cart = new cart($oldCart);
         $_cart->add($product, $product->id);
         session()->put('cart',$_cart);
-        //return redirect('/');
+        //return redirec
         $quantity=$_cart->items[$product_id]['qty'];
         //dd($_cart);
         return redirect('/');
