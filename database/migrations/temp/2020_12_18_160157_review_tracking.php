@@ -13,7 +13,7 @@ class ReviewTracking extends Migration
      */
     public function up()
     {
-        Schema::create('review_tracking', function (Blueprint $table) {
+        Schema::create('review', function (Blueprint $table) {
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('product_id');
             $table->boolean('reputation')->default(NULL);

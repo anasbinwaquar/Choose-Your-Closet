@@ -40,8 +40,6 @@ class CartController extends Controller
         if(session()->has('cart'))
         {
             $oldCart = session()->get('cart');
-            print_r('rafayyy');
-            // print_r('rafayyy');
         }
         $_cart = new cart($oldCart);
         $_cart->add($product, $product->id);
