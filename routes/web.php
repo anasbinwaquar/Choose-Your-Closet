@@ -138,3 +138,7 @@ Route::post('/Contacted', [App\Http\Controllers\ContactController::class, 'Conta
 Route::post('/SubmitReview', [App\Http\Controllers\ProductController::class, 'SubmitReview'])->name('SubmitReview');
 
 Route::post('/EditReview', [App\Http\Controllers\ProductController::class, 'EditReview'])->name('EditReview');
+
+//Orders
+
+Route::get('/PurchaseOrders', [App\Http\Controllers\OrdersSellController::class, 'Checkout']);
