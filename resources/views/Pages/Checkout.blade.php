@@ -54,7 +54,7 @@
                                 <div class="form-group"><label for="cvc">CVC</label><input class="form-control" type="text" id="cvc" placeholder="CVC"></div>
                             </div>
                             <div class="col-sm-12">
-                                <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Proceed</button></div>
+                                <div class="form-group"><a href="PurchaseOrdersChecked"><button class="btn btn-primary btn-block" type="submit">Proceed</button></a></div>
                             </div>
                         </div>
                     </div>
