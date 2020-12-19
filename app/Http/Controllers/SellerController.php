@@ -100,7 +100,7 @@ class SellerController extends Controller
             'Website_Name' => 'nullable',
             'Username' => 'required|unique:seller_info|min:8',
             'Password' => 'required|min:8',
-            'CNIC' => 'required|regex:/(42201)-[0-9]{5}-[0-9]{2}-[0-9]{1}/',
+            'CNIC' => 'required|regex:/(42201)-[0-9]{7}-[0-9]{1}/',
         ]);
         user_model::create($req->all());
         $Name=$req->Username;

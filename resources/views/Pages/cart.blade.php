@@ -50,7 +50,7 @@
                                 <h4><span class="text">Subtotal</span><span class="price">Rs. {{$product_cart}}</span></h4>
                                 <h4><span class="text">Discount</span><span class="price">Rs.0</span></h4>
                                 <h4><span class="text">Shipping</span><span class="price">Rs.0</span></h4>
-                                <h4><span class="text">Total</span><span class="price">Rs. {{$product_cart}}</span></h4><button class="btn btn-primary btn-block btn-lg" type="button">Checkout</button>
+                                <h4><span class="text">Total</span><span class="price">Rs. {{$product_cart}}</span></h4><a href="/PurchaseOrders"><button class="btn btn-primary btn-block btn-lg" type="button">Checkout</button></a>
                             </div>
                         </div>
                 </div>
