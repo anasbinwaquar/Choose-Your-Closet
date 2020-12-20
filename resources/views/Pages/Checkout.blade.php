@@ -25,7 +25,6 @@
                     <h2 class="text-info">Payment</h2>
                     <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p> -->
                 </div>
-                <form>
                     <div class="products">
                         <h3 class="title">Checkout</h3>
                         @foreach($product as $product)
@@ -54,11 +53,11 @@
                                 <div class="form-group"><label for="cvc">CVC</label><input class="form-control" type="text" id="cvc" placeholder="CVC"></div>
                             </div>
                             <div class="col-sm-12">
-                                <div class="form-group"><a href="PurchaseOrdersChecked"><button class="btn btn-primary btn-block" type="submit">Proceed</button></a></div>
+                            <a href="PurchaseOrdersChecked"><button class="btn btn-primary btn-block">Proceed</button></a>
                             </div>
                         </div>
                     </div>
-                </form>
+              
             </div>
         </section>
     </main>
