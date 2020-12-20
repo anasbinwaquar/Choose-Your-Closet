@@ -56,7 +56,7 @@
                        <!--  </div> -->
                     </form>
                     <p class="loginhere">
-                        Have already an account ? <a href="#" class="loginhere-link">Login here</a>
+                        Already have an account ? <a href="#" class="loginhere-link">Login here</a>
                     </p>
                 </div>
             </div>
