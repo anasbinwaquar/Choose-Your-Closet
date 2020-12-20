@@ -9,9 +9,10 @@ use Illuminate\Http\Request;
 
 class OrdersSellController extends Controller
 {
-    public function Checkout()
+    public function Checkout(Request $req)
     {
     	// session()->flush();
+        $Delivery_Address=$req->input('Delivery_Address');  
     	if(session()->has('cart'))
         {
             $oldCart = session()->get('cart');
@@ -33,14 +34,14 @@ class OrdersSellController extends Controller
         {
             $orderid = $order->OrderID;
             $orderid++;
-            print_r($orderid);
+            //print_r($orderid);
         }  
         $products = $CurrentCart->items;
         //print_r($products);
         foreach ($products as $products) 
         {
             //print_r('rafayyy');
-            DB::insert('insert into orders_sell(OrderID, CustomerID, ProductID, Quantity, Delivery_Address, Total) values (?, ?, ?, ?, ?, ?)', [$orderid, $customer_id, $products['item']['id'], $products['qty'], 'abcdefgh', $products['price']]);
+            DB::insert('insert into orders_sell(OrderID, CustomerID, ProductID, Quantity, Delivery_Address, Total) values (?, ?, ?, ?, ?, ?)', [$orderid, $customer_id, $products['item']['id'], $products['qty'], $Delivery_Address, $products['price']]);
         }
        session()->forget('cart');
     	return redirect('/');
