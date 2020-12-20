@@ -9,6 +9,8 @@ use App\Models\reviews;
 use Illuminate\Support\Facades\DB; 
 use Intervention\Image\Facades\Image;
 
+use Carbon\Carbon;
+
 class HomepageController extends Controller
 {
     /**
@@ -27,6 +29,7 @@ class HomepageController extends Controller
            $check = 0;
         }   
         $data = Product::where('approved', 1)->get();
+        // printf("Now: %s", Carbon::now());
         return view('Homepage.homepage')->with('data',$data)->with('check', $check);
     }
 
