@@ -57,7 +57,7 @@
                             <input type="password" class="form-input" name="Password" required id="Password" placeholder="Password"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="CNIC" id="CNIC" required placeholder="CNIC : 42201-XXXXX-XX-X"/>
+                            <input type="text" class="form-input" name="CNIC" id="CNIC" required placeholder="CNIC : 42201-XXXXXXX-X"/>
                         </div>
                         <!-- <div class="form-group">
                             <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />

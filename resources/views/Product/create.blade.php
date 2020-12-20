@@ -52,7 +52,8 @@
             </div>
             </nav>
 
-            <form class="form-horizontal justify-content-center" name="ProductForm" id="ProductForm" action="{{ route('CreateProduct')}}" method="post" enctype="multipart/form-data" autocomplete="off">
+<form class="form-horizontal justify-content-center" name="ProductForm" id="ProductForm" action="{{ route('CreateProduct')}}" method="post" enctype="multipart/form-data" autocomplete="off" style="margin-left: 30%;
+    width:80em;">
   @csrf
 <fieldset>
 @if ($errors->any())
@@ -68,7 +69,7 @@
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="product_name">PRODUCT NAME</label>  
-  <div class="col-md-4">
+  <div class="col-md-6">
   <input id="product_name" name="product_name" placeholder="PRODUCT NAME" class="form-control input-md" required type="text">
     
   </div>
@@ -77,7 +78,7 @@
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="description">PRODUCT DESCRIPTION</label>  
-  <div class="col-md-4">
+  <div class="col-md-6">
   <input id="description" name="description" placeholder="PRODUCT DESCRIPTION" class="form-control input-md" required type="text">
     
   </div>
@@ -85,7 +86,7 @@
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="price_per_unit">PRODUCT PRICE PER UNIT</label>  
-  <div class="col-md-4">
+  <div class="col-md-6">
   <input id="price_per_unit" name="price_per_unit" placeholder="PRODUCT PRICE PER UNIT" class="form-control input-md" required type="text">
     
   </div>
@@ -93,7 +94,7 @@
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="sizes">SIZES</label>  
-  <div class="col-md-4">
+  <div class="col-md-6">
       <input type="checkbox" class="s1" id="sizes[]" name="sizes[]" value="Small"/> <label for="Small">Small</label>
       <input type="checkbox" class="s2" id="sizes[]" name="sizes[]" value="Medium" /> <label for="Medium">Medium</label>
       <input type="checkbox" class="s3" id="sizes[]" name="sizes[]" value="Large" /> <label for="Large">Large</label>
@@ -103,7 +104,7 @@
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="quantity_small">QUANTITY FOR SMALL</label>  
-  <div class="col-md-4">
+  <div class="col-md-6">
   <input id="quantity_small" name="quantity_small" placeholder="QUANTITY FOR SMALL" class="form-control input-md"  disabled type="text" value="0">
     
   </div>
@@ -111,7 +112,7 @@
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="quantity_medium">QUANTITY FOR MEDIUM</label>  
-  <div class="col-md-4">
+  <div class="col-md-6">
   <input id="quantity_medium" name="quantity_medium" placeholder="QUANTITY FOR MEDIUM" class="form-control input-md" t disabled type="text" value="0">
     
   </div>
@@ -119,7 +120,7 @@
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="quantity_large">QUANTITY FOR LARGE</label>  
-  <div class="col-md-4">
+  <div class="col-md-6">
   <input id="quantity_large" name="quantity_large" placeholder="QUANTITY FOR LARGE" class="form-control input-md"  disabled type="text" value="0">
     
   </div>
@@ -127,7 +128,7 @@
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="quantity_extra_large">QUANTITY FOR EXTRA LARGE</label>  
-  <div class="col-md-4">
+  <div class="col-md-6">
   <input id="quantity_extra_large" name="quantity_extra_large" placeholder="QUANTITY FOR EXTRA LARGE" class="form-control input-md" disabled type="text" value="0">
     
   </div>
@@ -137,7 +138,7 @@
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="clothing_type">CLOTHING TYPE</label>
-  <div class="col-md-4">
+  <div class="col-md-6">
     <select id="clothing_type" name="clothing_type" class="form-control" id="clothing_type" required>
     <option value="Pant">Pant</option>
     <option value="T-Shirt">T-Shirt</option>
@@ -153,7 +154,7 @@
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="gender">CLOTHING GENDER</label>
-  <div class="col-md-4">
+  <div class="col-md-6">
     <select id="gender_type" name="gender_type" class="form-control" required>
      <option value="Male">Male</option>
      <option value="Female">Female</option>
@@ -163,7 +164,7 @@
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="category">PRODUCT CATEGORY</label>
-  <div class="col-md-4">
+  <div class="col-md-6">
     <select id="category" name="category" class="form-control" required>
     <option value="Formal">Formal</option>
     <option value="Informal">Informal</option>
@@ -174,35 +175,36 @@
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="filebutton">PRODUCT IMAGES</label>
-  <div class="col-md-4">
-    <input id="product_image" name="product_image" class="input-file" type="file" accept="image/*" multiple required>
+  <div class="col-md-6">
+    <input id="product_image" name="product_image" class="input-file col-md-6" type="file" accept="image/*" multiple required>
   </div>
 </div>
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="Submit"></label>
-  <div class="col-md-4">
-    <button id="Submit" name="Submit" type="submit" class="btn btn-primary" required>SUBMIT</button>
+  <div class="col-md-6">
+    <button id="Submit" name="Submit" type="submit" class="btn btn-primary col-md-12" required>SUBMIT</button>
   </div>
   </div>
-
 </fieldset>
 </form>
         </div>
         </div>
+      </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/chart.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="assets/js/theme.js"></script>
-</body>
 
-        <footer class="bg-white sticky-footer">
+    <footer class="bg-white sticky-footer">
             <div class="container my-auto">
                 <div class="text-center my-auto copyright"><span>Copyright © Brand 2020</span></div>
             </div>
         </footer>
+</body>
+
 
   <script type="text/javascript">
     $(function(){
