@@ -65,6 +65,7 @@
     </div>
 @endif
 
+<div style="position: center;">
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="product_name">PRODUCT NAME</label>  
@@ -186,6 +187,8 @@
     <button id="Submit" name="Submit" type="submit" class="btn btn-primary" required>SUBMIT</button>
   </div>
   </div>
+
+</div>
 
 </fieldset>
 </form>
