@@ -78,6 +78,8 @@ Route::get('/DeleteProduct',[App\Http\Controllers\ProductController::class,'dele
 
 Route::get('/destroy/{id}',[App\Http\Controllers\ProductController::class,'destroy']);
 
+Route::get('/RentProducts',[App\Http\Controllers\ProductController::class,'index_rent']);
+
 
 Route::post('/CreateProduct',[App\Http\Controllers\ProductController::class,'store'])->name('CreateProduct');
 
