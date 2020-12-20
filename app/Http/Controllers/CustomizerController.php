@@ -60,9 +60,14 @@ class CustomizerController extends Controller
         return view('Customizer.success');
     }
     public function addprint(){
+
+        if(session()->has('admindata')){
         $prints= new prints();
         $prints=prints::all();
         return view("Customizer.add_prints")->with('prints',$prints);
+        }
+        else
+          return view('Admin.AdminLogin');
     }
     public function store_print(Request $request){
         // dd($request->all());
@@ -85,15 +90,21 @@ class CustomizerController extends Controller
     }
     public function delete_print_view(){
 
-        // $print =prints::where('id', $id)->first();
-        // if($print!=NULL)
-        //     $print->delete();
+        if(session()->has('admindata')){
         $prints= new prints();
         $prints=prints::all();
         return view("Customizer.delete_print")->with('prints',$prints);
+        }
+        else
+          return view('Admin.AdminLogin');
     }
     public function delete_print($id){
+
+        if(session()->has('admindata')){
         $print=prints::where('id',$id)->delete();
         return redirect("deleteprint");
+        }
+        else
+          return view('Admin.AdminLogin');
     }
 }

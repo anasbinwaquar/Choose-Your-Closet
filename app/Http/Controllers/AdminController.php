@@ -27,14 +27,22 @@ class AdminController extends Controller
     }
     public function custom_order(){
 
-        $orders=custom_order::all();
-        // dd($orders);
-        return view('Admin.Custom_orders')->with('orders',$orders);
+        if(session()->has('admindata'))
+            {
+                $orders=custom_order::all();
+                return view('Admin.Custom_orders')->with('orders',$orders);
+            }
+            else
+            {
+                return view('Admin.AdminLogin');
+            }
+
+
     }
 
     public function Portal()
     {
-         if(session()->has('data'))
+         if(session()->has('admindata'))
             {
                $data1 = Customer_infos::all();
                 $data2 = user_model::where('Approval',1)->get();
@@ -53,8 +61,8 @@ class AdminController extends Controller
         $passwordCheck=$req->input('Password');
         if($usernameCheck=='admin' && $passwordCheck=='admin')
         {
-            $req->session()->put('data',$req->input());
-             if($req->session()->has('data'))
+            $req->session()->put('admindata',$req->input());
+             if($req->session()->has('admindata'))
             {
                 $data1 = Customer_infos::all();
                 $data2 = user_model::where('Approval',1)->get();

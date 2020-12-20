@@ -48,7 +48,7 @@
         <a class="nav-link navlink" href="#" style="color: #24C6DC;">Products</a>
          <div class="dropdown-content">
         <a href="#" class="link">Purchase</a>
-        <a href="/RentProducts" class="link">Rent</a>
+        <a href="RentProducts" class="link">Rent</a>
         </div>
         </div>
       </li>
@@ -103,13 +103,7 @@
         <a class="nav-link navlink" href="/customize" style="color: #24C6DC;">Customizer</a>
       </li>
       <li class="nav-item">
-        <div class="dropdown">
         <a class="nav-link navlink" href="#" style="color: #24C6DC;">Products</a>
-         <div class="dropdown-content">
-        <a href="#" class="link">Purchase</a>
-        <a href="RentProducts" class="link">Rent</a>
-        </div>
-        </div>
       </li>
       <li class="nav-item">
         <div class="dropdown">
@@ -140,7 +134,6 @@
     </form>
 </nav>
 @endif
-
     <div class="container">
   <div class="row justify-content-between">
     @foreach($data as $data)
@@ -161,7 +154,7 @@
                         </div>
                         <div class="why-text">
                             <h4>{{$data->product_name}}</h4>
-                            <h5>Rs: {{$data->price_per_unit}}</h5>
+                            <h5>Daily Charges: {{$data->charges}}Rs</h5>
                             <a href="product/{{$data->id}}" class="btn btn-block" style="background-color:#007bff;color: #ffffff;">See More</a>
                         </div>
                     </div>
@@ -169,48 +162,3 @@
     @endforeach
   </div>
 </div>
-
-<!-- <footer class="page-footer dark">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-3">
-                    <h5>Get started</h5>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Sign up</a></li>
-                        <li><a href="#">Downloads</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <h5>About us</h5>
-                    <ul>
-                        <li><a href="#">Company Information</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">Reviews</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <h5>Support</h5>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Help desk</a></li>
-                        <li><a href="#">Forums</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <h5>Legal</h5>
-                    <ul>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Terms of Use</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <p>© 2020 Copyright Text</p>
-        </div>
-    </footer> -->
-
-</body>
-</html> 

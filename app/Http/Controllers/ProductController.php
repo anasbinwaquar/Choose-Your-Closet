@@ -18,6 +18,18 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function index_rent(){
+        $data = RentalProduct::where('approved', 1)->get();
+        if(session()->has('data'))
+        {
+                $check = 1;
+        }
+        else
+        {
+           $check = 0;
+        }   
+        return view('Homepage.rentproduct_display')->with('check', $check)->with('data',$data);      
+    }
     public function SubmitReview(Request $req){
         $req->validate([
             'description' => 'required|max:255',
@@ -82,35 +94,58 @@ class ProductController extends Controller
      */
     public function approval()
     {
+      if(session()->has('admindata')){
         $product = Product::where('approved', 0)->get();
         $rent_product = RentalProduct::where('approved', 0)->get();
         return view('Product.approval')->with('product',$product)->with('rent_product',$rent_product);
+      }
+      else
+        return view('Admin.AdminLogin');
     }
     public function setapproval($product_id)
-      { 
-        $product = Product::where('id', $product_id)->first();
-        $product->approved=1;
-        $product->save();
-        return redirect('Product_approval');
+      {
+        if(session()->has('admindata')){
+          $product = Product::where('id', $product_id)->first();
+          $product->approved=1;
+          $product->save();
+          return redirect('Product_approval');
+        }
+        else
+          return view('Admin.AdminLogin');
       }
       
 
     public function setRentapproval($product_id)
       { 
-        $product = RentalProduct::where('id', $product_id)->first();
-        $product->approved=1;
-        $product->save();
-        return redirect('Product_approval');
+
+        if(session()->has('admindata')){
+          $product = RentalProduct::where('id', $product_id)->first();
+          $product->approved=1;
+          $product->save();
+          return redirect('Product_approval');
+        }
+        else
+          return view('Admin.AdminLogin');
+
       }
       public function declineapproval($product_id)
       {
+        if(session()->has('admindata')){
         $product=Product::where('id',$product_id)->delete();
         return redirect('Product_approval');
+        }
+        else
+          return view('Admin.AdminLogin');
+
       }
       public function declineRentapproval($product_id)
       {
+        if(session()->has('admindata')){
         $product=RentalProduct::where('id',$product_id)->delete();
         return redirect('Product_approval');
+        }
+        else
+          return view('Admin.AdminLogin');      
       }
     /**
      * Store a newly created resource in storage.
@@ -231,7 +266,7 @@ class ProductController extends Controller
      */
     public function delete(){
         $product=Product::all();
-      return view('Product.delete')->with('product',$product);
+        return view('Product.delete')->with('product',$product);
     }
     public function destroy($product_id)
     {
