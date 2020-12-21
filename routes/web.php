@@ -53,6 +53,8 @@ Route::get('/SellerProfile',[App\Http\Controllers\SellerController::class,'Selle
 
 Route::get('/SellerLogout',[App\Http\Controllers\SellerController::class,'SellerLogout']);
 
+Route::get('/ViewOrders',[App\Http\Controllers\SellerController::class,'ViewOrders']);
+
 //Customer
 
 Route::get('/CustomerSignUp', [App\Http\Controllers\CustomerInfoController::class, 'CustomerSignUpView']);
