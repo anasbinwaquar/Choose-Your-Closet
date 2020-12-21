@@ -21,14 +21,16 @@ class Cart
 	public function add($item,$id,$quantity,$size){
 		$storedItem=['qty'=>$quantity,'siz'=>$size,'price'=>$item->price_per_unit,'item'=>$item];
 		if($this->items){
-			if(array_key_exists($id,$this->items)){
-				$storedItem=$this->items[$id];
+			if(array_key_exists($size,$this->items)){
+				//dd($this->items[$id]);
+				$storedItem=$this->items[$size];
+				$storedItem['qty']++;
 			}
 		}
 			$storedItem['price']=$item->price_per_unit * $storedItem['qty'];
-			$this->items[$id]= $storedItem; 
+			$this->items[$size]= $storedItem; 
 			$this->totalQty+=$quantity;
-			$this->totalPrice += $item->price_per_unit;
+			$this->totalPrice += $storedItem['price'];
 	}
 	// public function add($item,$id){
 	// 	$storedItem=['qty'=>0,'price'=>$item->price_per_unit,'item'=>$item];

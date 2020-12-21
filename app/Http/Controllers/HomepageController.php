@@ -21,7 +21,7 @@ class HomepageController extends Controller
     public function index()
     {
         
-        if(session()->has('data'))
+        if(session()->has('customer_id'))
         {
                 $check = 1;
         }

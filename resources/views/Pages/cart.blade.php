@@ -33,12 +33,14 @@
                                                 <div><span>Clothing Type:&nbsp;</span><span class="value">{{$product['item']['clothing_type']}}</span></div>
                                                 <div><span>Category:&nbsp;</span><span class="value">{{$product['item']['category']}}</span></div>
                                                 <div><span>Gender:&nbsp;</span><span class="value">{{$product['item']['gender_type']}}</span></div>
+                                                 <div><span>Size:&nbsp;</span><span class="value">
+                                                 {{$product['siz']}}</span></div>
                                             </div>
                                         </div>
                                         <div class="col-6 col-md-2 quantity"><label class="d-none d-md-block" for="quantity">Quantity</label>
                                         <input type="number" id="number" class="form-control quantity-input" value="{{$product['qty']}}">
                                           </div>
-                                        <div class="col-6 col-md-2 price"><span>{{$product['item']['price_per_unit']}}</span></div>
+                                        <div class="col-6 col-md-2 price"><span>{{$product['price']}}</span></div>
                                     </div>
                                 </div> 
                             </div>

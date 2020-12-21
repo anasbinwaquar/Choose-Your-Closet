@@ -31,7 +31,7 @@
                         @csrf
                         @foreach($product as $product)
                         <div class="item"><span class="price">{{$product['price']}}</span>
-                            <p class="item-name">{{$product['item']['product_name']}} x{{$product['qty']}}</p>
+                            <p class="item-name">{{$product['item']['product_name']}}({{$product['siz']}}) x{{$product['qty']}}</p>
                             <p class="item-description">{{$product['item']['description']}}</p>
                         </div>
                         @endforeach
