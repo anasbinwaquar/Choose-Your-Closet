@@ -17,10 +17,11 @@ class CreateOrdersSellTable extends Migration
             $table->unsignedBigInteger('OrderID');
             $table->unsignedBigInteger('CustomerID');
             $table->unsignedBigInteger('ProductID');
+            $table->string('Size');
             $table->unsignedBigInteger('Quantity');
             $table->string('Delivery_Address');
             $table->unsignedBigInteger('Total');
-            $table->timestamps();
+            $table->DateTime('Date');
         });
     }
 
