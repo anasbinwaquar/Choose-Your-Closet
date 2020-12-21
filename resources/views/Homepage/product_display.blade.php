@@ -44,16 +44,33 @@
                                     <h3>{{$product->product_name}}</h3>
                                     <div class="rating"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star-half-empty.svg"><img src="/product/img/star-empty.svg"></div>
                                     <div class="price">
-                                        <h3>{{$product->price_per_unit}}</h3>
+                                        <h3>Rs. {{$product->price_per_unit}}</h3>
                                     </div>
-                                    <a href="{{route('CartData',['product_id'=>$product->id])}}"><button class="btn btn-primary" type="button"><i class="icon-basket"></i>Add to Cart</button></a>
+                                    <form action="{{route('CartData',['product_id'=>$product->id])}}" method="post">
+                                        @csrf
                                     <div style="width:250px;">
                                     <div class="input-group">
-                                     <button class="button_quantity"><i class="fas fa-minus" onclick="decreaseValue()"></i></button>
+                                     <button class="button_quantity" type="button"><i class="fas fa-minus" onclick="decreaseValue()"></i></button>
                                       <span class="input-container">
                                       <input id="number" type="text" name="quant" class="form-control input-number" value="1" min="1" max="10">
-                                      </span><button class="button_quantity"><i class="fas fa-plus" onclick="increaseValue()"></i></button>
+                                      </span><button class="button_quantity" type="button"><i class="fas fa-plus" onclick="increaseValue()"></i></button>
                                       </div>
+                                      <input id="size_submit" type="text" name="size" style="display: none;">
+                                        @if($product->quantity_small!=NULL || $product->quantity_small!=0)
+                                        <button id="size_s" type="button" class="btn btn-primary" style="font-weight: bold;" value="S" onclick="size_selector(this.id)">S</button>
+                                         @endif
+                                        @if($product->quantity_medium!=NULL || $product->quantity_medium!=0)
+                                        <button id="size_m" type="button" class="btn btn-primary" style="font-weight: bold;" value="M" onclick="size_selector(this.id)">M</button>
+                                         @endif
+                                        @if($product->quantity_large!=NULL || $product->quantity_large!=0)
+                                        <button id="size_l" type="button" class="btn btn-primary" style="font-weight: bold;" value="L" onclick="size_selector(this.id)">L</button>
+                                         @endif
+                                        @if($product->quantity_extra_large!=NULL || $product->quantity_extra_large!=0)
+                                        <button id="size_xl" type="button" class="btn btn-primary" style="font-weight: bold;" value="XL" onclick="size_selector(this.id)">XL</button>
+                                        @endif
+                                      </div>
+                                        <button class="btn btn-primary" type="submit"><i class="icon-basket"></i>Add to Cart</button>
+                                      </form>
                                     </div>
                                     <div class="summary">
                                         <p>{{$product->description}}</p>
@@ -305,5 +322,11 @@
     <script type="text/javascript" src="/product/js/script.js"></script>
     @endforeach
 </body>
+<script type="text/javascript">
+    function size_selector(parameter)
+    {
+        document.getElementById('size_submit').value=document.getElementById(parameter).value;
+    }
+</script>
 
 </html>
