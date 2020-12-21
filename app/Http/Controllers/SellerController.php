@@ -21,6 +21,9 @@ class SellerController extends Controller
         // }
        return view('Seller.SellerSignUp');
     }
+    public function view_products(){
+        
+    }
 
     public function ViewOrders(){
         $data = Orders_sell::join('products','orders_sell.ProductID','=','products.id')->where('products.seller_id',session()->get('seller_id'))->get();

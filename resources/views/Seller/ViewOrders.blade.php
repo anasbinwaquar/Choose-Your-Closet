@@ -24,7 +24,7 @@
                     <li class="nav-item"><a class="nav-link " href="ListProduct"><i class="fas fa-tachometer-alt"></i><span>Add Product</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="DeleteProduct"><i class="fas fa-tachometer-alt"></i><span>Delete Product</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="RentalProduct"><i class="fas fa-tachometer-alt"></i><span>Add Rental Product</span></a></li>
-                    <li class="nav-item"><a class="nav-link " href="ViewOrders"><i class="fas fa-tachometer-alt"></i><span>Orders</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="ViewOrders"><i class="fas fa-tachometer-alt"></i><span>View Orders</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="SellerLogout"><i class="fas fa-user"></i><span>Logout</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
@@ -58,6 +58,7 @@
                                 <thead>
                                     <tr>
                                         <th>Order Id</th>
+                                        <th>Product ID</th>
                                         <th>Product Name</th>
                                         <th>Quantity</th>
                                         <th>Size</th>
@@ -74,6 +75,19 @@
                                       <tr>
                                         @if($check==1)
                                         <th>{{ $data->OrderID }}</th>
+                                        <th> @foreach($data2 as $d2)
+                                                @if($d2->OrderID==$data->OrderID)
+                                                {{ $d2->ProductID}}
+                                                <br>
+                                                    @php
+                                                        $check=1
+                                                    @endphp
+                                                @else
+                                                @php
+                                                    $check=0;
+                                                @endphp
+                                                @endif
+                                            @endforeach</th>
                                             <th> @foreach($data2 as $d2)
                                                 @if($d2->OrderID==$data->OrderID)
                                                 {{$d2->product_name}}
@@ -100,7 +114,20 @@
                                                 @endphp
                                                 @endif
                                             @endforeach</th>
-                                        <th> Size</th>
+                                            <th> @foreach($data2 as $d2)
+                                                @if($d2->OrderID==$data->OrderID)
+                                                Size value from DB Here
+                                                <!-- {{$d2->Quantity}} -->
+                                                <br>
+                                                    @php
+                                                        $check=1
+                                                    @endphp
+                                                @else
+                                                @php
+                                                    $check=0;
+                                                @endphp
+                                                @endif
+                                            @endforeach</th>
                                         <th>{{ $data->Delivery_Address}}</th>
                                         <th> Contact Number </th>
                                         <th>{{ $data->Total}}</th>

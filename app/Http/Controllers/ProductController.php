@@ -265,12 +265,14 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function delete(){
-        $product=Product::all();
+        $id=session()->get('seller_id');
+        $product=Product::where('seller_id',$id)->get();
+        // dd($product);
         return view('Product.delete')->with('product',$product);
     }
     public function destroy($product_id)
     {
-        $product=Product::where('id',$product_id)->delete();
+        $product=Product::where('id',$product_id)->where('seller_id',session()->get('seller_id'))->delete();
         return redirect('DeleteProduct');
     }
 }

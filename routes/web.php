@@ -39,6 +39,8 @@ Route::get('/SellerSignUp', [App\Http\Controllers\SellerController::class, 'Sell
 
 Route::get('/Seller_Authentication', [App\Http\Controllers\SellerController::class, 'Seller_Authentication']);
 
+Route::get('/ViewProducts',[App\Http\Controllers\SellerController::class,'view_products']);
+
 Route::get('/SellerLogin', [App\Http\Controllers\SellerController::class, 'SellerLoginView'])->name('SellerLogin');
 
 Route::post('/Seller_registered', [App\Http\Controllers\SellerController::class, 'SellerSignUp']);
@@ -81,7 +83,6 @@ Route::get('/DeleteProduct',[App\Http\Controllers\ProductController::class,'dele
 Route::get('/destroy/{id}',[App\Http\Controllers\ProductController::class,'destroy']);
 
 Route::get('/RentProducts',[App\Http\Controllers\ProductController::class,'index_rent']);
-
 
 Route::post('/CreateProduct',[App\Http\Controllers\ProductController::class,'store'])->name('CreateProduct');
 
