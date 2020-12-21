@@ -44,7 +44,7 @@
                                     <h3>{{$product->product_name}}</h3>
                                     <div class="rating"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star-half-empty.svg"><img src="/product/img/star-empty.svg"></div>
                                     <div class="price">
-                                        <h3>{{$product->price_per_unit}}</h3>
+                                        <h3>Rs. {{$product->price_per_unit}}</h3>
                                     </div>
                                     <a href="{{route('CartData',['product_id'=>$product->id])}}"><button class="btn btn-primary" type="button"><i class="icon-basket"></i>Add to Cart</button></a>
                                     <div style="width:250px;">
@@ -53,6 +53,19 @@
                                       <span class="input-container">
                                       <input id="number" type="text" name="quant" class="form-control input-number" value="1" min="1" max="10">
                                       </span><button class="button_quantity"><i class="fas fa-plus" onclick="increaseValue()"></i></button>
+                                      </div>
+                                        @if($product->quantity_small!=NULL || $product->quantity_small!=0)
+                                        <button type="button" class="btn btn-primary" style="font-weight: bold;" value="S">S</button>
+                                         @endif
+                                        @if($product->quantity_medium!=NULL || $product->quantity_medium!=0)
+                                        <button type="button" class="btn btn-primary" style="font-weight: bold;" value="M">M</button>
+                                         @endif
+                                        @if($product->quantity_large!=NULL || $product->quantity_large!=0)
+                                        <button type="button" class="btn btn-primary" style="font-weight: bold;" value="L">L</button>
+                                         @endif
+                                        @if($product->quantity_extra_large!=NULL || $product->quantity_extra_large!=0)
+                                        <button type="button" class="btn btn-primary" style="font-weight: bold;" value="XL">XL</button>
+                                        @endif
                                       </div>
                                     </div>
                                     <div class="summary">

@@ -23,7 +23,7 @@
     <!-- Custom CSS -->
    <!--  <link rel="stylesheet" href="css/custom.css"> -->
 </head>
-<body>
+<body  id="body" style="overflow:hidden;">
 
   @if($check==0)
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -140,9 +140,10 @@
     </form>
 </nav>
 @endif
-
+<br>
+<br>
     <div class="container">
-  <div class="row justify-content-between">
+  <div class="row ">
     @foreach($data as $data)
      <div class="col-lg-4 col-offset-12 special-grid best-seller">
                     <div class="products-single fix">
@@ -156,8 +157,8 @@
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li></ul>
-                                <a class="cart" href="{{route('CartData',['product_id'=>$data->id])}}">Add to Cart</a>
- </div>
+                                <a class="cart" href="product/{{$data->id}}">Add to Cart</a>
+                          </div>
                         </div>
                         <div class="why-text">
                             <h4>{{$data->product_name}}</h4>
@@ -166,10 +167,10 @@
                         </div>
                     </div>
     </div>
+
     @endforeach
   </div>
 </div>
-
 <!-- <footer class="page-footer dark">
         <div class="container">
             <div class="row">
