@@ -67,20 +67,48 @@
                                     </tr>
                                 </thead>
                                   <tbody>
+                                    @php
+                                        $check=1;
+                                    @endphp
                                     @foreach ($data as $data)
                                       <tr>
-                                        @php
-                                            $order=$data->OrderID
-                                        @endphp
+                                        @if($check==1)
                                         <th>{{ $data->OrderID }}</th>
-                                        @foreach($data2 as $data)
-                                            @if($order==$data2->OrderID)
-                                            <th>{{ $data->product_name }}</th>
-                                            <th>{{ $data->Quantity }}</th>
+                                            <th> @foreach($data2 as $d2)
+                                                @if($d2->OrderID==$data->OrderID)
+                                                {{$d2->product_name}}
+                                                <br>
+                                                    @php
+                                                        $check=1
+                                                    @endphp
+                                                @else
+                                                @php
+                                                    $check=0;
+                                                @endphp
+                                                @endif
+                                            @endforeach</th>
+                                            <th> @foreach($data2 as $d2)
+                                                @if($d2->OrderID==$data->OrderID)
+                                                {{$d2->Quantity}}
+                                                <br>
+                                                    @php
+                                                        $check=1
+                                                    @endphp
+                                                @else
+                                                @php
+                                                    $check=0;
+                                                @endphp
+                                                @endif
+                                            @endforeach</th>
                                         <th> Size</th>
                                         <th>{{ $data->Delivery_Address}}</th>
                                         <th> Contact Number </th>
                                         <th>{{ $data->Total}}</th>
+                                        @else
+                                        @php
+                                            $check=1;
+                                        @endphp
+                                        @endif
                                       </tr>
                                     @endforeach
                                 </tbody>

@@ -24,7 +24,7 @@ class SellerController extends Controller
 
     public function ViewOrders(){
         $data = Orders_sell::join('products','orders_sell.ProductID','=','products.id')->where('products.seller_id',session()->get('seller_id'))->get();
-        $data2=$data;
+        $data2=Orders_sell::join('products','orders_sell.ProductID','=','products.id')->where('products.seller_id',session()->get('seller_id'))->get();;
         // $current=0;
         // $previous=0;
         // $current=$data[0]->OrderID;
