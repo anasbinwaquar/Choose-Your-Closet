@@ -52,11 +52,41 @@
                     </ul>
             </div>
             </nav>
-            @foreach($data as $data)
-                <div>
-                    {{ $data->CustomerID}}
-                </div>
-            @endforeach
+                <div class="container-fluid">
+                <div class="table-responsive table m-lg-auto mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                            <table class="table my-0" id="dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>Order Id</th>
+                                        <th>Product Name</th>
+                                        <th>Quantity</th>
+                                        <th>Size</th>
+                                        <th>Address</th>
+                                        <th>Contact Number</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                  <tbody>
+                                    @foreach ($data as $data)
+                                      <tr>
+                                        @php
+                                            $order=$data->OrderID
+                                        @endphp
+                                        <th>{{ $data->OrderID }}</th>
+                                        @foreach($data2 as $data)
+                                            @if($order==$data2->OrderID)
+                                            <th>{{ $data->product_name }}</th>
+                                            <th>{{ $data->Quantity }}</th>
+                                        <th> Size</th>
+                                        <th>{{ $data->Delivery_Address}}</th>
+                                        <th> Contact Number </th>
+                                        <th>{{ $data->Total}}</th>
+                                      </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+            </div>
         </div>
         </div>
     <script src="assets/js/jquery.min.js"></script>
