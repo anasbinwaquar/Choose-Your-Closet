@@ -18,7 +18,7 @@
                     
                     <form action="Customer_registered" method="post" autocomplete="off">
                          @csrf
-@if ($errors->any())
+                    @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
                             @foreach ($errors->all() as $error)
@@ -26,7 +26,7 @@
                             @endforeach
                         </ul>
                     </div>
-                @endif
+                     @endif
                         <h2 class="form-title">Create account</h2>
                          <div class="form-group">
                             <input type="text" class="form-input" name="First_Name" id="name" placeholder="First Name"/>
