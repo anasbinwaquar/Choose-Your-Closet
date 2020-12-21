@@ -52,7 +52,11 @@
                     </ul>
             </div>
             </nav>
-
+            @foreach($data as $data)
+                <div>
+                    {{ $data->CustomerID}}
+                </div>
+            @endforeach
         </div>
         </div>
     <script src="assets/js/jquery.min.js"></script>

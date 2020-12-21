@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\user_model;
+use App\Models\Orders_sell;
 use Illuminate\Support\Facades\DB;
 use App\Notifications\SellerNotification;
 use App\Notifications\AdminNotification;
@@ -19,6 +20,13 @@ class SellerController extends Controller
         //      return redirect('admin_login');
         // }
        return view('Seller.SellerSignUp');
+    }
+
+    public function ViewOrders(){
+
+        $data = Orders_sell::join('products','orders_sell.ProductID','=','products.id')->get();
+        // dd($data);
+        return view('Seller.ViewOrders')->with('data',$data);
     }
 
       public function Seller_Authentication()
