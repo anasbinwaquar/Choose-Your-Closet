@@ -21,9 +21,10 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link " href="ListProduct"><i class="fas fa-tachometer-alt"></i><span>Add Product</span></a></li>
+                     <li class="nav-item"><a class="nav-link " href="ListProduct"><i class="fas fa-tachometer-alt"></i><span>Add Product</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="DeleteProduct"><i class="fas fa-tachometer-alt"></i><span>Delete Product</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="RentalProduct"><i class="fas fa-tachometer-alt"></i><span>Add Rental Product</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="ViewOrders"><i class="fas fa-tachometer-alt"></i><span>View Orders</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="SellerLogout"><i class="fas fa-user"></i><span>Logout</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
@@ -70,7 +71,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="product_name">PRODUCT NAME</label>  
   <div class="col-md-6">
-  <input id="product_name" name="product_name" placeholder="PRODUCT NAME" class="form-control input-md" required type="text">
+  <input id="product_name" name="product_name" placeholder="PRODUCT NAME" class="form-control input-md" required type="text" value="{{old('product_name')}}">
     
   </div>
 </div>
@@ -79,7 +80,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="description">PRODUCT DESCRIPTION</label>  
   <div class="col-md-6">
-  <input id="description" name="description" placeholder="PRODUCT DESCRIPTION" class="form-control input-md" required type="text">
+  <input id="description" name="description" placeholder="PRODUCT DESCRIPTION" value="{{old('description')}}" class="form-control input-md" required type="text">
     
   </div>
 </div>
@@ -87,7 +88,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="price_per_unit">PRODUCT PRICE PER UNIT</label>  
   <div class="col-md-6">
-  <input id="price_per_unit" name="price_per_unit" placeholder="PRODUCT PRICE PER UNIT" class="form-control input-md" required type="text">
+  <input id="price_per_unit" name="price_per_unit" placeholder="PRODUCT PRICE PER UNIT" value="{{old('price_per_unit')}}" class="form-control input-md" required type="text">
     
   </div>
 </div>
@@ -105,7 +106,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="quantity_small">QUANTITY FOR SMALL</label>  
   <div class="col-md-6">
-  <input id="quantity_small" name="quantity_small" placeholder="QUANTITY FOR SMALL" class="form-control input-md"  disabled type="text" value="0">
+  <input id="quantity_small" name="quantity_small" placeholder="QUANTITY FOR SMALL" value="{{old('quantity_small')}}" class="form-control input-md"  disabled type="text" value="0">
     
   </div>
 </div>
@@ -113,7 +114,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="quantity_medium">QUANTITY FOR MEDIUM</label>  
   <div class="col-md-6">
-  <input id="quantity_medium" name="quantity_medium" placeholder="QUANTITY FOR MEDIUM" class="form-control input-md" t disabled type="text" value="0">
+  <input id="quantity_medium" name="quantity_medium" placeholder="QUANTITY FOR MEDIUM" value="{{old('quantity_medium')}}" class="form-control input-md" t disabled type="text" value="0">
     
   </div>
 </div>
@@ -121,7 +122,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="quantity_large">QUANTITY FOR LARGE</label>  
   <div class="col-md-6">
-  <input id="quantity_large" name="quantity_large" placeholder="QUANTITY FOR LARGE" class="form-control input-md"  disabled type="text" value="0">
+  <input id="quantity_large" name="quantity_large" placeholder="QUANTITY FOR LARGE" value="{{old('quantity_large')}}" class="form-control input-md"  disabled type="text" value="0">
     
   </div>
 </div>
@@ -129,7 +130,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="quantity_extra_large">QUANTITY FOR EXTRA LARGE</label>  
   <div class="col-md-6">
-  <input id="quantity_extra_large" name="quantity_extra_large" placeholder="QUANTITY FOR EXTRA LARGE" class="form-control input-md" disabled type="text" value="0">
+  <input id="quantity_extra_large" name="quantity_extra_large" placeholder="QUANTITY FOR EXTRA LARGE" value="{{old('quantity_extra_large')}}" class="form-control input-md" disabled type="text" value="0">
     
   </div>
 </div>

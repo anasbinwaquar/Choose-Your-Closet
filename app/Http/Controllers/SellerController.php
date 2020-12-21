@@ -21,12 +21,22 @@ class SellerController extends Controller
         // }
        return view('Seller.SellerSignUp');
     }
+    public function view_products(){
+        
+    }
 
     public function ViewOrders(){
-
-        $data = Orders_sell::join('products','orders_sell.ProductID','=','products.id')->get();
+        $data = Orders_sell::join('products','orders_sell.ProductID','=','products.id')->where('products.seller_id',session()->get('seller_id'))->get();
+        $data2=Orders_sell::join('products','orders_sell.ProductID','=','products.id')->where('products.seller_id',session()->get('seller_id'))->get();;
+        // $current=0;
+        // $previous=0;
+        // $current=$data[0]->OrderID;
+        // foreach ($data as $data) {
+        //     if($current== $data->OrderID)
+        //     echo $data->OrderID;
+        // }
         // dd($data);
-        return view('Seller.ViewOrders')->with('data',$data);
+        return view('Seller.ViewOrders')->with('data',$data)->with('data2',$data2);
     }
 
       public function Seller_Authentication()

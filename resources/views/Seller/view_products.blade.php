@@ -26,7 +26,6 @@
                     <li class="nav-item"><a class="nav-link " href="RentalProduct"><i class="fas fa-tachometer-alt"></i><span>Add Rental Product</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="ViewOrders"><i class="fas fa-tachometer-alt"></i><span>View Orders</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="SellerLogout"><i class="fas fa-user"></i><span>Logout</span></a></li>
-                </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
@@ -53,6 +52,35 @@
             </div>
             </nav>
 
+                            @if($product -> isEmpty())
+                         <p style="text-align: center;">You haven't listed any products for sale</p>           
+                         @else
+                        <div class="table-responsive table m-lg-auto mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                            <table class="table my-0" id="dataTable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Product Name</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Product Image</th>
+                                        <th scope="col">Clothing Type</th>
+                                    </tr>
+                                </thead>
+                                  <tbody>
+                                       @foreach ($product as $product)
+                                      <tr>
+                                            <th>{{$product->id}}</th>
+                                          <th>{{$product->product_name}}</th>
+                                          <th>{{$product->price_per_unit}}</th>
+                                          <th>{{$product->description}}</th>
+                                          <td><img src="{{asset('uploads/sell/'. $product->product_image)}}" style="width: 20rem;height: 20rem"></td>  
+                                          <th>{{$product->clothing_type}}</th>
+                                      </tr>
+                                      @endforeach
+                                      @endif
+                                </tbody>
+                            </table>
+                        </div>
         </div>
         </div>
     <script src="assets/js/jquery.min.js"></script>

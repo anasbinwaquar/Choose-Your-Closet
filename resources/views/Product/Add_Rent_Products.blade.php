@@ -21,9 +21,10 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link " href="ListProduct"><i class="fas fa-tachometer-alt"></i><span>Add Product</span></a></li>
+                     <li class="nav-item"><a class="nav-link " href="ListProduct"><i class="fas fa-tachometer-alt"></i><span>Add Product</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="DeleteProduct"><i class="fas fa-tachometer-alt"></i><span>Delete Product</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="RentalProduct"><i class="fas fa-tachometer-alt"></i><span>Add Rental Product</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="ViewOrders"><i class="fas fa-tachometer-alt"></i><span>View Orders</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="SellerLogout"><i class="fas fa-user"></i><span>Logout</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
@@ -69,7 +70,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="product_name">PRODUCT NAME</label>  
   <div class="col-md-4">
-  <input id="product_name" name="product_name" placeholder="PRODUCT NAME" class="form-control input-md" required type="text">
+  <input id="product_name" name="product_name" placeholder="PRODUCT NAME" value="{{old('product_name')}}" class="form-control input-md" required type="text">
     
   </div>
 </div>
@@ -78,7 +79,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="description">PRODUCT DESCRIPTION</label>  
   <div class="col-md-4">
-  <input id="description" name="description" placeholder="PRODUCT DESCRIPTION" class="form-control input-md" required type="text">
+  <input id="description" name="description" placeholder="PRODUCT DESCRIPTION" value="{{old('description')}}" class="form-control input-md" required type="text">
     
   </div>
 </div>
@@ -128,11 +129,18 @@
   </div>
 </div>
 
+<div class="form-group">
+  <label class="col-md-4 control-label" for="charges">SECURITY DEPOST</label>  
+  <div class="col-md-4">
+  <input id="security_desposit" name="security_desposit" placeholder="security_desposit" required value="{{old('security_desposit')}}" class="form-control input-md" type="text">
+    
+  </div>
+</div>
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="charges">DAILY CHARGES</label>  
   <div class="col-md-4">
-  <input id="charges" name="charges" placeholder="DAILY CHARGES" required class="form-control input-md" type="text">
+  <input id="charges" name="charges" placeholder="DAILY CHARGES" required value="{{old('charges')}}" class="form-control input-md" type="text">
     
   </div>
 </div>

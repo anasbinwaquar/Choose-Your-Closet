@@ -157,7 +157,7 @@ class ProductController extends Controller
     {
         $seller_id=session('seller_id');
        $request->validate([
-          'product_image' => 'required|dimensions:min_width=300,min_height=300',
+          'product_image' => 'required|dimensions:min_width=1000,min_height=1000',
           'product_name' => 'required',
           'price_per_unit' => 'required|integer',
           'description'=> 'required',
@@ -194,7 +194,7 @@ class ProductController extends Controller
         {
             $seller_id=session('seller_id');
            $request->validate([
-          'product_image' => 'required|dimensions:min_width=300,min_height=300',
+          'product_image' => 'required|dimensions:min_width=1000,min_height=1000',
           'product_name' => 'required',
           'charges' => 'required|integer',
           'description'=> 'required',
@@ -265,12 +265,14 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function delete(){
-        $product=Product::all();
+        $id=session()->get('seller_id');
+        $product=Product::where('seller_id',$id)->get();
+        // dd($product);
         return view('Product.delete')->with('product',$product);
     }
     public function destroy($product_id)
     {
-        $product=Product::where('id',$product_id)->delete();
+        $product=Product::where('id',$product_id)->where('seller_id',session()->get('seller_id'))->delete();
         return redirect('DeleteProduct');
     }
 }
