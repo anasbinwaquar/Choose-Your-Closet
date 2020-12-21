@@ -323,9 +323,9 @@
     @endforeach
 </body>
 <script type="text/javascript">
-    function size_selector(para)
+    function size_selector(parameter)
     {
-        document.getElementById('size_submit').value=document.getElementById(para).value;
+        document.getElementById('size_submit').value=document.getElementById(parameter).value;
     }
 </script>
 
