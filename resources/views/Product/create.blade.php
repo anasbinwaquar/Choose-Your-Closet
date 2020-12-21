@@ -140,7 +140,6 @@
   <label class="col-md-4 control-label" for="clothing_type">CLOTHING TYPE</label>
   <div class="col-md-6">
     <select id="clothing_type" name="clothing_type" class="form-control" id="clothing_type" required>
-    <option selected>CHOOSE...</option>
     <option value="Pant">Pant</option>
     <option value="T-Shirt">T-Shirt</option>
     <option value="Full sleeves shirt">Full sleeves shirt</option>
@@ -148,6 +147,7 @@
     <option value="Kurti">Kurti</option>
     <option value="Bridal Wear">Bridal Wear</option>
     <option value="Kids">Kids wear</option>
+    <option value="Winter Wear">Winter Wear</option>
     </select>
   </div>
 </div>
@@ -156,7 +156,6 @@
   <label class="col-md-4 control-label" for="gender">CLOTHING GENDER</label>
   <div class="col-md-6">
     <select id="gender_type" name="gender_type" class="form-control" required>
-    <option selected>CHOOSE...</option>
      <option value="Male">Male</option>
      <option value="Female">Female</option>
     </select>
@@ -167,9 +166,9 @@
   <label class="col-md-4 control-label" for="category">PRODUCT CATEGORY</label>
   <div class="col-md-6">
     <select id="category" name="category" class="form-control" required>
-    <option selected>CHOOSE...</option>
     <option value="Formal">Formal</option>
     <option value="Informal">Informal</option>
+    <option value="Informal">Party Wear</option>
     </select>
   </div>
 </div>
