@@ -70,7 +70,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="product_name">PRODUCT NAME</label>  
   <div class="col-md-4">
-  <input id="product_name" name="product_name" placeholder="PRODUCT NAME" class="form-control input-md" required type="text">
+  <input id="product_name" name="product_name" placeholder="PRODUCT NAME" value="{{old('product_name')}}" class="form-control input-md" required type="text">
     
   </div>
 </div>
@@ -79,7 +79,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="description">PRODUCT DESCRIPTION</label>  
   <div class="col-md-4">
-  <input id="description" name="description" placeholder="PRODUCT DESCRIPTION" class="form-control input-md" required type="text">
+  <input id="description" name="description" placeholder="PRODUCT DESCRIPTION" value="{{old('description')}}" class="form-control input-md" required type="text">
     
   </div>
 </div>
@@ -129,11 +129,18 @@
   </div>
 </div>
 
+<div class="form-group">
+  <label class="col-md-4 control-label" for="charges">SECURITY DEPOST</label>  
+  <div class="col-md-4">
+  <input id="security_desposit" name="security_desposit" placeholder="security_desposit" required value="{{old('security_desposit')}}" class="form-control input-md" type="text">
+    
+  </div>
+</div>
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="charges">DAILY CHARGES</label>  
   <div class="col-md-4">
-  <input id="charges" name="charges" placeholder="DAILY CHARGES" required class="form-control input-md" type="text">
+  <input id="charges" name="charges" placeholder="DAILY CHARGES" required value="{{old('charges')}}" class="form-control input-md" type="text">
     
   </div>
 </div>
