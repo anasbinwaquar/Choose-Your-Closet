@@ -30,10 +30,12 @@
                         <h3 class="title">Checkout</h3>
                         @csrf
                         @foreach($product as $product)
+                        @foreach($product as $product)
                         <div class="item"><span class="price">{{$product['price']}}</span>
                             <p class="item-name">{{$product['item']['product_name']}}({{$product['siz']}}) x{{$product['qty']}}</p>
                             <p class="item-description">{{$product['item']['description']}}</p>
                         </div>
+                         @endforeach
                         @endforeach
                         <div class="total"><span>Total</span><span class="price">Rs. {{$product_cart}}</span></div>
                     </div>

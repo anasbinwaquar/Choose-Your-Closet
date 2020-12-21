@@ -45,9 +45,14 @@ class OrdersSellController extends Controller
         //print_r($products);
         foreach ($products as $products) 
         {
+            foreach ($products as $products)
+            {
+
              printf($products['siz']);
             
             DB::insert('insert into orders_sell(OrderID, CustomerID, ProductID, Size, Quantity, Delivery_Address, Total, Date) values(?, ?, ?, ?, ?, ?, ?, ?)', [$orderid, $customer_id, $products['item']['id'], $products['siz'], $products['qty'], $Delivery_Address, $products['price'], $date]);
+            
+            } 
         }
        session()->forget('cart');
     	return redirect('/');

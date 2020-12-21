@@ -20,6 +20,7 @@
                 </div>
               
                 @foreach($product as $product)
+                @foreach($product as $product)
                 <div class="content">
                         <div class="col-md-12 col-lg-10">
                             <div class="items">
@@ -45,6 +46,7 @@
                                 </div> 
                             </div>
                         </div>
+                         @endforeach
                         @endforeach
                         <div class="col-md-12 col-lg-12">
                             <div class="summary">
