@@ -20,6 +20,7 @@ class HomepageController extends Controller
      */
     public function index()
     {
+        
         if(session()->has('data'))
         {
                 $check = 1;

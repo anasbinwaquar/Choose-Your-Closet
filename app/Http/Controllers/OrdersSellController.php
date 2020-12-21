@@ -6,17 +6,20 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Orders_Sell;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class OrdersSellController extends Controller
 {
     public function Checkout(Request $req)
     {
     	// session()->flush();
+        $size = 'default';
+        $date = Carbon::now();
         $Delivery_Address=$req->input('Delivery_Address');  
     	if(session()->has('cart'))
         {
             $oldCart = session()->get('cart');
-            // print_r('rafayyy');
+            
         }
         else
         {
@@ -40,8 +43,8 @@ class OrdersSellController extends Controller
         //print_r($products);
         foreach ($products as $products) 
         {
-            //print_r('rafayyy');
-            DB::insert('insert into orders_sell(OrderID, CustomerID, ProductID, Quantity, Delivery_Address, Total) values (?, ?, ?, ?, ?, ?)', [$orderid, $customer_id, $products['item']['id'], $products['qty'], $Delivery_Address, $products['price']]);
+            
+            DB::insert('insert into orders_sell(OrderID, CustomerID, ProductID, Size, Quantity, Delivery_Address, Total, Date) values (?, ?, ?, ?, ?, ?, ?)', [$orderid, $customer_id, $products['item']['id'], $size, $products['qty'], $Delivery_Address, $products['price'], $date]);
         }
        session()->forget('cart');
     	return redirect('/');
