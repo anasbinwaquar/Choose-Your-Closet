@@ -19,7 +19,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index_rent(){
-        $data = RentalProduct::where('approved', 1)->get();
+        $data = RentalProduct::where('approved', 1)->where('available',1)->get();
         if(session()->has('data'))
         {
                 $check = 1;
@@ -210,7 +210,7 @@ class ProductController extends Controller
           'gender_type' => 'required',
           'clothing_type'=> 'required',
           'category' => 'required',
-          'security_desposit'=>'required|integer'
+          'security_deposit'=>'required|integer'
         ]);
 
             $Prod = new RentalProduct();
@@ -226,7 +226,7 @@ class ProductController extends Controller
             $Prod->category = $request->input('category');
             $Prod->charges = $request->input('charges');
             $Prod->seller_id=$seller_id;
-            $Prod->security_desposit=$request->input('security_desposit');
+            $Prod->security_deposit=$request->input('security_deposit');
             $Prod->size=$request->input('size');
             $Prod->available =1;
             $Prod->save();

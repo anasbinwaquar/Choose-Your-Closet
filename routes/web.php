@@ -118,7 +118,7 @@ Route::get('/rentproduct/{product_id}', [App\Http\Controllers\HomepageController
 
 // Cart
 
-Route::get('/add-to-cart-rent/{product_id}', [App\Http\Controllers\ProductController::class, 'addtocartrent'])->name('addtocartrent');
+Route::get('/AddToCartRent/{product_id}', [App\Http\Controllers\CartController::class, 'AddToCartRent'])->name('AddToCartRent');
 
 // Customizer
 
@@ -141,6 +141,10 @@ Route::get('/delete_print/{id}',[App\Http\Controllers\CustomizerController::clas
 Route::post('/cart/{product_id}', [App\Http\Controllers\CartController::class, 'AddToCart'])->name('CartData');
 
 Route::get('/CustomerCart', [App\Http\Controllers\CartController::class, 'ViewCart']);
+
+Route::get('/RentCart', [App\Http\Controllers\CartController::class, 'ViewRentCart']);
+
+Route::post('/RentCartCheckout', [App\Http\Controllers\CartController::class, 'RentCartCheckout']);
 
 //contact
 

@@ -135,7 +135,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="charges">SECURITY DEPOST</label>  
   <div class="col-md-6">
-  <input id="security_desposit" name="security_desposit" placeholder="security_desposit" required value="{{old('security_desposit')}}" class="form-control input-md" type="text">
+  <input id="security_deposit" name="security_deposit" required value="{{old('security_deposit')}}" class="form-control input-md" type="text">
     
   </div>
 </div>

@@ -4,32 +4,66 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\RentalProduct;
 use App\Models\cart;
+use App\Models\Rental_history;
+use App\Models\RentCart;
 use Illuminate\Support\Facades\DB; 
 
 
 class CartController extends Controller
 {
-    //
-    // public function AddToCart($product_id,$quant)
-    // {
-    	// $customer_id=session('customer_id');  
-     //   $product_id=$req->input('id');
-       	// $quantity=$req->input('quantity');
-        // $check=NULL;
-        // $check=DB::select("select customer_infos.id, products.id  from customer_infos, products where customer_id=? and products.id=? ",[customer_id, product_id]);
-        // DB::insert('insert into cart(product_id, customer_id, quantity) values (?, ?, ?)', [$product_id, $customer_id, $quant]);
-        // DB::insert('insert into cart(product_id, customer_id, quantity) values (?, ?, ?)', [$product_id, $customer_id, $quant]);
-        // if($check!=NULL)
-        // {
-        //     $req->session()->put('data',$req->input());
 
-        //     if($req->session()->has('data'))
-        //     {
-        //         return redirect('UserProfile');
-        //     }
-        // }
-    // }
+    public function AddToCartRent(Request $req,$product_id)
+    {
+
+        if(!session()->has('customer_id'))
+            return redirect('CustomerLogin');
+
+            $product=RentalProduct::where('id',$product_id)->get();
+            session()->put('RentCart',$product);
+            return redirect("/rentproduct/$product_id");
+        return view('Pages.RentCheckout')->with('product',$product);
+    }
+    public function ViewRentCart(){
+        // dd($product);
+        $product=session()->get('RentCart');
+        // dd($product);
+        $check=Rental_history::where('current_owner_id',session()->get('customer_id'))->get();
+        if($check==NULL)
+            $check=1;
+        else
+            $check=0;
+        $product=RentalProduct::where('id',$product[0]->id)->get();
+        return view('Pages.RentCheckout')->with('product',$product)->with('check',$check);
+    }
+
+    public function RentCartCheckout(Request $req){
+        // dd($req);
+        $Rental_history=new Rental_history();
+        $product=RentalProduct::where('id',$req->input('product_id'))->get()->first();
+        // dd($product);
+        $Rental_history->current_owner_id=session()->get('customer_id');
+        $Rental_history->seller_id=$product->seller_id;
+        $Rental_history->product_id=$req->input('product_id');
+        $Rental_history->Delivery_Address=$req->input('Delivery_Address');
+        $Rental_history->Start_date=$req->input('start_date');
+        $Rental_history->End_date=$req->input('end_date');
+        $diff = abs(strtotime($req->input('start_date')) - strtotime($req->input('end_date')));
+        $years = floor($diff / (365*60*60*24));
+        $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+        $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+        $days=intval($days);
+        $charges=intval($days) * intval($req->input('charges'));
+        $Rental_history->charges=$charges;
+        // echo $req->input('security_deposit');
+        $Rental_history->extra_charges=$req->input('security_deposit');
+        $Rental_history->save();
+        RentalProduct::where('id',$req->input('product_id'))->update(['available'=>0]);
+        // dd($Rental_history);
+        // dd($Rental_history);
+        return redirect('/');
+    }
 
      public function AddToCart(Request $req, $product_id)
     {
