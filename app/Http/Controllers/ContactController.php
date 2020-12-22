@@ -14,8 +14,16 @@ class ContactController extends Controller
 {
     public function ContactPage()
     {
+        if(session()->has('customer_id'))
+        {
+                $check_nav = 1;
+        }
+        else
+        {
+           $check_nav = 0;
+        }
     	$check = 0;
-        return view('Pages.ContactUs')->with('check',$check);
+        return view('Pages.ContactUs')->with('check',$check)->with('check_nav', $check_nav);
     }
 
 	public function Contact(Request $req)
@@ -28,7 +36,15 @@ class ContactController extends Controller
         $Query = $req->message;
         Notification::route('mail',$Email)->notify(new ContactUsNotification($Name, $Subject, $QueryMail, $Query));
         $check = 1;
-        return view('Pages.ContactUs')->with('check',$check);
+        if(session()->has('customer_id'))
+        {
+                $check_nav = 1;
+        }
+        else
+        {
+           $check_nav = 0;
+        }
+        return view('Pages.ContactUs')->with('check',$check)->with('check_nav', $check_nav);
     }
 
 }
