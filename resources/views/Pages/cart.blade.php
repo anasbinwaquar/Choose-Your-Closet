@@ -18,16 +18,12 @@
                     <h2 class="text-info">Shopping Cart</h2>
                     <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p> -->
                 </div>
-
-                @if($product!=NULL)
-                @foreach($product as $product)
-                @foreach($product as $product)
-
+@if($product!=NULL)
                 <div class="content">
                         <div class="col-lg-12 col-lg-12">
                             <div class="items">
                                 <div class="product">
-                                      @foreach($product as $product)
+                     @foreach($product as $product)
                 @foreach($product as $product)
                   <form action="{{route('UpdateCartData',['product_id'=> $product['item']['id'],'size'=>$product['siz']])}}" method="post">
                     @csrf   
@@ -75,7 +71,7 @@
                                 <h4><span class="text">Total</span><span class="price">Rs. {{$product_cart}}</span></h4><a href="/PurchaseOrders"><button class="btn btn-primary btn-block btn-lg" type="button">Checkout</button></a>
                             </div>
                         </div>
-                        @else
+                        @elseif($product==NULL)
                         <div class="col-md-12 col-lg-10 row justify-content-center align-items-center"> 
                             <h2>Your Cart is Empty</h2> </div>
                         <div class="col-md-12 col-lg-12">
@@ -86,11 +82,10 @@
                                 <h4><span class="text">Shipping</span><span class="price">Rs.0</span></h4>
                             </div>
                         </div>
-                        @endif
 
                         
                 </div>
-                     
+                     @endif
                  
 
             </div>

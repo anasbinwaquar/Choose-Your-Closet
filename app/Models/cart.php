@@ -82,9 +82,19 @@ class Cart
 		// 		}
 		// 	}
 			//$storedItem['qty']++;
-		unset($this->items[$id][$size]);
+		if(empty($this->items))
+		{
+			$this->totalQty	=0;
+			$this->totalPrice =0;
+		}
+		else
+		{
+			unset($this->items[$id]);
 			$this->totalQty	-=	$previous_quantity;
 			$this->totalPrice -= $previous_price;
+			//dd($this->totalPrice);
+		}
+			//dd($this->totalPrice);
 	}
 
 	// public function add($item,$id){
