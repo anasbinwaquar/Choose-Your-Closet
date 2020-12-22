@@ -24,7 +24,6 @@
                     <li class="nav-item"><a class="nav-link " href="/CheckOrders"><i class="fas fa-tachometer-alt"></i><span>Check Orders</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/CompletedOrdersCustomer"><i class="fas fa-tachometer-alt"></i><span>Completed Orders</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/UserLogout"><i class="fas fa-user"></i><span>Logout</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="/UserLogout"><i class="fas fa-user"></i><span>Logout</span></a></li>
                     
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
