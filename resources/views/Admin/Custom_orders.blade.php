@@ -21,7 +21,6 @@
                 <hr class="sidebar-divider my-0">
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link " href="LoginAdminCheck"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="Seller_Authentication"><i class="fas fa-table"></i><span>Seller Verifcation</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="Product_approval"><i class="fas fa-table"></i><span>Product Verifcation</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="addprints"><i class="fas fa-user-circle"></i><span>Add Prints</span></a></li>
@@ -85,7 +84,7 @@
                                         <th>{{$order->size}}</th>
                                         <th>{{$order->address}}</th>
                                         <th>{{$order->contact_number}}</th>
-                                        <th><a href="setapproval/{{$authentication->id}}"><button class="btn btn-success">Approve</button></a></th>
+                                        {{-- <th><a href="setapproval/{{$authentication->id}}"><button class="btn btn-success">Approve</button></a></th> --}}
                                         {{-- <th><a href="declineapproval/{{$authentication->id}}"><button class="btn btn-danger">Decline</button></a></th> --}}
                                       </tr>
                                     @endforeach
