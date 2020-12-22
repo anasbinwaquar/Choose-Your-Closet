@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\user_model;
+use App\Models\completed_orders;
+use Carbon\Carbon;
 use App\Models\Orders_sell;
+use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use App\Notifications\SellerNotification;
 use App\Notifications\AdminNotification;
@@ -21,13 +24,50 @@ class SellerController extends Controller
         // }
        return view('Seller.SellerSignUp');
     }
+
     public function view_products(){
-        
+        $product=Product::where('seller_id',session()->get('seller_id'))->get();
+        // dd($product);
+        return view('Seller.view_products')->with('product',$product);
     }
 
+    public function CompletedOrders(){
+        $data = completed_orders::join('products','completed_orders.ProductID','=','products.id')->join('customer_infos','completed_orders.CustomerID','=','customer_infos.id')->where('products.seller_id',session()->get('seller_id'))->get();
+        $data2=completed_orders::join('products','completed_orders.ProductID','=','products.id')->where('products.seller_id',session()->get('seller_id'))->get();;
+        $data=$data->unique('OrderID');
+        
+        return view('Seller.CompletedOrders')->with('data',$data)->with('data2',$data2);
+    }
+    public function EndOrder($orderid){
+        $datas = Orders_sell::where('OrderID',$orderid)->get();
+        $record=[];
+        foreach ($datas as $data) {
+            if(!empty($data)){
+            $date = Carbon::now();
+                $record[]=[
+                'OrderID'=>$data->OrderID,
+                'CustomerID'=>$data->CustomerID,
+                'ProductID'=>$data->ProductID,
+                'Size'=>$data->Size,
+                'Quantity'=>$data->Quantity,
+                'Delivery_Address'=>$data->Delivery_Address,
+                'Total'=>$data->Total,
+                'Date'=>   $data->Date,
+                'created_at'=>$date,
+            ];
+            completed_orders::insert($record);
+            $record=null;
+            }
+        }
+            Orders_sell::where('OrderID',$orderid)->delete();
+        return redirect('ViewOrders'); 
+
+    }
     public function ViewOrders(){
-        $data = Orders_sell::join('products','orders_sell.ProductID','=','products.id')->where('products.seller_id',session()->get('seller_id'))->get();
+        $data = Orders_sell::join('products','orders_sell.ProductID','=','products.id')->join('customer_infos','orders_sell.CustomerID','=','customer_infos.id')->where('products.seller_id',session()->get('seller_id'))->get();
         $data2=Orders_sell::join('products','orders_sell.ProductID','=','products.id')->where('products.seller_id',session()->get('seller_id'))->get();;
+        $data=$data->unique('OrderID');
+        // dd($data);
         // $current=0;
         // $previous=0;
         // $current=$data[0]->OrderID;
@@ -37,6 +77,11 @@ class SellerController extends Controller
         // }
         // dd($data);
         return view('Seller.ViewOrders')->with('data',$data)->with('data2',$data2);
+    }
+    public function OrderDetails($orderid){
+        $data = Orders_sell::join('products','orders_sell.ProductID','=','products.id')->where('OrderID',$orderid)->where('products.seller_id',session()->get('seller_id'))->get();
+        // dd($data);
+        return view('Seller.OrderDetails')->with('data',$data);
     }
 
       public function Seller_Authentication()

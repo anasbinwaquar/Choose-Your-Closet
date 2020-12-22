@@ -28,6 +28,7 @@
                     <li class="nav-item"><a class="nav-link " href="/ViewOrders"><i class="fas fa-tachometer-alt"></i><span>View Orders</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/CompletedOrders"><i class="fas fa-tachometer-alt"></i><span>Completed Orders</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/SellerLogout"><i class="fas fa-user"></i><span>Logout</span></a></li>
+                </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
@@ -36,7 +37,7 @@
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
                         <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                                <h3 class="text-dark mb-2">Delete Products</h3>
+                                <h3 class="text-dark mb-2">Completed Orders</h3>
                           <!--   </div> -->
                         </form>
                         <ul class="nav navbar-nav flex-nowrap ml-auto">
@@ -53,39 +54,104 @@
                     </ul>
             </div>
             </nav>
-
-                            @if($product==NULL)
-                         <p style="text-align: center;">You haven't listed any products for sale</p>           
-                         @else
-                        <div class="table-responsive table m-lg-auto mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                <div class="container-fluid">
+                <div class="table-responsive table m-lg-auto mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                             <table class="table my-0" id="dataTable">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Product ID</th>
-                                        <th scope="col">Product Name</th>   
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Description</th>
-                                        <th scope="col">Product Image</th>
-                                        <th scope="col">Clothing Type</th>
-                                        <th scope="col">Remove</th>
+                                        <th>Order Id</th>
+                                        <th>Product ID</th>
+                                        <th>Product Name</th>
+                                        <th>Quantity</th>
+                                        <th>Size</th>
+                                        <th>Address</th>
+                                        <th>Contact Number</th>
+                                        <th>Total</th>
                                     </tr>
                                 </thead>
                                   <tbody>
-                                       @foreach ($product as $product)
+                                    @php
+                                        $check=1;
+                                        $price=0;
+                                    @endphp
+                                    @foreach (collect($data)->unique('OrderID') as $data)
                                       <tr>
-                                          <th>{{$product->id}}</th>
-                                          <th>{{$product->product_name}}</th>
-                                          <th>{{$product->price_per_unit}}</th>
-                                          <th>{{$product->description}}</th>
-                                          <td><img src="{{asset('uploads/sell/'. $product->product_image)}}" style="width: 20rem;height: 20rem"></td>  
-                                          <th>{{$product->clothing_type}}</th>
-                                          <th><a href="destroy/{{$product->id}}"><button class="btn btn-success">Remove</button></a></th>
+                                        <th>{{ $data->OrderID }}</th>
+                                        <th> @foreach($data2 as $d2)
+                                                @if($d2->OrderID==$data->OrderID)
+                                                {{ $d2->ProductID}}
+                                                <br>
+                                                    @php
+                                                        $check=1
+                                                    @endphp
+                                                @else
+                                                @php
+                                                    $check=0;
+                                                @endphp
+                                                @endif
+                                            @endforeach</th>
+                                            <th> @foreach($data2 as $d2)
+                                                @if($d2->OrderID==$data->OrderID)
+                                                {{$d2->product_name}}
+                                                <br>
+                                                    @php
+                                                        $check=1
+                                                    @endphp
+                                                @else
+                                                @php
+                                                    $check=0;
+                                                @endphp
+                                                @endif
+                                            @endforeach</th>
+                                            <th> @foreach($data2 as $d2)
+                                                @if($d2->OrderID==$data->OrderID)
+                                                {{$d2->Quantity}}
+                                                <br>
+                                                    @php
+                                                        $check=1
+                                                    @endphp
+                                                @else
+                                                @php
+                                                    $check=0;
+                                                @endphp
+                                                @endif
+                                            @endforeach</th>
+                                            <th> @foreach($data2 as $d2)
+                                                @if($d2->OrderID==$data->OrderID)
+                                                {{$d2->Size}}
+                                                <br>
+                                                    @php
+                                                        $check=1
+                                                    @endphp
+                                                @else
+                                                @php
+                                                    $check=0;
+                                                @endphp
+                                                @endif
+                                            @endforeach</th>
+                                        <th>{{ $data->Delivery_Address}}</th>
+                                        <th> {{$data->Phone_Number}} </th>
+                                        <th>
+                                            @foreach($data2 as $d2)
+                                                @if($d2->OrderID==$data->OrderID)
+                                                {{$d2->Total}}
+                                                @php
+                                                    $price=$d2->Total+$price;
+                                                @endphp
+                                                <br>
+                                                @endif
+                                            @endforeach
+                                            <br>
+                                        Total: {{$price}}</th>  
+                                        @php
+                                         $price=0;
+                                        @endphp 
                                       </tr>
-                                      @endforeach
-                                      @endif
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
+            </div>
         </div>
         </div>
     <script src="assets/js/jquery.min.js"></script>

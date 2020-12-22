@@ -21,11 +21,13 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link " href="ListProduct"><i class="fas fa-tachometer-alt"></i><span>Add Product</span></a></li>
-                    <li class="nav-item"><a class="nav-link " href="DeleteProduct"><i class="fas fa-tachometer-alt"></i><span>Delete Product</span></a></li>
-                    <li class="nav-item"><a class="nav-link " href="RentalProduct"><i class="fas fa-tachometer-alt"></i><span>Add Rental Product</span></a></li>
-                    <li class="nav-item"><a class="nav-link " href="ViewOrders"><i class="fas fa-tachometer-alt"></i><span>View Orders</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="SellerLogout"><i class="fas fa-user"></i><span>Logout</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="/ListProduct"><i class="fas fa-tachometer-alt"></i><span>Add Product</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="/DeleteProduct"><i class="fas fa-tachometer-alt"></i><span>Delete Product</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="/RentalProduct"><i class="fas fa-tachometer-alt"></i><span>Add Rental Product</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="/ViewProducts"><i class="fas fa-tachometer-alt"></i><span>View Products</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="/ViewOrders"><i class="fas fa-tachometer-alt"></i><span>View Orders</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="/CompletedOrders"><i class="fas fa-tachometer-alt"></i><span>Completed Orders</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/SellerLogout"><i class="fas fa-user"></i><span>Logout</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
@@ -35,7 +37,7 @@
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
                         <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                                <h3 class="text-dark mb-2">Seller Dashboard</h3>
+                                <h3 class="text-dark mb-2">Order View</h3>
                           <!--   </div> -->
                         </form>
                         <ul class="nav navbar-nav flex-nowrap ml-auto">
@@ -70,10 +72,10 @@
                                   <tbody>
                                     @php
                                         $check=1;
+                                        $price=0;
                                     @endphp
-                                    @foreach ($data as $data)
+                                    @foreach (collect($data)->unique('OrderID') as $data)
                                       <tr>
-                                        @if($check==1)
                                         <th>{{ $data->OrderID }}</th>
                                         <th> @foreach($data2 as $d2)
                                                 @if($d2->OrderID==$data->OrderID)
@@ -116,8 +118,7 @@
                                             @endforeach</th>
                                             <th> @foreach($data2 as $d2)
                                                 @if($d2->OrderID==$data->OrderID)
-                                                Size value from DB Here
-                                                <!-- {{$d2->Quantity}} -->
+                                                {{$d2->Size}}
                                                 <br>
                                                     @php
                                                         $check=1
@@ -129,13 +130,23 @@
                                                 @endif
                                             @endforeach</th>
                                         <th>{{ $data->Delivery_Address}}</th>
-                                        <th> Contact Number </th>
-                                        <th>{{ $data->Total}}</th>
-                                        @else
+                                        <th> {{$data->Phone_Number}} </th>
+                                        <th>
+                                            @foreach($data2 as $d2)
+                                                @if($d2->OrderID==$data->OrderID)
+                                                {{$d2->Total}}
+                                                @php
+                                                    $price=$d2->Total+$price;
+                                                @endphp
+                                                <br>
+                                                @endif
+                                            @endforeach
+                                            <br>
+                                        Total: {{$price}}</th>  
                                         @php
-                                            $check=1;
-                                        @endphp
-                                        @endif
+                                         $price=0;
+                                        @endphp 
+                                        <th><a href="EndOrder/{{$data->OrderID}}"><button class="btn btn-success">Completed</button></a></th>
                                       </tr>
                                     @endforeach
                                 </tbody>
