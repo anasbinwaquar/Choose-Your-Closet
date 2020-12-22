@@ -142,9 +142,15 @@ Route::post('/cart/{product_id}', [App\Http\Controllers\CartController::class, '
 
 Route::get('/CustomerCart', [App\Http\Controllers\CartController::class, 'ViewCart']);
 
+
 Route::get('/RentCart', [App\Http\Controllers\CartController::class, 'ViewRentCart']);
 
 Route::post('/RentCartCheckout', [App\Http\Controllers\CartController::class, 'RentCartCheckout']);
+
+Route::post('/updatecart/{product_id}/{size}', [App\Http\Controllers\CartController::class, 'UpdateCart'])->name('UpdateCartData');
+
+Route::get('/deletecart/{product_id}/{size}', [App\Http\Controllers\CartController::class, 'DeleteCart'])->name('DeleteCartData');
+
 
 //contact
 
