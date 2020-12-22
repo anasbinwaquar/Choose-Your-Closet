@@ -91,7 +91,7 @@
         <a class="nav-link navlink" href="/" style="color: #24C6DC;">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link navlink active" href="#" style="color: #24C6DC;">About Us</a>
+        <a class="nav-link navlink active" href="AboutUs" style="color: #24C6DC;">About Us</a>
       </li>
       <li class="nav-item">
         <a class="nav-link navlink" href="/customize" style="color: #24C6DC;">Customizer</a>
@@ -102,6 +102,15 @@
          <div class="dropdown-content">
         <a href="#" class="link">Purchase</a>
         <a href="RentProducts" class="link">Rent</a>
+        </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="dropdown">
+        <a class="nav-link navlink" href="#" style="color: #24C6DC;">User Profile</a>
+         <div class="dropdown-content">
+        <a href="/CheckOrders" class="link">Check Orders</a>
+        <a href="/CompletedOrdersCustomer" class="link">Completed Orders</a>
         </div>
         </div>
       </li>

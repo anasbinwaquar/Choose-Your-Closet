@@ -106,6 +106,15 @@
       </li>
       <li class="nav-item">
         <div class="dropdown">
+        <a class="nav-link navlink" href="#" style="color: #24C6DC;">User Profile</a>
+         <div class="dropdown-content">
+        <a href="/CheckOrders" class="link">Check Orders</a>
+        <a href="/CompletedOrdersCustomer" class="link">Completed Orders</a>
+        </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="dropdown">
         <a class="nav-link navlink" href="/CustomerCart" style="color: #24C6DC;"><i class="fas fa-shopping-cart"></i><span class="badge badge-light">
           <?php if(session()->has('cart'))
         {

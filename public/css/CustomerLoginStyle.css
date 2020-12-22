@@ -48,7 +48,7 @@
 
 body, html {
 	height: 100%;
-	font-family: Poppins-Regular, sans-serif;
+	font-family: sans-serif, arial, helvetica;
 }
 
 body{
@@ -58,9 +58,8 @@ body{
 }
 
 /*---------------------------------------------*/
-a {
-	font-family: Poppins-Regular;
-	/*font-size: 14px;*/
+a {/*
+	font-size: 14px;*/
 	line-height: 1.7;
 	color: #666666;
 	margin: 0px;
@@ -84,9 +83,8 @@ h1,h2,h3,h4,h5,h6 {
 	margin: 0px;
 }
 
-p {
-	font-family: Poppins-Regular;
-	/*font-size: 14px;*/
+p {/*
+	font-size: 14px;*/
 	line-height: 1.7;
 	color: #666666;
 	margin: 0px;
@@ -621,4 +619,9 @@ input.input100 {
       color: #fff;
       -webkit-text-stroke-width: 1px;
       -webkit-text-stroke-color: black;
+      color: #24C6DC;
+  }
+
+  body{
+    font-size:20px;
   }
