@@ -17,7 +17,15 @@ class AdminController extends Controller
 
     public function ViewAbout()
     {
-        return view('Pages.AboutUs');
+        if(session()->has('customer_id'))
+        {
+                $check_nav = 1;
+        }
+        else
+        {
+           $check_nav = 0;
+        }
+        return view('Pages.AboutUs')->with('check_nav', $check_nav);
     }
 
     public function image($encodedData){

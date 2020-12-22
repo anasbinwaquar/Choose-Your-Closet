@@ -51,6 +51,7 @@ class OrdersSellController extends Controller
              // printf($products['siz']);
             
             DB::insert('insert into orders_sell(OrderID, CustomerID, ProductID, Size, Quantity, Delivery_Address, Total, Date) values(?, ?, ?, ?, ?, ?, ?, ?)', [$orderid, $customer_id, $products['item']['id'], $products['siz'], $products['qty'], $Delivery_Address, $products['price'], $date]);
+
             } 
             if($products['siz']=='S'){
                 $prod=Product::where('id',$products['item']['id'])->first();

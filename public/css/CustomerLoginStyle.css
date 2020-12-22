@@ -60,7 +60,7 @@ body{
 /*---------------------------------------------*/
 a {
 	font-family: Poppins-Regular;
-	font-size: 14px;
+	/*font-size: 14px;*/
 	line-height: 1.7;
 	color: #666666;
 	margin: 0px;
@@ -86,7 +86,7 @@ h1,h2,h3,h4,h5,h6 {
 
 p {
 	font-family: Poppins-Regular;
-	font-size: 14px;
+	/*font-size: 14px;*/
 	line-height: 1.7;
 	color: #666666;
 	margin: 0px;
@@ -161,14 +161,14 @@ iframe {
 [ Text ]*/
 .txt1 {
   font-family: Montserrat-Regular;
-  font-size: 13px;
+  /*font-size: 13px;*/
   line-height: 1.4;
   color: #555555;
 }
 
 .txt2 {
   font-family: Montserrat-Regular;
-  font-size: 13px;
+  /*font-size: 13px;*/
   line-height: 1.4;
   color: #999999;
 }
@@ -418,7 +418,7 @@ input.input100 {
 .label-checkbox100::before {
   content: "\f00c";
   font-family: FontAwesome;
-  font-size: 13px;
+  /*font-size: 13px;*/
   color: transparent;
 
   display: -webkit-box;
@@ -613,3 +613,10 @@ input.input100 {
   background: #333333;
   color: #fff;
 }
+
+ h5
+  {
+      font-size: 15px;
+      font-family: Arial, sans-serif, Helvetica;
+      color: #24C6DC;
+  }
