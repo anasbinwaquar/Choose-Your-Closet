@@ -66,7 +66,7 @@
                                         <th>Size</th>
                                         <th>Address</th>
                                         <th>Contact Number</th>
-                                        <th>Total</th>
+                                        <th>Price</th>
                                     </tr>
                                 </thead>
                                   <tbody>

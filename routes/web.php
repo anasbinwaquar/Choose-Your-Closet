@@ -79,6 +79,8 @@ Route::get('/UserProfile',[App\Http\Controllers\CustomerInfoController::class,'P
 
 Route::get('/UserLogout',[App\Http\Controllers\CustomerInfoController::class,'UserLogout']);
 
+Route::get('/CheckOrders',[App\Http\Controllers\CustomerInfoController::class,'CheckOrders']);
+
 
 // Product
 

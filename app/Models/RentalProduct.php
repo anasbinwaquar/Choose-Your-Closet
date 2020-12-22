@@ -20,6 +20,7 @@ class RentalProduct extends Model
         'approved',
         'charges',
         'available',
-        'size'
+        'size',
+        'security_desposit'
     ];
 }

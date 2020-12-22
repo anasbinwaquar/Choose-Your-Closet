@@ -57,6 +57,9 @@ class CartController extends Controller
     public function ViewCart()
     {
        // session()->flush();
+        if(!session()->has('customer_id'))
+            return redirect('CustomerLogin');
+
         $OldCart = session()->get('cart');
         $CurrentCart = new cart($OldCart);
         //dd($CurrentCart);
