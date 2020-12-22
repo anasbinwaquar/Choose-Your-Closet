@@ -42,7 +42,7 @@
         <a class="nav-link navlink active" href="/" style="color: #24C6DC;">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link navlink" href="#" style="color: #24C6DC;">About Us</a>
+        <a class="nav-link navlink" href="AboutUs" style="color: #24C6DC;">About Us</a>
       </li>
       <li class="nav-item">
         <a class="nav-link navlink" href="/customize" style="color: #24C6DC;">Customizer</a>
@@ -51,7 +51,7 @@
         <div class="dropdown">
         <a class="nav-link navlink" href="#" style="color: #24C6DC;">Products</a>
          <div class="dropdown-content">
-        <a href="#" class="link">Purchase</a>
+        <a href="/" class="link">Purchase</a>
         <a href="/RentProducts" class="link">Rent</a>
         </div>
         </div>
@@ -187,7 +187,11 @@
                                                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
                                                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li></ul>
+                                                                     @if(!session()->has('customer_id'))
+                                                                <a class="cart" href="#" onclick="alert('You need to Login first')">Add to Cart</a>
+                                                                    @elseif(session()->has('customer_id'))
                                                                 <a class="cart" href="product/{{$data->id}}">Add to Cart</a>
+                                                                @endif
                                                           </div>
                                                         </div>
                                                         <div class="why-text">
@@ -207,44 +211,43 @@
         </section>
     </main>
     <footer class="page-footer dark">
+      <img src="{{asset('images/Closet.png')}}" alt="Logo" style="float: right; margin-right: 200px;">
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
-                    <h5>Get started</h5>
+                    <h5>Customer Portal</h5>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Sign up</a></li>
-                        <li><a href="#">Downloads</a></li>
+                        <li><a href="/CustomerSignUp">Sign Up</a></li>
+                        <li><a href="/CustomerLogin">Login</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/">Purchase Product</a></li>
+                        <li><a href="/RentProducts">Rent Product</a></li>
+                        <li><a href="/customize">Custom Orders</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-3">
-                    <h5>About us</h5>
+                    <h5>Seller Portal</h5>
                     <ul>
-                        <li><a href="#">Company Information</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">Reviews</a></li>
+                        <li><a href="/SellerSignUp">Sign Up</a></li>
+                        <li><a href="/SellerLogin">Login</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>About</h5>
+                    <ul>
+                        <li><a href="AboutUs">About Us</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-3">
                     <h5>Support</h5>
                     <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Help desk</a></li>
-                        <li><a href="#">Forums</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <h5>Legal</h5>
-                    <ul>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Terms of Use</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="/ContactUs">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="footer-copyright">
-            <p>© 2020 Copyright Text</p>
+            <p>© 2020 Copyright Choose Your Closet <img src="{{asset('images/Closet.png')}}" alt="Logo" width="50"></p>
         </div>
     </footer>
 </body>

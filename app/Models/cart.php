@@ -32,7 +32,7 @@ class Cart
 			$storedItem['price']=$item->price_per_unit * $storedItem['qty'];
 			$this->items[$id][$size]= $storedItem; 
 			//$this->items_size[$size]= $storedItem; 
-			$this->totalQty+=$quantity;
+			$this->totalQty	+=	$quantity;
 			$this->totalPrice += $storedItem['price'];
 	}
 	// public function add($item,$id){

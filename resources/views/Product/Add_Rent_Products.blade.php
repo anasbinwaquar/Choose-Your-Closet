@@ -55,7 +55,8 @@
             </div>
             </nav>
 
-            <form class="form-horizontal justify-content-center" name="ProductForm" id="ProductForm" action="{{ route('CreateRentProduct')}}" method="post" enctype="multipart/form-data" autocomplete="off">
+            <form class="form-horizontal justify-content-center" name="ProductForm" id="ProductForm" action="{{ route('CreateRentProduct')}}" method="post" enctype="multipart/form-data" autocomplete="off" style="margin-left: 30%;
+    width:80em;">
   @csrf
 <fieldset>
 
@@ -71,7 +72,7 @@
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="product_name">PRODUCT NAME</label>  
-  <div class="col-md-4">
+  <div class="col-md-6">
   <input id="product_name" name="product_name" placeholder="PRODUCT NAME" value="{{old('product_name')}}" class="form-control input-md" required type="text">
     
   </div>
@@ -80,7 +81,7 @@
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="description">PRODUCT DESCRIPTION</label>  
-  <div class="col-md-4">
+  <div class="col-md-6">
   <input id="description" name="description" placeholder="PRODUCT DESCRIPTION" value="{{old('description')}}" class="form-control input-md" required type="text">
     
   </div>
@@ -88,7 +89,7 @@
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="sizes">SIZES</label>  
-  <div class="col-md-4">
+  <div class="col-md-6">
       <input type="radio" id="size" name="size" value="Small"/> <label>Small</label> 
       <input type="radio" id="size" name="size" value="Medium" /> <label >Medium</label>
       <input type="radio" id="size" name="size" value="Large" /> <label >Large</label>
@@ -98,7 +99,7 @@
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="clothing_type">CLOTHING TYPE</label>
-  <div class="col-md-4">
+  <div class="col-md-6">
     <select id="clothing_type" name="clothing_type" class="form-control" id="clothing_type" required>
     <option value="Pant">Pant</option>
     <option value="T-Shirt">T-Shirt</option>
@@ -112,7 +113,7 @@
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="gender">CLOTHING GENDER</label>
-  <div class="col-md-4">
+  <div class="col-md-6">
     <select id="gender_type" name="gender_type" class="form-control" required>
     <option selected>CHOOSE...</option>
      <option value="Male">Male</option>
@@ -123,7 +124,7 @@
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="category">PRODUCT CATEGORY</label>
-  <div class="col-md-4">
+  <div class="col-md-6">
     <select id="category" name="category" class="form-control" required>
     <option value="Formal">Formal</option>
     <option value="Informal">Informal</option>
@@ -133,7 +134,7 @@
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="charges">SECURITY DEPOST</label>  
-  <div class="col-md-4">
+  <div class="col-md-6">
   <input id="security_desposit" name="security_desposit" placeholder="security_desposit" required value="{{old('security_desposit')}}" class="form-control input-md" type="text">
     
   </div>
@@ -141,7 +142,7 @@
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="charges">DAILY CHARGES</label>  
-  <div class="col-md-4">
+  <div class="col-md-6">
   <input id="charges" name="charges" placeholder="DAILY CHARGES" required value="{{old('charges')}}" class="form-control input-md" type="text">
     
   </div>
@@ -149,15 +150,15 @@
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="filebutton">PRODUCT IMAGES</label>
-  <div class="col-md-4">
+  <div class="col-md-6">
     <input id="product_image" name="product_image" class="input-file" type="file" accept="image/*" multiple required>
   </div>
 </div>
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="Submit"></label>
-  <div class="col-md-4">
-    <button id="Submit" name="Submit" type="submit" class="btn btn-primary" required>SUBMIT</button>
+  <div class="col-md-6">
+    <button id="Submit" name="Submit" type="submit" class="btn btn-primary col-md-12" required>SUBMIT</button>
   </div>
   </div>
 
@@ -165,6 +166,7 @@
 </form>
         </div>
         </div>
+      </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/chart.min.js"></script>
