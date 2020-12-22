@@ -73,7 +73,7 @@ class Cart
 		public function delete_cart($id,$size,$item)
 	{
 		$previous_quantity = $this->items[$id][$size]['qty'];
-		$previous_price = $this->items[$id][$size]['price'] * $previous_quantity;
+		$previous_price = $item->price_per_unit * $previous_quantity;
 		$storedItem=['qty'=>$previous_quantity,'siz'=>$size,'price'=>$item->price_per_unit,'item'=>$item];
 		// if($this->items){
 		// 		if(array_key_exists($id,$this->items))
