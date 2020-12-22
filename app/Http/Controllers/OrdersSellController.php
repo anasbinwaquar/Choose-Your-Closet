@@ -50,8 +50,24 @@ class OrdersSellController extends Controller
              printf($products['siz']);
             
             DB::insert('insert into orders_sell(OrderID, CustomerID, ProductID, Size, Quantity, Delivery_Address, Total, Date) values(?, ?, ?, ?, ?, ?, ?, ?)', [$orderid, $customer_id, $products['item']['id'], $products['siz'], $products['qty'], $Delivery_Address, $products['price'], $date]);
-
-            } 
+           
+            if( $products['siz'] =='S')
+            {
+            DB::update("products set quantity_small=quantity_small-$products['qty']");
+            }
+            else if( $products['siz'] =='M')
+            {
+            DB::update('products set quantity_medium=quantity_medium-$products['qty']') ;
+            }   
+            else if( $products['siz'] =='L')
+            {
+            DB::update('products set quantity_large=quantity_large-$products['qty']') ;
+            }
+            else if( $products['siz'] =='XL')
+            {
+            DB::update('products set quantity_extra_large=quantity_extra_large-$products['qty']') ;
+            }
+             }
         }
        session()->forget('cart');
     	return redirect('/');
