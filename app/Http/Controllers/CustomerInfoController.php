@@ -89,13 +89,13 @@ class CustomerInfoController extends Controller
     }   
 
     public function CheckOrders(){
-        if(!session()->has('data'))
+        if(!session()->has('customer_id'))
         {
-         return redirect('Customer.CustomerLogin');
+         return redirect('/CustomerLogin');
         }
         $data = Orders_sell::join('products','products.id','=','orders_sell.ProductID')->join('seller_info','seller_info.id','=','products.seller_id')->where('CustomerID',session()->get('customer_id'))->get();
-        dd($data);
-        $data2 = Orders_sell::where('CustomerID',session()->get('customer_id'))->get();
+        // dd($data);
+        $data2 = Orders_sell::join('products','products.id','=','orders_sell.ProductID')->join('seller_info','seller_info.id','=','products.seller_id')->where('CustomerID',session()->get('customer_id'))->get();
         $data=$data->unique('OrderID');
         return view('Customer.CheckOrders')->with('data',$data)->with('data2',$data2);
     }
@@ -103,11 +103,22 @@ class CustomerInfoController extends Controller
     {
         if(!session()->has('data'))
         {
-         return redirect('Customer.CustomerLogin');
+         return redirect('/CustomerLogin');
         }
         return view('Customer.UserProfile');
     }
 
+    public function CompletedOrdersCustomer(){
+        if(!session()->has('customer_id'))
+        {
+         return redirect('/CustomerLogin');
+        }
+         $data = completed_orders::join('products','completed_orders.ProductID','=','products.id')->join('customer_infos','completed_orders.CustomerID','=','customer_infos.id')->where('CustomerID',session()->get('customer_id'))->get();
+        $data2=completed_orders::join('products','completed_orders.ProductID','=','products.id')->where('CustomerID',session()->get('customer_id'))->get();;
+        $data=$data->unique('OrderID');
+        // dd($data);
+        return view('Customer.CompletedOrders')->with('data',$data)->with('data2',$data2);
+    }
 
     public function UserLogout()
     {

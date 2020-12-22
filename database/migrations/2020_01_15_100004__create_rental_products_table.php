@@ -25,7 +25,7 @@ class CreateRentalProductsTable extends Migration
             $table->string('category');
             $table->boolean('approved')->default(0);
             $table->integer('charges');
-            $table->integer('security_desposit');
+            $table->integer('security_deposit');
             $table->boolean('available');
 
             //foreign key constraints

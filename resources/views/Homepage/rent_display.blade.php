@@ -44,37 +44,15 @@
                                     <h3>{{$product->product_name}}</h3>
                                     <div class="rating"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star-half-empty.svg"><img src="/product/img/star-empty.svg"></div>
                                     <div class="price">
-                                        <h3>Rs. {{$product->price_per_unit}}</h3>
+                                        <h3>Daily Charges: Rs. {{$product->charges}}</h3>
+                                        <h3>Security Deposit: Rs. {{$product->security_deposit}}</h3>
+                                        <h3>Size: {{$product->size}}</h3>
                                     </div>
-                                    <form action="{{route('CartData',['product_id'=>$product->id])}}" method="post">
-                                        @csrf
-                                    <div style="width:250px;">
-                                    <div class="input-group">
-                                     <button class="button_quantity" type="button"><i class="fas fa-minus" onclick="decreaseValue()"></i></button>
-                                      <span class="input-container">
-                                      <input id="number" type="text" name="quant" class="form-control input-number" value="1" min="1" max="10">
-                                      </span><button class="button_quantity" type="button"><i class="fas fa-plus" onclick="increaseValue()"></i></button>
-                                      </div>
-                                      <input id="size_submit" type="text" name="size" style="display: none;">
-                                        @if($product->quantity_small!=NULL || $product->quantity_small!=0)
-                                        <button id="size_s" type="button" class="btn btn-primary" style="font-weight: bold;" value="S" onclick="size_selector(this.id)">S</button>
-                                         @endif
-                                        @if($product->quantity_medium!=NULL || $product->quantity_medium!=0)
-                                        <button id="size_m" type="button" class="btn btn-primary" style="font-weight: bold;" value="M" onclick="size_selector(this.id)">M</button>
-                                         @endif
-                                        @if($product->quantity_large!=NULL || $product->quantity_large!=0)
-                                        <button id="size_l" type="button" class="btn btn-primary" style="font-weight: bold;" value="L" onclick="size_selector(this.id)">L</button>
-                                         @endif
-                                        @if($product->quantity_extra_large!=NULL || $product->quantity_extra_large!=0)
-                                        <button id="size_xl" type="button" class="btn btn-primary" style="font-weight: bold;" value="XL" onclick="size_selector(this.id)">XL</button>
-                                        @endif
-                                      </div>
                                       @if(!session()->has('customer_id'))
-                                         <button class="btn btn-primary" type="button" onclick="alert('You need to Login first')"><i class="icon-basket"></i>Add to Cart</button>
+                                         <button class="btn btn-primary" type="button" onclick="alert('You need to Login first')"><i class="icon-basket"></i> Rent </button>
                                          @elseif(session()->has('customer_id'))
-                                         <button class="btn btn-primary" type="submit"><i class="icon-basket"></i>Add to Cart</button>
+                                         <a href="/AddToCartRent/{{$product->id}}"><button class="btn btn-success">Rent</button></a>
                                          @endif
-                                      </form>
                                     </div>
                                     <div class="summary">
                                         <p>{{$product->description}}</p>
@@ -88,7 +66,6 @@
                             <ul class="nav nav-tabs" role="tablist" id="myTab">
                                 <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-toggle="tab" id="description-tab" href="#description">Description</a></li>
                                 <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-toggle="tab" id="specifications-tabs" href="#specifications">Specifications</a></li>
-                                <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-toggle="tab" id="reviews-tab" href="#reviews">Reviews</a></li>
                             </ul>
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane active fade show description" role="tabpanel" id="description">
@@ -133,109 +110,7 @@
                                         </table>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade show" role="tabpanel" id="reviews">
-                                    
-                                        @if ($errors->any())
-                                            <div class="alert alert-danger">
-                                                <ul>
-                                                    @foreach ($errors->all() as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
-                                        @if(session()->has('data') AND $check==0)
-                                        <form method="post" action="{{ route('SubmitReview')}}">
-                                            @csrf
-                                        <div style="max-width: 400px;">
-                                        </div>
-                                        <div style="padding-bottom: 18px;font-size : 24px; padding-top: 18px;">Product Review</div>
-                                        <div style="padding-bottom: 18px;">Rate this product<span style="color: red;"> *</span><br/>
-                                        <select id="data_4" name="rating" style="max-width : 150px;" class="form-control"><option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        </select>
-                                        </div>
-                                        <div style="padding-bottom: 18px;">Description<span style="color: red;"> *</span><br/>
-                                        <textarea id="data_8" false name="description" style="max-width : 450px;" rows="9" class="form-control"></textarea>
-                                        </div>
-                                        <div style="padding-bottom: 18px;">
-                                        <button id="Submit" name="Submit" type="submit" class="btn btn-primary" required>SUBMIT</button></div>
-                                        <div class="form-group">
-                                        <div>
-                                        <script  type="text/javascript"></script>
-                                        </div>
-                                        <input type="hidden" name="product_id" value="{{$product->id}}">
-                                        </form>
-
-                                        <script type="text/javascript">
-                                        function validateForm() {
-                                        if (isEmpty(document.getElementById('data_8').value.trim())) {
-                                        alert('Review is required!');
-                                        return false;
-                                        }
-                                        return true;
-                                        }
-                                        function isEmpty(str) { return (str.length === 0 || !str.trim()); }
-                                        function validateEmail(email) {
-                                        var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,15}(?:\.[a-z]{2})?)$/i;
-                                        return isEmpty(email) || re.test(email);
-                                        }
-                                        </script>
-                                        @endif
-
-                                        @foreach($reviews as $review)
-                                            @if(session()->has('customer_id'))
-                                                @if($check==1 && $review->customer_id==session()->get('customer_id'))
-                                                    <form method="post" action="{{ route('EditReview')}}">
-                                                        @csrf
-                                                    <div class="reviews">
-                                                        <div class="review-item">
-                                                            <div class="rating"> Rating: {{$review->rating}}</div>
-
-                                                            <h5>Your Review:</h4><span class="text-muted"></a>{{$review->First_Name}} {{$review->Last_Name}}, Dated: {{$review->review_date}}</span>
-                                                            <p>{{$review->description}}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                       <label >Edit Description: </label> <input type="text" name="description" value="{{$review->description}}">
-
-                                            <div >Update Rating:<span style="color: red;"> *  </span><select id="data_4" name="rating" style="max-width : 150px;">
-                                                        @php
-                                                            for ($i=01; $i <=5 ; $i++) { 
-                                                                if($i==$review->rating)
-                                                                    echo "<option selected='selected'>$i</option>";
-                                                                else
-                                                                    echo "<option>$i</option>";
-                                                            }
-                                                        @endphp
-                                                        </select>
-                                                       
-                                                        </div>
-                                                        <br>
-                                            <button id="Submit" name="Submit" type="submit" class="btn btn-primary" required>Edit</button></div>
-                                                    </div> 
-                                                    <input type="hidden" name="product_id" value="{{$product->id}}">
-
-                                                    </form>
-                                                @endif
-                                            @endif
-                                        <br><br>
-                                        @endforeach
-
-
-                                        @foreach($reviews as $review)
-                                                <div class="reviews">
-                                                    <div class="review-item">
-                                                        <div class="rating"> Rating: {{$review->rating}}</div>
-                                                        <h5>By:</h4><span class="text-muted"></a>{{$review->First_Name}} {{$review->Last_Name}}, Dated: {{$review->review_date}}</span>
-                                                        <p>{{$review->description}}</p>
-                                                    </div>
-                                                </div>
-                                        @endforeach
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
