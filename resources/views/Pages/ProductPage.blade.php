@@ -196,8 +196,7 @@
                                                             <a href="product/{{$data->id}}" class="btn btn-block" style="background-color:#007bff;color: #ffffff;">See More</a>
                                                         </div>
                                                     </div>
-                                    </div>
-
+                                      </div>
                                     @endforeach
                                 </div>
                             </div>

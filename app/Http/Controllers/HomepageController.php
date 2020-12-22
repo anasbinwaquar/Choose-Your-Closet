@@ -31,7 +31,7 @@ class HomepageController extends Controller
         }   
         $data = Product::where('approved', 1)->get();
         // printf("Now: %s", Carbon::now());
-        return view('Pages.ProductPage')->with('data',$data)->with('check', $check);
+        return view('Homepage.homepage')->with('data',$data)->with('check', $check);
     }
 
     /**

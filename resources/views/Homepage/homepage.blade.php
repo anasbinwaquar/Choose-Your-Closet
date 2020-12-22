@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>
         Choose Your Closet
     </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
       <link rel="icon" href="{{asset('images/Closet.png')}}">
 <!--      <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png"> -->
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+
 <!--     Site CSS -->
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -23,9 +28,8 @@
     <!-- Custom CSS -->
    <!--  <link rel="stylesheet" href="css/custom.css"> -->
 </head>
-<body  id="body" style="overflow:hidden;">
-
-  @if($check==0)
+<body>
+    @if($check==0)
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -140,38 +144,69 @@
     </form>
 </nav>
 @endif
-<br>
-<br>
-    <div class="container">
-  <div class="row ">
-    @foreach($data as $data)
-     <div class="col-lg-4 col-offset-12 special-grid best-seller">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <div class="type-lb">
-                                <p class="sale">Sale</p>
-                            </div>
-                             <img class="card-img-top" src="{{asset('uploads/sell/'. $data->product_image)}}" alt="Card image cap" style="height:400px;width: 350px;">
-                            <div class="mask-icon">
-                                <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li></ul>
-                                <a class="cart" href="product/{{$data->id}}">Add to Cart</a>
-                          </div>
+    <main>
+        <section class="clean-block clean-catalog dark">
+            <br>
+            <div class="container col-lg-10">
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="d-none d-md-block">
+                                <div class="filters">
+                                    <div class="filter-item">
+                                        <h3>Categories</h3>
+                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Women</label></div>
+                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label" for="formCheck-2">Men</label></div>
+                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-3"><label class="form-check-label" for="formCheck-3">Kids</label></div>
+                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Bridal/Groom Wear</label></div>
+                                    </div>
+                                    <div class="filter-item">
+                                        <h3>Brands</h3>
+                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-5"><label class="form-check-label" for="formCheck-5">Alkaram</label></div>
+                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-6"><label class="form-check-label" for="formCheck-6">Khaadi</label></div>
+                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7"><label class="form-check-label" for="formCheck-7">GulAhmed</label></div>
+                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7"><label class="form-check-label" for="formCheck-7">Levis</label></div>
+                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7"><label class="form-check-label" for="formCheck-7">Home Brands</label></div>
+                                    </div>
+                                </div>
+                            </div> 
                         </div>
-                        <div class="why-text">
-                            <h4>{{$data->product_name}}</h4>
-                            <h5>Rs: {{$data->price_per_unit}}</h5>
-                            <a href="product/{{$data->id}}" class="btn btn-block" style="background-color:#007bff;color: #ffffff;">See More</a>
+                        <div class="col-md-9">
+                            <div class="products">
+                                <div class="row">
+                                    @foreach($data as $data)
+                                     <div class="col-lg-4 col-offset-12 special-grid best-seller">
+                                                    <div class="products-single fix">
+                                                        <div class="box-img-hover">
+                                                            <div class="type-lb">
+                                                                <p class="sale">Sale</p>
+                                                            </div>
+                                                             <img class="card-img-top" src="{{asset('uploads/sell/'. $data->product_image)}}" alt="Card image cap" style="height:400px;width: 350px;">
+                                                            <div class="mask-icon">
+                                                                <ul>
+                                                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
+                                                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li></ul>
+                                                                <a class="cart" href="product/{{$data->id}}">Add to Cart</a>
+                                                          </div>
+                                                        </div>
+                                                        <div class="why-text">
+                                                            <h4>{{$data->product_name}}</h4>
+                                                            <h5>Rs: {{$data->price_per_unit}}</h5>
+                                                            <a href="product/{{$data->id}}" class="btn btn-block" style="background-color:#007bff;color: #ffffff;">See More</a>
+                                                        </div>
+                                                    </div>
+                                      </div>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
                     </div>
-    </div>
-
-    @endforeach
-  </div>
-</div>
-<!-- <footer class="page-footer dark">
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="page-footer dark">
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
@@ -211,7 +246,7 @@
         <div class="footer-copyright">
             <p>© 2020 Copyright Text</p>
         </div>
-    </footer> -->
-
+    </footer>
 </body>
-</html> 
+
+</html>
