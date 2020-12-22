@@ -79,6 +79,8 @@ Route::get('/UserProfile',[App\Http\Controllers\CustomerInfoController::class,'P
 
 Route::get('/UserLogout',[App\Http\Controllers\CustomerInfoController::class,'UserLogout']);
 
+Route::get('/CompletedOrdersCustomer',[App\Http\Controllers\CustomerInfoController::class,'CompletedOrdersCustomer']);
+
 Route::get('/CheckOrders',[App\Http\Controllers\CustomerInfoController::class,'CheckOrders']);
 
 
@@ -141,7 +143,6 @@ Route::get('/delete_print/{id}',[App\Http\Controllers\CustomizerController::clas
 Route::post('/cart/{product_id}', [App\Http\Controllers\CartController::class, 'AddToCart'])->name('CartData');
 
 Route::get('/CustomerCart', [App\Http\Controllers\CartController::class, 'ViewCart']);
-
 
 Route::get('/RentCart', [App\Http\Controllers\CartController::class, 'ViewRentCart']);
 
