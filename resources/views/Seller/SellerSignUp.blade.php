@@ -33,31 +33,31 @@
                             
                         <h2 class="form-title">Create account</h2>
                          <div class="form-group">
-                            <input type="text" class="form-input" name="First_Name" required id="name" placeholder="First Name"/>
+                            <input type="text" class="form-input" name="First_Name" required id="name" placeholder="First Name" value="{{old('First_Name')}}"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="Last_Name" required id="name" placeholder="Last Name"/>
+                            <input type="text" class="form-input" name="Last_Name" required id="name" placeholder="Last Name" value="{{old('Last_Name')}}"/>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-input" name="Email" required id="email" placeholder="Your Email"/>
+                            <input type="email" class="form-input" name="Email" required id="email" placeholder="Your Email" value="{{old('Email')}}" />
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="Phone_Number" required id="PhoneNumber" placeholder="Phone Number"/>
+                            <input type="text" class="form-input" name="Phone_Number" required id="PhoneNumber" placeholder="Phone Number" value="{{old('Phone_Number')}}"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="Website_Name"  id="WebsiteName" placeholder="Website Name(Optional)"/>
+                            <input type="text" value="{{old('Website_Name')}} class="form-input" name="Website_Name"  id="WebsiteName" placeholder="Website Name(Optional)"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="Brand_Name" id="BrandName" placeholder="Brand Name(Optional)"/>
+                            <input type="text" class="form-input" value="{{old('Brand_Name')}} name="Brand_Name" id="BrandName" placeholder="Brand Name(Optional)"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="Username"  required id="Username" placeholder="Username"/>
+                            <input type="text" class="form-input" name="Username" value="{{old('Username')}} required id="Username" placeholder="Username"/>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-input" name="Password" required id="Password" placeholder="Password"/>
+                            <input type="password" class="form-input" name="Password" value="{{old('Password')}} required id="Password" placeholder="Password"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="CNIC" id="CNIC" required placeholder="CNIC : 42201-XXXXXXX-X"/>
+                            <input type="text" class="form-input" name="CNIC" id="CNIC" value="{{old('CNIC')}}"" required placeholder="CNIC : 42201-XXXXXXX-X"/>
                         </div>
                         <!-- <div class="form-group">
                             <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />

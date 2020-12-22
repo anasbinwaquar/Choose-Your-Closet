@@ -57,6 +57,12 @@ Route::get('/SellerLogout',[App\Http\Controllers\SellerController::class,'Seller
 
 Route::get('/ViewOrders',[App\Http\Controllers\SellerController::class,'ViewOrders']);
 
+Route::get('/EndOrder/{id}',[App\Http\Controllers\SellerController::class,'EndOrder']);
+
+Route::get('/CompletedOrders',[App\Http\Controllers\SellerController::class,'CompletedOrders']);
+
+// Route::get('OrderDetails/{orderid}',[App\Http\Controllers\SellerController::class,'OrderDetails']);
+
 //Customer
 
 Route::get('/CustomerSignUp', [App\Http\Controllers\CustomerInfoController::class, 'CustomerSignUpView']);

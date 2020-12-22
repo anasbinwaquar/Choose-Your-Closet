@@ -69,7 +69,11 @@
                                         <button id="size_xl" type="button" class="btn btn-primary" style="font-weight: bold;" value="XL" onclick="size_selector(this.id)">XL</button>
                                         @endif
                                       </div>
-                                        <button class="btn btn-primary" type="submit"><i class="icon-basket"></i>Add to Cart</button>
+                                      @if(!session()->has('customer_id'))
+                                         <button class="btn btn-primary" type="button" onclick="alert('You need to Login first')"><i class="icon-basket"></i>Add to Cart</button>
+                                         @elseif(session()->has('customer_id'))
+                                         <button class="btn btn-primary" type="submit"><i class="icon-basket"></i>Add to Cart</button>
+                                         @endif
                                       </form>
                                     </div>
                                     <div class="summary">
