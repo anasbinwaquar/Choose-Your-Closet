@@ -187,7 +187,11 @@
                                                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
                                                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li></ul>
+                                                                     @if(!session()->has('customer_id'))
+                                                                <a class="cart" href="#" onclick="alert('You need to Login first')">Add to Cart</a>
+                                                                    @elseif(session()->has('customer_id'))
                                                                 <a class="cart" href="product/{{$data->id}}">Add to Cart</a>
+                                                                @endif
                                                           </div>
                                                         </div>
                                                         <div class="why-text">
