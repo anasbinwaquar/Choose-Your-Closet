@@ -15,6 +15,11 @@ class AdminController extends Controller
         return view('Admin.AdminLogin');
     }
 
+    public function ViewAbout()
+    {
+        return view('Pages.AboutUs');
+    }
+
     public function image($encodedData){
 
         print_r($encodedData);

@@ -149,3 +149,7 @@ Route::post('/EditReview', [App\Http\Controllers\ProductController::class, 'Edit
 Route::get('/PurchaseOrders', [App\Http\Controllers\OrdersSellController::class, 'ViewCheckout']);
 
 Route::post('/PurchaseOrdersChecked', [App\Http\Controllers\OrdersSellController::class, 'Checkout']);
+
+//About Us
+
+Route::get('/AboutUs', [App\Http\Controllers\AdminController::class, 'ViewAbout']);
