@@ -206,16 +206,13 @@
                              <img class="card-img-top" src="{{asset('uploads/sell/'. $data->product_image)}}" alt="Card image cap" style="height:400px;width: 350px;">
                             <div class="mask-icon">
                                 <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li></ul>
                                 <a class="cart" href="{{route('CartData',['product_id'=>$data->id])}}">Add to Cart</a>
  </div>
                         </div>
                         <div class="why-text">
                             <h4>{{$data->product_name}}</h4>
                             <h5>Daily Charges: {{$data->charges}}Rs</h5>
-                            <a href="product/{{$data->id}}" class="btn btn-block" style="background-color:#007bff;color: #ffffff;">See More</a>
+                            <a href="rentproduct/{{$data->id}}" class="btn btn-block" style="background-color:#007bff;color: #ffffff;">See More</a>
                         </div>
                     </div>
     </div>

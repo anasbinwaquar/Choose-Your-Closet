@@ -33,6 +33,9 @@ class CartController extends Controller
 
      public function AddToCart(Request $req, $product_id)
     {
+        $req->validate([
+          'size' => 'required',
+        ]);
       // session()->flush();
         $size=$req->input('size');
         $quantity=$req->input('quant');
