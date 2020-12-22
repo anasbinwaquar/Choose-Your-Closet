@@ -34,6 +34,17 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" type="text/css" href="css/nav_styling.css">
 
+<style>
+
+  h5
+  {
+      font-size: 15px;
+      font-family: Arial, sans-serif, Helvetica;
+      color: #24C6DC;
+  }
+
+</style>
+
 </head>
 <body>
    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="opacity: 0.8;">

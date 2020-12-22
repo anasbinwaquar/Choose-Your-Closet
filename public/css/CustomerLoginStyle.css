@@ -618,5 +618,7 @@ input.input100 {
   {
       font-size: 15px;
       font-family: Arial, sans-serif, Helvetica;
-      color: #24C6DC;
+      color: #fff;
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: black;
   }
