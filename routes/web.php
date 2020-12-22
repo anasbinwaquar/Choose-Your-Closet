@@ -138,6 +138,10 @@ Route::post('/cart/{product_id}', [App\Http\Controllers\CartController::class, '
 
 Route::get('/CustomerCart', [App\Http\Controllers\CartController::class, 'ViewCart']);
 
+Route::post('/updatecart/{product_id}/{size}', [App\Http\Controllers\CartController::class, 'UpdateCart'])->name('UpdateCartData');
+
+Route::get('/deletecart/{product_id}/{size}', [App\Http\Controllers\CartController::class, 'DeleteCart'])->name('DeleteCartData');
+
 //contact
 
 Route::get('/ContactUs', [App\Http\Controllers\ContactController::class, 'ContactPage']);

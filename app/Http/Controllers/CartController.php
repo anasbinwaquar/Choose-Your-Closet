@@ -54,6 +54,32 @@ class CartController extends Controller
         return redirect('/');
         //return view('Homepage.homepage')->with('product_cart',$_cart->totalQty);
     }
+    public function UpdateCart($product_id,$size,Request $req)
+    {
+
+        
+        $product = Product::find($product_id);
+        $quantity=$req->input('update_quantity');
+        printf($quantity);
+        $OldCart = session()->get('cart');
+        $CurrentCart = new cart($OldCart);
+        $CurrentCart->update_cart($product_id, $quantity, $size,  $product);
+        session()->put('cart',$CurrentCart);
+         return redirect('CustomerCart');
+    }
+
+      public function DeleteCart($product_id,$size)
+    {
+        
+        $product = Product::find($product_id);
+        $OldCart = session()->get('cart');
+        $CurrentCart = new cart($OldCart);
+        $CurrentCart->delete_cart($product_id, $size,  $product);
+        session()->put('cart',$CurrentCart);
+      //  return view('Pages.cart')->with(array('product'=> $CurrentCart->items))->with('product_cart',$CurrentCart->totalPrice);
+        return redirect('CustomerCart');
+    }
+
     public function ViewCart()
     {
        // session()->flush();
