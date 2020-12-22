@@ -26,7 +26,7 @@
                             <div class="items">
                                 <div class="product">
                                     <div class="row justify-content-center align-items-center">
-                                        <form action="{{route('CartData',['product_id'=> $product['item']['id'])}}"  method="post">
+                                        <form action="{{route('CartData',['product_id'=> $product['item']['id']])}}"  method="post">
                                         <div class="col-md-3">
                                             <div class="product-image"><img class="img-fluid d-block mx-auto image" src="{{asset('uploads/sell/'. $product['item']['product_image'])}}"></div>
                                         </div>
