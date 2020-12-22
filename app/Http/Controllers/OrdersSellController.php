@@ -13,7 +13,6 @@ class OrdersSellController extends Controller
     public function Checkout(Request $req)
     {
     	// session()->flush();
-        $size = 'default';
         $date = Carbon::now();
         printf($date);
         $Delivery_Address=$req->input('Delivery_Address');  
@@ -51,7 +50,7 @@ class OrdersSellController extends Controller
              printf($products['siz']);
             
             DB::insert('insert into orders_sell(OrderID, CustomerID, ProductID, Size, Quantity, Delivery_Address, Total, Date) values(?, ?, ?, ?, ?, ?, ?, ?)', [$orderid, $customer_id, $products['item']['id'], $products['siz'], $products['qty'], $Delivery_Address, $products['price'], $date]);
-            
+
             } 
         }
        session()->forget('cart');
