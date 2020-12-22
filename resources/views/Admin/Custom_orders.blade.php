@@ -85,7 +85,7 @@
                                         <th>{{$order->size}}</th>
                                         <th>{{$order->address}}</th>
                                         <th>{{$order->contact_number}}</th>
-                                        {{-- <th><a href="setapproval/{{$authentication->id}}"><button class="btn btn-success">Approve</button></a></th> --}}
+                                        <th><a href="setapproval/{{$authentication->id}}"><button class="btn btn-success">Approve</button></a></th>
                                         {{-- <th><a href="declineapproval/{{$authentication->id}}"><button class="btn btn-danger">Decline</button></a></th> --}}
                                       </tr>
                                     @endforeach

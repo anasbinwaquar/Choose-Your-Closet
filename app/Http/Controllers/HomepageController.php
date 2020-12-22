@@ -62,7 +62,8 @@ class HomepageController extends Controller
     }
     public function ShowRentProduct($product_id)
     {
-        $product = RentalProduct::where('id', $product_id)->get()->first();
+        $product = RentalProduct::where('id', $product_id)->get();
+        return view('Homepage.rent_display')->with('product',$product);
     }
 
     public function create()

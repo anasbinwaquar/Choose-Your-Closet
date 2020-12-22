@@ -79,6 +79,8 @@ Route::get('/UserProfile',[App\Http\Controllers\CustomerInfoController::class,'P
 
 Route::get('/UserLogout',[App\Http\Controllers\CustomerInfoController::class,'UserLogout']);
 
+Route::get('/CompletedOrdersCustomer',[App\Http\Controllers\CustomerInfoController::class,'CompletedOrdersCustomer']);
+
 Route::get('/CheckOrders',[App\Http\Controllers\CustomerInfoController::class,'CheckOrders']);
 
 
@@ -118,7 +120,7 @@ Route::get('/rentproduct/{product_id}', [App\Http\Controllers\HomepageController
 
 // Cart
 
-Route::get('/add-to-cart-rent/{product_id}', [App\Http\Controllers\ProductController::class, 'addtocartrent'])->name('addtocartrent');
+Route::get('/AddToCartRent/{product_id}', [App\Http\Controllers\CartController::class, 'AddToCartRent'])->name('AddToCartRent');
 
 // Customizer
 
@@ -141,6 +143,15 @@ Route::get('/delete_print/{id}',[App\Http\Controllers\CustomizerController::clas
 Route::post('/cart/{product_id}', [App\Http\Controllers\CartController::class, 'AddToCart'])->name('CartData');
 
 Route::get('/CustomerCart', [App\Http\Controllers\CartController::class, 'ViewCart']);
+
+Route::get('/RentCart', [App\Http\Controllers\CartController::class, 'ViewRentCart']);
+
+Route::post('/RentCartCheckout', [App\Http\Controllers\CartController::class, 'RentCartCheckout']);
+
+Route::post('/updatecart/{product_id}/{size}', [App\Http\Controllers\CartController::class, 'UpdateCart'])->name('UpdateCartData');
+
+Route::get('/deletecart/{product_id}/{size}', [App\Http\Controllers\CartController::class, 'DeleteCart'])->name('DeleteCartData');
+
 
 //contact
 
