@@ -137,11 +137,13 @@ body {
   color: #222;
   font-weight: 400;
   font-family: 'Montserrat';
-  background-image: url("https://source.unsplash.com/1600x900/?clothes,indianbridal");
+  background-image: url("https://source.unsplash.com/1600x900/?clothes, clothing, indianclothes, shirts");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  padding: 115px 0; }
+  width: 100%;
+  /*padding: 115px 0; */
+}
 
 .container {
   width: 660px;

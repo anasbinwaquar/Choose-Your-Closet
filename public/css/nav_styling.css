@@ -100,4 +100,14 @@ li{
 	font-weight: bold;
 }
 
+::selection
+{
+	background-color: #000000;
+	color: #ffffff;
+}
+
+.active
+{
+	font-weight: bold;
+}
 /* Change the background color of the dropdown button when the dropdown content is shown */
