@@ -35,7 +35,9 @@ class Cart
 			$this->totalQty	+=	$quantity;
 			$this->totalPrice += $storedItem['price'];
 	}
-	public function update_cart($id,$quantity,$size,$item){
+	public function update_cart($id,$quantity,$size,$item,$discount){
+		$discount=($discount/100)*$item->price_per_unit;
+		$item->price_per_unit=$item->price_per_unit-$discount;
 		$previous_quantity=$this->items[$id][$size]['qty'];
 		$previous_price=$this->items[$id][$size]['price'];
 		$storedItem=['qty'=>$quantity,'siz'=>$size,'price'=>$item->price_per_unit,'item'=>$item];

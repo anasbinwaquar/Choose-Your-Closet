@@ -174,3 +174,7 @@ Route::post('/PurchaseOrdersChecked', [App\Http\Controllers\OrdersSellController
 //About Us
 
 Route::get('/AboutUs', [App\Http\Controllers\AdminController::class, 'ViewAbout']);
+
+//voucher
+
+Route::post('/check_voucher/{product_id}', [App\Http\Controllers\vouchers::class, 'check_voucher'])->name('check_voucher');

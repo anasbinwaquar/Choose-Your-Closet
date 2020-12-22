@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\vouchers;
 use App\Models\RentalProduct;
 use App\Models\cart;
 use App\Models\Rental_history;
@@ -97,10 +98,17 @@ class CartController extends Controller
         
         $product = Product::find($product_id);
         $quantity=$req->input('update_quantity');
-        printf($quantity);
+        $code=$req->input('voucher');
+        $discount=DB::select("select Discount from voucher where code=?",[$code]);
+         $discount=$discount[0]->Discount;
         $OldCart = session()->get('cart');
         $CurrentCart = new cart($OldCart);
-        $CurrentCart->update_cart($product_id, $quantity, $size,  $product);
+        if($discount==NULL)
+        $CurrentCart->update_cart($product_id, $quantity, $size,  $product,0);
+        else
+        {
+          $CurrentCart->update_cart($product_id, $quantity, $size,  $product,$discount);   
+        }
         session()->put('cart',$CurrentCart);
          return redirect('CustomerCart');
     }

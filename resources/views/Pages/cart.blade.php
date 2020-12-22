@@ -44,7 +44,8 @@
                                                  <div><span>Size:&nbsp;</span><span class="value">
                                                  {{$product['siz']}}</span></div>
                                                  <br>
-                                                
+                                                 <input type="text" name="voucher" >
+                                                 <br><br>
                                                  <button class="btn btn-success" style="font-size: 20px;" type="submit">Update Quantity</button>
                                                  <a href="{{route('DeleteCartData',['product_id'=> $product['item']['id'],'size'=>$product['siz']])}}"><button class="btn btn-danger" style="font-size: 20px;" type="button">Delete</button></a>
                                             </div>

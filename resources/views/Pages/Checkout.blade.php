@@ -45,6 +45,8 @@
                                 <div class="form-group"><input class="form-control" type="text" placeholder="Address" name="Delivery_Address" required>
                                 </div>
                             </div>
+                             <div class="col-lg-12">
+                            </div>
                             <br>
                              <h3 class="title">Payment Methods</h3>    
                              <div class="form-check ">
