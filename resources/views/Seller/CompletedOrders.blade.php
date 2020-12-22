@@ -37,7 +37,7 @@
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
                         <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                                <h3 class="text-dark mb-2">Order View</h3>
+                                <h3 class="text-dark mb-2">Completed Orders</h3>
                           <!--   </div> -->
                         </form>
                         <ul class="nav navbar-nav flex-nowrap ml-auto">
@@ -146,7 +146,6 @@
                                         @php
                                          $price=0;
                                         @endphp 
-                                        <th><a href="EndOrder/{{$data->OrderID}}"><button class="btn btn-success">Completed</button></a></th>
                                       </tr>
                                     @endforeach
                                 </tbody>
@@ -155,7 +154,6 @@
             </div>
         </div>
         </div>
-    </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/chart.min.js"></script>

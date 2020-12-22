@@ -29,19 +29,19 @@
                      @endif
                         <h2 class="form-title">Create account</h2>
                          <div class="form-group">
-                            <input type="text" class="form-input" name="First_Name" id="name" placeholder="First Name"/>
+                            <input type="text" class="form-input" name="First_Name" id="name" value="{{old('First_Name')}} placeholder="First Name"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="Last_Name" id="name" placeholder="Last Name"/>
+                            <input type="text" class="form-input" name="Last_Name" id="name" placeholder="Last Name" value="{{old('Last_Name')}}"/>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-input" name="Email" id="email" placeholder="Your Email"/>
+                            <input type="email" class="form-input" name="Email" id="email" placeholder="Your Email" value="{{old('Email')}}" />
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="Phone_Number" id="PhoneNumber" placeholder="Phone Number"/>
+                            <input type="text" class="form-input" name="Phone_Number" id="PhoneNumber" placeholder="Phone Number" value="{{old('Phone_Number')}}" />
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="Username" id="Username" placeholder="Username"/>
+                            <input type="text" value="{{old('Username')}}" class="form-input" name="Username" id="Username" placeholder="Username"/>
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-input" name="Password" id="Password" placeholder="Password"/>
