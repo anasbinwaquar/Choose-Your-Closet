@@ -79,6 +79,8 @@ Route::get('/UserProfile',[App\Http\Controllers\CustomerInfoController::class,'P
 
 Route::get('/UserLogout',[App\Http\Controllers\CustomerInfoController::class,'UserLogout']);
 
+Route::get('/CheckOrders',[App\Http\Controllers\CustomerInfoController::class,'CheckOrders']);
+
 
 // Product
 
@@ -111,6 +113,8 @@ Route::get('/decline_rentproduct_approval/{product_id}', [App\Http\Controllers\P
 Route::get('/', [App\Http\Controllers\HomepageController::class, 'index']);
 
 Route::get('/product/{product_id}', [App\Http\Controllers\HomepageController::class, 'ShowProduct']);
+
+Route::get('/rentproduct/{product_id}', [App\Http\Controllers\HomepageController::class, 'ShowRentProduct']);
 
 // Cart
 
@@ -159,3 +163,7 @@ Route::post('/EditReview', [App\Http\Controllers\ProductController::class, 'Edit
 Route::get('/PurchaseOrders', [App\Http\Controllers\OrdersSellController::class, 'ViewCheckout']);
 
 Route::post('/PurchaseOrdersChecked', [App\Http\Controllers\OrdersSellController::class, 'Checkout']);
+
+//About Us
+
+Route::get('/AboutUs', [App\Http\Controllers\AdminController::class, 'ViewAbout']);

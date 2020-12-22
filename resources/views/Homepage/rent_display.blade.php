@@ -48,7 +48,6 @@
                                     </div>
                                     <form action="{{route('CartData',['product_id'=>$product->id])}}" method="post">
                                         @csrf
-                                        
                                     <div style="width:250px;">
                                     <div class="input-group">
                                      <button class="button_quantity" type="button"><i class="fas fa-minus" onclick="decreaseValue()"></i></button>
@@ -56,19 +55,6 @@
                                       <input id="number" type="text" name="quant" class="form-control input-number" value="1" min="1" max="10">
                                       </span><button class="button_quantity" type="button"><i class="fas fa-plus" onclick="increaseValue()"></i></button>
                                       </div>
-                                      @if ($errors->any())
-                                            <div class="col-md-12 alert alert-danger">
-                                                <ul>
-                                                    @foreach ($errors->all() as $error)
-                                                        @if($error=='The size field is required.')
-                                                        <li> Please select a Size. </li>
-                                                        @else
-                                                        <li>{{ $error }}</li>
-                                                        @endif
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
                                       <input id="size_submit" type="text" name="size" style="display: none;">
                                         @if($product->quantity_small!=NULL || $product->quantity_small!=0)
                                         <button id="size_s" type="button" class="btn btn-primary" style="font-weight: bold;" value="S" onclick="size_selector(this.id)">S</button>

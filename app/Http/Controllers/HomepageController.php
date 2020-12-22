@@ -60,6 +60,10 @@ class HomepageController extends Controller
             return view('Homepage.product_display')->with('product',$product)->with('reviews',$reviews)->with('check',$check);
         // ->with('RentalProduct',$RentalProduct)->with('SellerData',$SellerData);
     }
+    public function ShowRentProduct($product_id)
+    {
+        $product = RentalProduct::where('id', $product_id)->get()->first();
+    }
 
     public function create()
     {

@@ -18,6 +18,11 @@
                     <h2 class="text-info">Shopping Cart</h2>
                     <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p> -->
                 </div>
+
+                @if($product!=NULL)
+                @foreach($product as $product)
+                @foreach($product as $product)
+
                 <div class="content">
                         <div class="col-lg-12 col-lg-12">
                             <div class="items">
@@ -27,6 +32,9 @@
                   <form action="{{route('UpdateCartData',['product_id'=> $product['item']['id'],'size'=>$product['siz']])}}" method="post">
                     @csrf   
                                     <div class="row justify-content-center align-items-center">
+
+                                        <form action="{{route('CartData',['product_id'=> $product['item']['id']])}}"  method="post">
+
                                         <div class="col-md-3">
                                             <div class="product-image"><img class="img-fluid d-block mx-auto image" src="{{asset('uploads/sell/'. $product['item']['product_image'])}}"></div>
                                         </div>
@@ -67,6 +75,20 @@
                                 <h4><span class="text">Total</span><span class="price">Rs. {{$product_cart}}</span></h4><a href="/PurchaseOrders"><button class="btn btn-primary btn-block btn-lg" type="button">Checkout</button></a>
                             </div>
                         </div>
+                        @else
+                        <div class="col-md-12 col-lg-10 row justify-content-center align-items-center"> 
+                            <h2>Your Cart is Empty</h2> </div>
+                        <div class="col-md-12 col-lg-12">
+                            <div class="summary">
+                                <h3>Summary</h3>
+                                <h4><span class="text">Subtotal</span><span class="price">Rs. {{$product_cart}}</span></h4>
+                                <h4><span class="text">Discount</span><span class="price">Rs.0</span></h4>
+                                <h4><span class="text">Shipping</span><span class="price">Rs.0</span></h4>
+                            </div>
+                        </div>
+                        @endif
+
+                        
                 </div>
                      
                  

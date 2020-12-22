@@ -155,6 +155,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
+        if(!session()->has('seller_id'))
+            return redirect('SellerLogin');
+
         $seller_id=session('seller_id');
        $request->validate([
           'product_image' => 'required|dimensions:min_width=1000,min_height=1000',
@@ -192,6 +196,10 @@ class ProductController extends Controller
         
         public function store_rent(Request $request)
         {
+
+        if(!session()->has('seller_id'))
+            return redirect('SellerLogin');
+
             $seller_id=session('seller_id');
            $request->validate([
           'product_image' => 'required|dimensions:min_width=1000,min_height=1000',
@@ -202,6 +210,7 @@ class ProductController extends Controller
           'gender_type' => 'required',
           'clothing_type'=> 'required',
           'category' => 'required',
+          'security_desposit'=>'required|integer'
         ]);
 
             $Prod = new RentalProduct();
@@ -217,6 +226,7 @@ class ProductController extends Controller
             $Prod->category = $request->input('category');
             $Prod->charges = $request->input('charges');
             $Prod->seller_id=$seller_id;
+            $Prod->security_desposit=$request->input('security_desposit');
             $Prod->size=$request->input('size');
             $Prod->available =1;
             $Prod->save();
@@ -265,6 +275,10 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function delete(){
+
+        if(!session()->has('seller_id'))
+            return redirect('SellerLogin');
+
         $id=session()->get('seller_id');
         $product=Product::where('seller_id',$id)->get();
         // dd($product);
@@ -272,6 +286,10 @@ class ProductController extends Controller
     }
     public function destroy($product_id)
     {
+
+        if(!session()->has('seller_id'))
+            return redirect('SellerLogin');
+
         $product=Product::where('id',$product_id)->where('seller_id',session()->get('seller_id'))->delete();
         return redirect('DeleteProduct');
     }

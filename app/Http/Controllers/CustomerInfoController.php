@@ -3,6 +3,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer_infos;
+use App\Models\completed_orders;
+use App\Models\Orders_sell;
+use App\Models\Product;
 use Illuminate\Support\Facades\DB; 
 use App\Notifications\CustomerNotification;
 use Illuminate\Support\Facades\Notification;
@@ -85,7 +88,17 @@ class CustomerInfoController extends Controller
         // $user_model->save();
     }   
 
-
+    public function CheckOrders(){
+        if(!session()->has('data'))
+        {
+         return redirect('Customer.CustomerLogin');
+        }
+        $data = Orders_sell::join('products','products.id','=','orders_sell.ProductID')->join('seller_info','seller_info.id','=','products.seller_id')->where('CustomerID',session()->get('customer_id'))->get();
+        dd($data);
+        $data2 = Orders_sell::where('CustomerID',session()->get('customer_id'))->get();
+        $data=$data->unique('OrderID');
+        return view('Customer.CheckOrders')->with('data',$data)->with('data2',$data2);
+    }
     public function ProfileView()
     {
         if(!session()->has('data'))

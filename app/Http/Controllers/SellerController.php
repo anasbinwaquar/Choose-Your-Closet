@@ -26,12 +26,20 @@ class SellerController extends Controller
     }
 
     public function view_products(){
+
+        if(!session()->has('seller_id'))
+            return redirect('SellerLogin');
+        
         $product=Product::where('seller_id',session()->get('seller_id'))->get();
         // dd($product);
         return view('Seller.view_products')->with('product',$product);
     }
 
     public function CompletedOrders(){
+
+        if(!session()->has('seller_id'))
+            return redirect('SellerLogin');
+
         $data = completed_orders::join('products','completed_orders.ProductID','=','products.id')->join('customer_infos','completed_orders.CustomerID','=','customer_infos.id')->where('products.seller_id',session()->get('seller_id'))->get();
         $data2=completed_orders::join('products','completed_orders.ProductID','=','products.id')->where('products.seller_id',session()->get('seller_id'))->get();;
         $data=$data->unique('OrderID');
@@ -39,6 +47,10 @@ class SellerController extends Controller
         return view('Seller.CompletedOrders')->with('data',$data)->with('data2',$data2);
     }
     public function EndOrder($orderid){
+
+        if(!session()->has('seller_id'))
+            return redirect('SellerLogin');
+
         $datas = Orders_sell::where('OrderID',$orderid)->get();
         $record=[];
         foreach ($datas as $data) {
@@ -64,6 +76,10 @@ class SellerController extends Controller
 
     }
     public function ViewOrders(){
+        // dd(session()->all());
+        if(!session()->has('seller_id'))
+            return redirect('SellerLogin');
+
         $data = Orders_sell::join('products','orders_sell.ProductID','=','products.id')->join('customer_infos','orders_sell.CustomerID','=','customer_infos.id')->where('products.seller_id',session()->get('seller_id'))->get();
         $data2=Orders_sell::join('products','orders_sell.ProductID','=','products.id')->where('products.seller_id',session()->get('seller_id'))->get();;
         $data=$data->unique('OrderID');
@@ -79,6 +95,8 @@ class SellerController extends Controller
         return view('Seller.ViewOrders')->with('data',$data)->with('data2',$data2);
     }
     public function OrderDetails($orderid){
+        if(!session()->has('seller_id'))
+            return redirect('SellerLogin');
         $data = Orders_sell::join('products','orders_sell.ProductID','=','products.id')->where('OrderID',$orderid)->where('products.seller_id',session()->get('seller_id'))->get();
         // dd($data);
         return view('Seller.OrderDetails')->with('data',$data);
