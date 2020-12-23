@@ -26,7 +26,7 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active navclass">
+      <li class="nav-item navclass">
         <a class="nav-link navlink" href="/" style="color: #24C6DC;">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
@@ -48,7 +48,7 @@
         <div class="dropdown">
         <a class="nav-link navlink active" href="#" style="color: #24C6DC;">Sign Up</a>
          <div class="dropdown-content">
-        <a href="/CustomerSignUp" class="link">Customer</a>
+        <a href="/CustomerSignUp" class="link active">Customer</a>
         <a href="/SellerSignUp" class="link">Seller</a>
         </div>
         </div>
