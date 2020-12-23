@@ -30,6 +30,7 @@
                     <li class="nav-item"><a class="nav-link " href="/AddVoucher"><i class="fas fa-tachometer-alt"></i><span>Add Voucher</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/DeleteVoucher"><i class="fas fa-tachometer-alt"></i><span>Delete Voucher</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/SellerLogout"><i class="fas fa-user"></i><span>Logout</span></a></li>
+                </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
@@ -55,7 +56,55 @@
                     </ul>
             </div>
             </nav>
+             <form class="form-horizontal justify-content-center" name="ProductForm" id="ProductForm" action="{{ route('StoreVoucher')}}" method="post" enctype="multipart/form-data" autocomplete="off" style="margin-left: 30%;
+    width:80em;">
+  @csrf
+<fieldset>
 
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="product_name">Voucher Code</label>  
+  <div class="col-md-6">
+  <input id="code" name="code" value="{{old('code')}}" class="form-control input-md" required type="text">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="product_name">Discount %</label>  
+  <div class="col-md-6">
+  <input id="discount" name="discount" value="{{old('discount')}}" class="form-control input-md" required type="number" min="1" max="100">
+  </div>
+</div>
+
+<label for="product">Choose a product:</label>
+<select name="product_id" id="product_id">
+@foreach($product as $product)
+  <option value="{{$product->id}}"  data-image="{{asset('uploads/sell/'. $product->product_image)}}" >{{$product->product_name}} Price:{{$product->price_per_unit}}</option>
+@endforeach
+</select>
+
+<div class="form-group">
+    <img id="product_image"  style="width: 300px; height: 300px;">
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Submit"></label>
+  <div class="col-md-6">
+    <button id="Submit" name="Submit" type="submit" class="btn btn-primary col-md-12" required>SUBMIT</button>
+  </div>
+  </div>
+
+</fieldset>
+</form>  
         </div>
         </div>
     <script src="assets/js/jquery.min.js"></script>
@@ -71,4 +120,16 @@
                 <div class="text-center my-auto copyright"><span>Copyright © Brand 2020</span></div>
             </div>
         </footer>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#Submit").on("click",async function(){
+            alert("Voucher added");
+        });
+        $("#product_image").attr("src", $("#product_id").find(":selected").data("image"));
+    $("#product_id").change(function(){
+        $("#product_image").attr("src", $(this).find(":selected").data("image"));
+    });   
+});
+</script>
 </html>

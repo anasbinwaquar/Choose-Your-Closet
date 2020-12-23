@@ -30,6 +30,7 @@
                     <li class="nav-item"><a class="nav-link " href="/AddVoucher"><i class="fas fa-tachometer-alt"></i><span>Add Voucher</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/DeleteVoucher"><i class="fas fa-tachometer-alt"></i><span>Delete Voucher</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/SellerLogout"><i class="fas fa-user"></i><span>Logout</span></a></li>
+                </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
@@ -55,9 +56,42 @@
                     </ul>
             </div>
             </nav>
+        <div class="table-responsive table m-lg-auto mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                            <table class="table my-0" id="dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>Voucher Code</th>
+                                        <th>Discount %/ Discounted Price</th>
+                                        <th>Product Description</th>
+                                    </tr>
+                                </thead>
+                                  <tbody>
+                                        @foreach ($vouchers as $voucher)
+                                      <tr>
+                                        <th>{{$voucher->code}}</th>
+                                        <th>{{$voucher->Discount}} / {{$voucher->price_per_unit-$voucher->Discount/100*$voucher->price_per_unit}}</th>
+                                        <th>{{$voucher->product_name}}
+                                            <br>
+                                            <img src="{{asset('uploads/sell/'. $voucher->product_image)}}" style="height: 100px; width: 100px;">
+                                            <br>
+                                            Original Price: {{$voucher->price_per_unit}}
+                                        </th>
+                                        <th><a href="DeleteVoucher/{{$voucher->Voucher_id}}"><button class="btn btn-danger">Delete</button></a></th>
+                                        </th>
+                                      </tr>
+                                      @endforeach
 
+                                </tbody>
+                            </table>
+                        </div>
+
+  
+
+</fieldset>
+</form>
         </div>
         </div>
+      </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/chart.min.js"></script>

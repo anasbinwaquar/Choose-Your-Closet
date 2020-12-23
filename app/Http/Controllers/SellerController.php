@@ -7,6 +7,7 @@ use App\Models\completed_orders;
 use Carbon\Carbon;
 use App\Models\Orders_sell;
 use App\Models\Product;
+use App\Models\vouchers;
 use Illuminate\Support\Facades\DB;
 use App\Notifications\SellerNotification;
 use App\Notifications\AdminNotification;
@@ -24,7 +25,41 @@ class SellerController extends Controller
         // }
        return view('Seller.SellerSignUp');
     }
+    public function DeleteVoucher($id){
+        // echo "$id";
+        vouchers::where('Voucher_id',$id)->delete();
+        return redirect ('/DeleteVoucher');
+    }
+    public function DeleteView(){
+        if(!session()->has('seller_id'))
+            return redirect('SellerLogin');
+        $vouchers=vouchers::join('products','products.id','=','voucher.Product_id')->where('seller_id',session()->get('seller_id'))->get();
+        // dd($product);
+        return view('Seller.DeleteVoucher_view')->with('vouchers',$vouchers);
+    }
 
+    public function VoucherView(){
+        if(!session()->has('seller_id'))
+            return redirect('SellerLogin');
+
+
+        $product=Product::where('seller_id',session()->get('seller_id'))->get();
+        return view('Seller.Voucher_view')->with('product',$product);
+    }
+    public function StoreVoucher(Request $req){
+        $req->validate([
+            'code' => 'required|max:255',
+            'discount'=>'required|integer',
+            'product_id'=>'required',
+        ]);
+        $voucher=new vouchers();
+        $voucher->code=$req->input('code');
+        $voucher->Discount=$req->input('discount');
+        $voucher->Product_id=$req->input('product_id');
+        $voucher->save();
+
+        return redirect('/AddVoucher');
+    }
     public function view_products(){
 
         if(!session()->has('seller_id'))

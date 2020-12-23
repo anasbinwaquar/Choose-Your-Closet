@@ -20,8 +20,7 @@
                     <div class="sidebar-brand-text mx-3"><span>Brand</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
-                <ul class="nav navbar-nav text-light" id="accordionSidebar">
-                    
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">      
                     <li class="nav-item"><a class="nav-link " href="LoginAdminCheck"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="Seller_Authentication"><i class="fas fa-table"></i><span>Seller Verifcation</span></a></li>
