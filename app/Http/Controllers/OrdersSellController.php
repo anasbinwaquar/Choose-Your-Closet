@@ -50,7 +50,7 @@ class OrdersSellController extends Controller
 
              // printf($products['siz']);
             
-            DB::insert('insert into orders_sell(OrderID, CustomerID, ProductID, Size, Quantity, Delivery_Address, Total, Date) values(?, ?, ?, ?, ?, ?, ?, ?)', [$orderid, $customer_id, $products['item']['id'], $products['siz'], $products['qty'], $Delivery_Address, $products['price'], $date]);
+            DB::insert('insert into orders_sell(OrderID, CustomerID, ProductID, Size, Quantity, Total) values(?, ?, ?, ?, ?, ?)', [$orderid, $customer_id, $products['item']['id'], $products['siz'], $products['qty'], $products['price']]);
 
             } 
             if($products['siz']=='S'){
@@ -74,7 +74,7 @@ class OrdersSellController extends Controller
                 Product::where('id',$products['item']['id'])->update(['quantity_extra_large'=>$q]);
             }
         }
-        DB::insert('insert into order_calculation(CustomerID, Total_Quantity, Total_Discount, Total_Bill, Delivery_Address, OrderDate) values(?, ?, ?, ?, ?, ?)', [$customer_id, $CurrentCart->totalQty, $CurrentCart->discount, $CurrentCart->final_total, $Delivery_Address,  $date]);
+        DB::insert('insert into order_calculation(OrderID, CustomerID, Total_Quantity, Total_Discount, Total_Bill, Delivery_Address, OrderDate) values(?, ?, ?, ?, ?, ?, ?)', [$orderid,$customer_id, $CurrentCart->totalQty, $CurrentCart->discount, $CurrentCart->final_total, $Delivery_Address,  $date]);
        session()->forget('cart');
     	return redirect('/');
     }

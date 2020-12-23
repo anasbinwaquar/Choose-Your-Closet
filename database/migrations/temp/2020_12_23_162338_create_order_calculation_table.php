@@ -14,7 +14,7 @@ class CreateOrderCalculationTable extends Migration
     public function up()
     {
         Schema::create('order_calculation', function (Blueprint $table) {
-            $table->id('OrderID');
+            $table->unsignedBigInteger('OrderID')->unique();
             $table->unsignedBigInteger('CustomerID');
             $table->unsignedBigInteger('Total_Quantity');
             $table->unsignedBigInteger('Total_Discount');
