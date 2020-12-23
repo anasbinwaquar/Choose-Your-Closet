@@ -11,9 +11,9 @@
      <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="css/CustomerSignupStyle.css">
-    <link rel="stylesheet" type="text/css" href="css/nav_styling.css">
     <link rel="stylesheet" href="css/SellerSignupStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/nav_styling.css">
+    
 </head>
 <body>
  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="opacity: 0.8;">
@@ -141,8 +141,8 @@
         </section>
 
     </div>
-<!-- 
-     <footer class="page-footer dark">
+
+     <footer class="page-footer dark clearfix clear">
       <img src="{{asset('images/Closet.png')}}" alt="Logo" style="float: right; margin-right: 200px;">
         <div class="container">
             <div class="row">
@@ -181,6 +181,6 @@
         <div class="footer-copyright">
             <p>© 2020 Copyright Choose Your Closet <img src="{{asset('images/Closet.png')}}" alt="Logo" width="50"></p>
         </div>
-    </footer> -->
+    </footer>
 </body>
 </html>
