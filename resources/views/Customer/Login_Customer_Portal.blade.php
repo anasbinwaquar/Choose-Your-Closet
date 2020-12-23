@@ -24,7 +24,7 @@
   <link rel="stylesheet" type="text/css" href="css/CustomerLoginUtil.css">
   <link rel="stylesheet" type="text/css" href="css/CustomerLoginStyle.css">
 <!--===============================================================================================-->
- <link rel="icon" href="{{asset('images/Closet.png')}}">
+    <link rel="icon" href="{{asset('images/Closet.png')}}">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
@@ -38,7 +38,7 @@
 
   h5
   {
-      font-size: 15px;
+      font-size: 20px;
       font-family: Arial, sans-serif, Helvetica;
       color: #24C6DC;
   }
@@ -46,7 +46,7 @@
 </style>
 
 </head>
-<body>
+<body style="background-color: #2b2f31">
    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="opacity: 0.8;">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -86,7 +86,7 @@
         <div class="dropdown">
         <a class="nav-link navlink active" href="#" style="color: #24C6DC;">Login</a>
          <div class="dropdown-content">
-        <a href="/CustomerLogin" class="link">Customer</a>
+        <a href="/CustomerLogin" class="link active">Customer</a>
         <a href="/SellerLogin" class="link">Seller</a>
         </div>
         </div>
@@ -157,7 +157,7 @@
             </div> -->
           <!-- </div> -->
       
-
+          <br>
           <div class="container-login100-form-btn">
             <button class="login100-form-btn" style="background-color: #24C6DC;">
               Login
