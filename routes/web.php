@@ -89,6 +89,8 @@ Route::get('/CompletedOrdersCustomer',[App\Http\Controllers\CustomerInfoControll
 
 Route::get('/CheckOrders',[App\Http\Controllers\CustomerInfoController::class,'CheckOrders']);
 
+Route::get('/RentedProducts',[App\Http\Controllers\CustomerInfoController::class,'RentedProducts']);
+
 
 // Product
 
