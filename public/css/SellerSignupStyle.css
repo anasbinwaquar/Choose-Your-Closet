@@ -149,7 +149,7 @@ body {
 
 
 .container {
-  /*float: right;*/
+  float: right;
   width: 660px;
   position: relative;
   margin: 0 auto; }
