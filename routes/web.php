@@ -61,6 +61,12 @@ Route::get('/EndOrder/{id}',[App\Http\Controllers\SellerController::class,'EndOr
 
 Route::get('/CompletedOrders',[App\Http\Controllers\SellerController::class,'CompletedOrders']);
 
+Route::get('/AddVoucher',[App\Http\Controllers\SellerController::class,'VoucherView']);
+Route::get('/DeleteVoucher',[App\Http\Controllers\SellerController::class,'DeleteView']);
+
+Route::get('/DeleteVoucher/{id}',[App\Http\Controllers\SellerController::class,'DeleteVoucher']);
+Route::post('/AddVoucher',[App\Http\Controllers\SellerController::class,'StoreVoucher'])->name('StoreVoucher');
+
 // Route::get('OrderDetails/{orderid}',[App\Http\Controllers\SellerController::class,'OrderDetails']);
 
 //Customer
@@ -82,6 +88,8 @@ Route::get('/UserLogout',[App\Http\Controllers\CustomerInfoController::class,'Us
 Route::get('/CompletedOrdersCustomer',[App\Http\Controllers\CustomerInfoController::class,'CompletedOrdersCustomer']);
 
 Route::get('/CheckOrders',[App\Http\Controllers\CustomerInfoController::class,'CheckOrders']);
+
+Route::get('/RentedProducts',[App\Http\Controllers\CustomerInfoController::class,'RentedProducts']);
 
 
 // Product

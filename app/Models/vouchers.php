@@ -9,7 +9,7 @@ class vouchers extends Model
 {
      use HasFactory;
     protected $table = 'voucher';
-
+public $timestamps = false;
       protected $guarded = [
     ];
 }

@@ -24,8 +24,8 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active navclass">
-        <a class="nav-link navlink" href="/" style="color: #24C6DC;">Home<span class="sr-only">(current)</span></a>
+      <li class="nav-item navclass">
+        <a class="nav-link navlink" href="/" style="color: #24C6DC;">Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link navlink" href="AboutUs" style="color: #24C6DC;">About Us</a>
@@ -47,7 +47,7 @@
         <a class="nav-link navlink active" href="#" style="color: #24C6DC;">Sign Up</a>
          <div class="dropdown-content">
         <a href="/CustomerSignUp" class="link">Customer</a>
-        <a href="/SellerSignUp" class="link">Seller</a>
+        <a href="/SellerSignUp" class="link active">Seller</a>
         </div>
         </div>
       </li>
@@ -74,7 +74,7 @@
     </form>
 </nav>
     <div class="main">
-
+        <br>
         <section class="signup">
             <img src="images/signup-bg.png" alt="" id="SellerBenefits">
             <div class="container1">
@@ -142,10 +142,10 @@
 
     </div>
 <br><br><br><br><br><br><br><br><br>
-     <footer class="page-footer dark clearfix " >
+     <footer class="page-footer dark clearfix active" >
      <footer class="page-footer dark">
       <img src="{{asset('images/Closet.png')}}" alt="Logo" style="float: right; margin-right: 200px;">
-        <div class="container">
+        <div class="container" style="font-weight: lighter;">
             <div class="row" style="padding-right: 220px;">
                 <div class="col-sm-3">
                     <h5>Customer Portal</h5>

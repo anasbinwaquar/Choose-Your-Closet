@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Customer_infos;
 use App\Models\completed_orders;
 use App\Models\Orders_sell;
+use App\Models\Rental_history;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB; 
 use App\Notifications\CustomerNotification;
@@ -27,6 +28,14 @@ class CustomerInfoController extends Controller
 
     }
 
+    public function RentedProducts(){
+        if(!session()->has('customer_id'))
+        {
+         return redirect('/CustomerLogin');
+        }
+        $products=Rental_history::where('current_owner_id',session()->get('customer_id'));
+        return view('Customer.RentedProducts')->with('products',$products);
+    }
 
     public function CustomerSignUp(Request $req)
     {
