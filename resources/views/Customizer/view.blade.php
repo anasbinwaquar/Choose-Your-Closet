@@ -23,7 +23,7 @@
   <!-<link rel="stylesheet" href="css/responsive.css"> -->
     <!-- Custom CSS -->
    <!--  <link rel="stylesheet" href="css/custom.css"> -->
-        <title>Static Tee Designer</title>
+        <title>Customizer - Choose Your Closet</title>
         <style>
             .drawing-area{
                 position: absolute;
@@ -78,9 +78,17 @@
             #Right-Pane{
                 float: right;
             }
+
+            h2{
+                font-weight: bold;
+                font-size: 25px;
+                color: #24C6DC;
+            }
+
         </style>
     </head>
     <body>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -89,34 +97,46 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active navclass">
-        <a class="nav-link navlink active" href="/" style="color: #24C6DC;">Home<span class="sr-only">(current)</span></a>
+      <li class="nav-item navclass">
+        <a class="nav-link navlink" href="/" style="color: #24C6DC;">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link navlink" href="#" style="color: #24C6DC;">About Us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link navlink" href="/customize" style="color: #24C6DC;">Customizer</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link navlink" href="#" style="color: #24C6DC;">Products</a>
+        <a class="nav-link navlink active" href="/customize" style="color: #24C6DC;">Customizer</a>
       </li>
       <li class="nav-item">
         <div class="dropdown">
-        <a class="nav-link navlink" href="#" style="color: #24C6DC;">Sign Up</a>
+        <a class="nav-link navlink" href="#" style="color: #24C6DC;">Products</a>
          <div class="dropdown-content">
-        <a href="/CustomerSignUp" class="link">Customer</a>
-        <a href="/SellerSignUp" class="link">Seller</a>
+        <a href="#" class="link">Purchase</a>
+        <a href="RentProducts" class="link">Rent</a>
         </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="dropdown">
+        <a class="nav-link navlink" href="#" style="color: #24C6DC;">User Profile</a>
+         <div class="dropdown-content">
+        <a href="/CheckOrders" class="link">Check Orders</a>
+        <a href="/CompletedOrdersCustomer" class="link">Completed Orders</a>
+        </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="dropdown">
+        <a class="nav-link navlink" href="/CustomerCart" style="color: #24C6DC;"><i class="fas fa-shopping-cart"></i><span class="badge badge-light">
+          <?php if(session()->has('cart'))
+        {
+           echo session()->get('cart')->totalQty;
+        }
+         ?></span>Cart</a>
         </div>
       </li>
        <li class="nav-item">
         <div class="dropdown">
-        <a class="nav-link navlink" href="#" style="color: #24C6DC;">Login</a>
-         <div class="dropdown-content">
-        <a href="/CustomerLogin" class="link">Customer</a>
-        <a href="/SellerLogin" class="link">Seller</a>
-        </div>
+        <a class="nav-link navlink" href="/UserLogout" style="color: #24C6DC;">Logout</a>
         </div>
       </li>
       <li class="nav-item">
@@ -132,6 +152,9 @@
           </div>
     </form>
 </nav>
+
+<br><br>
+
         <form class="px-4 py-3 btn-submit" id="CustomizedShirt" method="post" action="/customizer">
          {{csrf_field()}}
         @if ($errors->any())
@@ -250,11 +273,53 @@
                     
                   </div>
                 </div> 
-
+                 <br><br><br><br>
 
         </div>
         <input type="hidden" id="total_price" name="total_price">
+       
         </form>
+
+        <footer class="page-footer dark" style="clear: both;">
+      <img src="{{asset('images/Closet.png')}}" alt="Logo" style="float: right; margin-right: 200px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h5>Customer Portal</h5>
+                    <ul>
+                        <li><a href="/CustomerSignUp">Sign Up</a></li>
+                        <li><a href="/CustomerLogin">Login</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/">Purchase Product</a></li>
+                        <li><a href="/RentProducts">Rent Product</a></li>
+                        <li><a href="/customize">Custom Orders</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>Seller Portal</h5>
+                    <ul>
+                        <li><a href="/SellerSignUp">Sign Up</a></li>
+                        <li><a href="/SellerLogin">Login</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>About</h5>
+                    <ul>
+                        <li><a href="AboutUs">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="/ContactUs">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>© 2020 Copyright Choose Your Closet <img src="{{asset('images/Closet.png')}}" alt="Logo" width="50"></p>
+        </div>
+    </footer>
         
 		    <div id="data"></div>
         
