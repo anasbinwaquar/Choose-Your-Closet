@@ -71,6 +71,7 @@ li{
 .dropdown {
   position: relative;
   display: inline-block;
+  text-decoration: none;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -109,5 +110,9 @@ li{
 .active
 {
 	font-weight: bold;
+}
+nav
+{
+	position: absolute;
 }
 /* Change the background color of the dropdown button when the dropdown content is shown */
