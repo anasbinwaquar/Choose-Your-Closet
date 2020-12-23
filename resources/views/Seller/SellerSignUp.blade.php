@@ -143,6 +143,7 @@
     </div>
 <br><br><br><br><br><br><br><br><br>
      <footer class="page-footer dark clearfix " >
+     <footer class="page-footer dark">
       <img src="{{asset('images/Closet.png')}}" alt="Logo" style="float: right; margin-right: 200px;">
         <div class="container">
             <div class="row" style="padding-right: 220px;">
