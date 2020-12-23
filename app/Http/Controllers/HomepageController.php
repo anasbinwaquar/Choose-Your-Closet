@@ -33,6 +33,20 @@ class HomepageController extends Controller
         // printf("Now: %s", Carbon::now());
         return view('Homepage.homepage')->with('data',$data)->with('check', $check);
     }
+        public function index_home()
+    {
+        
+        if(session()->has('customer_id'))
+        {
+                $check = 1;
+        }
+        else
+        {
+           $check = 0;
+        }   
+        return view('Homepage.home')->with('check', $check);
+    }
+
 
     /**
      * Show the form for creating a new resource.
