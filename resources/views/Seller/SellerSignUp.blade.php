@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="css/nav_styling.css">
     
 </head>
-<body>
+<body style="background-color: #2b2f31">
  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="opacity: 0.8;">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -77,7 +77,7 @@
 
         <section class="signup">
             <img src="images/signup-bg.png" alt="" id="SellerBenefits">
-            <div class="container">
+            <div class="container1">
                 <div class="signup-content">
                     <form action="Seller_registered" method="post" autocomplete="off">
                         @csrf
@@ -141,11 +141,11 @@
         </section>
 
     </div>
-
-     <footer class="page-footer dark clearfix clear">
+<br><br><br><br><br><br><br><br><br>
+     <footer class="page-footer dark clearfix " >
       <img src="{{asset('images/Closet.png')}}" alt="Logo" style="float: right; margin-right: 200px;">
         <div class="container">
-            <div class="row">
+            <div class="row" style="padding-right: 220px;">
                 <div class="col-sm-3">
                     <h5>Customer Portal</h5>
                     <ul>
