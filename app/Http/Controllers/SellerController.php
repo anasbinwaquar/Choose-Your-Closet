@@ -100,7 +100,6 @@ class SellerController extends Controller
                 'Delivery_Address'=>$data->Delivery_Address,
                 'Total'=>$data->Total,
                 'Date'=>   $data->Date,
-                'created_at'=>$date,
             ];
             completed_orders::insert($record);
             $record=null;
