@@ -44,9 +44,10 @@
                                                  <div><span>Size:&nbsp;</span><span class="value">
                                                  {{$product['siz']}}</span></div>
                                                  <br>
-                                                 <input type="text" name="voucher" >
+                                                 <input type="text" name="voucher" value="" style="height: 30px;">
+                                                 <button class="btn btn-dark" style="font-size: 15px;" type="submit">Add Voucher</button>
                                                  <br><br>
-                                                 <button class="btn btn-success" style="font-size: 20px;" type="submit">Update Quantity</button>
+                                                 <button class="btn btn-success" style="font-size: 20px;" type="submit">Update</button>
                                                  <a href="{{route('DeleteCartData',['product_id'=> $product['item']['id'],'size'=>$product['siz']])}}"><button class="btn btn-danger" style="font-size: 20px;" type="button">Delete</button></a>
                                             </div>
                                         </div>
@@ -67,9 +68,9 @@
                             <div class="summary">
                                 <h3>Summary</h3>
                                 <h4><span class="text">Subtotal</span><span class="price">Rs. {{$product_cart}}</span></h4>
-                                <h4><span class="text">Discount</span><span class="price">Rs.0</span></h4>
-                                <h4><span class="text">Shipping</span><span class="price">Rs.0</span></h4>
-                                <h4><span class="text">Total</span><span class="price">Rs. {{$product_cart}}</span></h4><a href="/PurchaseOrders"><button class="btn btn-primary btn-block btn-lg" type="button">Checkout</button></a>
+                                <h4><span class="text">Discount</span><span class="price">Rs.{{$discount_cart}}</span></h4>
+                                <h4><span class="text">Shipping</span><span class="price">Rs. {{$shipping}}</span></h4>
+                                <h4><span class="text">Total</span><span class="price">Rs. {{$final_total}}</span></h4><a href="/PurchaseOrders"><button class="btn btn-primary btn-block btn-lg" type="button">Checkout</button></a>
                             </div>
                         </div>
                         @elseif($product==NULL)
@@ -78,9 +79,9 @@
                         <div class="col-md-12 col-lg-12">
                             <div class="summary">
                                 <h3>Summary</h3>
-                                <h4><span class="text">Subtotal</span><span class="price">Rs. {{$product_cart}}</span></h4>
-                                <h4><span class="text">Discount</span><span class="price">Rs.0</span></h4>
-                                <h4><span class="text">Shipping</span><span class="price">Rs.0</span></h4>
+                                <h4><span class="text">Subtotal</span><span class="price">Rs. 0</span></h4>
+                                <h4><span class="text">Discount</span><span class="price">Rs. 0</span></h4>
+                                <h4><span class="text">Shipping</span><span class="price">Rs. 0</span></h4>
                             </div>
                         </div>
 

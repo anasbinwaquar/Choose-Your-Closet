@@ -11,13 +11,19 @@ class Cart
     public $items_size=null;
 	public $totalQty=0;
 	public $totalPrice=0;
-
+	public $discount=0;
+	public $shipping=200;
+	public $final_total;
 	public function __construct($oldCart){
 		if($oldCart){
 			//$this->items_size=$oldCart->items_size;
 			$this->items=$oldCart->items;
 			$this->totalPrice=$oldCart->totalPrice;
 			$this->totalQty=$oldCart->totalQty;
+			$this->discount=$oldCart->discount;
+			$this->shipping=$oldCart->shipping;
+			$this->final_total=$oldCart->final_total;
+
 		}
 	}
 	public function add($item,$id,$quantity,$size){
@@ -34,10 +40,13 @@ class Cart
 			//$this->items_size[$size]= $storedItem; 
 			$this->totalQty	+=	$quantity;
 			$this->totalPrice += $storedItem['price'];
+			$this->discount=0;
+			$this->shipping=200;
+			$this->final_total=$this->totalPrice+$this->shipping;
 	}
 	public function update_cart($id,$quantity,$size,$item,$discount){
-		$discount=($discount/100)*$item->price_per_unit;
-		$item->price_per_unit=$item->price_per_unit-$discount;
+		$discount=($discount/100)*$item->price_per_unit*$quantity;
+		//$item->price_per_unit=$item->price_per_unit-$discount;
 		$previous_quantity=$this->items[$id][$size]['qty'];
 		$previous_price=$this->items[$id][$size]['price'];
 		$storedItem=['qty'=>$quantity,'siz'=>$size,'price'=>$item->price_per_unit,'item'=>$item];
@@ -70,6 +79,11 @@ class Cart
 				$previous_price=$previous_price-$storedItem['price'];
 				$this->totalPrice -= $previous_price;
 			}
+			$this->shipping=200;
+			//dd($discount);
+			$this->discount=$discount;
+			$this->final_total= $this->totalPrice-$this->discount+$this->shipping;
+
 	}
 
 		public function delete_cart($id,$size,$item)
@@ -88,6 +102,9 @@ class Cart
 		{
 			$this->totalQty	=0;
 			$this->totalPrice =0;
+			$this->discount=0;
+			$this->shipping=0;
+			$this->final_total=0;
 		}
 		else
 		{

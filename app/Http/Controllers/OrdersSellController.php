@@ -74,6 +74,7 @@ class OrdersSellController extends Controller
                 Product::where('id',$products['item']['id'])->update(['quantity_extra_large'=>$q]);
             }
         }
+        DB::insert('insert into order_calculation(CustomerID, Total_Quantity, Total_Discount, Total_Bill, Delivery_Address, OrderDate) values(?, ?, ?, ?, ?, ?)', [$customer_id, $CurrentCart->totalQty, $CurrentCart->discount, $CurrentCart->final_total, $Delivery_Address,  $date]);
        session()->forget('cart');
     	return redirect('/');
     }
@@ -93,7 +94,7 @@ class OrdersSellController extends Controller
         $OldCart = session()->get('cart');
         $CurrentCart = new cart($OldCart);
        
-        return view('Pages.Checkout')->with(array('product'=> $CurrentCart->items))->with('product_cart',$CurrentCart->totalPrice);
+        return view('Pages.Checkout')->with(array('product'=> $CurrentCart->items))->with('product_cart',$CurrentCart->totalPrice)->with('discount_cart',$CurrentCart->discount)->with('final_total',$CurrentCart->final_total)->with('shipping',$CurrentCart->shipping);
     }
 
 }

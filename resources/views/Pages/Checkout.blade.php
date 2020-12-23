@@ -37,7 +37,9 @@
                         </div>
                          @endforeach
                         @endforeach
-                        <div class="total"><span>Total</span><span class="price">Rs. {{$product_cart}}</span></div>
+                        <div class="total"><span>Discount</span><span class="price">Rs. {{$discount_cart}}</span></div>
+                        <div class="total"><span>Shipping</span><span class="price">Rs. {{$shipping}}</span></div>
+                        <div class="total"><span>Total</span><span class="price">Rs. {{$final_total}}</span></div>
                     </div>
                     <div class="card-details">
                              <h3 class="title">Delivery Address</h3>

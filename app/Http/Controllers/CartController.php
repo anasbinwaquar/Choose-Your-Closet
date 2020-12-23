@@ -99,14 +99,16 @@ class CartController extends Controller
         $product = Product::find($product_id);
         $quantity=$req->input('update_quantity');
         $code=$req->input('voucher');
-        $discount=DB::select("select Discount from voucher where code=?",[$code]);
-         $discount=$discount[0]->Discount;
-        $OldCart = session()->get('cart');
+        $discount=DB::select("select Discount from voucher where Product_id=? and code=?",[$product_id,$code]);
+         $OldCart = session()->get('cart');
         $CurrentCart = new cart($OldCart);
         if($discount==NULL)
+        {
         $CurrentCart->update_cart($product_id, $quantity, $size,  $product,0);
+        }
         else
         {
+         $discount=$discount[0]->Discount;
           $CurrentCart->update_cart($product_id, $quantity, $size,  $product,$discount);   
         }
         session()->put('cart',$CurrentCart);
@@ -133,7 +135,7 @@ class CartController extends Controller
 
         $OldCart = session()->get('cart');
         $CurrentCart = new cart($OldCart);
-        //dd($CurrentCart);
-         return view('Pages.cart')->with(array('product'=> $CurrentCart->items))->with('product_cart',$CurrentCart->totalPrice);
+       // dd($CurrentCart->discount);
+         return view('Pages.cart')->with(array('product'=> $CurrentCart->items))->with('product_cart',$CurrentCart->totalPrice)->with('discount_cart',$CurrentCart->discount)->with('final_total',$CurrentCart->final_total)->with('shipping',$CurrentCart->shipping);
     }
 }
