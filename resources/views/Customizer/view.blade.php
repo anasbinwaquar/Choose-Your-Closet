@@ -78,6 +78,11 @@
             #Right-Pane{
                 float: right;
             }
+            input::-webkit-inner-spin-button 
+            {
+              -webkit-appearance: none;
+              margin: 0;
+            }
 
             h2{
                 font-weight: bold;
@@ -190,10 +195,10 @@
 
         <!-- The Select that allows the user to change the color of the T-Shirt -->
         <br>
-        <label for="tshirt-type">Select Clothing Type:</label>
+        <label for="tshirt-type" style="font-size: 20px;">Select Clothing Type:</label>
 
-        <select id="tshirt" name="clothing_type">
-            <option value=" ">Select one of the clothing ...</option>
+        <select id="tshirt" name="clothing_type" class="dropdown" style="height: 30px;">
+            <option value=" " >Select one of the clothing ...</option>
             @foreach ($shirts as $shirt)
             @php
             $back=$shirt->getFilename();
@@ -207,20 +212,22 @@
             @endforeach
         </select>
         <br>
-        <label for="tshirt-color">T-Shirt Color: ( Select Color and press enter )</label>
-        <input type="color" name="tshirt_color" id="tshirt-color" value="#e66465">
+        <label for="tshirt-color" style="font-size: 20px;">T-Shirt Color: ( Select Color and press enter )</label>
+        <input type="color" name="tshirt_color" id="tshirt-color" value="#e66465" style="height: 30px;">
         <br>
-        <label for="tshirt-design">Front T-Shirt Design:</label>
-        <select id="tshirt-design">
+        <label for="tshirt-design" style="font-size: 20px;">Front T-Shirt Design:</label>
+        <select id="tshirt-design" style="height: 30px;">
             <option value="">Select designs for front ...</option>
             @foreach ($images as $image)
             <option value="{{ asset('templates/' . $image->image) }}" data-price='{{$image->price}}' data-name='{{$image->image}}' >{{$image->name}} | Rs:{{$image->price}}</option>
             @endforeach
         </select>
         <br>
-        <input type="submit" class="form-control" id="Submit" >
+        <div class="row">
+        <input type="submit" class="form-control" id="Submit" style="width: 120px; color: #fff;background-color: #007bff;margin-right: 20px;" >
 {{-- <button id="Submit" name="Submit" type="submit" class="btn btn-primary" required>SUBMIT</button> --}}
         <button type="button" class="btn btn-primary" id="Delete" >Remove Print</button>
+        </div>
             </div>
 
 
@@ -238,8 +245,8 @@
                 </div>
                 <br><br>
 
-                <label for="tshirt-design">Back T-Shirt Design:</label>
-                <select id="tshirt-design-back">
+                <label for="tshirt-design" style="font-size: 20px;">Back T-Shirt Design:</label>
+                <select id="tshirt-design-back" style="height: 30px;">
                     <option value="">Select designs for back ...</option>
                     @foreach ($images as $image)
                     <option value="{{ asset('templates/' . $image->image) }}" data-price='{{$image->price}}' data-name='{{$image->image}}' >{{$image->name}} | Rs:{{$image->price}}</option>
@@ -247,31 +254,26 @@
                 </select>
 
                     <br>
-                  <label for="sizes">Select Size: </label>  
-                  <select name="size">
+                  <label for="sizes" style="font-size: 20px;">Select Size: </label>  
+                  <select name="size" style="height: 30px;width: 200px;margin-left: 20px;">
                       <option  value="Small"> Small</option>
-                      <option  value="Medium" > Medium</option>
-                      <option  value="Large" > Large</option>
-                      <option  value="Extra Large" > Extra Large</option>
+                      <option  value="Medium"> Medium</option>
+                      <option  value="Large"> Large</option>
+                      <option  value="Extra Large"> Extra Large</option>
                  </select>
                 <div>
                     
                 <h3>Price: <span id="price">1000</span></h3>
                 <h3>Total Designs used: <span id="design_count">0</span></h3>
                 </div>
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="address">Full Delivery Address</label>  
-                  <div class="col-md-4">
-                  <input id="address" name="address" class="form-control input-md" required type="text">
-                    
-                  </div>
+                <div class="form-group w-50">
+                  <label for="address" style="font-size: 20px;">Full Delivery Address</label>  
+                  <input id="address" name="address" class="form-control " required type="text">
                 </div> 
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="contact">Contact Number</label>  
-                  <div class="col-md-4">
-                  <input id="contact" name="contact" class="form-control input-md" required type="number">
-                    
-                  </div>
+
+                  <div class="form-group w-50">
+                  <label for="address" style="font-size: 20px;">Contact Number</label>  
+                  <input id="contact" name="contact" class="form-control "  required type="number">
                 </div> 
                  <br><br><br><br>
 
@@ -333,6 +335,7 @@
 
         
     </body>
+    
 </html>
 
 
