@@ -162,6 +162,8 @@ class ProductController extends Controller
         $seller_id=session('seller_id');
        $request->validate([
           'product_image' => 'required|dimensions:min_width=500,min_height=500',
+          'product_image2' => 'dimensions:min_width=500,min_height=500',
+          'product_image3' => 'dimensions:min_width=500,min_height=500',
           'product_name' => 'required',
           'price_per_unit' => 'required|integer',
           'description'=> 'required',
@@ -173,12 +175,29 @@ class ProductController extends Controller
           'clothing_type'=> 'required',
           'category' => 'required',
         ]);
+       // dd($request);
         $Prod = new Product();
         $file=$request->file('product_image');
         $extension=$file->getClientOriginalExtension();
         $filename=time().'.'.$extension;
         $file->move('uploads/sell/',$filename);
         $Prod->product_image = $filename;
+
+        $file2=$request->file('product_image2');
+        if($file2!=NULL){
+        $extension=$file2->getClientOriginalExtension();
+        $filename=time().'.'.$extension;
+        $file2->move('uploads/sell/',$filename);
+        $Prod->product_image2 = $filename;
+        }
+        $file3=$request->file('product_image3');
+        if($file3!=NULL){
+        $extension=$file3->getClientOriginalExtension();
+        $filename=time().'.'.$extension;
+        $file3->move('uploads/sell/',$filename);
+        $Prod->product_image3 = $filename;
+        }
+
         $Prod->product_name = $request->input('product_name');
         $Prod->price_per_unit = $request->input('price_per_unit');
         $Prod->description = $request->input('description');
@@ -203,6 +222,8 @@ class ProductController extends Controller
             $seller_id=session('seller_id');
            $request->validate([
           'product_image' => 'required|dimensions:min_width=500,min_height=500',
+          'product_image2' => 'dimensions:min_width=500,min_height=500',
+          'product_image3' => 'dimensions:min_width=500,min_height=500',
           'product_name' => 'required',
           'charges' => 'required|integer',
           'description'=> 'required',
@@ -218,6 +239,22 @@ class ProductController extends Controller
             $extension=$file->getClientOriginalExtension();
             $filename=time().'.'.$extension;
             $file->move('uploads/sell/',$filename);
+
+            $file2=$request->file('product_image2');
+            if($file2!=NULL){
+            $extension=$file2->getClientOriginalExtension();
+            $filename=time().'.'.$extension;
+            $file2->move('uploads/sell/',$filename);
+            $Prod->product_image2 = $filename;
+            }
+            $file3=$request->file('product_image3');
+            if($file3!=NULL){
+            $extension=$file3->getClientOriginalExtension();
+            $filename=time().'.'.$extension;
+            $file3->move('uploads/sell/',$filename);
+            $Prod->product_image3 = $filename;
+            }
+        
             $Prod->product_image = $filename;
             $Prod->product_name = $request->input('product_name');
             $Prod->description = $request->input('description');

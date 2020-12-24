@@ -57,28 +57,28 @@
                     </ul>
             </div>
             </nav>
-        <div class="table-responsive table m-lg-auto mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                    <div class="table-responsive table m-lg-auto mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                             <table class="table my-0" id="dataTable">
                                 <thead>
                                     <tr>
-                                        <th>Voucher Code</th>
-                                        <th>Discount %/ Discounted Price</th>
-                                        <th>Product Description</th>
+                                        <th>Product ID</th>
+                                        <th>Product Name</th>
+                                        <th>Quantity Small</th>
+                                        <th>Quantity Medium</th>
+                                        <th>Quantity Large</th>
+                                        <th>Quantity Extra Large</th>
                                     </tr>
                                 </thead>
                                   <tbody>
-                                        @foreach ($vouchers as $voucher)
+                                        @foreach ($products as $product)
                                       <tr>
-                                        <th>{{$voucher->code}}</th>
-                                        <th>{{$voucher->Discount}} / {{$voucher->price_per_unit-$voucher->Discount/100*$voucher->price_per_unit}}</th>
-                                        <th>{{$voucher->product_name}}
-                                            <br>
-                                            <img src="{{asset('uploads/sell/'. $voucher->product_image)}}" style="height: 100px; width: 100px;">
-                                            <br>
-                                            Original Price: {{$voucher->price_per_unit}}
-                                        </th>
-                                        <th><a href="DeleteVoucher/{{$voucher->Voucher_id}}"><button class="btn btn-danger">Delete</button></a></th>
-                                        </th>
+                                        <th>{{$product->id}}</th>
+                                        <th>{{$product->product_name}}</th>
+                                        <th>{{$product->quantity_small}}</th>
+                                        <th>{{$product->quantity_medium}}</th>
+                                        <th>{{$product->quantity_large}}</th>
+                                        <th>{{$product->quantity_extra_large}}</th>
+                                        <th><a href="UpdateQuantityForm/{{$product->id}}"><button class="btn btn-success">Update</button></a></th>
                                       </tr>
                                       @endforeach
 

@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Seller Portal</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
 </head>
 
 <body id="page-top">
@@ -57,34 +57,39 @@
                     </ul>
             </div>
             </nav>
-        <div class="table-responsive table m-lg-auto mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                            <table class="table my-0" id="dataTable">
-                                <thead>
-                                    <tr>
-                                        <th>Voucher Code</th>
-                                        <th>Discount %/ Discounted Price</th>
-                                        <th>Product Description</th>
-                                    </tr>
-                                </thead>
-                                  <tbody>
-                                        @foreach ($vouchers as $voucher)
-                                      <tr>
-                                        <th>{{$voucher->code}}</th>
-                                        <th>{{$voucher->Discount}} / {{$voucher->price_per_unit-$voucher->Discount/100*$voucher->price_per_unit}}</th>
-                                        <th>{{$voucher->product_name}}
-                                            <br>
-                                            <img src="{{asset('uploads/sell/'. $voucher->product_image)}}" style="height: 100px; width: 100px;">
-                                            <br>
-                                            Original Price: {{$voucher->price_per_unit}}
-                                        </th>
-                                        <th><a href="DeleteVoucher/{{$voucher->Voucher_id}}"><button class="btn btn-danger">Delete</button></a></th>
-                                        </th>
-                                      </tr>
-                                      @endforeach
+                    <div class="container-fluid">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <form action="{{ route('storequantity')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                  <div class="form-group">
+                    <label name="print_name">Quantity Small</label>
+                    <input class="form-control" type="number" id="quantity_small" name="quantity_small" min="0" value="" placeholder="{{$product->quantity_small}}">
+                  </div>
+                  <div class="form-group">
+                    <label name="print_name">Quantity Medium</label>
+                    <input class="form-control" type="number" id="quantity_medium" name="quantity_medium" min="0" value="" placeholder="{{$product->quantity_medium}}">
+                  </div>
+                  <div class="form-group">
+                    <label name="print_name">Quantity Large</label>
+                    <input class="form-control" type="number" id="quantity_large" name="quantity_large" min="0" value="" placeholder="{{$product->quantity_large}}">
+                  </div>
+                  <div class="form-group">
+                    <label name="print_name">Quantity Extra Large</label>
+                    <input class="form-control" type="number" id="quantity_extra_large" name="quantity_extra_large" value="" min="0" placeholder="{{$product->quantity_extra_large}}">
+                  </div>
+                  <input type="hidden" name="product_id" value="{{$product->id}}">
 
-                                </tbody>
-                            </table>
-                        </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
 
   
 
@@ -93,12 +98,12 @@
         </div>
         </div>
       </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/chart.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/js/chart.min.js"></script>
+    <script src="/assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
-    <script src="assets/js/theme.js"></script>
+    <script src="/assets/js/theme.js"></script>
 </body>
 
         <footer class="bg-white sticky-footer">
