@@ -12,15 +12,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
     <link rel="stylesheet" href="/product/css/smoothproducts.css">
     <link rel="stylesheet" type="text/css" href="/product/css/style1.css">
+     <link rel="icon" href="{{asset('images/Closet.png')}}">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js">
+     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" type="text/css" href="css/nav_styling.css">
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light nav1">
-
-    
-<!--     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -28,66 +32,44 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item1 navclass">
+      <li class="nav-item navclass">
         <a class="nav-link navlink" href="/" style="color: #24C6DC;">Home<span class="sr-only">(current)</span></a>
       </li>
-
-      <li class="nav-item1">
-
       <li class="nav-item">
-
-        <a class="nav-link navlink" href="#" style="color: #24C6DC;">About Us</a>
+        <a class="nav-link navlink" href="AboutUs" style="color: #24C6DC;">About Us</a>
       </li>
-      <li class="nav-item1">
+      <li class="nav-item">
         <a class="nav-link navlink" href="/customize" style="color: #24C6DC;">Customizer</a>
       </li>
-      <li class="nav-item1">
+      <li class="nav-item">
         <div class="dropdown">
         <a class="nav-link navlink" href="#" style="color: #24C6DC;">Products</a>
          <div class="dropdown-content">
-        <a href="#" class="link">Purchase</a>
-        <a href="RentProducts" class="link">Rent</a>
+        <a href="/" class="link">Purchase</a>
+        <a href="/RentProducts" class="link">Rent</a>
         </div>
         </div>
       </li>
-      <li class="nav-item1">
+      <li class="nav-item">
         <div class="dropdown">
-        <a class="nav-link navlink" href="#" style="color: #24C6DC;">User Profile</a>
+        <a class="nav-link navlink" href="#" style="color: #24C6DC;">Sign Up</a>
          <div class="dropdown-content">
-        <a href="/CheckOrders" class="link">Check Orders</a>
-        <a href="/CompletedOrdersCustomer" class="link">Completed Orders</a>
+        <a href="/CustomerSignUp" class="link">Customer</a>
+        <a href="/SellerSignUp" class="link">Seller</a>
         </div>
         </div>
       </li>
-
-      <li class="nav-item1">
-
-      <li class="nav-item">
-
-        <div class="dropdown">
-        <a class="nav-link navlink" href="/CustomerCart" style="color: #24C6DC;"><i class="fas fa-shopping-cart"></i><span class="badge badge-light">
-          <?php if(session()->has('cart'))
-        {
-           echo session()->get('cart')->totalQty;
-        }
-         ?></span>Cart</a>
-        </div>
-      </li>
-
-       <li class="nav-item1">
-
        <li class="nav-item">
-
         <div class="dropdown">
-        <a class="nav-link navlink" href="/UserLogout" style="color: #24C6DC;">Logout</a>
+        <a class="nav-link navlink" href="#" style="color: #24C6DC;">Login</a>
+         <div class="dropdown-content">
+        <a href="/CustomerLogin" class="link">Customer</a>
+        <a href="/SellerLogin" class="link">Seller</a>
+        </div>
         </div>
       </li>
-
-      <li class="nav-item1">
-
       <li class="nav-item">
-
-        <a class="nav-link navlink active" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
+        <a class="nav-link navlink" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -98,15 +80,13 @@
             </div>
           </div>
     </form>
-</nav> -->
-
+</nav>
     @foreach($product as $product)
     <main class="page product-page">
         <section class="clean-block clean-product dark">
             <div class="container">
                 <div class="block-heading">
                     <h2 class="text-info">Product Page</h2>
-                   
                 </div>
                 <div class="block-content">
                     <div class="product-info">
@@ -130,9 +110,8 @@
                                     <div class="input-group">
                                      <button class="button_quantity" type="button"><i class="fas fa-minus" onclick="decreaseValue()"></i></button>
                                       <span class="input-container">
-                                      <input id="number" type="text" name="quant" class="form-control input-number" value="0" min="0" max="0">
-                                      </span>
-                                      <button class="button_quantity" type="button"><i class="fas fa-plus" onclick="increaseValue()"></i></button>
+                                      <input id="number" type="text" name="quant" class="form-control input-number" value="1" min="1" max="10">
+                                      </span><button class="button_quantity" type="button"><i class="fas fa-plus" onclick="increaseValue()"></i></button>
                                       </div>
                                       @if ($errors->any())
                                             <div class="col-md-12 alert alert-danger">
@@ -150,19 +129,15 @@
                                       <input id="size_submit" type="text" name="size" style="display: none;">
                                         @if($product->quantity_small!=NULL || $product->quantity_small!=0)
                                         <button id="size_s" type="button" class="btn btn-primary" style="font-weight: bold;" value="S" onclick="size_selector(this.id)">S</button>
-                                        <input type="hidden" id="amount_s" value="{{$product->quantity_small}}">
                                          @endif
                                         @if($product->quantity_medium!=NULL || $product->quantity_medium!=0)
                                         <button id="size_m" type="button" class="btn btn-primary" style="font-weight: bold;" value="M" onclick="size_selector(this.id)">M</button>
-                                        <input type="hidden" id="amount_m" value="{{$product->quantity_medium}}">
                                          @endif
                                         @if($product->quantity_large!=NULL || $product->quantity_large!=0)
                                         <button id="size_l" type="button" class="btn btn-primary" style="font-weight: bold;" value="L" onclick="size_selector(this.id)">L</button>
-                                        <input type="hidden" id="amount_l" value="{{$product->quantity_large}}">
                                          @endif
                                         @if($product->quantity_extra_large!=NULL || $product->quantity_extra_large!=0)
                                         <button id="size_xl" type="button" class="btn btn-primary" style="font-weight: bold;" value="XL" onclick="size_selector(this.id)">XL</button>
-                                        <input type="hidden" id="amount_xl" value="{{$product->quantity_extra_large}}">
                                         @endif
                                       </div>
                                       @if(!session()->has('customer_id'))
@@ -373,7 +348,7 @@
             </div>
         </section>
     </main>
-        <footer class="page-footer dark">
+           <footer class="page-footer dark">
       <img src="{{asset('images/Closet.png')}}" alt="Logo" style="float: right; margin-right: 200px;">
         <div class="container">
             <div class="row">
@@ -418,7 +393,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="/product/js/smoothproducts.min.js"></script>
     <script src="/product/js/theme.js"></script>
-    {{-- <script type="text/javascript" src="/product/js/script.js"></script> --}}
+    <script type="text/javascript" src="/product/js/script.js"></script>
     @endforeach
 </body>
 <script type="text/javascript">
@@ -426,48 +401,6 @@
     {
         document.getElementById('size_submit').value=document.getElementById(parameter).value;
     }
-    function increaseValue() {
-      var value = parseInt(document.getElementById('number').value);
-      var button = $('.button_quantity');
-      var max=$("#number").attr('max');
-      console.log(max);
-      if(value<max){   
-      value = isNaN(value) ? 0 : value;
-      value++;
-      document.getElementById('number').value = value;
-      }
-    }
-
-    function decreaseValue() {
-      var value = parseInt(document.getElementById('number').value);
-      value = isNaN(value) ? 0 : value;
-      value < 1 ? value = 1 : '';
-      value--;
-      document.getElementById('number').value = value;
-    }
-    $( document ).ready(function() {
-        $("#size_s").click(function(){
-            $("#number").prop("max",$("#amount_s").val())
-            $("#number").val("0");
-            console.log($("#number").attr('max'));
-
-        });
-        $("#size_m").click(function(){
-            $("#number").prop("max",$("#amount_m").val())
-            $("#number").val("0");
-            console.log($("#number").attr('max'));
-        });
-        $("#size_l").click(function(){
-            $("#number").prop("max",$("#amount_l").val())
-            $("#number").val("0");
-            console.log($("#number").attr('max'));
-        });
-        $("#size_xl").click(function(){
-            $("#number").prop("max",$("#amount_xl").val())
-            $("#number").val("0");
-            console.log($("#number").attr('max'));
-        });
-    });
 </script>
 
 </html>
