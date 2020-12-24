@@ -120,6 +120,15 @@
           <span class="login100-form-title p-b-43">
             Login
           </span>
+          @if ($errors->any())
+    <div class="col-md-12 alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
           <h5>Username</h5>
           <div class="wrap-input100 validate-input" data-validate = "Valid Username is required">
             <input class="input100" type="text" name="Username"  placeholder="Username" style="color: #000;">  

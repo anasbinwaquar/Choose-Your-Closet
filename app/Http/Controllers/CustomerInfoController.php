@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Customer_infos;
 use App\Models\completed_orders;
 use App\Models\Orders_sell;
+use App\Models\order_calculation_model;
 use App\Models\Rental_history;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB; 
@@ -67,6 +68,15 @@ class CustomerInfoController extends Controller
      public function CustomerLogin(Request $req)
     {
         //$this->validate($req);
+        $rules= [
+            'Username' => 'exists:customer_infos',
+            'Password'=>'required',
+        ];
+        $messages=[
+            'Username.exists'=>'The username is not registered.',
+        ];
+        $this->validate($req, $rules, $messages);
+
         $check = 0;
         $username=$req->input('Username');  
         $password=$req->input('Password');
@@ -102,7 +112,7 @@ class CustomerInfoController extends Controller
         {
          return redirect('/CustomerLogin');
         }
-        $data = Orders_sell::join('products','products.id','=','orders_sell.ProductID')->join('seller_info','seller_info.id','=','products.seller_id')->where('CustomerID',session()->get('customer_id'))->get();
+        $data = Orders_sell::join('order_calculation','orders_sell.OrderID','=','order_calculation.OrderID')->join('products','products.id','=','orders_sell.ProductID')->join('seller_info','seller_info.id','=','products.seller_id')->where('orders_sell.CustomerID',session()->get('customer_id'))->get();
         // dd($data);
         $data2 = Orders_sell::join('products','products.id','=','orders_sell.ProductID')->join('seller_info','seller_info.id','=','products.seller_id')->where('CustomerID',session()->get('customer_id'))->get();
         $data=$data->unique('OrderID');

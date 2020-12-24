@@ -7,7 +7,9 @@ use App\Models\completed_orders;
 use Carbon\Carbon;
 use App\Models\Orders_sell;
 use App\Models\Product;
+use Illuminate\Validation\Rule;
 use App\Models\vouchers;
+use App\Models\order_calculation_model;
 use Illuminate\Support\Facades\DB;
 use App\Notifications\SellerNotification;
 use App\Notifications\AdminNotification;
@@ -17,6 +19,46 @@ use Illuminate\Notifications\Notifiable;
 
 class SellerController extends Controller
 {
+    public function UpdateQuantity(){
+        if(!session()->has('seller_id'))
+            return redirect('SellerLogin');
+
+        $products=Product::where('seller_id',session()->get('seller_id'))->get();
+        // dd(session()->all());
+        return view('Seller.UpdateQuantity')->with('products',$products);
+    }
+    public function UpdateQuantityForm($id){
+        if(!session()->has('seller_id'))
+            return redirect('SellerLogin');
+
+        $product=Product::where('id',$id)->first();
+        // dd(session()->all());
+        return view('Seller.UpdateQuantityForm')->with('product',$product);
+    }
+    public function StoreQuantity(Request $req){
+        $req->validate([
+            'quantity_small'=>'integer|nullable',
+            'quantity_medium'=>'integer|nullable',
+            'quantity_large'=>'integer|nullable',
+            'quantity_extra_large'=>'integer|nullable',
+        ]);
+        if(!session()->has('seller_id'))
+            return redirect('SellerLogin');
+
+        if($req->input('quantity_medium')!=null){
+            Product::where('id',$req->input('product_id'))->where('seller_id',session()->get('seller_id'))->update(['quantity_medium'=>$req->input('quantity_medium')]);
+        }
+        if($req->input('quantity_small')!=null){
+            Product::where('id',$req->input('product_id'))->where('seller_id',session()->get('seller_id'))->update(['quantity_small'=>$req->input('quantity_small')]);
+        }
+        if($req->input('quantity_large')!=null){
+            Product::where('id',$req->input('product_id'))->where('seller_id',session()->get('seller_id'))->update(['quantity_large'=>$req->input('quantity_large')]);
+        }
+        if($req->input('quantity_extra_large')!=null){
+            Product::where('id',$req->input('product_id'))->where('seller_id',session()->get('seller_id'))->update(['quantity_extra_large'=>$req->input('quantity_extra_large')]);
+        }
+        return redirect('/UpdateQuantity');
+    }
     public function SellerSignUpView()
     {
         // if(!session()->has('data'))
@@ -86,26 +128,28 @@ class SellerController extends Controller
         if(!session()->has('seller_id'))
             return redirect('SellerLogin');
 
-        $datas = Orders_sell::where('OrderID',$orderid)->get();
+        $datas = Orders_sell::join('order_calculation','orders_sell.OrderID','=','order_calculation.OrderID')->where('orders_sell.OrderID',$orderid)->get();
         $record=[];
         foreach ($datas as $data) {
             if(!empty($data)){
             $date = Carbon::now();
                 $record[]=[
                 'OrderID'=>$data->OrderID,
+                'Date'=>   $date,
                 'CustomerID'=>$data->CustomerID,
                 'ProductID'=>$data->ProductID,
                 'Size'=>$data->Size,
                 'Quantity'=>$data->Quantity,
                 'Delivery_Address'=>$data->Delivery_Address,
                 'Total'=>$data->Total,
-                'Date'=>   $data->Date,
+                'Total_Discount'=>$data->Total_Discount,
             ];
             completed_orders::insert($record);
             $record=null;
             }
         }
             Orders_sell::where('OrderID',$orderid)->delete();
+            order_calculation_model::where('OrderID',$orderid)->delete();
         return redirect('ViewOrders'); 
 
     }
@@ -113,8 +157,7 @@ class SellerController extends Controller
         // dd(session()->all());
         if(!session()->has('seller_id'))
             return redirect('SellerLogin');
-
-        $data = Orders_sell::join('products','orders_sell.ProductID','=','products.id')->join('customer_infos','orders_sell.CustomerID','=','customer_infos.id')->where('products.seller_id',session()->get('seller_id'))->get();
+        $data = Orders_sell::join('order_calculation','orders_sell.OrderID','=','order_calculation.OrderID')->join('products','products.id','=','orders_sell.ProductID')->join('seller_info','seller_info.id','=','products.seller_id')->where('products.seller_id',session()->get('seller_id'))->get();
         $data2=Orders_sell::join('products','orders_sell.ProductID','=','products.id')->where('products.seller_id',session()->get('seller_id'))->get();;
         $data=$data->unique('OrderID');
         // dd($data);
@@ -175,6 +218,25 @@ class SellerController extends Controller
 
     public function SellerLogin(Request $req)
      {
+        $rules= [
+            'Username' => 'exists:seller_info',
+            'Password'=>'required',
+        ];
+        $rules2= [
+            'Username' => [ Rule::exists('seller_info', 'Username')->where(function ($query){
+                $query->where('Approval', 1);
+            })],
+            'Password'=>'required',
+        ];
+        $messages=[
+            'Username.exists'=>'The username is not registered.',
+        ];
+        $messages2=[
+            'Username.exists'=>'The username is not yet approved by the system.'
+        ];
+        $this->validate($req, $rules, $messages);
+        $this->validate($req, $rules2, $messages2);
+
         $username=$req->input('Username');  
         $password=$req->input('Password');
         $check=NULL;

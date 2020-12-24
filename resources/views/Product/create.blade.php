@@ -23,6 +23,7 @@
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link " href="/ListProduct"><i class="fas fa-tachometer-alt"></i><span>Add Product</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/DeleteProduct"><i class="fas fa-tachometer-alt"></i><span>Delete Product</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="/UpdateQuantity"><i class="fas fa-tachometer-alt"></i><span>Update Product Quantity</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/RentalProduct"><i class="fas fa-tachometer-alt"></i><span>Add Rental Product</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/ViewOrders"><i class="fas fa-tachometer-alt"></i><span>View Orders</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/ViewProducts"><i class="fas fa-tachometer-alt"></i><span>View Products</span></a></li>
@@ -185,7 +186,17 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="filebutton">PRODUCT IMAGES</label>
   <div class="col-md-6">
-    <input id="product_image" name="product_image" class="input-file col-md-6" type="file" accept="image/*" multiple required>
+    <input id="product_image" name="product_image" class="input-file col-md-6" type="file" accept="image/*" required>
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-md-6">
+    <input id="product_image2" name="product_image2" class="input-file col-md-6" type="file" accept="image/*" >
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-md-6">
+    <input id="product_image3" name="product_image3" class="input-file col-md-6" type="file" accept="image/*">
   </div>
 </div>
 
