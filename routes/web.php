@@ -37,6 +37,11 @@ Route::get('/image/{url}', [App\Http\Controllers\AdminController::class, 'image'
 
 Route::get('/SellerSignUp', [App\Http\Controllers\SellerController::class, 'SellerSignUpView']);
 
+Route::get('/UpdateQuantity', [App\Http\Controllers\SellerController::class, 'UpdateQuantity']);
+
+Route::get('/UpdateQuantityForm/{id}', [App\Http\Controllers\SellerController::class, 'UpdateQuantityForm']);
+Route::post('/UpdateQuantityForm', [App\Http\Controllers\SellerController::class, 'StoreQuantity'])->name('storequantity');
+
 Route::get('/Seller_Authentication', [App\Http\Controllers\SellerController::class, 'Seller_Authentication']);
 
 Route::get('/ViewProducts',[App\Http\Controllers\SellerController::class,'view_products']);
