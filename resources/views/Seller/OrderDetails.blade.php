@@ -17,6 +17,12 @@
         font-weight: bold;
     }
 
+    ::selection
+    {
+        background-color: #000000;
+        color: #ffffff;
+    }   
+
 </style>
 
 </head>
