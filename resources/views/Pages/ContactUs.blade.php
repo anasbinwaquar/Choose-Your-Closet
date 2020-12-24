@@ -75,6 +75,7 @@
             </div>
           </div>
     </form>
+    </div>
 </nav>
 
 @elseif($check_nav==1)
@@ -140,6 +141,7 @@
             </div>
           </div>
     </form>
+    </div>
 </nav>
 @endif
     <main class="page contact-us-page">

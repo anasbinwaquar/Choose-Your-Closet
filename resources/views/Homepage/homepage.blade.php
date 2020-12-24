@@ -76,6 +76,7 @@
             </div>
           </div>
     </form>
+    </div>
 </nav>
 
 @elseif($check==1)
@@ -141,6 +142,7 @@
             </div>
           </div>
     </form>
+    </div>
 </nav>
 @endif
     <main>
