@@ -9,6 +9,7 @@ use App\Models\Orders_sell;
 use App\Models\Product;
 use Illuminate\Validation\Rule;
 use App\Models\vouchers;
+use App\Models\order_calculation_model;
 use Illuminate\Support\Facades\DB;
 use App\Notifications\SellerNotification;
 use App\Notifications\AdminNotification;
@@ -87,26 +88,27 @@ class SellerController extends Controller
         if(!session()->has('seller_id'))
             return redirect('SellerLogin');
 
-        $datas = Orders_sell::where('OrderID',$orderid)->get();
+        $datas = Orders_sell::join('order_calculation','orders_sell.OrderID','=','order_calculation.OrderID')->where('orders_sell.OrderID',$orderid)->get();
         $record=[];
         foreach ($datas as $data) {
             if(!empty($data)){
             $date = Carbon::now();
                 $record[]=[
                 'OrderID'=>$data->OrderID,
+                'Date'=>   $date,
                 'CustomerID'=>$data->CustomerID,
                 'ProductID'=>$data->ProductID,
                 'Size'=>$data->Size,
                 'Quantity'=>$data->Quantity,
                 'Delivery_Address'=>$data->Delivery_Address,
                 'Total'=>$data->Total,
-                'Date'=>   $data->Date,
             ];
             completed_orders::insert($record);
             $record=null;
             }
         }
             Orders_sell::where('OrderID',$orderid)->delete();
+            order_calculation_model::where('OrderID',$orderid)->delete();
         return redirect('ViewOrders'); 
 
     }
@@ -187,7 +189,7 @@ class SellerController extends Controller
             'Password'=>'required',
         ];
         $messages=[
-            'Username.exists'=>'The username is not registered in the system.',
+            'Username.exists'=>'The username is not registered.',
         ];
         $messages2=[
             'Username.exists'=>'The username is not yet approved by the system.'
