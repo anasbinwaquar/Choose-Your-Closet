@@ -246,7 +246,7 @@
                 <br><br>
 
                 <label for="tshirt-design" style="font-size: 20px;">Back T-Shirt Design:</label>
-                <select id="tshirt-design-back" style="height: 30px;">
+                <select id="tshirt-design-back" class="" style="height: 30px;">
                     <option value="">Select designs for back ...</option>
                     @foreach ($images as $image)
                     <option value="{{ asset('templates/' . $image->image) }}" data-price='{{$image->price}}' data-name='{{$image->image}}' >{{$image->name}} | Rs:{{$image->price}}</option>
