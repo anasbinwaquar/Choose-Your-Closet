@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light nav1">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -32,44 +32,50 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item navclass">
+      <li class="nav-item1 navclass">
         <a class="nav-link navlink" href="/" style="color: #24C6DC;">Home<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link navlink" href="AboutUs" style="color: #24C6DC;">About Us</a>
+      <li class="nav-item1">
+        <a class="nav-link navlink" href="#" style="color: #24C6DC;">About Us</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item1">
         <a class="nav-link navlink" href="/customize" style="color: #24C6DC;">Customizer</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item1">
         <div class="dropdown">
         <a class="nav-link navlink" href="#" style="color: #24C6DC;">Products</a>
          <div class="dropdown-content">
-        <a href="/" class="link">Purchase</a>
-        <a href="/RentProducts" class="link">Rent</a>
+        <a href="#" class="link">Purchase</a>
+        <a href="RentProducts" class="link">Rent</a>
         </div>
         </div>
       </li>
-      <li class="nav-item">
+      <li class="nav-item1">
         <div class="dropdown">
-        <a class="nav-link navlink" href="#" style="color: #24C6DC;">Sign Up</a>
+        <a class="nav-link navlink" href="#" style="color: #24C6DC;">User Profile</a>
          <div class="dropdown-content">
-        <a href="/CustomerSignUp" class="link">Customer</a>
-        <a href="/SellerSignUp" class="link">Seller</a>
+        <a href="/CheckOrders" class="link">Check Orders</a>
+        <a href="/CompletedOrdersCustomer" class="link">Completed Orders</a>
         </div>
         </div>
       </li>
-       <li class="nav-item">
+      <li class="nav-item1">
         <div class="dropdown">
-        <a class="nav-link navlink" href="#" style="color: #24C6DC;">Login</a>
-         <div class="dropdown-content">
-        <a href="/CustomerLogin" class="link">Customer</a>
-        <a href="/SellerLogin" class="link">Seller</a>
-        </div>
+        <a class="nav-link navlink" href="/CustomerCart" style="color: #24C6DC;"><i class="fas fa-shopping-cart"></i><span class="badge badge-light">
+          <?php if(session()->has('cart'))
+        {
+           echo session()->get('cart')->totalQty;
+        }
+         ?></span>Cart</a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link navlink" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
+       <li class="nav-item1">
+        <div class="dropdown">
+        <a class="nav-link navlink" href="/UserLogout" style="color: #24C6DC;">Logout</a>
+        </div>
+      </li>
+      <li class="nav-item1">
+        <a class="nav-link navlink active" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
