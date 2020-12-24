@@ -124,11 +124,7 @@
     <div class="col-md-12 alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
-                @if($error=='The selected username is invalid.')
-                <li> The username is invalid or has not been approved yet. </li>
-                @else
                 <li>{{ $error }}</li>
-                @endif
             @endforeach
         </ul>
     </div>

@@ -176,14 +176,25 @@ class SellerController extends Controller
 
     public function SellerLogin(Request $req)
      {
-        $req->validate([
-            'Username' => [
-            Rule::exists('seller_info', 'Username')->where(function ($query){
-                $query->where('Approval', 1);
-            }),
-                 ],
+        $rules= [
+            'Username' => 'exists:seller_info',
             'Password'=>'required',
-        ]);
+        ];
+        $rules2= [
+            'Username' => [ Rule::exists('seller_info', 'Username')->where(function ($query){
+                $query->where('Approval', 1);
+            })],
+            'Password'=>'required',
+        ];
+        $messages=[
+            'Username.exists'=>'The username is not registered in the system.',
+        ];
+        $messages2=[
+            'Username.exists'=>'The username is not yet approved by the system.'
+        ];
+        $this->validate($req, $rules, $messages);
+        $this->validate($req, $rules2, $messages2);
+
         $username=$req->input('Username');  
         $password=$req->input('Password');
         $check=NULL;
