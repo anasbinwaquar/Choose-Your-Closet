@@ -7,6 +7,7 @@ use App\Models\completed_orders;
 use Carbon\Carbon;
 use App\Models\Orders_sell;
 use App\Models\Product;
+use Illuminate\Validation\Rule;
 use App\Models\vouchers;
 use Illuminate\Support\Facades\DB;
 use App\Notifications\SellerNotification;
@@ -175,6 +176,14 @@ class SellerController extends Controller
 
     public function SellerLogin(Request $req)
      {
+        $req->validate([
+            'Username' => [
+            Rule::exists('seller_info', 'Username')->where(function ($query){
+                $query->where('Approval', 1);
+            }),
+                 ],
+            'Password'=>'required',
+        ]);
         $username=$req->input('Username');  
         $password=$req->input('Password');
         $check=NULL;
