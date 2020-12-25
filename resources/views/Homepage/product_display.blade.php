@@ -4,15 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>product - Brand</title>
-    <link rel="stylesheet" href="/product/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <title>Shopping Cart - Choose Your Closet</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
-    <link rel="stylesheet" href="/product/fonts/simple-line-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
-    <link rel="stylesheet" href="/product/css/smoothproducts.css">
-    <link rel="stylesheet" type="text/css" href="/product/css/style1.css">
-     <link rel="icon" href="{{asset('images/Closet.png')}}">
+    <link rel="icon" href="{{asset('images/Closet.png')}}">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
@@ -21,15 +16,97 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" type="text/css" href="css/nav_styling.css">
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <style>
+    
+    .h2
+    {
+        color: #24C6DC; 
+        font-weight: bold;
+        font-size: 40px;
+        text-align: center;
+       
+    }
+
+</style>
+
 </head>
 
 <body>
-@foreach($product as $product)
-    <main class="page product-page">
-        <section class="clean-block clean-product dark">
+    
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="/" style="color: #24C6DC; font-weight: bold;"> <img src="{{asset('images/Closet.png')}}" alt="logo" width="100" id="logo">Virtual Clothing Store</a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item navclass">
+        <a class="nav-link navlink" href="/" style="color: #24C6DC;">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navlink" href="#" style="color: #24C6DC;">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navlink" href="/customize" style="color: #24C6DC;">Customizer</a>
+      </li>
+      <li class="nav-item">
+        <div class="dropdown">
+        <a class="nav-link navlink" href="#" style="color: #24C6DC;">Products</a>
+         <div class="dropdown-content">
+        <a href="#" class="link">Purchase</a>
+        <a href="RentProducts" class="link">Rent</a>
+        </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="dropdown">
+        <a class="nav-link navlink" href="#" style="color: #24C6DC;">User Profile</a>
+         <div class="dropdown-content">
+        <a href="/CheckOrders" class="link">Check Orders</a>
+        <a href="/CompletedOrdersCustomer" class="link">Completed Orders</a>
+        </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="dropdown">
+        <a class="nav-link navlink active" href="/CustomerCart" style="color: #24C6DC;"><i class="fas fa-shopping-cart"></i><span class="badge badge-light">
+          <?php if(session()->has('cart'))
+        {
+           echo session()->get('cart')->totalQty;
+        }
+         ?></span>Cart</a>
+        </div>
+      </li>
+       <li class="nav-item">
+        <div class="dropdown">
+        <a class="nav-link navlink" href="/UserLogout" style="color: #24C6DC;">Logout</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navlink" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+        <div class="input-group mb-4">
+            <input type="search" placeholder="Search..." aria-describedby="button-addon6" class="form-control border-info">
+            <div class="input-group-append">
+              <button id="button-addon6" type="submit" class="btn btn-info"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
+    </form>
+    </div>
+</nav>
+
+    <main class="page shopping-cart-page">
+        <section class="clean-block clean-cart dark">
             <div class="container">
                 <div class="block-heading">
-                    <h2 class="text-info">Product Page</h2>
+                    <h2 class="text-info h2">Shopping Cart</h2>
+                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p> -->
                 </div>
                 <div class="block-content">
                     <div class="product-info">
@@ -201,115 +278,84 @@
                                         </div>
                                         <input type="hidden" name="product_id" value="{{$product->id}}">
                                         </form>
+                @if($product!=NULL)
+                <div class="content">
+                        <div class="col-lg-12 col-lg-12">
+                            <div class="items">
+                                <div class="product">
+                     @foreach($product as $product)
+                @foreach($product as $product)
+                  <form action="{{route('UpdateCartData',['product_id'=> $product['item']['id'],'size'=>$product['siz']])}}" method="post">
+                    @csrf   
+                                    <div class="row justify-content-center align-items-center">
 
-                                        <script type="text/javascript">
-                                        function validateForm() {
-                                        if (isEmpty(document.getElementById('data_8').value.trim())) {
-                                        alert('Review is required!');
-                                        return false;
-                                        }
-                                        return true;
-                                        }
-                                        function isEmpty(str) { return (str.length === 0 || !str.trim()); }
-                                        function validateEmail(email) {
-                                        var re = /^([\w-]+(?:\.[\w-]+))@((?:[\w-]+\.)\w[\w-]{0,66})\.([a-z]{2,15}(?:\.[a-z]{2})?)$/i;
-                                        return isEmpty(email) || re.test(email);
-                                        }
-                                        </script>
-                                        @endif
+                                        <form action="{{route('CartData',['product_id'=> $product['item']['id']])}}"  method="post">
 
-                                        @foreach($reviews as $review)
-                                            @if(session()->has('customer_id'))
-                                                @if($check==1 && $review->customer_id==session()->get('customer_id'))
-                                                    <form method="post" action="{{ route('EditReview')}}">
-                                                        @csrf
-                                                    <div class="reviews">
-                                                        <div class="review-item">
-                                                            <div class="rating"> Rating: {{$review->rating}}</div>
+                                        <div class="col-md-3">
+                                            <div class="product-image"><img class="img-fluid d-block mx-auto image" src="{{asset('uploads/sell/'. $product['item']['product_image'])}}"></div>
+                                        </div>
+                                      
+                                        <div class="col-md-5 product-info" style="font-size: 18px;"><a class="product-name" href="#">{{$product['item']['product_name']}}</a>
 
-                                                            <h5>Your Review:</h4><span class="text-muted"></a>{{$review->First_Name}} {{$review->Last_Name}}, Dated: {{$review->review_date}}</span>
-                                                            <p>{{$review->description}}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                       <label >Edit Description: </label> <input type="text" name="description" value="{{$review->description}}">
+                                            <div class="product-specs">
+                                                <div style="font-size: 15px;"><span>Clothing Type:&nbsp;</span><span class="value">{{$product['item']['clothing_type']}}</span></div>
+                                                <div style="font-size: 15px;"><span>Category:&nbsp;</span><span class="value">{{$product['item']['category']}}</span></div>
+                                                <div style="font-size: 15px;"><span>Gender:&nbsp;</span><span class="value">{{$product['item']['gender_type']}}</span></div>
+                                                 <div style="font-size: 15px;"><span>Size:&nbsp;</span><span class="value">
+                                                 {{$product['siz']}}</span></div>
+                                                 <br>
+                                                 <input type="text" name="voucher" value="" style="height: 30px;">
+                                                 <button class="btn btn-dark" style="font-size: 15px;" type="submit">Add Voucher</button>
+                                                 <br><br>
+                                                 <button class="btn btn-success" style="font-size: 20px;" type="submit">Update</button>
+                                                 <a href="{{route('DeleteCartData',['product_id'=> $product['item']['id'],'size'=>$product['siz']])}}"><button class="btn btn-danger" style="font-size: 20px;" type="button">Delete</button></a>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-2 quantity"><label class="d-none d-md-block" for="quantity">Quantity</label>
 
-                                            <div >Update Rating:<span style="color: red;"> *  </span><select id="data_4" name="rating" style="max-width : 150px;">
-                                                        @php
-                                                            for ($i=01; $i <=5 ; $i++) { 
-                                                                if($i==$review->rating)
-                                                                    echo "<option selected='selected'>$i</option>";
-                                                                else
-                                                                    echo "<option>$i</option>";
-                                                            }
-                                                        @endphp
-                                                        </select>
-                                                       
-                                                        </div>
-                                                        <br>
-                                            <button id="Submit" name="Submit" type="submit" class="btn btn-primary" required>Edit</button></div>
-                                                    </div> 
-                                                    <input type="hidden" name="product_id" value="{{$product->id}}">
-
-                                                    </form>
-                                                @endif
-                                            @endif
-                                        <br><br>
-                                        @endforeach
-
-
-                                        @foreach($reviews as $review)
-                                                <div class="reviews">
-                                                    <div class="review-item">
-                                                        <div class="rating"> Rating: {{$review->rating}}</div>
-                                                        <h5>By:</h4><span class="text-muted"></a>{{$review->First_Name}} {{$review->Last_Name}}, Dated: {{$review->review_date}}</span>
-                                                        <p>{{$review->description}}</p>
-                                                    </div>
-                                                </div>
-                                        @endforeach
-                                </div>
+                                        <input type="number" id="number" name="update_quantity" class="form-control quantity-input" min="1" value="{{$product['qty']}}">
+                                          </div>
+                                        <div class="col-6 col-md-2 price"><span>{{$product['price']}}</span></div>
+                                         
+                                    </div>
+                                     </form>
+                                   @endforeach
+                                 @endforeach
+                                </div> 
                             </div>
                         </div>
-                    </div>
-                    <div class="clean-related-items">
-                        <h3>Related /products</h3>
-                        <div class="items">
-                            <div class="row justify-content-center">
-                                <div class="col-sm-6 col-lg-4">
-                                    <div class="clean-related-item">
-                                        <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="{{asset('uploads/sell/'. $product->product_image)}}"></a></div>
-                                        <div class="related-name"><a href="#">Lorem Ipsum dolor</a>
-                                            <div class="rating"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star-half-empty.svg"><img src="/product/img/star-empty.svg"></div>
-                                            <h4>$300</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <div class="clean-related-item">
-                                        <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="{{asset('uploads/sell/'. $product->product_image)}}"></a></div>
-                                        <div class="related-name"><a href="#">Lorem Ipsum dolor</a>
-                                            <div class="rating"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star-half-empty.svg"><img src="/product/img/star-empty.svg"></div>
-                                            <h4>$300</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <div class="clean-related-item">
-                                        <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="{{asset('uploads/sell/'. $product->product_image)}}"></a></div>
-                                        <div class="related-name"><a href="#">Lorem Ipsum dolor</a>
-                                            <div class="rating"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star-half-empty.svg"><img src="/product/img/star-empty.svg"></div>
-                                            <h4>$300</h4>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="col-md-12 col-lg-12">
+                            <div class="summary">
+                                <h3>Summary</h3>
+                                <h4><span class="text" style="font-size: 15px;">Subtotal</span><span class="price" style="font-size: 15px;">PKR {{$product_cart}}</span></h4>
+                                <h4><span class="text" style="font-size: 15px;">Sale Discount</span><span class="price" style="font-size: 15px;">PKR {{$discount_sale}}</span></h4>
+                                <h4><span class="text" style="font-size: 15px;">Voucher Discount</span><span class="price" style="font-size: 15px;">PKR {{$discount_cart}}</span></h4>
+                                <h4><span class="text" style="font-size: 15px;">Shipping</span><span class="price" style="font-size: 15px;">PKR {{$shipping}}</span></h4>
+                                <h4><span class="text" style="font-size: 15px;">Total</span><span class="price" style="font-size: 15px;">PKR {{$final_total}}</span></h4><a href="/PurchaseOrders"><button class="btn btn-primary btn-block btn-lg" type="button">Checkout</button></a>
                             </div>
                         </div>
-                    </div>
+                        @elseif($product==NULL)
+                        <div class="col-md-12 col-lg-10 row justify-content-center align-items-center"> 
+                            <h2>Your Cart is Empty</h2> </div>
+                        <div class="col-md-12 col-lg-12">
+                            <div class="summary">
+                                <h3>Summary</h3>
+                                <h4><span class="text">Subtotal</span><span class="price">Rs. 0</span></h4>
+                                <h4><span class="text">Discount</span><span class="price">Rs. 0</span></h4>
+                                <h4><span class="text">Shipping</span><span class="price">Rs. 0</span></h4>
+                            </div>
+                        </div>
+
+                        
                 </div>
+                     @endif
+                 
+
             </div>
         </section>
     </main>
-           <footer class="page-footer dark">
+   
+     <footer class="page-footer dark">
       <img src="{{asset('images/Closet.png')}}" alt="Logo" style="float: right; margin-right: 200px;">
         <div class="container">
             <div class="row">
@@ -349,70 +395,7 @@
             <p>© 2020 Copyright Choose Your Closet <img src="{{asset('images/Closet.png')}}" alt="Logo" width="50"></p>
         </div>
     </footer>
-    <script src="/product/js/jquery.min.js"></script>
-    <script src="/product/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
-    <script src="/product/js/smoothproducts.min.js"></script>
-    <script src="/product/js/theme.js"></script>
-    <script type="text/javascript" src="/product/js/script.js"></script>
-    @endforeach
+
 </body>
-<script type="text/javascript">
-    function size_selector(parameter)
-    {
-        document.getElementById('size_submit').value=document.getElementById(parameter).value;
-    }
-    function increaseValue() {
-      var value = parseInt(document.getElementById('number').value);
-      var button = $('.button_quantity');
-      var max=$("#number").attr('max');
-      console.log(max);
-      if(value<max){   
-      value = isNaN(value) ? 0 : value;
-      value++;
-      document.getElementById('number').value = value;
-      }
-    }
-
-    function decreaseValue() {
-      var value = parseInt(document.getElementById('number').value);
-      value = isNaN(value) ? 0 : value;
-      value < 1 ? value = 1 : '';
-      value--;
-      document.getElementById('number').value = value;
-    }
-    function unhide(){
-        $(".input-group").show();
-    }
-    $( document ).ready(function() {
-        $(".input-group").hide();
-
-        $("#size_s").click(function(){
-            unhide();
-            $("#number").prop("max",$("#amount_s").val())
-            $("#number").val("0");
-            console.log($("#number").attr('max'));
-
-        });
-        $("#size_m").click(function(){
-            unhide();
-            $("#number").prop("max",$("#amount_m").val())
-            $("#number").val("0");
-            console.log($("#number").attr('max'));
-        });
-        $("#size_l").click(function(){
-            unhide();
-            $("#number").prop("max",$("#amount_l").val())
-            $("#number").val("0");
-            console.log($("#number").attr('max'));
-        });
-        $("#size_xl").click(function(){
-            unhide();
-            $("#number").prop("max",$("#amount_xl").val())
-            $("#number").val("0");
-            console.log($("#number").attr('max'));
-        });
-    });
-</script>
 
 </html>
