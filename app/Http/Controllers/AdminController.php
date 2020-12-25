@@ -86,5 +86,15 @@ class AdminController extends Controller
         }
 
     }
+
+    public function AdminLogout()
+    {
+        // session()->flush(); //Clear all session data
+        session()->forget('data');
+         session()->flush();
+        
+        return redirect('/admin_login');
+
+    }
  	
 }
