@@ -90,15 +90,15 @@
                                          @endif
                                         @if($product->quantity_medium!=NULL || $product->quantity_medium!=0)
                                         <button id="size_m" type="button" class="btn btn-primary" style="font-weight: bold;" value="M" onclick="size_selector(this.id)">M</button>
-                                        <input type="hidden" id="amount_s" value="{{$product->quantity_medium}}">
+                                        <input type="hidden" id="amount_m" value="{{$product->quantity_medium}}">
                                          @endif
                                         @if($product->quantity_large!=NULL || $product->quantity_large!=0)
                                         <button id="size_l" type="button" class="btn btn-primary" style="font-weight: bold;" value="L" onclick="size_selector(this.id)">L</button>
-                                        <input type="hidden" id="amount_s" value="{{$product->quantity_large}}">
+                                        <input type="hidden" id="amount_l" value="{{$product->quantity_large}}">
                                          @endif
                                         @if($product->quantity_extra_large!=NULL || $product->quantity_extra_large!=0)
                                         <button id="size_xl" type="button" class="btn btn-primary" style="font-weight: bold;" value="XL" onclick="size_selector(this.id)">XL</button>
-                                        <input type="hidden" id="amount_s" value="{{$product->quantity_extra_large}}">
+                                        <input type="hidden" id="amount_xl" value="{{$product->quantity_extra_large}}">
                                         @endif
                                       </div>
                                       @if(!session()->has('customer_id'))
