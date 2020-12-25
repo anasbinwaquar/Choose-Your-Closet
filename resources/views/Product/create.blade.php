@@ -27,7 +27,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="check_previous()">
     <div id="wrapper">
 <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
             <div class="container-fluid d-flex flex-column p-0">
@@ -43,6 +43,7 @@
                     <li class="nav-item"><a class="nav-link " href="/SellerProfile"><i class="fas fa-tachometer-alt"></i><span>Profile</span></a></li>
                     <li class="nav-item"><a class="nav-link active" href="/ListProduct"><i class="fas fa-tachometer-alt"></i><span>Add Product</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/DeleteProduct"><i class="fas fa-tachometer-alt"></i><span>Delete Product</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="/DeleteRentalProduct"><i class="fas fa-tachometer-alt"></i><span>Delete Rental Product</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/UpdateQuantity"><i class="fas fa-tachometer-alt"></i><span>Update Product Quantity</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/RentalProduct"><i class="fas fa-tachometer-alt"></i><span>Add Rental Product</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/ViewOrders"><i class="fas fa-tachometer-alt"></i><span>View Orders</span></a></li>
@@ -134,7 +135,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="quantity_small">QUANTITY FOR SMALL</label>  
   <div class="col-md-6">
-  <input id="quantity_small" name="quantity_small" placeholder="QUANTITY FOR SMALL" value="{{old('quantity_small')}}" class="form-control input-md"  disabled type="text" value="0">
+  <input id="quantity_small" name="quantity_small" placeholder="QUANTITY FOR SMALL" value="{{old('quantity_small')}}" class="form-control input-md"  disabled type="text">
     
   </div>
 </div>
@@ -142,7 +143,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="quantity_medium">QUANTITY FOR MEDIUM</label>  
   <div class="col-md-6">
-  <input id="quantity_medium" name="quantity_medium" placeholder="QUANTITY FOR MEDIUM" value="{{old('quantity_medium')}}" class="form-control input-md" t disabled type="text" value="0">
+  <input id="quantity_medium" name="quantity_medium" placeholder="QUANTITY FOR MEDIUM" value="{{old('quantity_medium')}}" class="form-control input-md" t disabled type="text">
     
   </div>
 </div>
@@ -150,7 +151,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="quantity_large">QUANTITY FOR LARGE</label>  
   <div class="col-md-6">
-  <input id="quantity_large" name="quantity_large" placeholder="QUANTITY FOR LARGE" value="{{old('quantity_large')}}" class="form-control input-md"  disabled type="text" value="0">
+  <input id="quantity_large" name="quantity_large" placeholder="QUANTITY FOR LARGE" value="{{old('quantity_large')}}" class="form-control input-md"  disabled type="text">
     
   </div>
 </div>
@@ -158,7 +159,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="quantity_extra_large">QUANTITY FOR EXTRA LARGE</label>  
   <div class="col-md-6">
-  <input id="quantity_extra_large" name="quantity_extra_large" placeholder="QUANTITY FOR EXTRA LARGE" value="{{old('quantity_extra_large')}}" class="form-control input-md" disabled type="text" value="0">
+  <input id="quantity_extra_large" name="quantity_extra_large" placeholder="QUANTITY FOR EXTRA LARGE" value="{{old('quantity_extra_large')}}" class="form-control input-md" disabled type="text">
     
   </div>
 </div>
@@ -241,6 +242,20 @@
 
 
   <script type="text/javascript">
+    function check_previous(){
+      if($("#quantity_small").val()!=""){
+           $("#quantity_small").prop("disabled", false);
+        }
+      if($("#quantity_medium").val()!=""){
+           $("#quantity_medium").prop("disabled", false);
+        }
+      if($("#quantity_large").val()!=""){
+           $("#quantity_large").prop("disabled", false);
+        }
+      if($("#quantity_extra_large").val()!=""){
+           $("#quantity_extra_large").prop("disabled", false);
+        }
+    }
     $(function(){
     $("#Submit").click(function(e){
         var valid=0;
@@ -259,7 +274,7 @@
         }
           $("#quantity_small").val("");
           $("#quantity_small").prop("disabled", true);
-    })
+    });
     $(".s2").click(function(){
         if($(this).prop("checked")==true){
            $("#quantity_medium").prop("disabled", false);
@@ -267,7 +282,7 @@
         }
           $("#quantity_medium").val("");
           $("#quantity_medium").prop("disabled", true);
-    })
+    });
     $(".s3").click(function(){
         if($(this).prop("checked")==true){
            $("#quantity_large").prop("disabled", false);
@@ -275,7 +290,7 @@
         }
           $("#quantity_large").val("");
           $("#quantity_large").prop("disabled", true);
-    })
+    });
     $(".s4").click(function(){
         if($(this).prop("checked")==true){
            $("#quantity_extra_large").prop("disabled", false);
@@ -283,9 +298,8 @@
         }
           $("#quantity_extra_large").val("");
           $("#quantity_extra_large").prop("disabled", true);
-    })
+    });
 
 });
-
   </script>
 </html>

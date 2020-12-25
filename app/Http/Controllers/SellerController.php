@@ -19,6 +19,7 @@ use Illuminate\Notifications\Notifiable;
 
 class SellerController extends Controller
 {
+    
     public function UpdateQuantity(){
         if(!session()->has('seller_id'))
             return redirect('SellerLogin');
@@ -31,7 +32,7 @@ class SellerController extends Controller
         if(!session()->has('seller_id'))
             return redirect('SellerLogin');
 
-        $product=Product::where('id',$id)->first();
+        $product=Product::where('id',$id)->where('seller_id',session()->get('seller_id'))->first();
         // dd(session()->all());
         return view('Seller.UpdateQuantityForm')->with('product',$product);
     }
