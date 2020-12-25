@@ -113,7 +113,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="gallery">
-                                    <div class="sp-wrap"><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('/uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('/uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('/uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('/uploads/sell/'. $product->product_image)}}"></a></div>
+                                    <div class="sp-wrap"><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('uploads/sell/'. $product->product_image)}}"></a></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -122,20 +122,6 @@
                                     <div class="rating"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star-half-empty.svg"><img src="/product/img/star-empty.svg"></div>
                                     <div class="price">
                                         <h3>Rs. {{$product->price_per_unit}}</h3>
-                                           @if($product->Discount!=NULL)
-                                                            <h3 style="color:grey;text-decoration-line: line-through;">PKR {{$product->price_per_unit}}</h3>
-                                                            @elseif($product->Discount==NULL)
-                                                            <h3>PKR {{$product->price_per_unit}}</h3>
-                                                            @endif
-                                                            @if($product->Discount!=NULL)
-                                                        <h3 style="color:green;">{{$product->Discount}}% Discount</h3>
-                                                            <h3>New Price: PKR
-                                                              <?php 
-                                                              $var=($product->Discount/100)*$product->price_per_unit;
-                                                              echo $product->price_per_unit-$var;
-                                                               ?>
-                                                            </h3>
-                                                              @endif
                                     </div>
                                     <form action="{{route('CartData',['product_id'=>$product->id])}}" method="post">
                                         @csrf
@@ -144,7 +130,11 @@
                                     <div class="input-group">
                                      <button class="button_quantity" type="button"><i class="fas fa-minus" onclick="decreaseValue()"></i></button>
                                       <span class="input-container">
+<<<<<<< HEAD
                                       <input id="number" type="text" name="quant" class="form-control input-number" value="0" min="" max="0">
+=======
+                                      <input id="number" type="text" name="quant" class="form-control input-number" value="0" min="0" max="0">
+>>>>>>> parent of 496a1b7... Event_Discounts
                                       </span><button class="button_quantity" type="button"><i class="fas fa-plus" onclick="increaseValue()"></i></button>
                                       </div>
                                       @if ($errors->any())
@@ -167,6 +157,7 @@
                                          @endif
                                         @if($product->quantity_medium!=NULL || $product->quantity_medium!=0)
                                         <button id="size_m" type="button" class="btn btn-primary" style="font-weight: bold;" value="M" onclick="size_selector(this.id)">M</button>
+<<<<<<< HEAD
                                         <input type="hidden" id="amount_s" value="{{$product->quantity_medium}}">
                                          @endif
                                         @if($product->quantity_large!=NULL || $product->quantity_large!=0)
@@ -176,6 +167,17 @@
                                         @if($product->quantity_extra_large!=NULL || $product->quantity_extra_large!=0)
                                         <button id="size_xl" type="button" class="btn btn-primary" style="font-weight: bold;" value="XL" onclick="size_selector(this.id)">XL</button>
                                         <input type="hidden" id="amount_s" value="{{$product->quantity_extra_large}}">
+=======
+                                        <input type="hidden" id="amount_m" value="{{$product->quantity_medium}}">
+                                         @endif
+                                        @if($product->quantity_large!=NULL || $product->quantity_large!=0)
+                                        <button id="size_l" type="button" class="btn btn-primary" style="font-weight: bold;" value="L" onclick="size_selector(this.id)">L</button>
+                                        <input type="hidden" id="amount_l" value="{{$product->quantity_large}}">
+                                         @endif
+                                        @if($product->quantity_extra_large!=NULL || $product->quantity_extra_large!=0)
+                                        <button id="size_xl" type="button" class="btn btn-primary" style="font-weight: bold;" value="XL" onclick="size_selector(this.id)">XL</button>
+                                        <input type="hidden" id="amount_xl" value="{{$product->quantity_extra_large}}">
+>>>>>>> parent of 496a1b7... Event_Discounts
                                         @endif
                                       </div>
                                       @if(!session()->has('customer_id'))
@@ -352,6 +354,7 @@
                  
 
             </div>
+        </div>
         </section>
     </main>
    
@@ -395,7 +398,64 @@
             <p>© 2020 Copyright Choose Your Closet <img src="{{asset('images/Closet.png')}}" alt="Logo" width="50"></p>
         </div>
     </footer>
+<<<<<<< HEAD
 
 </body>
+=======
+    <script src="/product/js/jquery.min.js"></script>
+    <script src="/product/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="/product/js/smoothproducts.min.js"></script>
+    <script src="/product/js/theme.js"></script>
+    {{-- <script type="text/javascript" src="/product/js/script.js"></script> --}}
+    @endforeach
+</body>
+<script type="text/javascript">
+    function size_selector(parameter)
+    {
+        document.getElementById('size_submit').value=document.getElementById(parameter).value;
+    }
+    function increaseValue() {
+      var value = parseInt(document.getElementById('number').value);
+      var button = $('.button_quantity');
+      var max=$("#number").attr('max');
+      console.log(max);
+      if(value<max){   
+      value = isNaN(value) ? 0 : value;
+      value++;
+      document.getElementById('number').value = value;
+      }
+    }
+    function decreaseValue() {
+      var value = parseInt(document.getElementById('number').value);
+      value = isNaN(value) ? 0 : value;
+      value < 1 ? value = 1 : '';
+      value--;
+      document.getElementById('number').value = value;
+    }
+    $( document ).ready(function() {
+        $("#size_s").click(function(){
+            $("#number").prop("max",$("#amount_s").val())
+            $("#number").val("0");
+            console.log($("#number").attr('max'));
+        });
+        $("#size_m").click(function(){
+            $("#number").prop("max",$("#amount_m").val())
+            $("#number").val("0");
+            console.log($("#number").attr('max'));
+        });
+        $("#size_l").click(function(){
+            $("#number").prop("max",$("#amount_l").val())
+            $("#number").val("0");
+            console.log($("#number").attr('max'));
+        });
+        $("#size_xl").click(function(){
+            $("#number").prop("max",$("#amount_xl").val())
+            $("#number").val("0");
+            console.log($("#number").attr('max'));
+        });
+    });
+</script>
+>>>>>>> parent of 496a1b7... Event_Discounts
 
 </html>
