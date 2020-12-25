@@ -42,7 +42,7 @@ class CustomizerController extends Controller
 
         // $customer_email=Customer_infos::where('id',session()->get('customer_id'))->select('Email')->first();
         $customer_email=DB::select("select email from customer_infos where id=?",[session()->get('customer_id')]);
-        $AdminEmail="abdurrafay360@gmail.com";
+        $AdminEmail="chooseyourclosetnoreply@gmail.com";
         $custom_order=new custom_order();
         $custom_order->image_front=$request->tshirt_front;
         $custom_order->image_back=$request->tshirt_back;
