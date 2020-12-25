@@ -43,7 +43,7 @@ class Cart
 			//$this->items_size[$size]= $storedItem; 
 			$this->totalQty	+=	$quantity;
 			$this->totalPrice += $storedItem['price'];
-			$this->sale_discount += $sale_discount;
+			$this->sale_discount = $sale_discount;
 			$this->discount=0; 
 			$this->shipping=200;
 			$this->final_total=$this->totalPrice+$this->shipping-$this->sale_discount;
@@ -89,6 +89,7 @@ class Cart
 			$this->shipping=200;
 			//dd($discount);
 			$this->discount=$discount;
+			$this->sale_discount = $sale_discount;
 
 			$this->final_total= $this->totalPrice-$this->discount+$this->shipping-$this->sale_discount;
 	}
