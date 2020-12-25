@@ -89,7 +89,7 @@ class Cart
 			$this->shipping=200;
 			//dd($discount);
 			$this->discount=$discount;
-			$this->sale_discount = sale_discount;
+			$this->sale_discount = $sale_discount;
 
 			$this->final_total= $this->totalPrice-$this->discount+$this->shipping-$this->sale_discount;
 	}
