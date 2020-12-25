@@ -30,6 +30,7 @@ class Cart
 	public function add($item,$id,$quantity,$size,$sale_discount){
 		$storedItem=['qty'=>$quantity,'siz'=>$size,'price'=>$item->price_per_unit,'item'=>$item];
 		$sale_discount=($sale_discount/100)*$item->price_per_unit*$quantity;
+		// dd($sale_discount);
 		// if($this->items){
 		// 		if(array_key_exists($id,$this->items))
 		// 		{
@@ -42,8 +43,8 @@ class Cart
 			//$this->items_size[$size]= $storedItem; 
 			$this->totalQty	+=	$quantity;
 			$this->totalPrice += $storedItem['price'];
-			$this->sale_discount=$sale_discount;
-			$this->discount=0;
+			$this->sale_discount += $sale_discount;
+			$this->discount=0; 
 			$this->shipping=200;
 			$this->final_total=$this->totalPrice+$this->shipping-$this->sale_discount;
 	}
@@ -67,11 +68,13 @@ class Cart
 			{
 				$quantity=$quantity-$previous_quantity;
 				$this->totalQty	+=	$quantity;
+				$this->sale_discount += $sale_discount;
 			}
 			else if($previous_quantity > $quantity) 
 			{
 				$previous_quantity=$previous_quantity-$quantity;
 				$this->totalQty	-=	$previous_quantity;
+				$this->sale_discount -= $sale_discount;
 			}
 			if($previous_price <= $storedItem['price']) 
 			{
@@ -86,7 +89,7 @@ class Cart
 			$this->shipping=200;
 			//dd($discount);
 			$this->discount=$discount;
-			$this->sale_discount=$sale_discount;
+
 			$this->final_total= $this->totalPrice-$this->discount+$this->shipping-$this->sale_discount;
 	}
 

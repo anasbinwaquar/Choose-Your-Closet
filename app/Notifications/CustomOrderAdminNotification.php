@@ -45,7 +45,7 @@ class CustomOrderAdminNotification extends Notification
     {
         $subject = sprintf('New Order Received');
         $greeting = sprintf('Hi');
-        $line1 = sprintf('New order received. for Customer %s with email %s',$this->customer_id,$this->Email);
+        $line1 = sprintf('New order received.');
         $line2 = sprintf('Customer Details: ');
         $line3 = sprintf('Customer ID: %s',$this->customer_id);
         $line4 = sprintf('Customer Name: %s',$this->customer_name);
