@@ -91,7 +91,6 @@ class Cart
 			$this->discount=$discount;
 
 			$this->final_total= $this->totalPrice-$this->discount+$this->shipping-$this->sale_discount;
-
 	}
 
 		public function delete_cart($id,$size,$item)
