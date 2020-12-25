@@ -29,7 +29,7 @@ class ContactController extends Controller
 	public function Contact(Request $req)
     {
         ContactUs::create($req->all());
-        $Email = 'abdurrafay360@gmail.com';
+        $Email = 'chooseyourclosetnoreply@gmail.com';
         $Name = $req->name;
         $Subject = $req->subject;
         $QueryMail = $req->email;

@@ -58,7 +58,7 @@ class AdminNotification extends Notification
         // if($this->Identifier=0)
         // {
         $subject = sprintf('New %s to Verify', $this->type);
-        $line = sprintf('New %s of %s need to be verified!', $this->type,$this->Name);
+        $line = sprintf('New %s verification request.', $this->type);
         $url =sprintf('http://127.0.0.1:8000/%s',$this->link);
         return (new MailMessage)
                     ->subject($subject)

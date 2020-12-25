@@ -284,7 +284,7 @@ class SellerController extends Controller
         $Name=$req->Username;
         $SellerName=$req->First_Name.' '.$req->Last_Name;
         $Identifier=0;
-        Notification::route('mail','abdurrafay360@gmail.com')->notify(new AdminNotification($Name,$Identifier));
+        Notification::route('mail','chooseyourclosetnoreply@gmail.com')->notify(new AdminNotification($Name,$Identifier));
         Notification::route('mail',$req->Email)->notify(new SellerNotification($SellerName,$Identifier));
         return redirect("SellerLogin");
        // \Mail::to($req->input('email'))->send(new Registration_success($req->username,$req->password));
