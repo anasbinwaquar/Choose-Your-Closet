@@ -85,7 +85,12 @@ class CartController extends Controller
             // print_r('rafayyy');
         }
         $_cart = new cart($oldCart);
-        $_cart->add($product, $product->id,$quantity, $size, $Discount[0]->Discount);
+        // dd($Discount);
+        if($Discount->isEmpty())
+            $_cart->add($product, $product->id,$quantity, $size, 0);
+        else{
+            $_cart->add($product, $product->id,$quantity, $size, $Discount[0]->Discount);
+        }
         session()->put('cart',$_cart);
         //return redirec
        // $quantity=$_cart->items[$product_id]['qty'];

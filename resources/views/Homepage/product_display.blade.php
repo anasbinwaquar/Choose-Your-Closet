@@ -67,7 +67,7 @@
                                     <div class="input-group">
                                      <button class="button_quantity" type="button"><i class="fas fa-minus" onclick="decreaseValue()"></i></button>
                                       <span class="input-container">
-                                      <input id="number" type="text" name="quant" class="form-control input-number" value="1" min="1" max="10">
+                                      <input id="number" type="text" name="quant" class="form-control input-number" value="0" min="" max="0">
                                       </span><button class="button_quantity" type="button"><i class="fas fa-plus" onclick="increaseValue()"></i></button>
                                       </div>
                                       @if ($errors->any())
@@ -86,15 +86,19 @@
                                       <input id="size_submit" type="text" name="size" style="display: none;">
                                         @if($product->quantity_small!=NULL || $product->quantity_small!=0)
                                         <button id="size_s" type="button" class="btn btn-primary" style="font-weight: bold;" value="S" onclick="size_selector(this.id)">S</button>
+                                        <input type="hidden" id="amount_s" value="{{$product->quantity_small}}">
                                          @endif
                                         @if($product->quantity_medium!=NULL || $product->quantity_medium!=0)
                                         <button id="size_m" type="button" class="btn btn-primary" style="font-weight: bold;" value="M" onclick="size_selector(this.id)">M</button>
+                                        <input type="hidden" id="amount_m" value="{{$product->quantity_medium}}">
                                          @endif
                                         @if($product->quantity_large!=NULL || $product->quantity_large!=0)
                                         <button id="size_l" type="button" class="btn btn-primary" style="font-weight: bold;" value="L" onclick="size_selector(this.id)">L</button>
+                                        <input type="hidden" id="amount_l" value="{{$product->quantity_large}}">
                                          @endif
                                         @if($product->quantity_extra_large!=NULL || $product->quantity_extra_large!=0)
                                         <button id="size_xl" type="button" class="btn btn-primary" style="font-weight: bold;" value="XL" onclick="size_selector(this.id)">XL</button>
+                                        <input type="hidden" id="amount_xl" value="{{$product->quantity_extra_large}}">
                                         @endif
                                       </div>
                                       @if(!session()->has('customer_id'))
