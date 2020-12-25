@@ -134,6 +134,8 @@ Route::get('/home', [App\Http\Controllers\HomepageController::class, 'index_home
 Route::get('/product/{product_id}', [App\Http\Controllers\HomepageController::class, 'ShowProduct']);
 
 Route::get('/rentproduct/{product_id}', [App\Http\Controllers\HomepageController::class, 'ShowRentProduct']);
+Route::get('/saleproduct/{product_id}', [App\Http\Controllers\HomepageController::class, 'SaleShowProduct']);
+Route::get('/sale', [App\Http\Controllers\HomepageController::class, 'sale_index']);
 
 // Cart
 
