@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Seller Authentication</title>
+    <title>Delete Prints - Choose Your Closet</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
@@ -71,7 +71,7 @@
                                 </thead>
                                   <tbody>
                                     @if($prints->isEmpty())
-                                    <th><p style="text-align: center;">No Prints Added</p></th>
+                                    <th><p style="margin-left: 75%;">NO PRINTS ADDED</p></th>
                                     @elseif($prints!=NULL)  
                                     @foreach ($prints as $print)
                                       <tr>
@@ -87,6 +87,7 @@
                         </div>
             </div>
         </div>
+        
     <!-- </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div> -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
@@ -96,10 +97,5 @@
     <script src="assets/js/theme.js"></script>
 </body>
 
-        <footer class="bg-white sticky-footer">
-            <div class="container my-auto">
-                <div class="text-center my-auto copyright"><span>Copyright © Brand 2020</span></div>
-            </div>
-        </footer>
 </html>
 
