@@ -36,7 +36,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="gallery">
-                                    <div class="sp-wrap"><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('/uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('/uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('/uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('/uploads/sell/'. $product->product_image)}}"></a></div>
+                                    <div class="sp-wrap"><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('uploads/sell/'. $product->product_image)}}"></a></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -45,20 +45,6 @@
                                     <div class="rating"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star-half-empty.svg"><img src="/product/img/star-empty.svg"></div>
                                     <div class="price">
                                         <h3>Rs. {{$product->price_per_unit}}</h3>
-                                           @if($product->Discount!=NULL)
-                                                            <h3 style="color:grey;text-decoration-line: line-through;">PKR {{$product->price_per_unit}}</h3>
-                                                            @elseif($product->Discount==NULL)
-                                                            <h3>PKR {{$product->price_per_unit}}</h3>
-                                                            @endif
-                                                            @if($product->Discount!=NULL)
-                                                        <h3 style="color:green;">{{$product->Discount}}% Discount</h3>
-                                                            <h3>New Price: PKR
-                                                              <?php 
-                                                              $var=($product->Discount/100)*$product->price_per_unit;
-                                                              echo $product->price_per_unit-$var;
-                                                               ?>
-                                                            </h3>
-                                                              @endif
                                     </div>
                                     <form action="{{route('CartData',['product_id'=>$product->id])}}" method="post">
                                         @csrf
@@ -67,7 +53,11 @@
                                     <div class="input-group">
                                      <button class="button_quantity" type="button"><i class="fas fa-minus" onclick="decreaseValue()"></i></button>
                                       <span class="input-container">
+<<<<<<< HEAD
                                       <input id="number" type="text" name="quant" class="form-control input-number" value="0" min="" max="0">
+=======
+                                      <input id="number" type="text" name="quant" class="form-control input-number" value="0" min="0" max="0">
+>>>>>>> parent of 496a1b7... Event_Discounts
                                       </span><button class="button_quantity" type="button"><i class="fas fa-plus" onclick="increaseValue()"></i></button>
                                       </div>
                                       @if ($errors->any())
@@ -307,6 +297,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </section>
     </main>
            <footer class="page-footer dark">
@@ -354,7 +345,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="/product/js/smoothproducts.min.js"></script>
     <script src="/product/js/theme.js"></script>
-    <script type="text/javascript" src="/product/js/script.js"></script>
+    {{-- <script type="text/javascript" src="/product/js/script.js"></script> --}}
     @endforeach
 </body>
 <script type="text/javascript">
@@ -373,7 +364,10 @@
       document.getElementById('number').value = value;
       }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 496a1b7... Event_Discounts
     function decreaseValue() {
       var value = parseInt(document.getElementById('number').value);
       value = isNaN(value) ? 0 : value;
@@ -381,6 +375,7 @@
       value--;
       document.getElementById('number').value = value;
     }
+<<<<<<< HEAD
     function unhide(){
         $(".input-group").show();
     }
@@ -396,18 +391,33 @@
         });
         $("#size_m").click(function(){
             unhide();
+=======
+    $( document ).ready(function() {
+        $("#size_s").click(function(){
+            $("#number").prop("max",$("#amount_s").val())
+            $("#number").val("0");
+            console.log($("#number").attr('max'));
+        });
+        $("#size_m").click(function(){
+>>>>>>> parent of 496a1b7... Event_Discounts
             $("#number").prop("max",$("#amount_m").val())
             $("#number").val("0");
             console.log($("#number").attr('max'));
         });
         $("#size_l").click(function(){
+<<<<<<< HEAD
             unhide();
+=======
+>>>>>>> parent of 496a1b7... Event_Discounts
             $("#number").prop("max",$("#amount_l").val())
             $("#number").val("0");
             console.log($("#number").attr('max'));
         });
         $("#size_xl").click(function(){
+<<<<<<< HEAD
             unhide();
+=======
+>>>>>>> parent of 496a1b7... Event_Discounts
             $("#number").prop("max",$("#amount_xl").val())
             $("#number").val("0");
             console.log($("#number").attr('max'));
