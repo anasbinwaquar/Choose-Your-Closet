@@ -106,16 +106,23 @@ class CartController extends Controller
         $quantity=$req->input('update_quantity');
         $code=$req->input('voucher');
         $discount=DB::select("select Discount from voucher where Product_id=? and code=?",[$product_id,$code]);
+        $Discount_sale = discounts::join('products','discounts.Product_id','=','products.id')->join('events','discounts.Event_id','=','events.EventID')->where('products.approved', 1)->where('products.id',$product_id)->get();
          $OldCart = session()->get('cart');
         $CurrentCart = new cart($OldCart);
         if($discount==NULL)
         {
-        $CurrentCart->update_cart($product_id, $quantity, $size,  $product,0);
+            if($Discount_sale->isEmpty())
+            $CurrentCart->update_cart($product_id, $quantity, $size,  $product,0,0);
+            else
+            $CurrentCart->update_cart($product_id, $quantity, $size,  $product,0, $Discount_sale[0]->Discount_sale); 
         }
         else
         {
          $discount=$discount[0]->Discount;
-          $CurrentCart->update_cart($product_id, $quantity, $size,  $product,$discount);   
+        if($Discount_sale->isEmpty())
+            $CurrentCart->update_cart($product_id, $quantity, $size,  $product,$discount,0);
+        else
+            $CurrentCart->update_cart($product_id, $quantity, $size,  $product, $discount, $Discount_sale[0]->Discount_sale);    
         }
         session()->put('cart',$CurrentCart);
          return redirect('CustomerCart');
