@@ -112,7 +112,7 @@ class Cart
 		}
 		else
 		{
-			unset($this->items[$id]);
+			unset($this->items[$id][$size]);
 			$this->totalQty	-=	$previous_quantity;
 			$this->totalPrice -= $previous_price;
 			//dd($this->totalPrice);
