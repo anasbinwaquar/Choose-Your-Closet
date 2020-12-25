@@ -6,6 +6,8 @@ use App\Models\RentalProduct;
 use App\Models\user_model;
 use App\Models\Customer_infos;
 use App\Models\reviews;
+use App\Models\discounts;
+use App\Models\events;
 use Illuminate\Support\Facades\DB; 
 use Intervention\Image\Facades\Image;
 
@@ -32,6 +34,52 @@ class HomepageController extends Controller
         $data = Product::where('approved', 1)->get();
         // printf("Now: %s", Carbon::now());
         return view('Homepage.homepage')->with('data',$data)->with('check', $check);
+    }
+    public function sale_index()
+    {
+        
+        if(session()->has('customer_id'))
+        {
+                $check = 1;
+        }
+        else
+        {
+           $check = 0;
+        }   
+        $today_date =  Carbon::now();
+        $event_ID = events::where('EndingTime',$today_date)->get('EventID');
+        foreach(  $event_ID as   $event_ID)
+        {
+            discounts::where('Event_id',$event_ID->EventID)->delete();
+        }
+       
+        $data = discounts::join('products','discounts.Product_id','=','products.id')->join('events','discounts.Event_id','=','events.EventID')->where('products.approved', 1)->get();
+        // $discount_product=$discount_product->get('Product_id');
+       // printf($discount_product[0]->Discount);
+        // printf("Now: %s", Carbon::now());
+        return view('Homepage.homepage')->with('data',$data)->with('check', $check);
+    }
+    public function SaleShowProduct($product_id)
+    {
+        $check=0;
+        $product =discounts::join('products','discounts.Product_id','=','products.id')->join('events','discounts.Event_id','=','events.EventID')->where('products.approved', 1)->where('products.id',$product_id)->get();
+      //  dd( $product);
+        if(session()->has('customer_id'))
+        {
+            $check= reviews::where('customer_id',session()->get('customer_id'))->where('product_id',$product_id)->first();
+            if(is_null($check))
+                $check=0;
+            else
+                $check=1;
+        }        
+        $reviews= DB::table('reviews')->where('product_id',$product_id)->join('customer_infos', 'reviews.customer_id', '=', 'customer_infos.id')->get();
+        if($product->isEmpty())
+            return view('Homepage.product_display')->with('product',$product)->with('check',$check);
+        // $RentalProduct= RentalProduct::where('product_id', $product_id)->first();
+        // $SellerData= user_model::where('id',$product->seller_id)->first();
+        else
+            return view('Homepage.product_display')->with('product',$product)->with('reviews',$reviews)->with('check',$check);
+        // ->with('RentalProduct',$RentalProduct)->with('SellerData',$SellerData);
     }
         public function index_home()
     {
@@ -76,8 +124,16 @@ class HomepageController extends Controller
     }
     public function ShowRentProduct($product_id)
     {
+        if(session()->has('customer_id'))
+        {
+                $check = 1;
+        }
+        else
+        {
+           $check = 0;
+        }   
         $product = RentalProduct::where('id', $product_id)->get();
-        return view('Homepage.rent_display')->with('product',$product);
+        return view('Homepage.rent_display')->with('product',$product)->with('check',$check);
     }
 
     public function create()

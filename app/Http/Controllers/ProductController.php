@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\RentalProduct;
 use App\Models\reviews;
+use App\Models\Rental_history;
 use App\Providers\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; 
@@ -18,7 +19,29 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function DeleteRentalProductsView(){
+
+        if(!session()->has('seller_id'))
+            return redirect('SellerLogin');
+
+        $product=RentalProduct::where('seller_id',session()->get('seller_id'))->where('existence',1)->get();
+        return view('Seller.DeleteRentalView')->with('product',$product);
+    }
+    public function DestroyRentalProduct($id){
+        if(!session()->has('seller_id'))
+            return redirect('SellerLogin');
+          $check;
+        $check=Rental_history::where('product_id',$id)->where('seller_id',session()->get('seller_id'))->first();
+        if($check==NULL){
+          RentalProduct::where('id',$id)->where('seller_id',session()->get('seller_id'))->delete();
+        }
+        else{
+          RentalProduct::where('id',$id)->where('seller_id',session()->get('seller_id'))->update(['existence'=>0]);
+        }
+        return redirect('/DeleteRentalProduct');
+    }
     public function index_rent(){
+        RentalProduct::where('available',1)->where('existence',0)->delete();
         $data = RentalProduct::where('approved', 1)->where('available',1)->get();
         if(session()->has('data'))
         {
@@ -210,6 +233,14 @@ class ProductController extends Controller
         $Prod->category = $request->input('category');
         $Prod->seller_id=$seller_id;
         $Prod->save();
+        if(session()->has('customer_id'))
+        {
+                $check = 1;
+        }
+        else
+        {
+           $check = 0;
+        }   
         return view('Product.success');
         }
         

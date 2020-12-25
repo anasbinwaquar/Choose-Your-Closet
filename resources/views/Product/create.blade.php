@@ -3,46 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Seller Portal - Choose Your Closet</title>
+    <title>Seller Portal</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
-    <link rel="icon" href="{{asset('images/Closet.png')}}">
-
-<style>
-    
-    .active{
-        font-weight: bold;
-    }
-
-    ::selection
-    {
-        background-color: #000000;
-        color: #ffffff;
-    }
-
-</style>
-
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="check_previous()">
     <div id="wrapper">
-<nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
             <div class="container-fluid d-flex flex-column p-0">
                 <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-                    <div class="sidebar-brand-icon " style="margin-top: 30px;"><img src="{{asset('images/Closet.png')}}" width="88px;"></div>
-                   
+                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+                    <div class="sidebar-brand-text mx-3"><span>Brand</span></div>
                 </a>
-                <br>
-                <br>
-                 <div class="sidebar-brand-text mx-3" style="color: #fff; font-weight: bold;"><span>Choose Your Closet</span></div>
                 <hr class="sidebar-divider my-0">
-                <ul class="nav navbar-nav text-light" id="accordionSidebar" style="margin-top: 30%;">
-                    <li class="nav-item"><a class="nav-link " href="/SellerProfile"><i class="fas fa-tachometer-alt"></i><span>Profile</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/ListProduct"><i class="fas fa-tachometer-alt"></i><span>Add Product</span></a></li>
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link " href="/ListProduct"><i class="fas fa-tachometer-alt"></i><span>Add Product</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/DeleteProduct"><i class="fas fa-tachometer-alt"></i><span>Delete Product</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="/DeleteRentalProduct"><i class="fas fa-tachometer-alt"></i><span>Delete Rental Product</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/UpdateQuantity"><i class="fas fa-tachometer-alt"></i><span>Update Product Quantity</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/RentalProduct"><i class="fas fa-tachometer-alt"></i><span>Add Rental Product</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/ViewOrders"><i class="fas fa-tachometer-alt"></i><span>View Orders</span></a></li>
@@ -51,6 +32,7 @@
                     <li class="nav-item"><a class="nav-link " href="/AddVoucher"><i class="fas fa-tachometer-alt"></i><span>Add Voucher</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/DeleteVoucher"><i class="fas fa-tachometer-alt"></i><span>Delete Voucher</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/SellerLogout"><i class="fas fa-user"></i><span>Logout</span></a></li>
+                </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
@@ -134,7 +116,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="quantity_small">QUANTITY FOR SMALL</label>  
   <div class="col-md-6">
-  <input id="quantity_small" name="quantity_small" placeholder="QUANTITY FOR SMALL" value="{{old('quantity_small')}}" class="form-control input-md"  disabled type="text" value="0">
+  <input id="quantity_small" name="quantity_small" placeholder="QUANTITY FOR SMALL" value="{{old('quantity_small')}}" class="form-control input-md"  disabled type="text">
     
   </div>
 </div>
@@ -142,7 +124,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="quantity_medium">QUANTITY FOR MEDIUM</label>  
   <div class="col-md-6">
-  <input id="quantity_medium" name="quantity_medium" placeholder="QUANTITY FOR MEDIUM" value="{{old('quantity_medium')}}" class="form-control input-md" t disabled type="text" value="0">
+  <input id="quantity_medium" name="quantity_medium" placeholder="QUANTITY FOR MEDIUM" value="{{old('quantity_medium')}}" class="form-control input-md" t disabled type="text">
     
   </div>
 </div>
@@ -150,7 +132,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="quantity_large">QUANTITY FOR LARGE</label>  
   <div class="col-md-6">
-  <input id="quantity_large" name="quantity_large" placeholder="QUANTITY FOR LARGE" value="{{old('quantity_large')}}" class="form-control input-md"  disabled type="text" value="0">
+  <input id="quantity_large" name="quantity_large" placeholder="QUANTITY FOR LARGE" value="{{old('quantity_large')}}" class="form-control input-md"  disabled type="text">
     
   </div>
 </div>
@@ -158,7 +140,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="quantity_extra_large">QUANTITY FOR EXTRA LARGE</label>  
   <div class="col-md-6">
-  <input id="quantity_extra_large" name="quantity_extra_large" placeholder="QUANTITY FOR EXTRA LARGE" value="{{old('quantity_extra_large')}}" class="form-control input-md" disabled type="text" value="0">
+  <input id="quantity_extra_large" name="quantity_extra_large" placeholder="QUANTITY FOR EXTRA LARGE" value="{{old('quantity_extra_large')}}" class="form-control input-md" disabled type="text">
     
   </div>
 </div>
@@ -237,10 +219,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="assets/js/theme.js"></script>
 
+    <footer class="bg-white sticky-footer">
+            <div class="container my-auto">
+                <div class="text-center my-auto copyright"><span>Copyright © Brand 2020</span></div>
+            </div>
+        </footer>
 </body>
 
 
   <script type="text/javascript">
+    function check_previous(){
+      if($("#quantity_small").val()!=""){
+           $("#quantity_small").prop("disabled", false);
+        }
+      if($("#quantity_medium").val()!=""){
+           $("#quantity_medium").prop("disabled", false);
+        }
+      if($("#quantity_large").val()!=""){
+           $("#quantity_large").prop("disabled", false);
+        }
+      if($("#quantity_extra_large").val()!=""){
+           $("#quantity_extra_large").prop("disabled", false);
+        }
+    }
     $(function(){
     $("#Submit").click(function(e){
         var valid=0;
@@ -259,7 +260,7 @@
         }
           $("#quantity_small").val("");
           $("#quantity_small").prop("disabled", true);
-    })
+    });
     $(".s2").click(function(){
         if($(this).prop("checked")==true){
            $("#quantity_medium").prop("disabled", false);
@@ -267,7 +268,7 @@
         }
           $("#quantity_medium").val("");
           $("#quantity_medium").prop("disabled", true);
-    })
+    });
     $(".s3").click(function(){
         if($(this).prop("checked")==true){
            $("#quantity_large").prop("disabled", false);
@@ -275,7 +276,7 @@
         }
           $("#quantity_large").val("");
           $("#quantity_large").prop("disabled", true);
-    })
+    });
     $(".s4").click(function(){
         if($(this).prop("checked")==true){
            $("#quantity_extra_large").prop("disabled", false);
@@ -283,9 +284,8 @@
         }
           $("#quantity_extra_large").val("");
           $("#quantity_extra_large").prop("disabled", true);
-    })
+    });
 
 });
-
   </script>
 </html>

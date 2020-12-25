@@ -180,7 +180,9 @@
                                                     <div class="products-single fix">
                                                         <div class="box-img-hover">
                                                             <div class="type-lb">
-                                                                <p class="sale">Sale</p>
+                                                                @if($data->EventName !=NULL)
+                                                                <p class="sale">{{$data->EventName}} Sale</p>
+                                                                @endif                                                                
                                                             </div>
                                                              <img class="card-img-top" src="{{asset('uploads/sell/'. $data->product_image)}}" alt="Card image cap" style="height:400px;width: 350px;">
                                                             <div class="mask-icon">
@@ -191,14 +193,35 @@
                                                                      @if(!session()->has('customer_id'))
                                                                 <a class="cart" href="#" onclick="alert('You need to Login first')">Add to Cart</a>
                                                                     @elseif(session()->has('customer_id'))
-                                                                <a class="cart" href="product/{{$data->id}}">Add to Cart</a>
+                                                                    @if($data->Discount!=NULL)
+                                                                    <a class="cart" href="saleproduct/{{$data->id}}">Add to Cart</a>
+                                                                     @elseif($data->Discount==NULL)
+                                                                     <a class="cart" href="product/{{$data->id}}">Add to Cart</a>
+                                                                     @endif
                                                                 @endif
                                                           </div>
                                                         </div>
                                                         <div class="why-text">
                                                             <h4>{{$data->product_name}}</h4>
-                                                            <h5>Rs: {{$data->price_per_unit}}</h5>
-                                                            <a href="product/{{$data->id}}" class="btn btn-block" style="background-color:#007bff;color: #ffffff;">See More</a>
+                                                            @if($data->Discount!=NULL)
+                                                            <h5 style="color:grey;text-decoration-line: line-through;">PKR {{$data->price_per_unit}}</h5>
+                                                            @elseif($data->Discount==NULL)
+                                                            <h5 >PKR {{$data->price_per_unit}}</h5>
+                                                            @endif
+                                                            @if($data->Discount!=NULL)
+                                                            <h5 style="color:green;">{{$data->Discount}}% Discount</h5>
+                                                            <h5>New Price: PKR
+                                                              <?php 
+                                                              $var=($data->Discount/100)*$data->price_per_unit;
+                                                              echo $data->price_per_unit-$var;
+                                                               ?>
+                                                            </h5>
+                                                              @endif
+                                                               @if($data->Discount!=NULL)
+                                                            <a href="saleproduct/{{$data->id}}" class="btn btn-block" style="background-color:#007bff;color: #ffffff;">See More</a>
+                                                             @elseif($data->Discount==NULL)
+                                                              <a href="product/{{$data->id}}" class="btn btn-block" style="background-color:#007bff;color: #ffffff;">See More</a>
+                                                              @endif
                                                         </div>
                                                     </div>
                                       </div>

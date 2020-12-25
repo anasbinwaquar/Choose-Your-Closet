@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CompletedOrders extends Migration
+class CreateOrderCalculationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CompletedOrders extends Migration
      */
     public function up()
     {
-        Schema::create('completed_orders', function (Blueprint $table) {
-            $table->unsignedBigInteger('OrderID');
+        Schema::create('order_calculation', function (Blueprint $table) {
+            $table->id('OrderID');
             $table->unsignedBigInteger('CustomerID');
-            $table->unsignedBigInteger('ProductID');
-            $table->string('Size');
-            $table->unsignedBigInteger('Quantity');
-            $table->string('Delivery_Address');
-            $table->unsignedBigInteger('Total');
+            $table->unsignedBigInteger('Total_Quantity');
             $table->unsignedBigInteger('Total_Discount');
-            $table->DateTime('Date');
+            $table->unsignedBigInteger('Total_Bill');
+            $table->string('Delivery_Address');
+            $table->DateTime('OrderDate');
         });
     }
 
@@ -33,6 +31,6 @@ class CompletedOrders extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('order_calculation');
     }
 }
