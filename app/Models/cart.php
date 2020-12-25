@@ -48,8 +48,9 @@ class Cart
 			$this->shipping=200;
 			$this->final_total=$this->totalPrice+$this->shipping-$this->sale_discount;
 	}
-	public function update_cart($id,$quantity,$size,$item,$discount){
+	public function update_cart($id,$quantity,$size,$item,$discount,$sale_discount){
 		$discount=($discount/100)*$item->price_per_unit*$quantity;
+		$sale_discount=($sale_discount/100)*$item->price_per_unit*$quantity;
 		//$item->price_per_unit=$item->price_per_unit-$discount;
 		$previous_quantity=$this->items[$id][$size]['qty'];
 		$previous_price=$this->items[$id][$size]['price'];
@@ -86,7 +87,8 @@ class Cart
 			$this->shipping=200;
 			//dd($discount);
 			$this->discount=$discount;
-			$this->final_total= $this->totalPrice-$this->discount+$this->shipping;
+			$this->sale_discount=$sale_discount;
+			$this->final_total= $this->totalPrice-$this->discount+$this->shipping-$this->sale_discount;
 
 	}
 
