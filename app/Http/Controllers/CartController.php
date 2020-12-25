@@ -17,26 +17,34 @@ class CartController extends Controller
 
     public function AddToCartRent(Request $req,$product_id)
     {
-
         if(!session()->has('customer_id'))
             return redirect('CustomerLogin');
 
             $product=RentalProduct::where('id',$product_id)->get();
             session()->put('RentCart',$product);
-            return redirect("/rentproduct/$product_id");
+        return redirect('/RentCart');
+
         return view('Pages.RentCheckout')->with('product',$product);
     }
     public function ViewRentCart(){
         // dd($product);
         $product=session()->get('RentCart');
         // dd($product);
+        if(session()->has('customer_id'))
+        {
+            $check_nav = 1;
+        }
+        else
+        {
+            $check_nav = 0;
+        }   
         $check=Rental_history::where('current_owner_id',session()->get('customer_id'))->get();
         if($check==NULL)
             $check=1;
         else
             $check=0;
         $product=RentalProduct::where('id',$product[0]->id)->get();
-        return view('Pages.RentCheckout')->with('product',$product)->with('check',$check);
+        return view('Pages.RentCheckout')->with('product',$product)->with('check',$check)->with('check_nav',$check_nav);
     }
 
     public function RentCartCheckout(Request $req){

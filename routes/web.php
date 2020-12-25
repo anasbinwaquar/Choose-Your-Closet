@@ -45,6 +45,8 @@ Route::post('/UpdateQuantityForm', [App\Http\Controllers\SellerController::class
 Route::get('/Seller_Authentication', [App\Http\Controllers\SellerController::class, 'Seller_Authentication']);
 
 Route::get('/ViewProducts',[App\Http\Controllers\SellerController::class,'view_products']);
+Route::get('/DeleteRentalProduct',[App\Http\Controllers\ProductController::class,'DeleteRentalProductsView']);
+Route::get('/DestroyRentalProduct/{id}',[App\Http\Controllers\ProductController::class,'DestroyRentalProduct']);
 
 Route::get('/SellerLogin', [App\Http\Controllers\SellerController::class, 'SellerLoginView'])->name('SellerLogin');
 

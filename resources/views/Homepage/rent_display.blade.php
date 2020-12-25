@@ -5,24 +5,136 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>product - Brand</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/product/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="/product/fonts/simple-line-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
     <link rel="stylesheet" href="/product/css/smoothproducts.css">
-    <link rel="stylesheet" type="text/css" href="/product/css/style1.css">
+    <link rel="stylesheet" type="text/css" href="/product/css/style1.css">   
+    <link rel="stylesheet" type="text/css" href="/css/nav_styling.css">
+    <link rel="stylesheet" href="/css/style.css">
+
 </head>
 
 <body>
-    {{-- <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-        <div class="container"><a class="navbar-brand logo" href="#">Brand</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1">
-                <ul class="nav navbar-nav ml-auto"></ul>
-            </div>
+@if($check==0)
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="/" style="color: #24C6DC; font-weight: bold;"> <img src="{{asset('images/Closet.png')}}" alt="logo" width="100" id="logo">Virtual Clothing Store</a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active navclass">
+        <a class="nav-link navlink active" href="/" style="color: #24C6DC;">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navlink" href="#" style="color: #24C6DC;">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navlink" href="/customize" style="color: #24C6DC;">Customizer</a>
+      </li>
+      <li class="nav-item">
+        <div class="dropdown">
+        <a class="nav-link navlink" href="#" style="color: #24C6DC;">Products</a>
+         <div class="dropdown-content">
+        <a href="#" class="link">Purchase</a>
+        <a href="/RentProducts" class="link">Rent</a>
         </div>
-    </nav> --}}
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="dropdown">
+        <a class="nav-link navlink" href="#" style="color: #24C6DC;">Sign Up</a>
+         <div class="dropdown-content">
+        <a href="/CustomerSignUp" class="link">Customer</a>
+        <a href="/SellerSignUp" class="link">Seller</a>
+        </div>
+        </div>
+      </li>
+       <li class="nav-item">
+        <div class="dropdown">
+        <a class="nav-link navlink" href="#" style="color: #24C6DC;">Login</a>
+         <div class="dropdown-content">
+        <a href="/CustomerLogin" class="link">Customer</a>
+        <a href="/SellerLogin" class="link">Seller</a>
+        </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navlink" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+        <div class="input-group mb-4">
+            <input type="search" placeholder="Search..." aria-describedby="button-addon6" class="form-control border-info">
+            <div class="input-group-append">
+              <button id="button-addon6" type="submit" class="btn btn-info"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
+    </form>
+</nav>
+
+@elseif($check==1)
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="/" style="color: #24C6DC; font-weight: bold;"> <img src="{{asset('images/Closet.png')}}" alt="logo" width="100" id="logo">Virtual Clothing Store</a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active navclass">
+        <a class="nav-link navlink active" href="/" style="color: #24C6DC;">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navlink" href="#" style="color: #24C6DC;">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navlink" href="/customize" style="color: #24C6DC;">Customizer</a>
+      </li>
+      <li class="nav-item">
+        <div class="dropdown">
+        <a class="nav-link navlink" href="#" style="color: #24C6DC;">Products</a>
+         <div class="dropdown-content">
+        <a href="#" class="link">Purchase</a>
+        <a href="RentProducts" class="link">Rent</a>
+        </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="dropdown">
+        <a class="nav-link navlink" href="/CustomerCart" style="color: #24C6DC;"><i class="fas fa-shopping-cart"></i><span class="badge badge-light">
+          <?php if(session()->has('cart'))
+        {
+           echo session()->get('cart')->totalQty;
+        }
+         ?></span>Cart</a>
+        </div>
+      </li>
+       <li class="nav-item">
+        <div class="dropdown">
+        <a class="nav-link navlink" href="/UserLogout" style="color: #24C6DC;">Logout</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navlink" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+        <div class="input-group mb-4">
+            <input type="search" placeholder="Search..." aria-describedby="button-addon6" class="form-control border-info">
+            <div class="input-group-append">
+              <button id="button-addon6" type="submit" class="btn btn-info"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
+    </form>
+</nav>
+@endif
+
     @foreach($product as $product)
     <main class="page product-page">
         <section class="clean-block clean-product dark">

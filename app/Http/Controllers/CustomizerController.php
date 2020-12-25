@@ -43,7 +43,6 @@ class CustomizerController extends Controller
         // $customer_email=Customer_infos::where('id',session()->get('customer_id'))->select('Email')->first();
         $customer_email=DB::select("select email from customer_infos where id=?",[session()->get('customer_id')]);
         $AdminEmail="abdurrafay360@gmail.com";
-        echo ($customer_email[0]->email);
         $custom_order=new custom_order();
         $custom_order->image_front=$request->tshirt_front;
         $custom_order->image_back=$request->tshirt_back;
@@ -56,8 +55,15 @@ class CustomizerController extends Controller
         Notification::route('mail',$AdminEmail)->notify(new CustomOrderAdminNotification($customer_email[0]->email,session()->get('customer_id')));
         Notification::route('mail',$customer_email[0]->email)->notify(new CustomOrderCustomerNotification(session()->get('customer_id')));
         $custom_order->save();
-
-        return view('Customizer.success');
+        if(session()->has('customer_id'))
+        {
+                $check = 1;
+        }
+        else
+        {
+           $check = 0;
+        }   
+        return view('Customizer.success')->with('check_nav',$check);
     }
     public function addprint(){
 

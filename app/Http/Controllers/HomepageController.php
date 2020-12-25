@@ -76,8 +76,16 @@ class HomepageController extends Controller
     }
     public function ShowRentProduct($product_id)
     {
+        if(session()->has('customer_id'))
+        {
+                $check = 1;
+        }
+        else
+        {
+           $check = 0;
+        }   
         $product = RentalProduct::where('id', $product_id)->get();
-        return view('Homepage.rent_display')->with('product',$product);
+        return view('Homepage.rent_display')->with('product',$product)->with('check',$check);
     }
 
     public function create()
