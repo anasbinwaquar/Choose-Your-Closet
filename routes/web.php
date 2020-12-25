@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/admin_login', [App\Http\Controllers\AdminController::class, 'LoginAdminView']);
 
+Route::get('/AdminLogout',[App\Http\Controllers\AdminController::class,'AdminLogout']);
+
 Route::get('/AdminLogin365625', [App\Http\Controllers\AdminController::class, 'LoginAdminView']);	
 
 Route::post('/LoginAdminCheck', [App\Http\Controllers\AdminController::class, 'LoginAdmin']);
