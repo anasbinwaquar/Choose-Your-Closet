@@ -12,6 +12,19 @@ body{
 	font-size: 12px;
 }
 
+.active
+{
+	font-weight: bold;
+}
+
+h5
+{
+	font-family: 'Exo', sans-serif, helvetica;
+	color: #007bff;
+	font-size: 25px;
+	font-weight: bold;
+}
+
 .body{
 	position: absolute;
 	top: -20px;
@@ -24,6 +37,15 @@ body{
 	background-size: cover;
 	-webkit-filter: blur(4px);
 	z-index: 0;
+}
+
+.head
+{
+	position: absolute;
+	margin-top: 26rem;
+	margin-left: 40rem;
+	float: left;
+
 }
 
 .header{
@@ -58,12 +80,13 @@ body{
 .login input[type=text]{
 	width: 250px;
 	height: 30px;
-	background: transparent;
-	border: 1px solid rgba(255,255,255,0.6);
+	/*background: transparent;*/
+	background-color: rgba(255,255,255,0.4);
+	border: 1px solid rgba(0,0,0,0.6);
 	border-radius: 2px;
 	color: #fff;
 	font-family: 'Exo', sans-serif;
-	font-size: 16px;
+	font-size: 20px;
 	font-weight: 400;
 	padding: 4px;
 }
@@ -71,12 +94,13 @@ body{
 .login input[type=password]{
 	width: 250px;
 	height: 30px;
-	background: transparent;
-	border: 1px solid rgba(255,255,255,0.6);
+	/*background: transparent;*/
+	background-color: rgba(255,255,255,0.4);
+	border: 1px solid rgba(0,0,0,0.6);
 	border-radius: 2px;
 	color: #fff;
 	font-family: 'Exo', sans-serif;
-	font-size: 16px;
+	font-size: 20px;
 	font-weight: 400;
 	padding: 4px;
 	margin-top: 10px;
@@ -107,11 +131,13 @@ body{
 
 .login input[type=text]:focus{
 	outline: none;
+	color: rgba(0,0,0,0.7);
 	border: 1px solid rgba(255,255,255,0.9);
 }
 
 .login input[type=password]:focus{
 	outline: none;
+	color: rgba(0,0,0,0.7);
 	border: 1px solid rgba(255,255,255,0.9);
 }
 

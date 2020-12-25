@@ -358,6 +358,57 @@
     {
         document.getElementById('size_submit').value=document.getElementById(parameter).value;
     }
+    function increaseValue() {
+      var value = parseInt(document.getElementById('number').value);
+      var button = $('.button_quantity');
+      var max=$("#number").attr('max');
+      console.log(max);
+      if(value<max){   
+      value = isNaN(value) ? 0 : value;
+      value++;
+      document.getElementById('number').value = value;
+      }
+    }
+
+    function decreaseValue() {
+      var value = parseInt(document.getElementById('number').value);
+      value = isNaN(value) ? 0 : value;
+      value < 1 ? value = 1 : '';
+      value--;
+      document.getElementById('number').value = value;
+    }
+    function unhide(){
+        $(".input-group").show();
+    }
+    $( document ).ready(function() {
+        $(".input-group").hide();
+
+        $("#size_s").click(function(){
+            unhide();
+            $("#number").prop("max",$("#amount_s").val())
+            $("#number").val("0");
+            console.log($("#number").attr('max'));
+
+        });
+        $("#size_m").click(function(){
+            unhide();
+            $("#number").prop("max",$("#amount_m").val())
+            $("#number").val("0");
+            console.log($("#number").attr('max'));
+        });
+        $("#size_l").click(function(){
+            unhide();
+            $("#number").prop("max",$("#amount_l").val())
+            $("#number").val("0");
+            console.log($("#number").attr('max'));
+        });
+        $("#size_xl").click(function(){
+            unhide();
+            $("#number").prop("max",$("#amount_xl").val())
+            $("#number").val("0");
+            console.log($("#number").attr('max'));
+        });
+    });
 </script>
 
 </html>
