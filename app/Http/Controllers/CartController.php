@@ -114,7 +114,7 @@ class CartController extends Controller
             if($Discount_sale->isEmpty())
             $CurrentCart->update_cart($product_id, $quantity, $size,  $product,0,0);
             else
-            $CurrentCart->update_cart($product_id, $quantity, $size,  $product,0, $Discount_sale[0]->Discount_sale); 
+            $CurrentCart->update_cart($product_id, $quantity, $size,  $product,0, $Discount_sale[0]->Discount); 
         }
         else
         {
@@ -122,7 +122,7 @@ class CartController extends Controller
         if($Discount_sale->isEmpty())
             $CurrentCart->update_cart($product_id, $quantity, $size,  $product,$discount,0);
         else
-            $CurrentCart->update_cart($product_id, $quantity, $size,  $product, $discount, $Discount_sale[0]->Discount_sale);    
+            $CurrentCart->update_cart($product_id, $quantity, $size,  $product, $discount, $Discount_sale[0]->Discount);    
         }
         session()->put('cart',$CurrentCart);
          return redirect('CustomerCart');
