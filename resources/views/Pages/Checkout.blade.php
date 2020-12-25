@@ -112,17 +112,26 @@
                 <form method="post" action="PurchaseOrdersChecked" autocomplete="off">
                     <div class="products">
                         <h3 class="title">Checkout</h3>
+                        <?php 
+                                $var=0;
+                                $var2=0;
+                                   ?>
                         @csrf
                         @foreach($product as $product)
                         @foreach($product as $product)
+                         <?php 
+                                   
+                                  $var+=$product['sale_dis'];
+                                  $var2+=$product['vouch_dis'];
+                                   ?>
                         <div class="item"><span class="price">{{$product['price']}}</span>
                             <p class="item-name">{{$product['item']['product_name']}}({{$product['siz']}}) x{{$product['qty']}}</p>
                             <p class="item-description">{{$product['item']['description']}}</p>
                         </div>
                          @endforeach
                         @endforeach
-                        <div class="total"><span>Sale Discount</span><span class="price">PKR {{$discount_sale}}</span></div>
-                        <div class="total"><span>Voucher Discount</span><span class="price">PKR {{$discount_cart}}</span></div>
+                        <div class="total"><span>Sale Discount</span><span class="price">PKR {{$var}}</span></div>
+                        <div class="total"><span>Voucher Discount</span><span class="price">PKR {{$var2}}</span></div>
                         <div class="total"><span>Shipping</span><span class="price">PKR {{$shipping}}</span></div>
                         <div class="total"><span>Total</span><span class="price">PKR {{$final_total}}</span></div>
                     </div>

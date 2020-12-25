@@ -107,14 +107,23 @@
                 <div class="block-heading">
                     <h2 class="text-info h2">Shopping Cart</h2>
                     <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p> -->
-                </div>
+                </div><?php 
+                                $var=0;
+                                $var2=0;
+                                   ?>
+                 
                 @if($product!=NULL)
                 <div class="content">
                         <div class="col-lg-12 col-lg-12">
                             <div class="items">
                                 <div class="product">
                      @foreach($product as $product)
-                @foreach($product as $product)
+                     @foreach($product as $product)
+                                   <?php 
+                                   
+                                  $var+=$product['sale_dis'];
+                                  $var2+=$product['vouch_dis'];
+                                   ?>
                   <form action="{{route('UpdateCartData',['product_id'=> $product['item']['id'],'size'=>$product['siz']])}}" method="post">
                     @csrf   
                                     <div class="row justify-content-center align-items-center">
@@ -149,7 +158,7 @@
                                          
                                     </div>
                                      </form>
-                                   @endforeach
+                                 @endforeach
                                  @endforeach
                                 </div> 
                             </div>
@@ -158,8 +167,9 @@
                             <div class="summary">
                                 <h3>Summary</h3>
                                 <<h4><span class="text" style="font-size: 15px;">Subtotal</span><span class="price" style="font-size: 15px;">PKR {{$product_cart}}</span></h4>
-                                <h4><span class="text" style="font-size: 15px;">Sale Discount</span><span class="price" style="font-size: 15px;">PKR {{$discount_sale}}</span></h4>
-                                <h4><span class="text" style="font-size: 15px;">Voucher Discount</span><span class="price" style="font-size: 15px;">PKR {{$discount_cart}}</span></h4>
+                                <h4><span class="text" style="font-size: 15px;">Sale Discount</span><span class="price" style="font-size: 15px;">
+                                PKR {{ $var}}</span></h4>
+                                <h4><span class="text" style="font-size: 15px;">Voucher Discount</span><span class="price" style="font-size: 15px;">PKR {{$var2}}</span></h4>
                                 <h4><span class="text" style="font-size: 15px;">Shipping</span><span class="price" style="font-size: 15px;">PKR {{$shipping}}</span></h4>
                                 <h4><span class="text" style="font-size: 15px;">Total</span><span class="price" style="font-size: 15px;">PKR {{$final_total}}</span></h4><a href="/PurchaseOrders"><button class="btn btn-primary btn-block btn-lg" type="button">Checkout</button></a>
                             </div>

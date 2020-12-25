@@ -150,6 +150,6 @@ class CartController extends Controller
         $CurrentCart = new cart($OldCart);
 
        //dd($CurrentCart->sale_discount);
-         return view('Pages.cart')->with(array('product'=> $CurrentCart->items))->with('product_cart',$CurrentCart->totalPrice)->with('discount_cart',$CurrentCart->discount)->with('final_total',$CurrentCart->final_total)->with('shipping',$CurrentCart->shipping)->with('discount_sale',$CurrentCart->sale_discount);
+         return view('Pages.cart')->with(array('product'=> $CurrentCart->items))->with('product_cart',$CurrentCart->totalPrice)->with('final_total',$CurrentCart->final_total)->with('shipping',$CurrentCart->shipping);
     }
 }

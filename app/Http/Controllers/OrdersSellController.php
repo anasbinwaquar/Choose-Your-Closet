@@ -51,6 +51,15 @@ class OrdersSellController extends Controller
             //print_r($orderid);
         }  
         $products = $CurrentCart->items;
+        $total_dis=0;
+     foreach ($products as $products) 
+        {
+            foreach ($products as $products)
+            {
+                $total_dis += $products['sale_dis'] + $products['vouch_dis'];
+            }
+        } 
+        $products = $CurrentCart->items;
 
         //print_r($products);
         foreach ($products as $products) 
@@ -84,8 +93,8 @@ class OrdersSellController extends Controller
                 Product::where('id',$products['item']['id'])->update(['quantity_extra_large'=>$q]);
             }
         }
-        DB::insert('insert into order_calculation(OrderID, CustomerID, Total_Quantity, Total_Discount, Total_Bill, Delivery_Address, OrderDate) values(?, ?, ?, ?, ?, ?, ?)', [$orderid,$customer_id, $CurrentCart->totalQty, $CurrentCart->discount, $CurrentCart->final_total, $Delivery_Address,  $date]);
-        Notification::route('mail',$Email)->notify(new OrdersSellNotification($orderid,$customer_name, $CurrentCart->totalQty, $CurrentCart->discount, $CurrentCart->final_total, $Delivery_Address,  $date));
+        DB::insert('insert into order_calculation(OrderID, CustomerID, Total_Quantity, Total_Discount, Total_Bill, Delivery_Address, OrderDate) values(?, ?, ?, ?, ?, ?, ?)', [$orderid,$customer_id, $CurrentCart->totalQty, $total_dis, $CurrentCart->final_total, $Delivery_Address,  $date]);
+        Notification::route('mail',$Email)->notify(new OrdersSellNotification($orderid,$customer_name, $CurrentCart->totalQty, $total_dis, $CurrentCart->final_total, $Delivery_Address,  $date));
        session()->forget('cart');
     	return redirect('/');
     }
@@ -104,8 +113,8 @@ class OrdersSellController extends Controller
         }
         $OldCart = session()->get('cart');
         $CurrentCart = new cart($OldCart);
-       
-        return view('Pages.Checkout')->with(array('product'=> $CurrentCart->items))->with('product_cart',$CurrentCart->totalPrice)->with('discount_cart',$CurrentCart->discount)->with('final_total',$CurrentCart->final_total)->with('shipping',$CurrentCart->shipping)->with('discount_sale',$CurrentCart->sale_discount);
+
+        return view('Pages.Checkout')->with(array('product'=> $CurrentCart->items))->with('product_cart',$CurrentCart->totalPrice)->with('final_total',$CurrentCart->final_total)->with('shipping',$CurrentCart->shipping);
     }
 
 }
