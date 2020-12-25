@@ -39,10 +39,10 @@ class CustomizerController extends Controller
           'contact' => 'required|regex:/(0)[0-9]{10}/',
           'address' => 'required',
         ]);
-
+       $customer_id=session()->get('customer_id');
         // $customer_email=Customer_infos::where('id',session()->get('customer_id'))->select('Email')->first();
         $customer_email=DB::select("select email from customer_infos where id=?",[session()->get('customer_id')]);
-        $AdminEmail="abdurrafay360@gmail.com";
+        $AdminEmail="chooseyourclosetnoreply@gmail.com";
         $custom_order=new custom_order();
         $custom_order->image_front=$request->tshirt_front;
         $custom_order->image_back=$request->tshirt_back;
@@ -57,8 +57,9 @@ class CustomizerController extends Controller
         $fname = $customer_fname[0]->first_name;
         $lname = $customer_lname[0]->last_name;
         $customer_name = $fname.' '.$lname;
-        Notification::route('mail',$AdminEmail)->notify(new CustomOrderAdminNotification($customer_email[0]->email,session()->get('customer_id')), $customer_name);
-        Notification::route('mail',$customer_email[0]->email)->notify(new CustomOrderCustomerNotification(session()->get('customer_id')), $customer_name);
+
+        Notification::route('mail',$AdminEmail)->notify(new CustomOrderAdminNotification($customer_email[0]->email,  $customer_id, $customer_name));
+        Notification::route('mail',$customer_email[0]->email)->notify(new CustomOrderCustomerNotification($customer_id,$customer_name));
         $custom_order->save();
         if(session()->has('customer_id'))
         {
