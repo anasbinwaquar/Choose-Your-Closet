@@ -118,7 +118,7 @@ class SellerController extends Controller
             return redirect('SellerLogin');
 
         $data = completed_orders::join('products','completed_orders.ProductID','=','products.id')->join('customer_infos','completed_orders.CustomerID','=','customer_infos.id')->where('products.seller_id',session()->get('seller_id'))->get();
-        $data2=completed_orders::join('products','completed_orders.ProductID','=','products.id')->where('products.seller_id',session()->get('seller_id'))->get();;
+        $data2=completed_orders::join('products','completed_orders.ProductID','=','products.id')->where('products.seller_id',session()->get('seller_id'))->get();
         $data=$data->unique('OrderID');
         
         return view('Seller.CompletedOrders')->with('data',$data)->with('data2',$data2);

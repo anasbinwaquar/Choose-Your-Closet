@@ -618,9 +618,8 @@ input.input100 {
       font-size: 15px;
       font-family: Arial, sans-serif, Helvetica;
       color: #fff;
-      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-width: 0.5px;
       -webkit-text-stroke-color: black;
-      color: #24C6DC;
   }
 
   body{
