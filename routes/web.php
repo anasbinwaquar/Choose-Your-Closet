@@ -45,6 +45,8 @@ Route::post('/UpdateQuantityForm', [App\Http\Controllers\SellerController::class
 Route::get('/Seller_Authentication', [App\Http\Controllers\SellerController::class, 'Seller_Authentication']);
 
 Route::get('/ViewProducts',[App\Http\Controllers\SellerController::class,'view_products']);
+Route::get('/DeleteRentalProduct',[App\Http\Controllers\ProductController::class,'DeleteRentalProductsView']);
+Route::get('/DestroyRentalProduct/{id}',[App\Http\Controllers\ProductController::class,'DestroyRentalProduct']);
 
 Route::get('/SellerLogin', [App\Http\Controllers\SellerController::class, 'SellerLoginView'])->name('SellerLogin');
 
@@ -127,13 +129,9 @@ Route::get('/decline_rentproduct_approval/{product_id}', [App\Http\Controllers\P
 
 Route::get('/', [App\Http\Controllers\HomepageController::class, 'index']);
 
-Route::get('/sale', [App\Http\Controllers\HomepageController::class, 'sale_index']);
-
 Route::get('/home', [App\Http\Controllers\HomepageController::class, 'index_home']);
 
 Route::get('/product/{product_id}', [App\Http\Controllers\HomepageController::class, 'ShowProduct']);
-
-Route::get('/saleproduct/{product_id}', [App\Http\Controllers\HomepageController::class, 'SaleShowProduct']);
 
 Route::get('/rentproduct/{product_id}', [App\Http\Controllers\HomepageController::class, 'ShowRentProduct']);
 
