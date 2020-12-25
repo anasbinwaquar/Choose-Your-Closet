@@ -41,6 +41,7 @@ class ProductController extends Controller
         return redirect('/DeleteRentalProduct');
     }
     public function index_rent(){
+        RentalProduct::where('available',1)->where('existence',0)->delete();
         $data = RentalProduct::where('approved', 1)->where('available',1)->get();
         if(session()->has('data'))
         {

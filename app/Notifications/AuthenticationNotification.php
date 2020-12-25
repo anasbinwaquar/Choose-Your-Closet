@@ -29,7 +29,7 @@ class AuthenticationNotification extends Notification
             $this->type="Sign Up";
              if($this->Identifier2==0)
              {
-                $this->result="Approve";
+                $this->result="Approved";
              }
              else
              {
@@ -42,7 +42,7 @@ class AuthenticationNotification extends Notification
             $this->type="Product";  
             if($this->Identifier2==0)
              {
-                $this->result="Approve";
+                $this->result="Approved";
              }
              else
              {
@@ -73,12 +73,12 @@ class AuthenticationNotification extends Notification
     {
         $subject = sprintf('%s Request have been %s', $this->type,$this->result);
         $greeting = sprintf('Dear %s!', $this->SellerName);
-        $line = sprintf('Your %s request of being a part of a Choose Your Closet have been %s by Admin.', $this->type,$this->result);
+        $line = sprintf('Your %s authentication request has been %s after our verification process. In case of queries or problems, please contact us via our support portal.', $this->type,$this->result);
         return (new MailMessage)
                     ->subject($subject)
                     ->greeting($greeting)
                     ->line($line)
-                    ->action('Login here', url('http://127.0.0.1:8000/SellerLogin'));
+                    ->action('Support', url('http://127.0.0.1:8000/ContactUs'));
     }
 
     /**

@@ -7,21 +7,24 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class CustomOrderAdminNotification extends Notification
+class OrdersSellNotification extends Notification
 {
     use Queueable;
-    protected $Email;
-    protected $customer_id;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($Email,$customer_id, $customer_name)
+    public function __construct($orderid,$customer_name, $totalQty, $discount, $final_total, $Delivery_Address, $date)
     {
-        $this->Email=$Email;
-        $this->customer_id=$customer_id;
+        $this->orderid = $orderid;
         $this->customer_name = $customer_name;
+        $this->totalQty = $totalQty;
+        $this->discount = $discount;
+        $this->final_total = $final_total;
+        $this->Delivery_Address = $Delivery_Address;
+        $this->date = $date;
     }
 
     /**
@@ -43,13 +46,16 @@ class CustomOrderAdminNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $subject = sprintf('New Order Received');
-        $greeting = sprintf('Hi');
-        $line1 = sprintf('New order received. for Customer %s with email %s',$this->customer_id,$this->Email);
-        $line2 = sprintf('Customer Details: ');
-        $line3 = sprintf('Customer ID: %s',$this->customer_id);
-        $line4 = sprintf('Customer Name: %s',$this->customer_name);
-        $line5 = sprintf('Customer Email: %s ',$this->Email);
+        $subject = sprintf('Order Confirmation: Choose Your Closet');
+        $greeting = sprintf('Dear %s!', $this->customer_name);
+        $line1 = sprintf('Your order placed on %s has been confirmed.', $this->date);
+        $line2 = sprintf('We are delighted to serve you. Keep shopping with us for an astounding experience.');
+        $line3 = sprintf('Order Summary: ');
+        $line4 = sprintf('Quantity of Products Ordered: %s', $this->totalQty);
+        $line5 = sprintf('Discount Received: PKR %s', $this->discount);
+        $line6 = sprintf('Total Price: PKR %s', $this->final_total);
+        $line7 = sprintf('Delivery Address: %s', $this->Delivery_Address);
+
         return (new MailMessage)
                     ->subject($subject)
                     ->greeting($greeting)
@@ -58,7 +64,8 @@ class CustomOrderAdminNotification extends Notification
                     ->line($line3)
                     ->line($line4)
                     ->line($line5)
-                    ->action('Login here to see order details', url('http://127.0.0.1:8000/admin_login'));
+                    ->line($line6)
+                    ->line($line7);
     }
 
     /**

@@ -18,9 +18,10 @@ class CustomOrderCustomerNotification extends Notification
      *
      * @return void
      */
-    public function __construct($customer_id)
+    public function __construct($customer_id, $customer_name)
     {
         $this->customer_id=$customer_id;
+        $this->customer_name = $customer_name;
     }
 
     /**
@@ -42,9 +43,9 @@ class CustomOrderCustomerNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $subject = sprintf('Custom Order');
-        $greeting = sprintf('Dear Customer %s',$this->customer_id);
-        $line = sprintf('Your order has been recived thank you being a part of choose your closet');
+        $subject = sprintf('Custom Order Confirmation');
+        $greeting = sprintf('Dear %s',$this->customer_name);
+        $line = sprintf('We are delighted to serve you. Keep shopping with us for an astounding experience.');
         return (new MailMessage)
                     ->subject($subject)
                     ->greeting($greeting)

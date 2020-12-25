@@ -5,9 +5,11 @@ use App\Models\cart;
 use Illuminate\Support\Facades\DB; 
 use App\Models\Orders_Sell;
 use App\Models\Product;
-
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Notifications\Notifiable;
+use App\Notifications\OrdersSellNotification;
 
 class OrdersSellController extends Controller
 {
@@ -15,7 +17,7 @@ class OrdersSellController extends Controller
     {
     	// session()->flush();
         $date = Carbon::now();
-        printf($date);
+        // printf($date);
         $Delivery_Address=$req->input('Delivery_Address');  
     	if(session()->has('cart'))
         {
@@ -30,6 +32,14 @@ class OrdersSellController extends Controller
         $CurrentCart = new cart($OldCart);
         $order =  DB::table('orders_sell')->orderBy('OrderID','DESC')->first();
         $customer_id =session()->get('customer_id');
+        $tempMail = DB::select('select Email from customer_infos where id = ?', [$customer_id]);
+        $Email =  $tempMail[0]->Email;
+        $customer_fname = DB::select('select first_name from customer_infos where id = ?', [$customer_id]);
+        $customer_lname = DB::select('select last_name from customer_infos where id = ?', [$customer_id]);
+        $fname = $customer_fname[0]->first_name;
+        $lname = $customer_lname[0]->last_name;
+        $customer_name = $fname.' '.$lname;
+        // $customer_name=$customer_fname[0]->first_name.' '.customer_lname[0]->last_name;
         if($order==NULL)
         {
             $orderid = 1; 
@@ -75,6 +85,7 @@ class OrdersSellController extends Controller
             }
         }
         DB::insert('insert into order_calculation(OrderID, CustomerID, Total_Quantity, Total_Discount, Total_Bill, Delivery_Address, OrderDate) values(?, ?, ?, ?, ?, ?, ?)', [$orderid,$customer_id, $CurrentCart->totalQty, $CurrentCart->discount, $CurrentCart->final_total, $Delivery_Address,  $date]);
+        Notification::route('mail',$Email)->notify(new OrdersSellNotification($orderid,$customer_name, $CurrentCart->totalQty, $CurrentCart->discount, $CurrentCart->final_total, $Delivery_Address,  $date));
        session()->forget('cart');
     	return redirect('/');
     }

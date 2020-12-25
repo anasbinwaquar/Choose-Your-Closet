@@ -52,8 +52,13 @@ class CustomizerController extends Controller
         $custom_order->size=$request->size;
         $custom_order->address=$request->address;
         $custom_order->contact_number=$request->contact;
-        Notification::route('mail',$AdminEmail)->notify(new CustomOrderAdminNotification($customer_email[0]->email,session()->get('customer_id')));
-        Notification::route('mail',$customer_email[0]->email)->notify(new CustomOrderCustomerNotification(session()->get('customer_id')));
+        $customer_fname = DB::select('select first_name from customer_infos where id = ?', [$customer_id]);
+        $customer_lname = DB::select('select last_name from customer_infos where id = ?', [$customer_id]);
+        $fname = $customer_fname[0]->first_name;
+        $lname = $customer_lname[0]->last_name;
+        $customer_name = $fname.' '.$lname;
+        Notification::route('mail',$AdminEmail)->notify(new CustomOrderAdminNotification($customer_email[0]->email,session()->get('customer_id')), $customer_name);
+        Notification::route('mail',$customer_email[0]->email)->notify(new CustomOrderCustomerNotification(session()->get('customer_id')), $customer_name);
         $custom_order->save();
         if(session()->has('customer_id'))
         {

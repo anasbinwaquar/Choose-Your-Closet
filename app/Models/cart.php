@@ -25,7 +25,6 @@ class Cart
 			$this->sale_discount=$oldCart->sale_discount;
 			$this->shipping=$oldCart->shipping;
 			$this->final_total=$oldCart->final_total;
-
 		}
 	}
 	public function add($item,$id,$quantity,$size,$sale_discount){
