@@ -56,7 +56,7 @@ class SellerNotification extends Notification
         // {
         $subject = sprintf('Verification Request Sent');
         $greeting = sprintf('Dear %s!', $this->SellerName);
-        $line = sprintf('Your %s request of being a part of a Choose Your Closet have been submitted to admin wait for the admin to approve it you will get the confirmation email.', $this->type);
+        $line = sprintf('Your %s approval request has been submitted. Kindly wait for our verification procedure to complete. We are delighted to serve you.', $this->type);
         return (new MailMessage)
                     ->subject($subject)
                     ->greeting($greeting)

@@ -150,8 +150,8 @@
             <br>
             <div class="container col-lg-10">
                 <div class="content">
-                    <div class="row">
-                        <div class="col-md-3">
+                    <!-- <div class="row"> -->
+                        <!-- <div class="col-md-3">
                             <div class="d-none d-md-block">
                                 <div class="filters">
                                     <div class="filter-item">
@@ -171,7 +171,7 @@
                                     </div>
                                 </div>
                             </div> 
-                        </div>
+                        </div> -->
                         <div class="col-md-9">
                             <div class="products">
                                 <div class="row">
@@ -206,7 +206,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <!-- </div> -->
                 </div>
             </div>
         </section>
