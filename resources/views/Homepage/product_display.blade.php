@@ -36,7 +36,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="gallery">
-                                    <div class="sp-wrap"><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('uploads/sell/'. $product->product_image)}}"></a></div>
+                                    <div class="sp-wrap"><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('/uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('/uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('/uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('/uploads/sell/'. $product->product_image)}}"></a></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -45,6 +45,20 @@
                                     <div class="rating"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star-half-empty.svg"><img src="/product/img/star-empty.svg"></div>
                                     <div class="price">
                                         <h3>Rs. {{$product->price_per_unit}}</h3>
+                                           @if($product->Discount!=NULL)
+                                                            <h3 style="color:grey;text-decoration-line: line-through;">PKR {{$product->price_per_unit}}</h3>
+                                                            @elseif($product->Discount==NULL)
+                                                            <h3>PKR {{$product->price_per_unit}}</h3>
+                                                            @endif
+                                                            @if($product->Discount!=NULL)
+                                                        <h3 style="color:green;">{{$product->Discount}}% Discount</h3>
+                                                            <h3>New Price: PKR
+                                                              <?php 
+                                                              $var=($product->Discount/100)*$product->price_per_unit;
+                                                              echo $product->price_per_unit-$var;
+                                                               ?>
+                                                            </h3>
+                                                              @endif
                                     </div>
                                     <form action="{{route('CartData',['product_id'=>$product->id])}}" method="post">
                                         @csrf
@@ -53,7 +67,7 @@
                                     <div class="input-group">
                                      <button class="button_quantity" type="button"><i class="fas fa-minus" onclick="decreaseValue()"></i></button>
                                       <span class="input-container">
-                                      <input id="number" type="text" name="quant" class="form-control input-number" value="0" min="0" max="0">
+                                      <input id="number" type="text" name="quant" class="form-control input-number" value="1" min="1" max="10">
                                       </span><button class="button_quantity" type="button"><i class="fas fa-plus" onclick="increaseValue()"></i></button>
                                       </div>
                                       @if ($errors->any())
@@ -72,19 +86,15 @@
                                       <input id="size_submit" type="text" name="size" style="display: none;">
                                         @if($product->quantity_small!=NULL || $product->quantity_small!=0)
                                         <button id="size_s" type="button" class="btn btn-primary" style="font-weight: bold;" value="S" onclick="size_selector(this.id)">S</button>
-                                        <input type="hidden" id="amount_s" value="{{$product->quantity_small}}">
                                          @endif
                                         @if($product->quantity_medium!=NULL || $product->quantity_medium!=0)
                                         <button id="size_m" type="button" class="btn btn-primary" style="font-weight: bold;" value="M" onclick="size_selector(this.id)">M</button>
-                                        <input type="hidden" id="amount_m" value="{{$product->quantity_medium}}">
                                          @endif
                                         @if($product->quantity_large!=NULL || $product->quantity_large!=0)
                                         <button id="size_l" type="button" class="btn btn-primary" style="font-weight: bold;" value="L" onclick="size_selector(this.id)">L</button>
-                                        <input type="hidden" id="amount_l" value="{{$product->quantity_large}}">
                                          @endif
                                         @if($product->quantity_extra_large!=NULL || $product->quantity_extra_large!=0)
                                         <button id="size_xl" type="button" class="btn btn-primary" style="font-weight: bold;" value="XL" onclick="size_selector(this.id)">XL</button>
-                                        <input type="hidden" id="amount_xl" value="{{$product->quantity_extra_large}}">
                                         @endif
                                       </div>
                                       @if(!session()->has('customer_id'))

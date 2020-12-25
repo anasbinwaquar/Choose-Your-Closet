@@ -7,6 +7,8 @@ use App\Models\Product;
 use App\Models\vouchers;
 use App\Models\RentalProduct;
 use App\Models\cart;
+use App\Models\discounts;
+use App\Models\events;
 use App\Models\Rental_history;
 use App\Models\RentCart;
 use Illuminate\Support\Facades\DB; 
@@ -19,7 +21,6 @@ class CartController extends Controller
     {
         if(!session()->has('customer_id'))
             return redirect('CustomerLogin');
-
             $product=RentalProduct::where('id',$product_id)->get();
             session()->put('RentCart',$product);
         return redirect('/RentCart');
@@ -80,6 +81,7 @@ class CartController extends Controller
           'size' => 'required',
         ]);
       // session()->flush();
+        $Discount = discounts::join('products','discounts.Product_id','=','products.id')->join('events','discounts.Event_id','=','events.EventID')->where('products.approved', 1)->where('products.id',$product_id)->get();
         $size=$req->input('size');
         $quantity=$req->input('quant');
        // print_r($quantity);
@@ -92,7 +94,7 @@ class CartController extends Controller
             // print_r('rafayyy');
         }
         $_cart = new cart($oldCart);
-        $_cart->add($product, $product->id,$quantity, $size);
+        $_cart->add($product, $product->id,$quantity, $size, $Discount[0]->Discount);
         session()->put('cart',$_cart);
         //return redirec
        // $quantity=$_cart->items[$product_id]['qty'];
@@ -143,7 +145,8 @@ class CartController extends Controller
 
         $OldCart = session()->get('cart');
         $CurrentCart = new cart($OldCart);
-       // dd($CurrentCart->discount);
-         return view('Pages.cart')->with(array('product'=> $CurrentCart->items))->with('product_cart',$CurrentCart->totalPrice)->with('discount_cart',$CurrentCart->discount)->with('final_total',$CurrentCart->final_total)->with('shipping',$CurrentCart->shipping);
+
+       //dd($CurrentCart->sale_discount);
+         return view('Pages.cart')->with(array('product'=> $CurrentCart->items))->with('product_cart',$CurrentCart->totalPrice)->with('discount_cart',$CurrentCart->discount)->with('final_total',$CurrentCart->final_total)->with('shipping',$CurrentCart->shipping)->with('discount_sale',$CurrentCart->sale_discount);
     }
 }

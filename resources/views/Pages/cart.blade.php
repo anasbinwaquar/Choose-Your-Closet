@@ -157,10 +157,11 @@
                         <div class="col-md-12 col-lg-12">
                             <div class="summary">
                                 <h3>Summary</h3>
-                                <h4><span class="text" style="font-size: 15px;">Subtotal</span><span class="price" style="font-size: 15px;">Rs. {{$product_cart}}</span></h4>
-                                <h4><span class="text" style="font-size: 15px;">Discount</span><span class="price" style="font-size: 15px;">Rs.{{$discount_cart}}</span></h4>
-                                <h4><span class="text" style="font-size: 15px;">Shipping</span><span class="price" style="font-size: 15px;">Rs. {{$shipping}}</span></h4>
-                                <h4><span class="text" style="font-size: 15px;">Total</span><span class="price" style="font-size: 15px;">Rs. {{$final_total}}</span></h4><a href="/PurchaseOrders"><button class="btn btn-primary btn-block btn-lg" type="button">Checkout</button></a>
+                                <h4><span class="text" style="font-size: 15px;">Subtotal</span><span class="price" style="font-size: 15px;">PKR {{$product_cart}}</span></h4>
+                                <h4><span class="text" style="font-size: 15px;">Sale Discount</span><span class="price" style="font-size: 15px;">PKR {{$discount_sale}}</span></h4>
+                                <h4><span class="text" style="font-size: 15px;">Voucher Discount</span><span class="price" style="font-size: 15px;">PKR {{$discount_cart}}</span></h4>
+                                <h4><span class="text" style="font-size: 15px;">Shipping</span><span class="price" style="font-size: 15px;">PKR {{$shipping}}</span></h4>
+                                <h4><span class="text" style="font-size: 15px;">Total</span><span class="price" style="font-size: 15px;">PKR {{$final_total}}</span></h4><a href="/PurchaseOrders"><button class="btn btn-primary btn-block btn-lg" type="button">Checkout</button></a>
                             </div>
                         </div>
                         @elseif($product==NULL)

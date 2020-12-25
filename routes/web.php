@@ -129,9 +129,13 @@ Route::get('/decline_rentproduct_approval/{product_id}', [App\Http\Controllers\P
 
 Route::get('/', [App\Http\Controllers\HomepageController::class, 'index']);
 
+Route::get('/sale', [App\Http\Controllers\HomepageController::class, 'sale_index']);
+
 Route::get('/home', [App\Http\Controllers\HomepageController::class, 'index_home']);
 
 Route::get('/product/{product_id}', [App\Http\Controllers\HomepageController::class, 'ShowProduct']);
+
+Route::get('/saleproduct/{product_id}', [App\Http\Controllers\HomepageController::class, 'SaleShowProduct']);
 
 Route::get('/rentproduct/{product_id}', [App\Http\Controllers\HomepageController::class, 'ShowRentProduct']);
 

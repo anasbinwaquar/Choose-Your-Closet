@@ -94,7 +94,7 @@ class OrdersSellController extends Controller
         $OldCart = session()->get('cart');
         $CurrentCart = new cart($OldCart);
        
-        return view('Pages.Checkout')->with(array('product'=> $CurrentCart->items))->with('product_cart',$CurrentCart->totalPrice)->with('discount_cart',$CurrentCart->discount)->with('final_total',$CurrentCart->final_total)->with('shipping',$CurrentCart->shipping);
+        return view('Pages.Checkout')->with(array('product'=> $CurrentCart->items))->with('product_cart',$CurrentCart->totalPrice)->with('discount_cart',$CurrentCart->discount)->with('final_total',$CurrentCart->final_total)->with('shipping',$CurrentCart->shipping)->with('discount_sale',$CurrentCart->sale_discount);
     }
 
 }
