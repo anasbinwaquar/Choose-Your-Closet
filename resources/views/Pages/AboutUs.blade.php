@@ -155,6 +155,7 @@
                             <div class="card-body info">
                                 <h4 class="card-title">Rakia Shafique</h4>
                                 <p class="card-text">5th Semester Section G</p>
+                                <p class="card-text">ID: 18K-0182</p>
                                 <div class="icons"><a href="#"><i class="icon-social-facebook"></i></a><a href="#"><i class="icon-social-instagram"></i></a><a href="#"><i class="icon-social-twitter"></i></a></div>
                             </div>
                         </div>
@@ -164,6 +165,7 @@
                             <div class="card-body info">
                                 <h4 class="card-title">Anas Bin Waqar</h4>
                                 <p class="card-text">5th Semester Section G</p>
+                                <p class="card-text">ID: 18K-0198</p>
                                 <div class="icons"><a href="#"><i class="icon-social-facebook"></i></a><a href="#"><i class="icon-social-instagram"></i></a><a href="#"><i class="icon-social-twitter"></i></a></div>
                             </div>
                         </div>
@@ -173,6 +175,7 @@
                             <div class="card-body info">
                                 <h4 class="card-title">Abdur Rafay</h4>
                                 <p class="card-text">5th Semester Section G</p>
+                                <p class="card-text">ID: 18K-0253</p>
                                 <div class="icons"><a href="#"><i class="icon-social-facebook"></i></a><a href="#"><i class="icon-social-instagram"></i></a><a href="#"><i class="icon-social-twitter"></i></a></div>
                             </div>
                         </div>
