@@ -34,9 +34,12 @@
                     <li class="nav-item"><a class="nav-link " href="/ViewOrders"><i class="fas fa-tachometer-alt"></i><span>View Orders</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/ViewProducts"><i class="fas fa-tachometer-alt"></i><span>View Products</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/CompletedOrders"><i class="fas fa-tachometer-alt"></i><span>Completed Orders</span></a></li>
-                    <li class="nav-item"><a class="nav-link " href="/AddVoucher"><i class="fas fa-tachometer-alt"></i><span>Add Voucher</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/AddVoucher"><i class="fas fa-tachometer-alt"></i><span>Add Voucher</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/DeleteVoucher"><i class="fas fa-tachometer-alt"></i><span>Delete Voucher</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="/AddEvent"><i class="fas fa-tachometer-alt"></i><span>Add Event Sale</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="/DeleteEvent"><i class="fas fa-tachometer-alt"></i><span>Delete Event Sale</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/SellerLogout"><i class="fas fa-user"></i><span>Logout</span></a></li>
+
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
@@ -68,14 +71,10 @@
   @csrf
 <fieldset>
 @if ($errors->any())
-    <div class="col-md-4 alert alert-danger">
+    <div class="col-md-12 alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
-                @if($error=='The product image has invalid image dimensions.')
-                <li> The Product image should be atleaast 1000x1000 </li>
-                @else
                 <li>{{ $error }}</li>
-                @endif
             @endforeach
         </ul>
     </div>

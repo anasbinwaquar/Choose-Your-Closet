@@ -203,6 +203,49 @@
 
         </div>
         </div>
+        <h1>Rental Orders</h1>
+    <br><br>
+    <div id="wrapper">
+            <div class="container-fluid">
+                <div class="table-responsive table m-lg-auto mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                            <table class="table my-0" id="dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>Order Id</th>
+                                        <th>Product ID</th>
+                                        <th>Product Name</th>
+                                        <th>Total Charges</th>
+                                        <th>Security Deposit</th>
+                                        <th>Interval</th>
+                                        <th>Address</th>
+                                        <th>Seller Contact Number</th>
+                                    </tr>
+                                </thead>
+                                  <tbody>
+                                    @foreach($rentproducts as $products)
+                                    <tr>
+                                        <th>{{$products->ID}}</th>
+                                        <th>{{$products->product_id}}</th>
+                                        <th>{{$products->product_name}}</th>
+                                        <th>{{$products->charges}}</th>
+                                        <th>{{$products->extra_charges}}</th>
+                                        <th>{{$products->Start_date}} - {{$products->End_date}}</th>
+                                        <th>{{$products->Delivery_Address}}</th>
+                                        <th>{{$products->Phone_Number}}</th>
+                                    </tr>
+                                    {{-- @foreach (collect($data)->unique('OrderID') as $data)
+                                      <tr>
+                                        <th>{{ $data->OrderID }}</th>
+                                        
+                                      </tr>
+                                    @endforeach --}}
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
+        </div>
+        </div>
 
         <br><br><br><br><br>
                  <footer class="page-footer dark">

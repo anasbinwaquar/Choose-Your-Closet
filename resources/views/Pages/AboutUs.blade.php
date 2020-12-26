@@ -147,14 +147,14 @@
             <div class="container">
                 <div class="block-heading">
                     <h2 class="text-info" style="font-size: 30px; font-weight: bold;">About Us</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+                    <p>This is a semester project by three students from National University of Computer and Emerging Sciences Karachi Campus. The project focuses on an online clothing store, where customers can purchase and rent clothes from a huge collection.</p>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-sm-6 col-lg-4">
                         <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="{{asset('images/Closet.png')}}">
                             <div class="card-body info">
-                                <h4 class="card-title">John Smith</h4>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <h4 class="card-title">Rakia Shafique</h4>
+                                <p class="card-text">5th Semester Section G</p>
                                 <div class="icons"><a href="#"><i class="icon-social-facebook"></i></a><a href="#"><i class="icon-social-instagram"></i></a><a href="#"><i class="icon-social-twitter"></i></a></div>
                             </div>
                         </div>
@@ -162,8 +162,8 @@
                     <div class="col-sm-6 col-lg-4">
                         <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="{{asset('images/Closet.png')}}">
                             <div class="card-body info">
-                                <h4 class="card-title">Robert Downturn</h4>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <h4 class="card-title">Anas Bin Waqar</h4>
+                                <p class="card-text">5th Semester Section G</p>
                                 <div class="icons"><a href="#"><i class="icon-social-facebook"></i></a><a href="#"><i class="icon-social-instagram"></i></a><a href="#"><i class="icon-social-twitter"></i></a></div>
                             </div>
                         </div>
@@ -171,8 +171,8 @@
                     <div class="col-sm-6 col-lg-4">
                         <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="{{asset('images/Closet.png')}}">
                             <div class="card-body info">
-                                <h4 class="card-title">Ally Sanders</h4>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <h4 class="card-title">Abdur Rafay</h4>
+                                <p class="card-text">5th Semester Section G</p>
                                 <div class="icons"><a href="#"><i class="icon-social-facebook"></i></a><a href="#"><i class="icon-social-instagram"></i></a><a href="#"><i class="icon-social-twitter"></i></a></div>
                             </div>
                         </div>

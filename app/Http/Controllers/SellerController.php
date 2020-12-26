@@ -7,6 +7,8 @@ use App\Models\completed_orders;
 use Carbon\Carbon;
 use App\Models\Orders_sell;
 use App\Models\Product;
+use App\Models\discounts;
+use App\Models\events;
 use Illuminate\Validation\Rule;
 use App\Models\vouchers;
 use App\Models\order_calculation_model;
@@ -19,7 +21,59 @@ use Illuminate\Notifications\Notifiable;
 
 class SellerController extends Controller
 {
-    
+    public function DestroyEvent($id){
+        events::where('EventID',$id)->delete();
+        discounts::where('Event_id',$id)->delete();
+        return redirect('/DeleteEvent');
+    }
+    public function DeleteEvent(){
+        $events=events::join('discounts','discounts.Event_id','=','events.EventID')->join('products','products.id','=','discounts.Product_id')->where('products.seller_id',session()->get('seller_id'))->get();
+
+        $products=events::join('discounts','discounts.Event_id','=','events.EventID')->join('products','products.id','=','discounts.Product_id')->where('products.seller_id',session()->get('seller_id'))->get();
+        // foreach ($events as $event) {
+        //     echo $event;
+        // }
+        $events=$events->unique('EventID');
+        return view('Seller.DeleteEvent')->with('events',$events)->with('products',$products);
+    }   
+    public function AddEvent(){
+        if(!session()->has('seller_id'))
+            return redirect('SellerLogin');
+
+        $product=Product::whereNotIn('id', function($q){
+            $q->select('Product_id')->from('discounts');
+        })->where('seller_id',session()->get('seller_id'))->get();
+        return view('Seller.AddEvent')->with('products',$product)->with('check',0);
+    }
+    public function StoreEvent(Request $req){
+        $date1 =Carbon::parse($req->input('end_date'));
+        $today = Carbon::now();
+        $req->validate([
+            'event_name'=>'required',
+            'end_date'=>'required|after:today'
+        ]);
+        if(!session()->has('seller_id'))
+            return redirect('SellerLogin');
+
+        $events=new events();
+        $events->EventName=$req->input('event_name');
+        $events->EndingTime=$req->input('end_date');
+        $events->save();
+        $discounts=new discounts();
+        $products=$req->input('product_id');
+        foreach ($products as $products) {
+            $discounts->Product_id=$products;
+            $discounts->Event_id=$events->id;
+            $discounts->discount=$req->input('discount');
+            $discounts->save();
+            $discounts=new discounts();
+        }
+        $product=Product::whereNotIn('id', function($q){
+            $q->select('Product_id')->from('discounts');
+        })->where('seller_id',session()->get('seller_id'))->get();
+        return view('Seller.AddEvent')->with('products',$product)->with('check',1);
+
+    }
     public function UpdateQuantity(){
         if(!session()->has('seller_id'))
             return redirect('SellerLogin');

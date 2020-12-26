@@ -8,6 +8,7 @@ use App\Models\vouchers;
 use App\Models\RentalProduct;
 use App\Models\cart;
 use App\Models\discounts;
+use Carbon\Carbon;
 use App\Models\events;
 use App\Models\Rental_history;
 use App\Models\RentCart;
@@ -23,24 +24,42 @@ class CartController extends Controller
             return redirect('CustomerLogin');
             $product=RentalProduct::where('id',$product_id)->get();
             session()->put('RentCart',$product);
-            return redirect("/rentproduct/$product_id");
-        return view('Pages.RentCheckout')->with('product',$product);
+
+            return redirect('/RentCart');
+        //     return redirect("/rentproduct/$product_id");
+        // return view('Pages.RentCheckout')->with('product',$product);
     }
     public function ViewRentCart(){
         // dd($product);
+        if(session()->has('customer_id'))
+        {
+                $check_nav = 1;
+        }
+        else
+        {
+           $check_nav = 0;
+        }   
         $product=session()->get('RentCart');
         // dd($product);
-        $check=Rental_history::where('current_owner_id',session()->get('customer_id'))->get();
-        if($check==NULL)
+        $today=Carbon::today()->toDateString();
+        $check=Rental_history::where('current_owner_id',session()->get('customer_id'))->whereDate('End_date','>',$today)->get();
+        if($check->isEmpty())
             $check=1;
         else
             $check=0;
+
         $product=RentalProduct::where('id',$product[0]->id)->get();
-        return view('Pages.RentCheckout')->with('product',$product)->with('check',$check);
+        return view('Pages.RentCheckout')->with('product',$product)->with('check',$check)->with('check_nav',$check_nav);
     }
 
     public function RentCartCheckout(Request $req){
-        // dd($req);
+        $today=Carbon::today()->toDateString();
+        $start=$req->input('start_date');
+        $req->validate([
+            'start_date'=>'after_or_equal:today',
+            'end_date'=>'after:start_date'
+        ]);
+        dd($req);
         $Rental_history=new Rental_history();
         $product=RentalProduct::where('id',$req->input('product_id'))->get()->first();
         // dd($product);
