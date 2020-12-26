@@ -21,7 +21,7 @@
     {
         background-color: #000000;
         color: #ffffff;
-    }
+    }   
 
 </style>
 
@@ -29,7 +29,7 @@
 
 <body id="page-top">
     <div id="wrapper">
- <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
             <div class="container-fluid d-flex flex-column p-0">
                 <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
                     <div class="sidebar-brand-icon " style="margin-top: 30px;"><img src="{{asset('images/Closet.png')}}" width="88px;"></div>
@@ -47,8 +47,8 @@
                     <li class="nav-item"><a class="nav-link " href="/UpdateQuantity"><i class="fas fa-tachometer-alt"></i><span>Update Product Quantity</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/RentalProduct"><i class="fas fa-tachometer-alt"></i><span>Add Rental Product</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/ViewOrders"><i class="fas fa-tachometer-alt"></i><span>View Orders</span></a></li>
-                    <li class="nav-item"><a class="nav-link " href="/ViewRentOrders"><i class="fas fa-tachometer-alt"></i><span>View Rent Orders</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/ViewProducts"><i class="fas fa-tachometer-alt"></i><span>View Products</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/ViewRentOrders"><i class="fas fa-tachometer-alt"></i><span>View Rent Orders</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="/ViewProducts"><i class="fas fa-tachometer-alt"></i><span>View Products</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/CompletedOrders"><i class="fas fa-tachometer-alt"></i><span>Completed Orders</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/AddVoucher"><i class="fas fa-tachometer-alt"></i><span>Add Voucher</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/DeleteVoucher"><i class="fas fa-tachometer-alt"></i><span>Delete Voucher</span></a></li>
@@ -64,7 +64,7 @@
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
                         <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                                <h3 class="text-dark mb-2">View Products</h3>
+                                <h3 class="text-dark mb-2">Seller Dashboard</h3>
                           <!--   </div> -->
                         </form>
                         <ul class="nav navbar-nav flex-nowrap ml-auto">
@@ -81,40 +81,47 @@
                     </ul>
             </div>
             </nav>
-
-                            @if($product ==NULL)
-                         <p style="text-align: center;">You haven't listed any products for sale</p>           
-                         @else
-                        <div class="table-responsive table m-lg-auto mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                <div class="container-fluid">
+                <div class="table-responsive table m-lg-auto mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                             <table class="table my-0" id="dataTable">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Product ID</th>
-                                        <th scope="col">Product Name</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Description</th>
-                                        <th scope="col">Product Image</th>
-                                        <th scope="col">Clothing Type</th>
+                                        <th>Order ID</th>
+                                        <th>Product ID</th>
+                                        <th>Product Name</th>
+                                        <th>Size</th>
+                                        <th>Total charges</th>
+                                        <th>Security Deposit</th>
+                                        <th>Delivery Address</th>
+                                        <th>Customer Contact Number</th>
+                                        <th>Interval</th>
                                     </tr>
                                 </thead>
                                   <tbody>
-                                       @foreach ($product as $product)
+                                    @php  $address; @endphp
+                                    @foreach ($data as $data)
                                       <tr>
-                                        <th>{{$product->id}}</th>
-                                          <th>{{$product->product_name}}</th>
-                                          <th>{{$product->price_per_unit}}</th>
-                                          <th>{{$product->description}}</th>
-                                          <td><img src="{{asset('uploads/sell/'. $product->product_image)}}" style="width: 20rem;height: 20rem"></td>  
-                                          <th>{{$product->clothing_type}}</th>
+                                        <th>{{$data->ID}}</th>
+                                        <th>{{$data->ProductID}}</th>
+                                        <th>{{$data->product_name}}</th>
+                                        <th>{{$data->size}}</th>
+                                        <th>{{$data->Charges}}</th>
+                                        <th>{{$data->extra_charges}}</th>
+                                        <th>{{$data->Delivery_Address}}</th>
+                                        <th>{{$data->CPhone}}</th>
+                                        <th>{{$data->Start_date}} - {{$data->End_date}}</th>
                                       </tr>
-                                      @endforeach
-                                      @endif
+                                    @endforeach
                                 </tbody>
                             </table>
+                            {{-- Total Bill: {{$price}} --}}
+                            <br>
                         </div>
+            </div>
         </div>
         </div>
-         </div>
+        </div>
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/chart.min.js"></script>

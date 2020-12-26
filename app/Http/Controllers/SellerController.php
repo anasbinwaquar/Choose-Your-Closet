@@ -6,6 +6,7 @@ use App\Models\user_model;
 use App\Models\completed_orders;
 use Carbon\Carbon;
 use App\Models\Orders_sell;
+use App\Models\Rental_history;
 use App\Models\Product;
 use App\Models\discounts;
 use App\Models\events;
@@ -22,7 +23,7 @@ use Illuminate\Notifications\Notifiable;
 class SellerController extends Controller
 {
     public function ViewRentOrder(){
-        
+
     }
     public function DestroyEvent($id){
         events::where('EventID',$id)->delete();
@@ -218,17 +219,18 @@ class SellerController extends Controller
         $data = Orders_sell::join('order_calculation','orders_sell.OrderID','=','order_calculation.OrderID')->join('products','products.id','=','orders_sell.ProductID')->join('seller_info','seller_info.id','=','products.seller_id')->where('products.seller_id',session()->get('seller_id'))->get();
         $data2=Orders_sell::join('products','orders_sell.ProductID','=','products.id')->where('products.seller_id',session()->get('seller_id'))->get();;
         $data=$data->unique('OrderID');
-        // dd($data);
-        // $current=0;
-        // $previous=0;
-        // $current=$data[0]->OrderID;
-        // foreach ($data as $data) {
-        //     if($current== $data->OrderID)
-        //     echo $data->OrderID;
-        // }
-        // dd($data);
         return view('Seller.ViewOrders')->with('data',$data)->with('data2',$data2);
     }
+
+    public function ViewRentalOrders(){
+        if(!session()->has('seller_id'))
+            return redirect('SellerLogin');
+
+        $data=Rental_history::where('rental_histories.seller_id',session()->get('seller_id'))->join('rental_products','rental_histories.product_id','=','rental_products.id')->join('customer_infos','rental_histories.current_owner_id','=','customer_infos.id')->select('rental_histories.*','rental_products.*','rental_products.id as ProductID','rental_histories.id as ID','rental_histories.charges as Charges','customer_infos.Phone_Number as CPhone')->get();
+        // dd($data);
+        return view('Seller.ViewRentalOrders')->with('data',$data);
+    }
+
     public function OrderDetails($orderid){
         if(!session()->has('seller_id'))
             return redirect('SellerLogin');

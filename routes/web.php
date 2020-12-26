@@ -65,6 +65,7 @@ Route::get('/SellerProfile',[App\Http\Controllers\SellerController::class,'Selle
 Route::get('/SellerLogout',[App\Http\Controllers\SellerController::class,'SellerLogout']);
 
 Route::get('/ViewOrders',[App\Http\Controllers\SellerController::class,'ViewOrders']);
+Route::get('/ViewRentOrders',[App\Http\Controllers\SellerController::class,'ViewRentalOrders']);
 
 Route::get('/EndOrder/{id}',[App\Http\Controllers\SellerController::class,'EndOrder']);
 
