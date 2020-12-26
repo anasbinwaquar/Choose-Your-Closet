@@ -21,6 +21,9 @@ use Illuminate\Notifications\Notifiable;
 
 class SellerController extends Controller
 {
+    public function ViewRentOrder(){
+        
+    }
     public function DestroyEvent($id){
         events::where('EventID',$id)->delete();
         discounts::where('Event_id',$id)->delete();

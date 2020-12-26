@@ -183,7 +183,9 @@
                                                 @endif
                                             @endforeach
                                             <br>
-                                        Total: {{$price}}</th>  
+                                        Total: {{$price-$data->Total_Discount}} <br>
+                                        Total Discount: {{$data->Total_Discount}}
+                                    </th>  
                                         @php
                                          $price=0;
                                         @endphp 
