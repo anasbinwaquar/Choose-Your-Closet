@@ -29,7 +29,7 @@ class CreateRentalProductsTable extends Migration
             $table->integer('charges');
             $table->integer('security_deposit');
             $table->boolean('available');
-            $table->boolean('existence');
+            $table->boolean('existence')->default(1);
 
             //foreign key constraints
             $table->timestamps();

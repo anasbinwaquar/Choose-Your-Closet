@@ -144,7 +144,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="gallery">
-                                    <div class="sp-wrap"><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('/uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('/uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('/uploads/sell/'. $product->product_image2)}}"><img class="img-fluid d-block mx-auto" src="{{asset('/uploads/sell/'. $product->product_image3)}} alt=""></a></div>
+                                    <div class="sp-wrap"><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('/uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('/uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('/uploads/sell/'. $product->product_image2)}}"><img class="img-fluid d-block mx-auto" src="{{asset('/uploads/sell/'. $product->product_image3)}}" alt=""></a></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -152,7 +152,7 @@
                                     <h3>{{$product->product_name}}</h3>
                                     <div class="rating"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star-half-empty.svg"><img src="/product/img/star-empty.svg"></div>
                                     <div class="price">
-                                        <h3>Rs. {{$product->price_per_unit}}</h3>
+                                        <!-- <h3>Rs. {{$product->price_per_unit}}</h3> -->
                                            @if($product->Discount!=NULL)
                                                             <h3 style="color:grey;text-decoration-line: line-through;">PKR {{$product->price_per_unit}}</h3>
                                                             @elseif($product->Discount==NULL)

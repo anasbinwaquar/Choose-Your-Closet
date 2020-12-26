@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>
-        Choose Your Closet - Home
-    </title>
-    <meta charset="utf-8">
+	<title>Home</title>
+      <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="icon" href="{{asset('images/Closet.png')}}">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -14,13 +11,14 @@
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" type="text/css" href="css/home.css">
     <link rel="stylesheet" type="text/css" href="css/nav_styling.css">
-    <link rel="stylesheet" href="css/style.css">
+	
 
 </head>
 <body>
-    @if($check==0)
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  @if($check_nav==0)
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" >
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -28,8 +26,8 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active navclass">
-        <a class="nav-link navlink active" href="/" style="color: #24C6DC;">Home<span class="sr-only">(current)</span></a>
+      <li class="nav-item navclass">
+        <a class="nav-link navlink" href="/" style="color: #24C6DC;">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link navlink" href="AboutUs" style="color: #24C6DC;">About Us</a>
@@ -68,10 +66,8 @@
         <a class="nav-link navlink" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
       </li>
     </ul>
-    </div>
 </nav>
-
-@elseif($check==1)
+@elseif($check_nav==1)
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -129,94 +125,115 @@
     </div>
 </nav>
 @endif
-    <main>
-        <section class="clean-block clean-catalog dark">
-            <br>
-            <div class="container col-lg-10">
-                <div class="content">
-                    <!-- <div class="row"> -->
-                        <!-- <div class="col-md-3">
-                            <div class="d-none d-md-block">
-                                <div class="filters">
-                                    <div class="filter-item">
-                                        <h3>Categories</h3>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Women</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label" for="formCheck-2">Men</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-3"><label class="form-check-label" for="formCheck-3">Kids</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Bridal/Groom Wear</label></div>
-                                    </div>
-                                    <div class="filter-item">
-                                        <h3>Brands</h3>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-5"><label class="form-check-label" for="formCheck-5">Alkaram</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-6"><label class="form-check-label" for="formCheck-6">Khaadi</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7"><label class="form-check-label" for="formCheck-7">GulAhmed</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7"><label class="form-check-label" for="formCheck-7">Levis</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7"><label class="form-check-label" for="formCheck-7">Home Brands</label></div>
-                                    </div>
-                                </div>
-                            </div> 
-                        </div> -->
-                        <div class="col-md-12">
-                            <div class="products">
-                                <div class="row">
-                                    @foreach($data as $data)
-                                     <div class="col-lg-4 col-offset-8 special-grid best-seller">
-                                                    <div class="products-single fix">
-                                                        <div class="box-img-hover">
-                                                            <div class="type-lb">
-                                                                @if($data->EventName !=NULL)
-                                                                <p class="sale">{{$data->EventName}} Sale</p>
-                                                                @endif                                                                
-                                                            </div>
-                                                             <img class="card-img-top" src="{{asset('uploads/sell/'. $data->product_image)}}" alt="Card image cap" style="height:500px;width: 350px;">
-                                                            <div class="mask-icon">
-                                                                <ul>
-                                                                   
-                                                                     @if(!session()->has('customer_id'))
-                                                                <a class="cart" href="#" onclick="alert('You need to Login first')">Add to Cart</a>
-                                                                    @elseif(session()->has('customer_id'))
-                                                                    @if($data->Discount!=NULL)
-                                                                    <a class="cart" href="saleproduct/{{$data->id}}">Add to Cart</a>
-                                                                     @elseif($data->Discount==NULL)
-                                                                     <a class="cart" href="product/{{$data->id}}">Add to Cart</a>
-                                                                     @endif
-                                                                @endif
-                                                          </div>
-                                                        </div>
-                                                        <div class="why-text">
-                                                            <h4>{{$data->product_name}}</h4>
-                                                            @if($data->Discount!=NULL)
-                                                            <h5 style="color:grey;text-decoration-line: line-through;">PKR {{$data->price_per_unit}}</h5>
-                                                            @elseif($data->Discount==NULL)
-                                                            <h5 >PKR {{$data->price_per_unit}}</h5>
-                                                            @endif
-                                                            @if($data->Discount!=NULL)
-                                                            <h5 style="color:green;">{{$data->Discount}}% Discount</h5>
-                                                            <h5>New Price: PKR
-                                                              <?php 
-                                                              $var=($data->Discount/100)*$data->price_per_unit;
-                                                              echo $data->price_per_unit-$var;
-                                                               ?>
-                                                            </h5>
-                                                              @endif
-                                                               @if($data->Discount!=NULL)
-                                                            <a href="saleproduct/{{$data->id}}" class="btn btn-block" style="background-color:#007bff;color: #ffffff;">See More</a>
-                                                             @elseif($data->Discount==NULL)
-                                                              <a href="product/{{$data->id}}" class="btn btn-block" style="background-color:#007bff;color: #ffffff;">See More</a>
-                                                              @endif
-                                                        </div>
-                                                    </div>
-                                      </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    <!-- </div> -->
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer class="page-footer dark">
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 7</div>
+  <img class="slider_img" src="https://www.alkaramstudio.com/media/homepageslider/homepageslider/slider-2-mak-winter-revised.jpg" style="width:100%">
+  <!-- <div class="text">Caption Text</div> -->
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 7</div>
+  <img class="slider_img" src="https://www.alkaramstudio.com/media/homepageslider/homepageslider/festive-slider-dt.jpg" style="width:100%">
+  <!-- <div class="text">Caption Two</div> -->
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 7</div>
+  <img class="slider_img" src="https://www.alkaramstudio.com/media/homepageslider/homepageslider/fc20slider.jpg" style="width:100%">
+  <!-- <div class="text">Caption Three</div> -->
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">4 / 7</div>
+  <img class="slider_img" src="https://www.alkaramstudio.com/media/homepageslider/homepageslider/sliderrronline-revised.jpg" style="width:100%">
+  <!-- <div class="text">Caption Four</div> -->
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">5 / 7</div>
+  <img class="slider_img" src="https://cdn.shopify.com/s/files/1/0464/1731/3955/files/02a_1512x.jpg?v=1608095079" style="width:100%">
+  <!-- <div class="text">Caption Four</div> -->
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">6 / 7</div>
+  <img class="slider_img" src="https://www.dulhanzari.com/wp-content/uploads/2019/08/231.jpg" style="width:100%">
+  <!-- <div class="text">Caption Four</div> -->
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">7 / 7</div>
+  <img class="slider_img" src="https://cdn.shopify.com/s/files/1/2265/5245/files/Women-Clothing-Fashion-in-Pakistan_1506x.progressive.jpg?v=1607949452" style="width:100%">
+  <!-- <div class="text">Caption Four</div> -->
+</div>
+
+</div>
+  <a class="left" onclick="nextSlide(-1)">❮</a>  
+        <a class="right" onclick="nextSlide(1)">❯</a>  
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+
+	<div style="margin: 50px;">
+  <div class="row justify-content-between">
+     <div class="img_container col-lg-4 col-offset-12 special-grid best-seller">
+      <a class="anchor_link" class="anchor_link" href="/women_home">
+                   <button class="button"><img src="https://www.alkaramstudio.com/media/homepagetool/homepagetool/wintercapsuleMobnew.jpg" class="imagy"></button>
+                   <div class="centered">Women</div>
+                 </a>
+    </div>
+    <div class="img_container col-lg-4 col-offset-12 special-grid best-seller">
+      <a class="anchor_link"  href="/men_home">
+                   <button class="button"><img src="https://www.alkaramstudio.com/media/homepagetool/homepagetool/nMen-revised.jpg" class="imagy"></button>
+                    <div class="centered">Men</div>
+                    </a>
+    </div>
+    <div class="img_container col-lg-4 col-offset-12 special-grid best-seller">
+      <a class="anchor_link" href="/kids">
+                   <button class="button"><img src="https://www.alkaramstudio.com/media/homepagetool/homepagetool/nKids-revised.JPG" class="imagy"></button>
+                    <div class="centered">Kids</div>
+                    </a>
+    </div>
+  </div> 
+    <br>
+    <div class="img_container col-lg-4 col-offset-12 special-grid best-seller">
+      <a class="anchor_link" href="/sale">
+                   <button class="button_sale"><img src="https://www.digdevdirect.com/wp-content/uploads/2017/06/SALE.jpg" class="imagy"></button>
+                    </a>
+    </div>
+    <br>
+  <div class="img_container row justify-content-between">
+         <div class="col-lg-4 col-offset-12 special-grid best-seller">
+          <a class="anchor_link" href="/bride">
+                   <button class="button"><img src="https://www.bridals.pk/content/images/thumbs/0016784_gulrukh_1000.jpeg" class="imagy"></button>
+                    <div class="centered">Bride</div>
+                    </a>
+    </div>
+     <div class="img_container col-lg-4 col-offset-12 special-grid best-seller">
+      <a class="anchor_link" href="/groom">
+                   <button class="button"><img src="https://ladyselection.com/wp-content/uploads/2019/03/165b.jpg" class="imagy"></button>
+                    <div class="centered">Groom</div>
+                    </a>
+    </div>  
+        <div class="img_container col-lg-4 col-offset-12 special-grid best-seller">
+          <a class="anchor_link" href="/shoes">
+                 <button class="button"><img src="https://images.unsplash.com/photo-1570464197285-9949814674a7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1266&q=80" class="imagy"> </button>
+                 <div class="centered">Shoes</div>
+          </a>
+    </div>
+     </div>
+     </div>
+               <footer class="page-footer dark">
       <img src="{{asset('images/Closet.png')}}" alt="Logo" style="float: right; margin-right: 200px;">
         <div class="container">
             <div class="row">
@@ -257,5 +274,40 @@
         </div>
     </footer>
 </body>
-
+<script>
+var slideIndex = 0;
+showSlides();
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active_dot", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active_dot";
+  setTimeout('showSlides()', 2000); // Change image every 2 seconds
+}
+ function displaySlides(n) {  
+            var i;  
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");  
+            if (n > slides.length) {slideIndex = 1}  
+            if (n < 1) { slideIndex = slides.length}  
+            for (i = 0; i < slides.length; i++) {  
+                slides[i].style.display = "none"; 
+                dots[i].className = dots[i].className.replace(" active_dot", ""); 
+            }  
+            dots[slideIndex-1].className += " active_dot";
+            slides[slideIndex - 1].style.display = "block"; 
+        }  
+  function nextSlide(n) {  
+            displaySlides(slideIndex += n);  
+        }  
+</script>
 </html>
