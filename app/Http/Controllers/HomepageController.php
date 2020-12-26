@@ -25,26 +25,26 @@ class HomepageController extends Controller
         
         if(session()->has('customer_id'))
         {
-                $check = 1;
+            $check_nav = 1;
         }
         else
         {
-           $check = 0;
+            $check_nav = 0;
         }   
         $data = Product::where('approved', 1)->get();
         // printf("Now: %s", Carbon::now());
-        return view('Homepage.homepage')->with('data',$data)->with('check', $check);
+        return view('Homepage.homepage')->with('data',$data)->with('check_nav', $check_nav);
     }
     public function sale_index()
     {
         
         if(session()->has('customer_id'))
         {
-                $check = 1;
+                $check_nav = 1;
         }
         else
         {
-           $check = 0;
+           $check_nav = 0;
         }   
         $today_date =  Carbon::now();
         $event_ID = events::where('EndingTime',$today_date)->get('EventID');
@@ -57,7 +57,7 @@ class HomepageController extends Controller
         // $discount_product=$discount_product->get('Product_id');
        // printf($discount_product[0]->Discount);
         // printf("Now: %s", Carbon::now());
-        return view('Homepage.homepage')->with('data',$data)->with('check', $check);
+        return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
 
     public function bride_index()
@@ -73,7 +73,7 @@ class HomepageController extends Controller
         }   
         $data = Product::where('approved', 1)->where('clothing_type','Bridal Wear')->get();
         // printf("Now: %s", Carbon::now());
-        return view('Homepage.homepage')->with('data',$data)->with('check', $check);
+        return view('Homepage.homepage_product')->with('data',$data)->with('check', $check);
     }
 
 
@@ -90,7 +90,7 @@ class HomepageController extends Controller
         }   
         $data = Product::where('approved', 1)->where('clothing_type','Groom Wear')->get();
         // printf("Now: %s", Carbon::now());
-        return view('Homepage.homepage')->with('data',$data)->with('check', $check);
+        return view('Homepage.homepage_product')->with('data',$data)->with('check', $check);
     }
 
       public function kids_index()
@@ -106,7 +106,7 @@ class HomepageController extends Controller
         }   
         $data = Product::where('approved', 1)->where('clothing_type','Kids Wear')->get();
         // printf("Now: %s", Carbon::now());
-        return view('Homepage.homepage')->with('data',$data)->with('check', $check);
+        return view('Homepage.homepage_product')->with('data',$data)->with('check', $check);
     }
 
          public function women_home_pret()
@@ -114,15 +114,15 @@ class HomepageController extends Controller
         
          if(session()->has('customer_id'))
         {
-                $check = 1;
+                $check_nav = 1;
         }
         else
         {
-           $check = 0;
+           $check_nav = 0;
         }   
         $data = Product::where('approved', 1)->where('gender_type','Female')->where('clothing_type','pret')->get();
         // printf("Now: %s", Carbon::now());
-        return view('Homepage.homepage')->with('data',$data)->with('check', $check);
+        return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
 
 
@@ -139,7 +139,7 @@ class HomepageController extends Controller
         }   
         $data = Product::where('approved', 1)->where('gender_type','Female')->where('clothing_type','3 Piece Suit')->get();
         // printf("Now: %s", Carbon::now());
-        return view('Homepage.homepage')->with('data',$data)->with('check', $check);
+        return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
 
      public function women_home_party_wear()
@@ -155,7 +155,7 @@ class HomepageController extends Controller
         }   
         $data = Product::where('approved', 1)->where('gender_type','Female')->where('clothing_type','Party Wear')->get();
         // printf("Now: %s", Carbon::now());
-        return view('Homepage.homepage')->with('data',$data)->with('check', $check);
+        return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
 
 
@@ -164,15 +164,15 @@ class HomepageController extends Controller
         
          if(session()->has('customer_id'))
         {
-                $check = 1;
+                $check_nav = 1;
         }
         else
         {
-           $check = 0;
+           $check_nav = 0;
         }   
         $data = Product::where('approved', 1)->where('gender_type','Female')->where('clothing_type','Winter Wear')->get();
         // printf("Now: %s", Carbon::now());
-        return view('Homepage.homepage')->with('data',$data)->with('check', $check);
+        return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
 
      public function women_home_summer_wear()
@@ -180,15 +180,15 @@ class HomepageController extends Controller
         
          if(session()->has('customer_id'))
         {
-                $check = 1;
+                $check_nav = 1;
         }
         else
         {
-           $check = 0;
+           $check_nav = 0;
         }   
         $data = Product::where('approved', 1)->where('gender_type','Female')->where('clothing_type','Summer Wear')->get();
         // printf("Now: %s", Carbon::now());
-        return view('Homepage.homepage')->with('data',$data)->with('check', $check);
+        return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
 
 
@@ -197,15 +197,15 @@ class HomepageController extends Controller
         
          if(session()->has('customer_id'))
         {
-                $check = 1;
+                $check_nav = 1;
         }
         else
         {
-           $check = 0;
+           $check_nav = 0;
         }   
         $data = Product::where('approved', 1)->where('gender_type','Female')->where('clothing_type','Pant')->get();
         // printf("Now: %s", Carbon::now());
-        return view('Homepage.homepage')->with('data',$data)->with('check', $check);
+        return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
 
 
@@ -214,15 +214,15 @@ class HomepageController extends Controller
         
          if(session()->has('customer_id'))
         {
-                $check = 1;
+                $check_nav = 1;
         }
         else
         {
-           $check = 0;
+           $check_nav = 0;
         }   
         $data = Product::where('approved', 1)->where('gender_type','Male')->where('clothing_type','Shirt')->get();
         // printf("Now: %s", Carbon::now());
-        return view('Homepage.homepage')->with('data',$data)->with('check', $check);
+        return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
 
       public function men_home_winter_wear()
@@ -230,15 +230,15 @@ class HomepageController extends Controller
         
          if(session()->has('customer_id'))
         {
-                $check = 1;
+                $check_nav = 1;
         }
         else
         {
-           $check = 0;
+           $check_nav = 0;
         }   
         $data = Product::where('approved', 1)->where('gender_type','Male')->where('clothing_type','Winter Wear')->get();
         // printf("Now: %s", Carbon::now());
-        return view('Homepage.homepage')->with('data',$data)->with('check', $check);
+        return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
 
           public function shoes()
@@ -246,15 +246,15 @@ class HomepageController extends Controller
         
          if(session()->has('customer_id'))
         {
-                $check = 1;
+                $check_nav = 1;
         }
         else
         {
-           $check = 0;
+           $check_nav = 0;
         }   
         $data = Product::where('approved', 1)->where('clothing_type','shoes')->get();
         // printf("Now: %s", Carbon::now());
-        return view('Homepage.homepage')->with('data',$data)->with('check', $check);
+        return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
 
 
@@ -264,15 +264,15 @@ class HomepageController extends Controller
         
          if(session()->has('customer_id'))
         {
-                $check = 1;
+                $check_nav = 1;
         }
         else
         {
-           $check = 0;
+           $check_nav = 0;
         }   
         $data = Product::where('approved', 1)->where('gender_type','Male')->where('clothing_type','T-Shirt')->get();
         // printf("Now: %s", Carbon::now());
-        return view('Homepage.homepage')->with('data',$data)->with('check', $check);
+        return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
 
      public function men_home_3_piece_suit()
@@ -280,15 +280,15 @@ class HomepageController extends Controller
         
          if(session()->has('customer_id'))
         {
-                $check = 1;
+                $check_nav = 1;
         }
         else
         {
-           $check = 0;
+           $check_nav = 0;
         }   
         $data = Product::where('approved', 1)->where('gender_type','Male')->where('clothing_type','3 Piece Suit')->get();
         // printf("Now: %s", Carbon::now());
-        return view('Homepage.homepage')->with('data',$data)->with('check', $check);
+        return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
 
 
@@ -297,15 +297,15 @@ class HomepageController extends Controller
         
          if(session()->has('customer_id'))
         {
-                $check = 1;
+                $check_nav = 1;
         }
         else
         {
-           $check = 0;
+           $check_nav = 0;
         }   
         $data = Product::where('approved', 1)->where('gender_type','Male')->where('clothing_type','Kurta Shalwar')->get();
         // printf("Now: %s", Carbon::now());
-        return view('Homepage.homepage')->with('data',$data)->with('check', $check);
+        return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
 
 
@@ -315,15 +315,15 @@ class HomepageController extends Controller
         
          if(session()->has('customer_id'))
         {
-                $check = 1;
+                $check_nav = 1;
         }
         else
         {
-           $check = 0;
+           $check_nav = 0;
         }   
         $data = Product::where('approved', 1)->where('gender_type','Male')->where('clothing_type','Pant & Jeans')->get();
         // printf("Now: %s", Carbon::now());
-        return view('Homepage.homepage')->with('data',$data)->with('check', $check);
+        return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
 
 
@@ -440,14 +440,14 @@ class HomepageController extends Controller
     {
         if(session()->has('customer_id'))
         {
-                $check = 1;
+                $check_nav = 1;
         }
         else
         {
-           $check = 0;
+           $check_nav = 0;
         }   
         $product = RentalProduct::where('id', $product_id)->get();
-        return view('Homepage.rent_display')->with('product',$product)->with('check',$check);
+        return view('Homepage.rent_display')->with('product',$product)->with('check_nav', $check_nav);
     }
 
     public function create()
