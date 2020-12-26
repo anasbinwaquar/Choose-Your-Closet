@@ -29,7 +29,7 @@
 
 <body id="page-top">
     <div id="wrapper">
- <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+<nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
             <div class="container-fluid d-flex flex-column p-0">
                 <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
                     <div class="sidebar-brand-icon " style="margin-top: 30px;"><img src="{{asset('images/Closet.png')}}" width="88px;"></div>
@@ -47,11 +47,11 @@
                     <li class="nav-item"><a class="nav-link " href="/UpdateQuantity"><i class="fas fa-tachometer-alt"></i><span>Update Product Quantity</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/RentalProduct"><i class="fas fa-tachometer-alt"></i><span>Add Rental Product</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/ViewOrders"><i class="fas fa-tachometer-alt"></i><span>View Orders</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/ViewProducts"><i class="fas fa-tachometer-alt"></i><span>View Products</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="/ViewProducts"><i class="fas fa-tachometer-alt"></i><span>View Products</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/CompletedOrders"><i class="fas fa-tachometer-alt"></i><span>Completed Orders</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/AddVoucher"><i class="fas fa-tachometer-alt"></i><span>Add Voucher</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/DeleteVoucher"><i class="fas fa-tachometer-alt"></i><span>Delete Voucher</span></a></li>
-                    <li class="nav-item"><a class="nav-link " href="/AddEvent"><i class="fas fa-tachometer-alt"></i><span>Add Event Sale</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/AddEvent"><i class="fas fa-tachometer-alt"></i><span>Add Event Sale</span></a></li>
                     <li class="nav-item"><a class="nav-link " href="/DeleteEvent"><i class="fas fa-tachometer-alt"></i><span>Delete Event Sale</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/SellerLogout"><i class="fas fa-user"></i><span>Logout</span></a></li>
 
@@ -63,7 +63,7 @@
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
                         <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                                <h3 class="text-dark mb-2">View Products</h3>
+                                <h3 class="text-dark mb-2">Add Event Sale</h3>
                           <!--   </div> -->
                         </form>
                         <ul class="nav navbar-nav flex-nowrap ml-auto">
@@ -80,40 +80,65 @@
                     </ul>
             </div>
             </nav>
+         <form class="form-horizontal justify-content-center" name="ProductForm" id="ProductForm" action="/AddEvent" method="post" enctype="multipart/form-data" autocomplete="off" style="margin-left: 30%;
+    width:80em;">
+  @csrf
+<fieldset>
 
-                            @if($product ==NULL)
-                         <p style="text-align: center;">You haven't listed any products for sale</p>           
-                         @else
-                        <div class="table-responsive table m-lg-auto mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                            <table class="table my-0" id="dataTable">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Product ID</th>
-                                        <th scope="col">Product Name</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Description</th>
-                                        <th scope="col">Product Image</th>
-                                        <th scope="col">Clothing Type</th>
-                                    </tr>
-                                </thead>
-                                  <tbody>
-                                       @foreach ($product as $product)
-                                      <tr>
-                                        <th>{{$product->id}}</th>
-                                          <th>{{$product->product_name}}</th>
-                                          <th>{{$product->price_per_unit}}</th>
-                                          <th>{{$product->description}}</th>
-                                          <td><img src="{{asset('uploads/sell/'. $product->product_image)}}" style="width: 20rem;height: 20rem"></td>  
-                                          <th>{{$product->clothing_type}}</th>
-                                      </tr>
-                                      @endforeach
-                                      @endif
-                                </tbody>
-                            </table>
-                        </div>
+@if ($errors->any())
+    <div class="col-md-4 alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<!-- Text input-->
+<div class="form-group">
+<label class="col-md-4 control-label" for="event_name">Event Name</label>  
+  <div class="col-md-6">
+  <input id="event_name" name="event_name"  value="{{old('event_name')}}" class="form-control input-md" required type="text">
+  </div>
+</div>
+<div class="form-group">
+<label class="col-md-4 control-label" for="description">End time</label>  
+  <div class="col-lg-6">
+    <div class="form-group"><input class="form-control" type="date" value="{{old('end_date')}}" name="end_date" id="date" required/>
+    </div>
+</div>
+</div>
+<div class="form-group">
+<label class="col-md-4 control-label" for="event_name">Discount %</label>  
+  <div class="col-md-6">
+  <input id="discount" name="discount"  value="{{old('discount')}}" class="form-control input-md" required type="number">
+  </div>
+</div>
+<div class="form-group">
+<label class="col-md-4 control-label" for="event_name">Products</label>  
+  <div class="col-md-6">
+    @foreach($products as $product)
+    <input type="checkbox" id="product_id[]" name="product_id[]" value="{{$product->id}}">
+    <label for="product_id">Product Name: {{$product->product_name}}</label><br>
+    <label for="product_id">Product Price: {{$product->price_per_unit}}</label><br>
+    <img class="border border-primary img-rounded mx-auto d-block" src="{{asset('uploads/sell/'. $product->product_image)}}" style="width: 300px;height: 300px; ">
+    <br>
+    @endforeach
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Submit"></label>
+  <div class="col-md-6">
+    <button id="Submit" name="Submit" type="submit" class="btn btn-primary col-md-12" required>SUBMIT</button>
+  </div>
+</div>
+</fieldset>
+</form>  
         </div>
         </div>
-         </div>
+        </div>
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/chart.min.js"></script>
@@ -122,4 +147,7 @@
     <script src="assets/js/theme.js"></script>
 </body>
 
+
+<script type="text/javascript">
+</script>
 </html>

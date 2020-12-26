@@ -9,6 +9,7 @@ class discounts extends Model
 {
     use HasFactory;
     protected $table = 'discounts';
+public $timestamps = false;
       protected $guarded = [
     ];
 }

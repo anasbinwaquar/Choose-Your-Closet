@@ -75,6 +75,10 @@ Route::get('/DeleteVoucher',[App\Http\Controllers\SellerController::class,'Delet
 
 Route::get('/DeleteVoucher/{id}',[App\Http\Controllers\SellerController::class,'DeleteVoucher']);
 Route::post('/AddVoucher',[App\Http\Controllers\SellerController::class,'StoreVoucher'])->name('StoreVoucher');
+Route::get('/AddEvent',[App\Http\Controllers\SellerController::class,'AddEvent']);
+Route::post('/AddEvent',[App\Http\Controllers\SellerController::class,'StoreEvent']);
+Route::get('/DeleteEvent',[App\Http\Controllers\SellerController::class,'DeleteEvent']);
+Route::get('/DestroyEvent/{id}',[App\Http\Controllers\SellerController::class,'DestroyEvent']);
 
 // Route::get('OrderDetails/{orderid}',[App\Http\Controllers\SellerController::class,'OrderDetails']);
 
