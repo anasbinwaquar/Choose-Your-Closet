@@ -47,7 +47,7 @@
 
   body
   {
-    background-image: url('https://source.unsplash.com/1600x900/?clothes, clothing');
+    background-image: url('https://source.unsplash.com/collection/25097616/1600x900');
   }
 
 </style>
