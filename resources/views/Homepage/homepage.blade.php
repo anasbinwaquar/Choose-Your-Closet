@@ -68,14 +68,6 @@
         <a class="nav-link navlink" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-        <div class="input-group mb-4">
-            <input type="search" placeholder="Search..." aria-describedby="button-addon6" class="form-control border-info">
-            <div class="input-group-append">
-              <button id="button-addon6" type="submit" class="btn btn-info"><i class="fa fa-search"></i></button>
-            </div>
-          </div>
-    </form>
     </div>
 </nav>
 
@@ -134,14 +126,6 @@
         <a class="nav-link navlink" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-        <div class="input-group mb-4">
-            <input type="search" placeholder="Search..." aria-describedby="button-addon6" class="form-control border-info">
-            <div class="input-group-append">
-              <button id="button-addon6" type="submit" class="btn btn-info"><i class="fa fa-search"></i></button>
-            </div>
-          </div>
-    </form>
     </div>
 </nav>
 @endif
@@ -184,12 +168,10 @@
                                                                 <p class="sale">{{$data->EventName}} Sale</p>
                                                                 @endif                                                                
                                                             </div>
-                                                             <img class="card-img-top" src="{{asset('uploads/sell/'. $data->product_image)}}" alt="Card image cap" style="height:400px;width: 350px;">
+                                                             <img class="card-img-top" src="{{asset('uploads/sell/'. $data->product_image)}}" alt="Card image cap" style="height:500px;width: 350px;">
                                                             <div class="mask-icon">
                                                                 <ul>
-                                                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li></ul>
+                                                                   
                                                                      @if(!session()->has('customer_id'))
                                                                 <a class="cart" href="#" onclick="alert('You need to Login first')">Add to Cart</a>
                                                                     @elseif(session()->has('customer_id'))

@@ -67,14 +67,6 @@
         <a class="nav-link navlink" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-        <div class="input-group mb-4">
-            <input type="search" placeholder="Search..." aria-describedby="button-addon6" class="form-control border-info">
-            <div class="input-group-append">
-              <button id="button-addon6" type="submit" class="btn btn-info"><i class="fa fa-search"></i></button>
-            </div>
-          </div>
-    </form>
 </nav>
 
 @elseif($check_nav==1)
@@ -132,19 +124,51 @@
         <a class="nav-link navlink active" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-        <div class="input-group mb-4">
-            <input type="search" placeholder="Search..." aria-describedby="button-addon6" class="form-control border-info">
-            <div class="input-group-append">
-              <button id="button-addon6" type="submit" class="btn btn-info"><i class="fa fa-search"></i></button>
-            </div>
-          </div>
-    </form>
 </nav>
 @endif
   <div class="jumbotron text-center">
   <h1 class="display-4">Order Placed Successfully</h1>
   <p class="lead">You will be contacted regarding your order</p>
 </div>
+               <footer class="page-footer dark">
+      <img src="{{asset('images/Closet.png')}}" alt="Logo" style="float: right; margin-right: 200px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h5>Customer Portal</h5>
+                    <ul>
+                        <li><a href="/CustomerSignUp">Sign Up</a></li>
+                        <li><a href="/CustomerLogin">Login</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/">Purchase Product</a></li>
+                        <li><a href="/RentProducts">Rent Product</a></li>
+                        <li><a href="/customize">Custom Orders</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>Seller Portal</h5>
+                    <ul>
+                        <li><a href="/SellerSignUp">Sign Up</a></li>
+                        <li><a href="/SellerLogin">Login</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>About</h5>
+                    <ul>
+                        <li><a href="AboutUs">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="/ContactUs">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>© 2020 Copyright Choose Your Closet <img src="{{asset('images/Closet.png')}}" alt="Logo" width="50"></p>
+        </div>
+    </footer>
 </body>
 </html> 

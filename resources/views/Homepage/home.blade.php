@@ -11,12 +11,13 @@
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" type="text/css" href="css/home.css">
     <link rel="stylesheet" type="text/css" href="css/nav_styling.css">
-	<link rel="stylesheet" type="text/css" href="css/home.css">
+	
 
 </head>
 <body>
-  @if($check==0)
+  @if($check_nav==0)
   <nav class="navbar navbar-expand-lg navbar-light bg-light" >
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -65,16 +66,8 @@
         <a class="nav-link navlink" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-        <div class="input-group mb-4">
-            <input type="search" placeholder="Search..." aria-describedby="button-addon6" class="form-control border-info">
-            <div class="input-group-append">
-              <button id="button-addon6" type="submit" class="btn btn-info"><i class="fa fa-search"></i></button>
-            </div>
-          </div>
-    </form>
 </nav>
-@elseif($check==1)
+@elseif($check_nav==1)
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -129,14 +122,7 @@
         <a class="nav-link navlink" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-        <div class="input-group mb-4">
-            <input type="search" placeholder="Search..." aria-describedby="button-addon6" class="form-control border-info">
-            <div class="input-group-append">
-              <button id="button-addon6" type="submit" class="btn btn-info"><i class="fa fa-search"></i></button>
-            </div>
-          </div>
-    </form>
+    </div>
 </nav>
 @endif
 <div class="slideshow-container">
@@ -222,7 +208,7 @@
     <br>
     <div class="img_container col-lg-4 col-offset-12 special-grid best-seller">
       <a class="anchor_link" href="/sale">
-                   <button class="button_sale"><img src="https://previews.123rf.com/images/lightwise/lightwise1205/lightwise120500044/13650233-clothing-sale-sign-with-classic-wooden-clothes-hangers-and-big-red-bannders-with-advertising-and-mar.jpg" class="imagy"></button>
+                   <button class="button_sale"><img src="https://www.digdevdirect.com/wp-content/uploads/2017/06/SALE.jpg" class="imagy"></button>
                     </a>
     </div>
     <br>
@@ -301,10 +287,10 @@ function showSlides() {
   slideIndex++;
   if (slideIndex > slides.length) {slideIndex = 1}    
   for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
+    dots[i].className = dots[i].className.replace(" active_dot", "");
   }
   slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
+  dots[slideIndex-1].className += " active_dot";
   setTimeout('showSlides()', 2000); // Change image every 2 seconds
 }
  function displaySlides(n) {  
@@ -315,9 +301,9 @@ function showSlides() {
             if (n < 1) { slideIndex = slides.length}  
             for (i = 0; i < slides.length; i++) {  
                 slides[i].style.display = "none"; 
-                dots[i].className = dots[i].className.replace(" active", ""); 
+                dots[i].className = dots[i].className.replace(" active_dot", ""); 
             }  
-            dots[slideIndex-1].className += " active";
+            dots[slideIndex-1].className += " active_dot";
             slides[slideIndex - 1].style.display = "block"; 
         }  
   function nextSlide(n) {  

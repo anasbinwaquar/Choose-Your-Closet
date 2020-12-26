@@ -341,7 +341,7 @@ class HomepageController extends Controller
             else
                 $check=1;
         }
-        
+
         if(session()->has('customer_id'))
         {
                 $check_nav = 1;
@@ -364,13 +364,13 @@ class HomepageController extends Controller
         
         if(session()->has('customer_id'))
         {
-                $check = 1;
+            $check_nav = 1;
         }
         else
         {
-           $check = 0;
+           $check_nav = 0;
         }   
-        return view('Homepage.home')->with('check', $check);
+        return view('Homepage.home')->with('check_nav', $check_nav);
     }
 
        public function index_women()

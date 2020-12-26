@@ -71,14 +71,6 @@
         <a class="nav-link navlink active" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-        <div class="input-group mb-4">
-            <input type="search" placeholder="Search..." aria-describedby="button-addon6" class="form-control border-info">
-            <div class="input-group-append">
-              <button id="button-addon6" type="submit" class="btn btn-info"><i class="fa fa-search"></i></button>
-            </div>
-          </div>
-    </form>
     </div>
 </nav>
 
@@ -95,7 +87,7 @@
         <a class="nav-link navlink" href="/" style="color: #24C6DC;">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link navlink" href="#" style="color: #24C6DC;">About Us</a>
+        <a class="nav-link navlink" href="/AboutUs" style="color: #24C6DC;">About Us</a>
       </li>
       <li class="nav-item">
         <a class="nav-link navlink" href="/customize" style="color: #24C6DC;">Customizer</a>
@@ -137,14 +129,6 @@
         <a class="nav-link navlink active" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-        <div class="input-group mb-4">
-            <input type="search" placeholder="Search..." aria-describedby="button-addon6" class="form-control border-info">
-            <div class="input-group-append">
-              <button id="button-addon6" type="submit" class="btn btn-info"><i class="fa fa-search"></i></button>
-            </div>
-          </div>
-    </form>
     </div>
 </nav>
 @endif

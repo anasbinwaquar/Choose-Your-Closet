@@ -65,14 +65,6 @@
         <a class="nav-link navlink" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-        <div class="input-group mb-4">
-            <input type="search" placeholder="Search..." aria-describedby="button-addon6" class="form-control border-info">
-            <div class="input-group-append">
-              <button id="button-addon6" type="submit" class="btn btn-info"><i class="fa fa-search"></i></button>
-            </div>
-          </div>
-    </form>
 </nav>
 @elseif($check==1)
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -129,14 +121,6 @@
         <a class="nav-link navlink" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-        <div class="input-group mb-4">
-            <input type="search" placeholder="Search..." aria-describedby="button-addon6" class="form-control border-info">
-            <div class="input-group-append">
-              <button id="button-addon6" type="submit" class="btn btn-info"><i class="fa fa-search"></i></button>
-            </div>
-          </div>
-    </form>
 </nav>
 @endif
 <div class="slideshow-container">
@@ -295,10 +279,10 @@ function showSlides() {
   slideIndex++;
   if (slideIndex > slides.length) {slideIndex = 1}    
   for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
+    dots[i].className = dots[i].className.replace(" active_dot", "");
   }
   slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
+  dots[slideIndex-1].className += " active_dot";
   setTimeout('showSlides()', 2000); // Change image every 2 seconds
 }
  function displaySlides(n) {  
@@ -309,9 +293,9 @@ function showSlides() {
             if (n < 1) { slideIndex = slides.length}  
             for (i = 0; i < slides.length; i++) {  
                 slides[i].style.display = "none"; 
-                dots[i].className = dots[i].className.replace(" active", ""); 
+                dots[i].className = dots[i].className.replace(" active_dot", ""); 
             }  
-            dots[slideIndex-1].className += " active";
+            dots[slideIndex-1].className += " active_dot";
             slides[slideIndex - 1].style.display = "block"; 
         }  
   function nextSlide(n) {  
