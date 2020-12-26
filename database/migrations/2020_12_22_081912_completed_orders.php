@@ -21,6 +21,7 @@ class CompletedOrders extends Migration
             $table->unsignedBigInteger('Quantity');
             $table->string('Delivery_Address');
             $table->unsignedBigInteger('Total');
+            $table->unsignedBigInteger('Total_Discount');
             $table->DateTime('Date');
         });
     }
