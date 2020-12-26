@@ -166,7 +166,6 @@
     <option value="Groom Wear">Groom Wear</option>
     <option value="Bridal Wear">Bridal Wear</option>
     <option value="Summer Wear">Summer Wear</option>
-    <option value="Mid Summer Wear">Mid Summer Wear</option>
     <option value="Winter Wear">Winter Wear</option>
     <option value="Shoes">Shoes</option>
     </select>
