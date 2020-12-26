@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>product - Brand</title>
+    <title>Product Page - Choose Your Closet</title>
     <link rel="stylesheet" href="/product/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="/product/fonts/simple-line-icons.min.css">
@@ -68,7 +68,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link navlink active" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
+        <a class="nav-link navlink" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
       </li>
     </ul>
     </div>
@@ -126,7 +126,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link navlink active" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
+        <a class="nav-link navlink" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
       </li>
     </ul>
     </div>
@@ -227,31 +227,12 @@
                         <div>
                             <ul class="nav nav-tabs" role="tablist" id="myTab">
                                 <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-toggle="tab" id="description-tab" href="#description">Description</a></li>
-                                <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-toggle="tab" id="specifications-tabs" href="#specifications">Specifications</a></li>
+                                <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-toggle="tab" id="specifications-tabs" href="#specifications">Details</a></li>
                                 <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-toggle="tab" id="reviews-tab" href="#reviews">Reviews</a></li>
                             </ul>
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane active fade show description" role="tabpanel" id="description">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing
-                                        elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <figure class="figure"><img class="img-fluid figure-img" src="{{asset('uploads/sell/'. $product->product_image)}}"></figure>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <h4>Lorem Ipsum</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-7 right">
-                                            <h4>Lorem Ipsum</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <figure class="figure"><img class="img-fluid figure-img" src="{{asset('uploads/sell/'. $product->product_image)}}"></figure>
-                                        </div>
-                                    </div>
+                                     <p>{{$product->description}}</p>
                                 </div>
                                 <div class="tab-pane fade show specifications" role="tabpanel" id="specifications">
                                     <div class="table-responsive table-bordered">
@@ -375,40 +356,6 @@
                                                     </div>
                                                 </div>
                                         @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clean-related-items">
-                        <h3>Related /products</h3>
-                        <div class="items">
-                            <div class="row justify-content-center">
-                                <div class="col-sm-6 col-lg-4">
-                                    <div class="clean-related-item">
-                                        <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="{{asset('uploads/sell/'. $product->product_image)}}"></a></div>
-                                        <div class="related-name"><a href="#">Lorem Ipsum dolor</a>
-                                            <div class="rating"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star-half-empty.svg"><img src="/product/img/star-empty.svg"></div>
-                                            <h4>$300</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <div class="clean-related-item">
-                                        <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="{{asset('uploads/sell/'. $product->product_image)}}"></a></div>
-                                        <div class="related-name"><a href="#">Lorem Ipsum dolor</a>
-                                            <div class="rating"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star-half-empty.svg"><img src="/product/img/star-empty.svg"></div>
-                                            <h4>$300</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <div class="clean-related-item">
-                                        <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="{{asset('uploads/sell/'. $product->product_image)}}"></a></div>
-                                        <div class="related-name"><a href="#">Lorem Ipsum dolor</a>
-                                            <div class="rating"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star-half-empty.svg"><img src="/product/img/star-empty.svg"></div>
-                                            <h4>$300</h4>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
