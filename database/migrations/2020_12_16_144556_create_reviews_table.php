@@ -16,8 +16,6 @@ class CreateReviewsTable extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('product_id');
-            $table->integer('like')->default(0);
-            $table->integer('dislike')->default(0);
 
             $table->text('description');
             $table->float('rating');
