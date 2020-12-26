@@ -172,11 +172,11 @@
                                 </div>
                             </div> 
                         </div> -->
-                        <div class="col-md-9">
+                        <div class="col-md-12">
                             <div class="products">
                                 <div class="row">
                                     @foreach($data as $data)
-                                     <div class="col-lg-4 col-offset-12 special-grid best-seller">
+                                     <div class="col-lg-4 col-offset-8 special-grid best-seller">
                                                     <div class="products-single fix">
                                                         <div class="box-img-hover">
                                                             <div class="type-lb">

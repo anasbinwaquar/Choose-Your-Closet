@@ -133,12 +133,49 @@ Route::get('/', [App\Http\Controllers\HomepageController::class, 'index']);
 
 Route::get('/home', [App\Http\Controllers\HomepageController::class, 'index_home']);
 
+Route::get('/women_home', [App\Http\Controllers\HomepageController::class, 'index_women']);
+
+Route::get('/men_home', [App\Http\Controllers\HomepageController::class, 'index_men']);
+
 Route::get('/product/{product_id}', [App\Http\Controllers\HomepageController::class, 'ShowProduct']);
 
 Route::get('/rentproduct/{product_id}', [App\Http\Controllers\HomepageController::class, 'ShowRentProduct']);
+
 Route::get('/saleproduct/{product_id}', [App\Http\Controllers\HomepageController::class, 'SaleShowProduct']);
+
 Route::get('/sale', [App\Http\Controllers\HomepageController::class, 'sale_index']);
 
+Route::get('/bride', [App\Http\Controllers\HomepageController::class, 'bride_index']);
+
+Route::get('/groom', [App\Http\Controllers\HomepageController::class, 'groom_index']);
+
+Route::get('/kids', [App\Http\Controllers\HomepageController::class, 'kids_index']);
+
+Route::get('/women_home_pret', [App\Http\Controllers\HomepageController::class, 'women_home_pret']);
+
+Route::get('/women_home_3_piece_suit', [App\Http\Controllers\HomepageController::class, 'women_home_3_piece_suit']);
+
+Route::get('/women_home_party_wear', [App\Http\Controllers\HomepageController::class, 'women_home_party_wear']);
+
+Route::get('/women_home_winter_wear', [App\Http\Controllers\HomepageController::class, 'women_home_winter_wear']);
+
+Route::get('/women_home_summer_wear', [App\Http\Controllers\HomepageController::class, 'women_home_summer_wear']);
+
+Route::get('/women_home_pants_jeans', [App\Http\Controllers\HomepageController::class, 'women_home_pants_jeans']);
+
+Route::get('/men_home_shirts', [App\Http\Controllers\HomepageController::class, 'men_home_shirts']);
+
+Route::get('/men_home_tshirts', [App\Http\Controllers\HomepageController::class, 'men_home_tshirts']);
+
+Route::get('/men_home_3_piece_suit', [App\Http\Controllers\HomepageController::class, 'men_home_3_piece_suit']);
+
+Route::get('/men_home_winter_wear', [App\Http\Controllers\HomepageController::class, 'men_home_winter_wear']);
+
+Route::get('/men_home_kurta_shalwar', [App\Http\Controllers\HomepageController::class, 'men_home_kurta_shalwar']);
+
+Route::get('/men_pant_&_jeans', [App\Http\Controllers\HomepageController::class, 'pant_jeans']);
+
+Route::get('/shoes', [App\Http\Controllers\HomepageController::class, 'shoes']);
 // Cart
 
 Route::get('/AddToCartRent/{product_id}', [App\Http\Controllers\CartController::class, 'AddToCartRent'])->name('AddToCartRent');

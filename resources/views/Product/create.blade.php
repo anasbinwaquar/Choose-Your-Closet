@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Seller Portal</title>
+       <link rel="icon" href="{{asset('images/Closet.png')}}">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
@@ -154,14 +155,21 @@
   <label class="col-md-4 control-label" for="clothing_type">CLOTHING TYPE</label>
   <div class="col-md-6">
     <select id="clothing_type" name="clothing_type" class="form-control" id="clothing_type" required>
-    <option value="Pant">Pant</option>
+    <option value="Pant & Jeans">Pant & Jeans</option>
     <option value="T-Shirt">T-Shirt</option>
-    <option value="Full sleeves shirt">Full sleeves shirt</option>
-    <option value="Kurta">Kurta</option>
-    <option value="Kurti">Kurti</option>
+    <option value="Shirt">Shirt</option>
+    <option value="Kurta Shalwar">Kurta Shalwar</option>
+    <option value="Pret">Pret</option>
+    <option value="Jeans">Jeans</option>
+    <option value="3 Piece Suit">3 Piece Suit</option>
+    <option value="Party Wear">Party Wear</option>
+    <option value="Kids Wear">Kids Wear</option>
+    <option value="Groom Wear">Groom Wear</option>
     <option value="Bridal Wear">Bridal Wear</option>
-    <option value="Kids">Kids wear</option>
+    <option value="Summer Wear">Summer Wear</option>
+    <option value="Mid Summer Wear">Mid Summer Wear</option>
     <option value="Winter Wear">Winter Wear</option>
+    <option value="Shoes">Shoes</option>
     </select>
   </div>
 </div>
@@ -172,6 +180,7 @@
     <select id="gender_type" name="gender_type" class="form-control" required>
      <option value="Male">Male</option>
      <option value="Female">Female</option>
+      <option value="Other">Other</option>
     </select>
   </div>
 </div>
@@ -182,7 +191,6 @@
     <select id="category" name="category" class="form-control" required>
     <option value="Formal">Formal</option>
     <option value="Informal">Informal</option>
-    <option value="Informal">Party Wear</option>
     </select>
   </div>
 </div>

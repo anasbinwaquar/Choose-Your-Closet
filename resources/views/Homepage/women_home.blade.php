@@ -201,48 +201,42 @@
 	<div style="margin: 50px;">
   <div class="row justify-content-between">
      <div class="img_container col-lg-4 col-offset-12 special-grid best-seller">
-      <a class="anchor_link" class="anchor_link" href="/women_home">
-                   <button class="button"><img src="https://www.alkaramstudio.com/media/homepagetool/homepagetool/wintercapsuleMobnew.jpg" class="imagy"></button>
-                   <div class="centered">Women</div>
+      <a class="anchor_link" class="anchor_link" href="/women_home_pret">
+                   <button class="button"><img src="https://i.pinimg.com/originals/a1/80/27/a18027d39e23f6c41d76dd8a123e7e58.jpg" class="imagy"></button>
+                   <div class="centered">Pret</div>
                  </a>
     </div>
     <div class="img_container col-lg-4 col-offset-12 special-grid best-seller">
-      <a class="anchor_link"  href="/men_home">
-                   <button class="button"><img src="https://www.alkaramstudio.com/media/homepagetool/homepagetool/nMen-revised.jpg" class="imagy"></button>
-                    <div class="centered">Men</div>
+      <a class="anchor_link"  href="/women_home_3_piece_suit">
+                   <button class="button"><img src="https://www.alkaramstudio.com/media/catalog/product/cache/1/image/17f82f742ffe127f42dca9de82fb58b1/f/w/fw-24.1-19-green-1_1.jpg" class="imagy"></button>
+                    <div class="centered">3 Piece Suit</div>
                     </a>
     </div>
     <div class="img_container col-lg-4 col-offset-12 special-grid best-seller">
-      <a class="anchor_link" href="/kids">
-                   <button class="button"><img src="https://www.alkaramstudio.com/media/homepagetool/homepagetool/nKids-revised.JPG" class="imagy"></button>
-                    <div class="centered">Kids</div>
+      <a class="anchor_link" href="/women_home_party_wear">
+                   <button class="button"><img src="https://i.pinimg.com/736x/95/fb/c7/95fbc71a7a0280cf1a29334d66e29c75.jpg" class="imagy"></button>
+                    <div class="centered">Party Wear</div>
                     </a>
     </div>
   </div> 
     <br>
-    <div class="img_container col-lg-4 col-offset-12 special-grid best-seller">
-      <a class="anchor_link" href="/sale">
-                   <button class="button_sale"><img src="https://previews.123rf.com/images/lightwise/lightwise1205/lightwise120500044/13650233-clothing-sale-sign-with-classic-wooden-clothes-hangers-and-big-red-bannders-with-advertising-and-mar.jpg" class="imagy"></button>
-                    </a>
-    </div>
-    <br>
   <div class="img_container row justify-content-between">
          <div class="col-lg-4 col-offset-12 special-grid best-seller">
-          <a class="anchor_link" href="/bride">
-                   <button class="button"><img src="https://www.bridals.pk/content/images/thumbs/0016784_gulrukh_1000.jpeg" class="imagy"></button>
-                    <div class="centered">Bride</div>
+          <a class="anchor_link" href="/women_home_winter_wear">
+                   <button class="button"><img src="https://cdn.sanaullastore.com/media/catalog/product/a/l/al-karam-winter-collection-2019-fw-7.1-19-blue-_1_.jpg" class="imagy"></button>
+                    <div class="centered">Winter Wear</div>
                     </a>
     </div>
      <div class="img_container col-lg-4 col-offset-12 special-grid best-seller">
-      <a class="anchor_link" href="/groom">
-                   <button class="button"><img src="https://ladyselection.com/wp-content/uploads/2019/03/165b.jpg" class="imagy"></button>
-                    <div class="centered">Groom</div>
+      <a class="anchor_link" href="/women_home_summer_wear">
+                   <button class="button"><img src="https://i.pinimg.com/736x/fc/4d/e8/fc4de81d07db809aa5e3654c25b8d497.jpg" class="imagy"></button>
+                    <div class="centered">Summer Wear</div>
                     </a>
     </div>  
         <div class="img_container col-lg-4 col-offset-12 special-grid best-seller">
-          <a class="anchor_link" href="/shoes">
-                 <button class="button"><img src="https://images.unsplash.com/photo-1570464197285-9949814674a7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1266&q=80" class="imagy"> </button>
-                 <div class="centered">Shoes</div>
+          <a class="anchor_link" href="/women_home_pants_jeans">
+                 <button class="button"><img src="https://cdn.shopify.com/s/files/1/0015/2502/2772/products/Side-zip-denim-capri-by-grain-de-malice-1_large.jpg?v=1527156969" class="imagy"> </button>
+                 <div class="centered">Pants & Jeans</div>
           </a>
     </div>
      </div>

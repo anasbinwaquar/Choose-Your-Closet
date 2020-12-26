@@ -178,17 +178,13 @@
                             <table class="table my-0" id="dataTable">
                                 <thead>
                                     <tr>
-                                        <th>Seller ID</th>
+                                        <th>Customer ID</th>
                                         <th>First Name</th>
                                         <th>Last Name</th>
                                         <th>Email</th>
                                         <th>Phone Number</th>
-                                        <th>Website Name</th>
-                                        <th>Brand Name</th>
                                         <th>Username</th>
-                                        <th>CNIC</th>
-                                        <th>Created Account(Date)</th>
-                                        <th>Last Updated</th>
+                                        <th>Date of creation</th>
 
                                     </tr>
                                 </thead>
@@ -199,10 +195,9 @@
                                         <th>{{$data1->First_Name}}</th>
                                         <th>{{$data1->Last_Name}}</th>
                                         <td>{{$data1->Email}}</td> 
-                                        <th>{{$data1->Phone_Nu2mber}}</th>
+                                        <th>{{$data1->Phone_Number}}</th>
                                         <th>{{$data1->Username}}</th>
                                         <th>{{$data1->created_at}}</th>
-                                        <th>{{$data1->updated_at}}</th>
                                       </tr>
                                       @endforeach
                                       @endif
@@ -243,8 +238,7 @@
                                         <th>Brand Name</th>
                                         <th>Username</th>
                                         <th>CNIC</th>
-                                       	<th>Created Account(Date)</th>
-                                        <th>Last Updated</th>
+                                       	<th>Date of Creation</th>
 
                                     </tr>
                                 </thead>
@@ -261,7 +255,6 @@
                                         <th>{{$data2->Username}}</th>
                                         <th>{{$data2->CNIC}}</th>
                                         <th>{{$data2->created_at}}</th>
-                                        <th>{{$data2->updated_at}}</th>
                                       </tr>
                                       @endforeach
                                       @endif

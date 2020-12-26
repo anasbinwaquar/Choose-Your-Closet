@@ -201,48 +201,42 @@
 	<div style="margin: 50px;">
   <div class="row justify-content-between">
      <div class="img_container col-lg-4 col-offset-12 special-grid best-seller">
-      <a class="anchor_link" class="anchor_link" href="/women_home">
-                   <button class="button"><img src="https://www.alkaramstudio.com/media/homepagetool/homepagetool/wintercapsuleMobnew.jpg" class="imagy"></button>
-                   <div class="centered">Women</div>
+      <a class="anchor_link" class="anchor_link" href="/men_home_shirts">
+                   <button class="button"><img src="https://cdn.shopify.com/s/files/1/0283/5510/0758/products/NAP_0939_1024x1024.jpg?v=1604025956" class="imagy"></button>
+                   <div class="centered">Shirts</div>
                  </a>
     </div>
     <div class="img_container col-lg-4 col-offset-12 special-grid best-seller">
-      <a class="anchor_link"  href="/men_home">
-                   <button class="button"><img src="https://www.alkaramstudio.com/media/homepagetool/homepagetool/nMen-revised.jpg" class="imagy"></button>
-                    <div class="centered">Men</div>
+      <a class="anchor_link"  href="/men_home_tshirts">
+                   <button class="button"><img src="https://brumano.b-cdn.net/wp-content/uploads/2020/04/Navy-Blue-Crew-Neck-T-Shirt-Brumano-Pakistan-1-480x640.jpg" class="imagy"></button>
+                    <div class="centered">T-Shirt</div>
                     </a>
     </div>
     <div class="img_container col-lg-4 col-offset-12 special-grid best-seller">
-      <a class="anchor_link" href="/kids">
-                   <button class="button"><img src="https://www.alkaramstudio.com/media/homepagetool/homepagetool/nKids-revised.JPG" class="imagy"></button>
-                    <div class="centered">Kids</div>
+      <a class="anchor_link" href="/men_home_3_piece_suit">
+                   <button class="button"><img src="https://www.junaidtextiles.com/wp-content/uploads/2019/09/Junaid-Website-Ads-23rd-Sep.jpg" class="imagy"></button>
+                    <div class="centered">3 Piece Suit</div>
                     </a>
     </div>
   </div> 
     <br>
-    <div class="img_container col-lg-4 col-offset-12 special-grid best-seller">
-      <a class="anchor_link" href="/sale">
-                   <button class="button_sale"><img src="https://previews.123rf.com/images/lightwise/lightwise1205/lightwise120500044/13650233-clothing-sale-sign-with-classic-wooden-clothes-hangers-and-big-red-bannders-with-advertising-and-mar.jpg" class="imagy"></button>
-                    </a>
-    </div>
-    <br>
   <div class="img_container row justify-content-between">
          <div class="col-lg-4 col-offset-12 special-grid best-seller">
-          <a class="anchor_link" href="/bride">
-                   <button class="button"><img src="https://www.bridals.pk/content/images/thumbs/0016784_gulrukh_1000.jpeg" class="imagy"></button>
-                    <div class="centered">Bride</div>
+          <a class="anchor_link" href="/men_home_winter_wear">
+                   <button class="button"><img src="https://www.cheatsheet.com/wp-content/uploads/2015/10/Barbour-Classic-Beaufort-jacket-at-Nordstrom.jpg" class="imagy"></button>
+                    <div class="centered">Winter Wear</div>
                     </a>
     </div>
      <div class="img_container col-lg-4 col-offset-12 special-grid best-seller">
-      <a class="anchor_link" href="/groom">
-                   <button class="button"><img src="https://ladyselection.com/wp-content/uploads/2019/03/165b.jpg" class="imagy"></button>
-                    <div class="centered">Groom</div>
+      <a class="anchor_link" href="/men_home_kurta_shalwar">
+                   <button class="button"><img src="https://www.alkaramstudio.com/media/catalog/product/cache/1/small_image/361x541/9df78eab33525d08d6e5fb8d27136e95/m/d/mdk-69_1__1.jpg" class="imagy"></button>
+                    <div class="centered">Kurta Shalwar</div>
                     </a>
     </div>  
         <div class="img_container col-lg-4 col-offset-12 special-grid best-seller">
-          <a class="anchor_link" href="/shoes">
-                 <button class="button"><img src="https://images.unsplash.com/photo-1570464197285-9949814674a7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1266&q=80" class="imagy"> </button>
-                 <div class="centered">Shoes</div>
+          <a class="anchor_link" href="/men_pant_&_jeans">
+                 <button class="button"><img src="https://levi.com.pk/wp-content/uploads/2018/08/FitGuide-Men-505Regular.jpg" class="imagy"> </button>
+                 <div class="centered">Pants & Jeans</div>
           </a>
     </div>
      </div>

@@ -109,12 +109,21 @@
   <label class="col-md-4 control-label" for="clothing_type">CLOTHING TYPE</label>
   <div class="col-md-6">
     <select id="clothing_type" name="clothing_type" class="form-control" id="clothing_type" required>
-    <option value="Pant">Pant</option>
+      <option value="Pant">Pant</option>
     <option value="T-Shirt">T-Shirt</option>
+    <option value="Shirt">Shirt</option>
     <option value="Kurta">Kurta</option>
-    <option value="Kurti">Kurti</option>
+    <option value="Pret">Pret</option>
+    <option value="Jeans">Jeans</option>
+    <option value="3 Piece Suit">3 Piece Suit</option>
+    <option value="Party Wear">Party Wear</option>
+    <option value="Kids Wear">Kids Wear</option>
+    <option value="Groom Wear">Groom Wear</option>
     <option value="Bridal Wear">Bridal Wear</option>
-    <option value="Kids">Kids wear</option>
+    <option value="Summer Wears">Summer Wear</option>
+    <option value="Mid Summer Wear">Mid Summer Wear</option>
+    <option value="Winter Wear">Winter Wear</option>
+    <option value="Shoes">Shoes</option>
     </select>
   </div>
 </div>
