@@ -36,7 +36,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="gallery">
-                                    <div class="sp-wrap"><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('/uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('/uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('/uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('/uploads/sell/'. $product->product_image)}}"></a></div>
+                                    <div class="sp-wrap"><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('/uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('/uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('/uploads/sell/'. $product->product_image2)}}"><img class="img-fluid d-block mx-auto" src="{{asset('/uploads/sell/'. $product->product_image3)}} alt=""></a></div>
                                 </div>
                             </div>
                             <div class="col-md-6">

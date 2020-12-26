@@ -155,6 +155,19 @@
                     <div class="products">
                         <h3 class="title">Checkout</h3>
                         @csrf
+                        @if ($errors->any())
+    <div class="col-md-4 alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                @if($error=='The product image has invalid image dimensions.')
+                <li> The Product image should be atleaast 1000x1000 </li>
+                @else
+                <li>{{ $error }}</li>
+                @endif
+            @endforeach
+        </ul>
+    </div>
+@endif
                         @foreach($product as $product)
                         <div class="item"><span class="price">Daily Charges:{{$product->charges}} <br> Security Deposit: {{$product->security_deposit}}</span>
                             <p class="item-name">{{$product->product_name}}({{$product->size}})</p>

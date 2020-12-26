@@ -53,7 +53,13 @@ class CartController extends Controller
     }
 
     public function RentCartCheckout(Request $req){
-        // dd($req);
+        $today=Carbon::today()->toDateString();
+        $start=$req->input('start_date');
+        $req->validate([
+            'start_date'=>'after_or_equal:today',
+            'end_date'=>'after:start_date'
+        ]);
+        dd($req);
         $Rental_history=new Rental_history();
         $product=RentalProduct::where('id',$req->input('product_id'))->get()->first();
         // dd($product);

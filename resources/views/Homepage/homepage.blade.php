@@ -172,7 +172,7 @@
                                 </div>
                             </div> 
                         </div> -->
-                        <div class="col-md-9">
+                        <div class="col-md-12">
                             <div class="products">
                                 <div class="row">
                                     @foreach($data as $data)

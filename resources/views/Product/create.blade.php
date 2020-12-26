@@ -70,14 +70,10 @@
   @csrf
 <fieldset>
 @if ($errors->any())
-    <div class="col-md-4 alert alert-danger">
+    <div class="col-md-12 alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
-                @if($error=='The product image has invalid image dimensions.')
-                <li> The Product image should be atleaast 1000x1000 </li>
-                @else
                 <li>{{ $error }}</li>
-                @endif
             @endforeach
         </ul>
     </div>
