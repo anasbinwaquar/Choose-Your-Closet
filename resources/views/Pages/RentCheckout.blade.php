@@ -218,7 +218,7 @@
                         </div>
                         </div>
                     </div>
-                    @if($check==0)
+                    @if($check==1)
                     <div class="col-sm-12">
                             <button type="submit" class="btn btn-primary btn-block">Checkout</button>
                      </div>
