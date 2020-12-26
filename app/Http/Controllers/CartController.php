@@ -59,7 +59,7 @@ class CartController extends Controller
             'start_date'=>'after_or_equal:today',
             'end_date'=>'after:start_date'
         ]);
-        dd($req);
+        // dd($req);
         $Rental_history=new Rental_history();
         $product=RentalProduct::where('id',$req->input('product_id'))->get()->first();
         // dd($product);

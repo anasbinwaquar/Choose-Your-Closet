@@ -97,14 +97,14 @@ class ProductController extends Controller
     public function index()
     {
         //$data = session()->get('logged_in');
-        if(session()->has('data'))
+        if(session()->has('seller_id'))
          return view('Product.create');
         else
         return redirect()->route('SellerLogin'); 
     }
     public function Rent_view(){
 
-        if(session()->has('data'))
+        if(session()->has('seller_id'))
          return view('Product.Add_Rent_Products');
         else
         return redirect()->route('SellerLogin'); 
