@@ -135,38 +135,17 @@
             <div class="container col-lg-10">
                 <div class="content">
                     <div class="row">
-                        <div class="col-md-3">
-                            <div class="d-none d-md-block">
-                                <div class="filters">
-                                    <div class="filter-item">
-                                        <h3>Categories</h3>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Women</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label" for="formCheck-2">Men</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-3"><label class="form-check-label" for="formCheck-3">Kids</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Bridal/Groom Wear</label></div>
-                                    </div>
-                                    <div class="filter-item">
-                                        <h3>Brands</h3>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-5"><label class="form-check-label" for="formCheck-5">Alkaram</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-6"><label class="form-check-label" for="formCheck-6">Khaadi</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7"><label class="form-check-label" for="formCheck-7">GulAhmed</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7"><label class="form-check-label" for="formCheck-7">Levis</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7"><label class="form-check-label" for="formCheck-7">Home Brands</label></div>
-                                    </div>
-                                </div>
-                            </div> 
-                        </div>
-                        <div class="col-md-9">
+                        <div class="col-md-12">
                             <div class="products">
                                 <div class="row">
                                     @foreach($data as $data)
-                                     <div class="col-lg-4 col-offset-12 special-grid best-seller">
+                                     <div class="col-lg-4 col-offset-8 special-grid best-seller">
                                                     <div class="products-single fix">
                                                         <div class="box-img-hover">
                                                             <div class="type-lb">
                                                                 <p class="sale">Rent</p>
                                                             </div>
-                                                             <img class="card-img-top" src="{{asset('uploads/sell/'. $data->product_image)}}" alt="Card image cap" style="height:400px;width: 350px;">
+                                                             <img class="card-img-top" src="{{asset('uploads/sell/'. $data->product_image)}}" alt="Card image cap" style="height:500px;width: 350px;">
                                                             <div class="mask-icon">
                                                                 <ul>
                                                                     </ul>

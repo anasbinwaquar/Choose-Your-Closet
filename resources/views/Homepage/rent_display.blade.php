@@ -1,25 +1,25 @@
-<!DOCTYPE html>
-<html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Rental Product Page - Choose Your Closet</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title>Product Page - Choose Your Closet</title>
     <link rel="stylesheet" href="/product/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="/product/fonts/simple-line-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
     <link rel="stylesheet" href="/product/css/smoothproducts.css">
-    <link rel="stylesheet" type="text/css" href="/product/css/style1.css">   
+    <link rel="stylesheet" type="text/css" href="/product/css/style1.css">
+     <link rel="icon" href="{{asset('images/Closet.png')}}">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" type="text/css" href="/css/nav_styling.css">
-    <link rel="stylesheet" href="/css/style.css">
-
 </head>
 
 <body>
-@if($check==0)
+     @if($check_nav==0)
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -28,11 +28,11 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active navclass">
-        <a class="nav-link navlink active" href="/" style="color: #24C6DC;">Home<span class="sr-only">(current)</span></a>
+      <li class="nav-item navclass">
+        <a class="nav-link navlink" href="/" style="color: #24C6DC;">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link navlink" href="#" style="color: #24C6DC;">About Us</a>
+        <a class="nav-link navlink" href="AboutUs" style="color: #24C6DC;">About Us</a>
       </li>
       <li class="nav-item">
         <a class="nav-link navlink" href="/customize" style="color: #24C6DC;">Customizer</a>
@@ -41,7 +41,7 @@
         <div class="dropdown">
         <a class="nav-link navlink" href="#" style="color: #24C6DC;">Products</a>
          <div class="dropdown-content">
-        <a href="#" class="link">Purchase</a>
+        <a href="/" class="link">Purchase</a>
         <a href="/RentProducts" class="link">Rent</a>
         </div>
         </div>
@@ -68,9 +68,10 @@
         <a class="nav-link navlink" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
       </li>
     </ul>
+    </div>
 </nav>
 
-@elseif($check==1)
+@elseif($check_nav==1)
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -79,11 +80,11 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active navclass">
-        <a class="nav-link navlink active" href="/" style="color: #24C6DC;">Home<span class="sr-only">(current)</span></a>
+      <li class="nav-item navclass">
+        <a class="nav-link navlink" href="/" style="color: #24C6DC;">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link navlink" href="#" style="color: #24C6DC;">About Us</a>
+        <a class="nav-link navlink" href="/AboutUs" style="color: #24C6DC;">About Us</a>
       </li>
       <li class="nav-item">
         <a class="nav-link navlink" href="/customize" style="color: #24C6DC;">Customizer</a>
@@ -99,12 +100,21 @@
       </li>
       <li class="nav-item">
         <div class="dropdown">
-        <a class="nav-link navlink" href="/CustomerCart" style="color: #24C6DC;"><i class="fas fa-shopping-cart" style="color:#24C6DC;height: 10px;"></i><span class="badge badge-light">
+        <a class="nav-link navlink" href="#" style="color: #24C6DC;">User Profile</a>
+         <div class="dropdown-content">
+        <a href="/CheckOrders" class="link">Check Orders</a>
+        <a href="/CompletedOrdersCustomer" class="link">Completed Orders</a>
+        </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="dropdown">
+        <a class="nav-link navlink" href="/CustomerCart" style="color: #24C6DC;"><i class="fas fa-shopping-cart fa-sm" style="color:#24C6DC;height: 10px;"></i><span class="badge badge-light">
           <?php if(session()->has('cart'))
         {
            echo session()->get('cart')->totalQty;
         }
-         ?></span>Cart</a>
+         ?> </span>Cart</a>
         </div>
       </li>
        <li class="nav-item">
@@ -116,6 +126,7 @@
         <a class="nav-link navlink" href="/ContactUs" style="color: #24C6DC;">Contact Us</a>
       </li>
     </ul>
+    </div>
 </nav>
 @endif
 
@@ -124,21 +135,19 @@
         <section class="clean-block clean-product dark">
             <div class="container">
                 <div class="block-heading">
-                    <h2 class="text-info">product Page</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+                    <h1 class="text-info">Product Page</h1>
                 </div>
                 <div class="block-content">
                     <div class="product-info">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="gallery">
-                                    <div class="sp-wrap"><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('uploads/sell/'. $product->product_image)}}"></a></div>
+                                    <div class="sp-wrap"><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('uploads/sell/'. $product->product_image)}}"></a><a href="{{asset('uploads/sell/'. $product->product_image)}}"><img class="img-fluid d-block mx-auto" src="{{asset('uploads/sell/'. $product->product_image2)}}"></a><a href="{{asset('uploads/sell/'. $product->product_image3)}}"><img class="img-fluid d-block mx-auto" src="{{asset('uploads/sell/'. $product->product_image3)}}"></a></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="info">
                                     <h3>{{$product->product_name}}</h3>
-                                    <div class="rating"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star-half-empty.svg"><img src="/product/img/star-empty.svg"></div>
                                     <div class="price">
                                         <h3>Daily Charges: Rs. {{$product->charges}}</h3>
                                         <h3>Security Deposit: Rs. {{$product->security_deposit}}</h3>

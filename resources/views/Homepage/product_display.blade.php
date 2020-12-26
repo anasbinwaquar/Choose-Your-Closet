@@ -150,7 +150,6 @@
                             <div class="col-md-6">
                                 <div class="info">
                                     <h3>{{$product->product_name}}</h3>
-                                    <div class="rating"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star.svg"><img src="/product/img/star-half-empty.svg"><img src="/product/img/star-empty.svg"></div>
                                     <div class="price">
                                         <!-- <h3>Rs. {{$product->price_per_unit}}</h3> -->
                                            @if($product->Discount!=NULL)
