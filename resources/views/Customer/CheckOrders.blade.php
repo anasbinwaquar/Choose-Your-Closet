@@ -114,6 +114,7 @@
                                     @php
                                         $check=1;
                                         $price=0;
+                                        $discount=0;
                                     @endphp
                                     @foreach (collect($data)->unique('OrderID') as $data)
                                       <tr>
@@ -183,7 +184,8 @@
                                                 @endif
                                             @endforeach
                                             <br>
-                                        Total: {{$price}}</th>  
+                                        Total: {{$price}}-{{$data->Total_Discount}}</th>  
+                                        Total Discount: {{$data->Total_Discount}}
                                         @php
                                          $price=0;
                                         @endphp 
