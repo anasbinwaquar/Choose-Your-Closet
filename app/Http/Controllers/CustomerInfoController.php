@@ -116,6 +116,7 @@ class CustomerInfoController extends Controller
         // dd($data);
         $data2 = Orders_sell::join('products','products.id','=','orders_sell.ProductID')->join('seller_info','seller_info.id','=','products.seller_id')->where('CustomerID',session()->get('customer_id'))->get();
         $data=$data->unique('OrderID');
+        //dd($data);
         $rentproducts=Rental_history::join('seller_info','seller_info.id','=','rental_histories.seller_id')->join('products','products.id','=','rental_histories.product_id')->select('products.*','seller_info.*','rental_histories.id as ID','rental_histories.*')->get();
         return view('Customer.CheckOrders')->with('data',$data)->with('data2',$data2)->with('rentproducts',$rentproducts);
     }
