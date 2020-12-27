@@ -71,7 +71,9 @@ class HomepageController extends Controller
         {
            $check_nav = 0;
         }   
-        $data = Product::where('approved', 1)->where('clothing_type','Bridal Wear')->get();
+        $data = Product::where('approved', 1)->where('clothing_type','Bridal Wear')->whereNotIn('products.id', function($q){
+            $q->select('Product_id')->from('discounts');
+        })->get();
         // printf("Now: %s", Carbon::now());
         return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
@@ -88,7 +90,9 @@ class HomepageController extends Controller
         {
            $check_nav = 0;
         }   
-        $data = Product::where('approved', 1)->where('clothing_type','Groom Wear')->get();
+        $data = Product::where('approved', 1)->where('clothing_type','Groom Wear')->whereNotIn('products.id', function($q){
+            $q->select('Product_id')->from('discounts');
+        })->get();
         // printf("Now: %s", Carbon::now());
         return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
@@ -104,7 +108,9 @@ class HomepageController extends Controller
         {
            $check_nav = 0;
         }   
-        $data = Product::where('approved', 1)->where('clothing_type','Kids Wear')->get();
+        $data = Product::where('approved', 1)->where('clothing_type','Kids Wear')->whereNotIn('products.id', function($q){
+            $q->select('Product_id')->from('discounts');
+        })->get();
         // printf("Now: %s", Carbon::now());
         return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
@@ -120,7 +126,9 @@ class HomepageController extends Controller
         {
            $check_nav = 0;
         }   
-        $data = Product::where('approved', 1)->where('gender_type','Female')->where('clothing_type','pret')->get();
+        $data = Product::where('approved', 1)->where('gender_type','Female')->where('clothing_type','pret')->whereNotIn('products.id', function($q){
+            $q->select('Product_id')->from('discounts');
+        })->get();
         // printf("Now: %s", Carbon::now());
         return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
@@ -137,7 +145,9 @@ class HomepageController extends Controller
         {
            $check = 0;
         }   
-        $data = Product::where('approved', 1)->where('gender_type','Female')->where('clothing_type','3 Piece Suit')->get();
+        $data = Product::where('approved', 1)->where('gender_type','Female')->where('clothing_type','3 Piece Suit')->whereNotIn('products.id', function($q){
+            $q->select('Product_id')->from('discounts');
+        })->get();
         // printf("Now: %s", Carbon::now());
         return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
@@ -153,7 +163,9 @@ class HomepageController extends Controller
         {
            $check = 0;
         }   
-        $data = Product::where('approved', 1)->where('gender_type','Female')->where('clothing_type','Party Wear')->get();
+        $data = Product::where('approved', 1)->where('gender_type','Female')->where('clothing_type','Party Wear')->whereNotIn('products.id', function($q){
+            $q->select('Product_id')->from('discounts');
+        })->get();
         // printf("Now: %s", Carbon::now());
         return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
@@ -170,7 +182,9 @@ class HomepageController extends Controller
         {
            $check_nav = 0;
         }   
-        $data = Product::where('approved', 1)->where('gender_type','Female')->where('clothing_type','Winter Wear')->get();
+        $data = Product::where('approved', 1)->where('gender_type','Female')->where('clothing_type','Winter Wear')->whereNotIn('products.id', function($q){
+            $q->select('Product_id')->from('discounts');
+        })->get();
         // printf("Now: %s", Carbon::now());
         return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
@@ -186,7 +200,9 @@ class HomepageController extends Controller
         {
            $check_nav = 0;
         }   
-        $data = Product::where('approved', 1)->where('gender_type','Female')->where('clothing_type','Summer Wear')->get();
+        $data = Product::where('approved', 1)->where('gender_type','Female')->where('clothing_type','Summer Wear')->whereNotIn('products.id', function($q){
+            $q->select('Product_id')->from('discounts');
+        })->get();
         // printf("Now: %s", Carbon::now());
         return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
@@ -203,7 +219,9 @@ class HomepageController extends Controller
         {
            $check_nav = 0;
         }   
-        $data = Product::where('approved', 1)->where('gender_type','Female')->where('clothing_type','Pant')->get();
+        $data = Product::where('approved', 1)->where('gender_type','Female')->where('clothing_type','Pant')->whereNotIn('products.id', function($q){
+            $q->select('Product_id')->from('discounts');
+        })->get();
         // printf("Now: %s", Carbon::now());
         return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
@@ -220,7 +238,9 @@ class HomepageController extends Controller
         {
            $check_nav = 0;
         }   
-        $data = Product::where('approved', 1)->where('gender_type','Male')->where('clothing_type','Shirt')->get();
+        $data = Product::where('approved', 1)->where('gender_type','Male')->where('clothing_type','Shirt')->whereNotIn('products.id', function($q){
+            $q->select('Product_id')->from('discounts');
+        })->get();
         // printf("Now: %s", Carbon::now());
         return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
@@ -236,7 +256,13 @@ class HomepageController extends Controller
         {
            $check_nav = 0;
         }   
-        $data = Product::where('approved', 1)->where('gender_type','Male')->where('clothing_type','Winter Wear')->get();
+        $data = Product::where('approved', 1)->where('gender_type','Male')->where('clothing_type','Winter Wear')->whereNotIn('products.id', function($q){
+            $q->select('Product_id')->from('discounts');
+        })->get();
+        // $ss=Product::whereNotIn('products.id', function($q){
+        //     $q->select('Product_id')->from('discounts');
+        // })->get();
+        // dd($data);
         // printf("Now: %s", Carbon::now());
         return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
@@ -252,7 +278,9 @@ class HomepageController extends Controller
         {
            $check_nav = 0;
         }   
-        $data = Product::where('approved', 1)->where('clothing_type','shoes')->get();
+        $data = Product::where('approved', 1)->where('clothing_type','shoes')->whereNotIn('products.id', function($q){
+            $q->select('Product_id')->from('discounts');
+        })->get();
         // printf("Now: %s", Carbon::now());
         return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
@@ -270,7 +298,9 @@ class HomepageController extends Controller
         {
            $check_nav = 0;
         }   
-        $data = Product::where('approved', 1)->where('gender_type','Male')->where('clothing_type','T-Shirt')->get();
+        $data = Product::where('approved', 1)->where('gender_type','Male')->where('clothing_type','T-Shirt')->whereNotIn('products.id', function($q){
+            $q->select('Product_id')->from('discounts');
+        })->get();
         // printf("Now: %s", Carbon::now());
         return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
@@ -286,7 +316,9 @@ class HomepageController extends Controller
         {
            $check_nav = 0;
         }   
-        $data = Product::where('approved', 1)->where('gender_type','Male')->where('clothing_type','3 Piece Suit')->get();
+        $data = Product::where('approved', 1)->where('gender_type','Male')->where('clothing_type','3 Piece Suit')->whereNotIn('products.id', function($q){
+            $q->select('Product_id')->from('discounts');
+        })->get();
         // printf("Now: %s", Carbon::now());
         return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
@@ -303,7 +335,9 @@ class HomepageController extends Controller
         {
            $check_nav = 0;
         }   
-        $data = Product::where('approved', 1)->where('gender_type','Male')->where('clothing_type','Kurta Shalwar')->get();
+        $data = Product::where('approved', 1)->where('gender_type','Male')->where('clothing_type','Kurta Shalwar')->whereNotIn('products.id', function($q){
+            $q->select('Product_id')->from('discounts');
+        })->get();
         // printf("Now: %s", Carbon::now());
         return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
@@ -321,7 +355,9 @@ class HomepageController extends Controller
         {
            $check_nav = 0;
         }   
-        $data = Product::where('approved', 1)->where('gender_type','Male')->where('clothing_type','Pant & Jeans')->get();
+        $data = Product::where('approved', 1)->where('gender_type','Male')->where('clothing_type','Pant & Jeans')->whereNotIn('products.id', function($q){
+            $q->select('Product_id')->from('discounts');
+        })->get();
         // printf("Now: %s", Carbon::now());
         return view('Homepage.homepage_product')->with('data',$data)->with('check_nav', $check_nav);
     }
