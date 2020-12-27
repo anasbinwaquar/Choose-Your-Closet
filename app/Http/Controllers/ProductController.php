@@ -184,9 +184,9 @@ class ProductController extends Controller
 
         $seller_id=session('seller_id');
        $request->validate([
-          'product_image' => 'required|dimensions:min_width=1000,min_height=1000',
-          'product_image2' => 'dimensions:min_width=1000,min_height=1000',
-          'product_image3' => 'dimensions:min_width=1000,min_height=1000',
+          'product_image' => 'required|dimensions:min_width=600,min_height=600',
+          'product_image2' => 'dimensions:min_width=600,min_height=600',
+          'product_image3' => 'dimensions:min_width=600,min_height=600',
           'product_name' => 'required',
           'price_per_unit' => 'required|integer',
           'description'=> 'required',
@@ -252,9 +252,9 @@ class ProductController extends Controller
 
             $seller_id=session('seller_id');
            $request->validate([
-          'product_image' => 'required|dimensions:min_width=1000,min_height=1000',
-          'product_image2' => 'dimensions:min_width=1000,min_height=1000',
-          'product_image3' => 'dimensions:min_width=1000,min_height=1000',
+          'product_image' => 'required|dimensions:min_width=600,min_height=600',
+          'product_image2' => 'dimensions:min_width=600,min_height=600',
+          'product_image3' => 'dimensions:min_width=600,min_height=600',
           'product_name' => 'required',
           'charges' => 'required|integer',
           'description'=> 'required',
