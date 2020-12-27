@@ -251,19 +251,19 @@ class ProductController extends Controller
             return redirect('SellerLogin');
 
             $seller_id=session('seller_id');
-           $request->validate([
-          'product_image' => 'required|dimensions:min_width=600,min_height=600',
-          'product_image2' => 'dimensions:min_width=600,min_height=600',
-          'product_image3' => 'dimensions:min_width=600,min_height=600',
-          'product_name' => 'required',
-          'charges' => 'required|integer',
-          'description'=> 'required',
-          'size'=> 'required',
-          'gender_type' => 'required',
-          'clothing_type'=> 'required',
-          'category' => 'required',
-          'security_deposit'=>'required|integer'
-        ]);
+             $request->validate([
+            'product_image' => 'required|dimensions:min_width=600,min_height=600',
+            'product_image2' => 'dimensions:min_width=600,min_height=600',
+            'product_image3' => 'dimensions:min_width=600,min_height=600',
+            'product_name' => 'required',
+            'charges' => 'required|integer',
+            'description'=> 'required',
+            'size'=> 'required',
+            'gender_type' => 'required',
+            'clothing_type'=> 'required',
+            'category' => 'required',
+            'security_deposit'=>'required|integer'
+          ]);
 
             $Prod = new RentalProduct();
             $file=$request->file('product_image');
