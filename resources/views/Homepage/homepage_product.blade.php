@@ -168,7 +168,7 @@
                                                                 <p class="sale">{{$data->EventName}} Sale</p>
                                                                 @endif                                                                
                                                             </div>
-                                                             <img class="card-img-top" src="{{asset('uploads/sell/'. $data->product_image)}}" alt="Card image cap" style="height:500px;width: 350px;">
+                                                             <img class="card-img-top" src="{{asset('/uploads/sell/'. $data->product_image)}}" alt="Card image cap" style="height:500px;width: 350px;">
                                                             <div class="mask-icon">
                                                                 <ul>
                                                                    
