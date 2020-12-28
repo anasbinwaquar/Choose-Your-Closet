@@ -209,14 +209,14 @@ class ProductController extends Controller
         $file2=$request->file('product_image2');
         if($file2!=NULL){
         $extension=$file2->getClientOriginalExtension();
-        $filename=time().'.'.$extension;
+        $filename=time().'2.'.$extension;
         $file2->move('uploads/sell/',$filename);
         $Prod->product_image2 = $filename;
         }
         $file3=$request->file('product_image3');
         if($file3!=NULL){
         $extension=$file3->getClientOriginalExtension();
-        $filename=time().'.'.$extension;
+        $filename=time().'3.'.$extension;
         $file3->move('uploads/sell/',$filename);
         $Prod->product_image3 = $filename;
         }
@@ -274,14 +274,14 @@ class ProductController extends Controller
             $file2=$request->file('product_image2');
             if($file2!=NULL){
             $extension=$file2->getClientOriginalExtension();
-            $filename=time().'.'.$extension;
+            $filename=time().'2.'.$extension;
             $file2->move('uploads/sell/',$filename);
             $Prod->product_image2 = $filename;
             }
             $file3=$request->file('product_image3');
             if($file3!=NULL){
             $extension=$file3->getClientOriginalExtension();
-            $filename=time().'.'.$extension;
+            $filename=time().'3.'.$extension;
             $file3->move('uploads/sell/',$filename);
             $Prod->product_image3 = $filename;
             }
